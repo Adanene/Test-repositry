@@ -26,7 +26,7 @@ data["Jenis Kapal"].unique()
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 
 # Select the features and target variable
-features = ['displacement', 'Selisih beban', 'Jenis kapal',]
+features = ['Jenis kapal', 'Displacement', 'Selisih beban',]
 target = 'Inclinement'
 
 # Train a linear regression model
