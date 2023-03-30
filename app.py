@@ -54,6 +54,21 @@ Kapal = (
         "Kapal kargo",
         "Kapal multipurpose",
         )
+beban = (
+        "4",
+        "6",
+        )
+proses = (
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        )
 
 Kapal = st.selectbox("Jenis Kapal", Kapal)
 Loa = st.number_input("Length Over All (m)", min_value= 0.00, step =0.01)
@@ -62,6 +77,11 @@ Breadth = st.number_input("Breadth (m)", min_value= 0.00, step =0.01)
 Depth = st.number_input("Depth (m) ", min_value= 0.00, step =0.01)
 Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0.01)
 Cb = st.number_input("Coefficient Block", min_value= 0.00, max_value= 1.00, step =0.01)
+beban_A = st.number_input("Beban A (Ton)",min_value= 0.00,  step =0.01)
+beban_B = st.number_input("Beban B (Ton)",min_value= 0.00,  step =0.01)
+beban_C = st.number_input("Beban C (Ton)",min_value= 0.00,  step =0.01)
+beban_D = st.number_input("Beban D (Ton)",min_value= 0.00,  step =0.01)
+jumlah_beban = st.selectbox("Jumlah beban uji", beban)
 
     
 new_test = pd.DataFrame({'Jenis Kapal': [1], 'Displacement': [150], 'Selisih beban': [1],})
