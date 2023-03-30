@@ -58,17 +58,7 @@ beban = (
         "4",
         "6",
         )
-proses = (
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        )
+
 
 Kapal = st.selectbox("Jenis Kapal", Kapal)
 Loa = st.number_input("Length Over All (m)", min_value= 0.00, step =0.01)
@@ -82,6 +72,35 @@ beban_B = st.number_input("Beban B (Ton)",min_value= 0.00,  step =0.01)
 beban_C = st.number_input("Beban C (Ton)",min_value= 0.00,  step =0.01)
 beban_D = st.number_input("Beban D (Ton)",min_value= 0.00,  step =0.01)
 jumlah_beban = st.selectbox("Jumlah beban uji", beban)
+
+if jumlah_beban == "4" :
+        beban_E = 0
+        beban_F = 0
+        proses = st.slider("Proses incline", 0, 7, 0)
+        if proses == 0:
+            kiri = "AB"
+            kanan = "CD"
+        if proses == 1:
+            kiri = "B"
+            kanan = "ACD"
+        if proses == 2:
+            kiri = "None"
+            kanan = "ABCD"
+        if proses == 3:
+            kiri = "C"
+            kanan = "ABD"
+        if proses == 4:
+            kiri = "CD"
+            kanan = "AB"
+        if proses == 5:
+            kiri = "ABC"
+            kanan = "D"
+        if proses == 6:
+            kiri = "ABCD"
+            kanan = "None"
+        if proses == 7:
+            kiri = "C"
+            kanan = "ABD"
 
     
 new_test = pd.DataFrame({'Jenis Kapal': [1], 'Displacement': [150], 'Selisih beban': [1],})
