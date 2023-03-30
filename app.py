@@ -6,6 +6,7 @@
 #Copy code
 # Import necessary libraries
 import pandas as pd
+import streamlit as st
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
@@ -41,6 +42,12 @@ mse = mean_squared_error(test_data[target], test_predictions)
 print('Mean squared error:', mse)
 
 # Predict stability for a new inclining test
+#make the interface
+def show_predict_page():
+    st.title("Ship inclining prediction")
+
+    st.write("""### We need some data to predict ship inclining angle""")
+    
 new_test = pd.DataFrame({'Jenis Kapal': [1], 'Displacement': [150], 'Selisih beban': [1],})
 predicted_Incline = model.predict(new_test)
 print('Predicted GM:', predicted_Incline)
