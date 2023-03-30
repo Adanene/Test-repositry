@@ -17,6 +17,8 @@ sheet_id ='1vSeqmo559uXl_sjwCorKsENK2boOihERFrmrM-V5D2Y'
 xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/1vSeqmo559uXl_sjwCorKsENK2boOihERFrmrM-V5D2Y/export?format-xlsx")
 data = pd.read_excel(xls , 'Sheet2' , header = 0)
 
+data = data.reset_index()
+
 # chnge some data into numeric
 from sklearn.preprocessing import LabelEncoder
 from sklearn.multioutput import MultiOutputRegressor
@@ -27,12 +29,12 @@ data["Jenis Kapal"].unique()
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 
 # Select the features and target variable
-input = ['Jenis Kapal', 'Displacement', 'Selisih beban',]
-output = 'Inclinement'
+features = ['Jenis Kapal', 'Displacement', 'Selisih beban',]
+target = 'Inclinement'
 
 # Train a linear regression model
 model = LinearRegression()
-model.fit(train_data[input], train_data[output])
+model.fit(train_data[features], train_data[target])
 
 # Make predictions on the test set
 test_predictions = model.predict(test_data[features])
