@@ -20,7 +20,7 @@ data = pd.read_excel(xls , 'Sheet2' , header = 0)
 
 # chnge some data into numeric
 
-
+data['Jenis Kapal'] =  data['Jenis Kapal'].astype(float)
 
 
 
