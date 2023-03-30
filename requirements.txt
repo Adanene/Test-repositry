@@ -3,4 +3,4 @@ gspread
 pandas
 pip == 23.0
 scikit-learn==1.1.2
-py ==3.11.1
+py ==1.11.0
