@@ -16,6 +16,12 @@ sheet_id ='1vSeqmo559uXl_sjwCorKsENK2boOihERFrmrM-V5D2Y'
 xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/1vSeqmo559uXl_sjwCorKsENK2boOihERFrmrM-V5D2Y/export?format-xlsx")
 data = pd.read_excel(xls , 'Sheet2' , header = 0)
 
+# chnge some data into numeric
+from sklearn.preprocessing import LabelEncoder
+from sklearn.multioutput import MultiOutputRegressor
+le_kapal = LabelEncoder()
+data['Jenis Kapal'] = le_kapal.fit_transform(data['Jenis Kapal'])
+data["Jenis Kapal"].unique()
 # Split the dataset into training and test sets
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 
