@@ -27,12 +27,12 @@ data["Jenis Kapal"].unique()
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 
 # Select the features and target variable
-features = ['Jenis Kapal', 'Displacement', 'Selisih beban',]
-target = 'Inclinement'
+input = ['Jenis Kapal', 'Displacement', 'Selisih beban',]
+output = 'Inclinement'
 
 # Train a linear regression model
 model = LinearRegression()
-model.fit(train_data[features], train_data[target])
+model.fit(train_data[input], train_data[output])
 
 # Make predictions on the test set
 test_predictions = model.predict(test_data[features])
