@@ -12,14 +12,16 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
 # Load the dataset
-data = pd.read_csv('ship_stability_inclining_test.csv')
+sheet_id ='1vSeqmo559uXl_sjwCorKsENK2boOihERFrmrM-V5D2Y'
+xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format-xlsx")
+df = pd.read_excel(xls , 'Sheet2' , header = 0)
 
 # Split the dataset into training and test sets
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 
 # Select the features and target variable
-features = ['displacement', 'kg', 'LCG', 'VCG']
-target = 'GM'
+features = ['displacement', 'Selisih beban', 'Jenis kapal',]
+target = 'Inclinement'
 
 # Train a linear regression model
 model = LinearRegression()
@@ -33,6 +35,6 @@ mse = mean_squared_error(test_data[target], test_predictions)
 print('Mean squared error:', mse)
 
 # Predict stability for a new inclining test
-new_test = pd.DataFrame({'displacement': [1000], 'kg': [100], 'LCG': [5], 'VCG': [2]})
-predicted_GM = model.predict(new_test)
-print('Predicted GM:', predicted_GM)
+new_test = pd.DataFrame({'displacement': [1000], 'Selisih beban': [100], 'Jenis kapal': [Kapal kargo],})
+predicted_Incline = model.predict(new_test)
+print('Predicted GM:', predicted_Incline)
