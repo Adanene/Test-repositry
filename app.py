@@ -78,29 +78,21 @@ if jumlah_beban == "4" :
         beban_F = 0
         proses = st.slider("Proses incline", 0, 7, 0)
         if proses == 0:
-            kiri = "AB"
-            kanan = "CD"
+            st.write("""### Beban di kiri : AB                 Beban di kanan  : CD """)
         if proses == 1:
-            kiri = "B"
-            kanan = "ACD"
+            st.write("""### Beban di kiri : B                 Beban di kanan  : ACD """)
         if proses == 2:
-            kiri = "None"
-            kanan = "ABCD"
+            st.write("""### Beban di kiri : None                 Beban di kanan  : ABCD """)
         if proses == 3:
-            kiri = "C"
-            kanan = "ABD"
+            st.write("""### Beban di kiri : C                 Beban di kanan  : ABD """)
         if proses == 4:
-            kiri = "CD"
-            kanan = "AB"
+            st.write("""### Beban di kiri : CD                 Beban di kanan  : AB """)
         if proses == 5:
-            kiri = "ABC"
-            kanan = "D"
+            st.write("""### Beban di kiri : ABC                 Beban di kanan  : D """)
         if proses == 6:
-            kiri = "ABCD"
-            kanan = "None"
+            st.write("""### Beban di kiri : ABCD                 Beban di kanan  : None """)
         if proses == 7:
-            kiri = "C"
-            kanan = "ABD"
+            st.write("""### Beban di kiri : C                Beban di kanan  : ABD """)
 
     
 new_test = pd.DataFrame({'Jenis Kapal': [1], 'Displacement': [150], 'Selisih beban': [1],})
