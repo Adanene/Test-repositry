@@ -1,1 +1,2 @@
-sklearn
+sklearn.linear_model
+python
