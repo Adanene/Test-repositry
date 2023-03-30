@@ -1,6 +1,6 @@
 google
 gspread
 pandas
-pip == 22.0
+pip == 1.11.0
 scikit-learn==1.1.2
 py ==3.11.1
