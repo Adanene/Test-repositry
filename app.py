@@ -43,10 +43,9 @@ print('Mean squared error:', mse)
 
 # Predict stability for a new inclining test
 #make the interface
-def show_predict_page():
-    st.title("Ship inclining prediction")
+st.title("Ship inclining prediction")
 
-    st.write("""### We need some data to predict ship inclining angle""")
+st.write("""### We need some data to predict ship inclining angle""")
     
 new_test = pd.DataFrame({'Jenis Kapal': [1], 'Displacement': [150], 'Selisih beban': [1],})
 predicted_Incline = model.predict(new_test)
