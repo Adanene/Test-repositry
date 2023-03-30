@@ -46,6 +46,18 @@ print('Mean squared error:', mse)
 st.title("Ship inclining prediction")
 
 st.write("""### We need some data to predict ship inclining angle""")
+
+#input the new data here
+Kapal = (
+        "Kapal penumpang",
+        "Kapal patroli",
+        "Kapal kargo",
+        "Kapal multipurpose",
+        )
+
+Kapal = st.selectbox("Jenis Kapal", Kapal)
+
+
     
 new_test = pd.DataFrame({'Jenis Kapal': [1], 'Displacement': [150], 'Selisih beban': [1],})
 predicted_Incline = model.predict(new_test)
