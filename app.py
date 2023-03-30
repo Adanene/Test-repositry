@@ -7,9 +7,9 @@
 # Import necessary libraries
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error
+from scikit-learn.linear_model import LinearRegression
+from scikit-learn.model_selection import train_test_split
+from scikit-learn.metrics import mean_squared_error
 
 # Load the dataset
 sheet_id ='1vSeqmo559uXl_sjwCorKsENK2boOihERFrmrM-V5D2Y'
