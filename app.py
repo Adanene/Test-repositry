@@ -13,7 +13,7 @@ from sklearn.metrics import mean_squared_error
 
 # Load the dataset
 sheet_id ='1vSeqmo559uXl_sjwCorKsENK2boOihERFrmrM-V5D2Y'
-xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format-xlsx")
+xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/1vSeqmo559uXl_sjwCorKsENK2boOihERFrmrM-V5D2Y/export?format-xlsx")
 df = pd.read_excel(xls , 'Sheet2' , header = 0)
 
 # Split the dataset into training and test sets
