@@ -146,8 +146,8 @@ if jumlah_beban == "6" :
             st.write("""### Beban di kiri : ABCD""") 
             st.write("""### Beban di kanan : EF""")
             selisih = (beban_A + beban_B + beban_C + beban_D - beban_E - beban_F) * (-1)
-)
 
+#Calculation        
 new_test = pd.DataFrame({'Jenis Kapal': [1], 'Displacement': [150], 'Selisih beban': [1],})
 predicted_Incline = model.predict(new_test)
 print('Predicted GM:', predicted_Incline)
