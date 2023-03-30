@@ -80,36 +80,74 @@ if jumlah_beban == "4" :
         if proses == 0:
             st.write("""### Beban di kiri : AB""") 
             st.write("""### Beban di kanan  : CD """)
-                
+            selisih = (beban_A + beban_B - beban_C - beban_D) * (-1)
         if proses == 1:
             st.write("""### Beban di kiri : B""") 
             st.write("""### Beban di kanan  : ACD """)
-
+            selisih =  (beban_B - beban_A - beban_C - beban_D)  * (-1)
         if proses == 2:
             st.write("""### Beban di kiri : None """) 
             st.write("""### Beban di kanan  : ABCD """)
-                
+            selisih =  (0 - beban_B - beban_A - beban_C - beban_D) * (-1)    
         if proses == 3:
             st.write("""### Beban di kiri : C""") 
             st.write("""### Beban di kanan  : ABD """)
-
+            selisih =  (beban_C - beban_B - beban_A -  beban_D) * (-1)
         if proses == 4:
             st.write("""### Beban di kiri : CD""") 
             st.write("""### Beban di kanan  : AB """)
-
+            selisih =  (beban_C + beban_D - beban_A -  beban_B) * (-1)   
         if proses == 5:
             st.write("""### Beban di kiri : ABC""") 
             st.write("""### Beban di kanan  : D """)
-                
+            selisih =  (beban_A + beban_B + beban_C -  beban_D) * (-1)      
         if proses == 6:
             st.write("""### Beban di kiri : ABCD""") 
             st.write("""### Beban di kanan  : None """)
-
+            selisih =  (beban_C + beban_D - beban_A +  beban_B) * (-1)  
         if proses == 7:
             st.write("""### Beban di kiri : ABD """) 
             st.write("""### Beban di kanan  : C """)
-
+            selisih =  (beban_A + beban_B + beban_D -  beban_C) * (-1)  
     
+if jumlah_beban == "6" :
+        beban_E = st.number_input("Beban E (Ton)",min_value= 0.00, step =0.01)
+        beban_F = st.number_input("Beban F (Ton)",min_value= 0.00, step =0.01)
+        proses = st.slider("Proses incline", 0, 7, 0)
+        if proses == 0:
+            st.write("""### Beban di kiri : ABC""")
+            st.write("""### Beban di kanan : DEF""") 
+            selisih = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1)
+        if proses == 1:
+            st.write("""### Beban di kiri : BC""") 
+            st.write("""### Beban di kanan : ADEF""")
+            selisih = (0 -beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1)    
+        if proses == 2:
+            st.write("""### Beban di kiri : C""") 
+            st.write("""### Beban di kanan : ABDEF""")
+            selisih = (0 - beban_A - beban_B + beban_C - beban_D - beban_E - beban_F) * (-1)
+        if proses == 3:
+            st.write("""### Beban di kiri : None""") 
+            st.write("""### Beban di kanan : ABCDEF""")
+            selisih = (0 - beban_A - beban_B - beban_C - beban_D - beban_E - beban_F) * (-1)    
+        if proses == 4:
+            st.write("""### Beban di kiri : ABC""") 
+            st.write("""### Beban di kanan : DEF""")
+            selisih = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1)
+        if proses == 5:
+            st.write("""### Beban di kiri : ABCDE""") 
+            st.write("""### Beban di kanan : F""")
+            selisih = (beban_A + beban_B + beban_C + beban_D + beban_E - beban_F) * (-1)
+        if proses == 6:
+            st.write("""### Beban di kiri : ABCDEF""") 
+            st.write("""### Beban di kanan : None""")
+            selisih = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F) * (-1)    
+        if proses == 7:
+            st.write("""### Beban di kiri : ABCD""") 
+            st.write("""### Beban di kanan : EF""")
+            selisih = (beban_A + beban_B + beban_C + beban_D - beban_E - beban_F) * (-1)
+)
+
 new_test = pd.DataFrame({'Jenis Kapal': [1], 'Displacement': [150], 'Selisih beban': [1],})
 predicted_Incline = model.predict(new_test)
 print('Predicted GM:', predicted_Incline)
