@@ -35,6 +35,6 @@ mse = mean_squared_error(test_data[target], test_predictions)
 print('Mean squared error:', mse)
 
 # Predict stability for a new inclining test
-new_test = pd.DataFrame({'displacement': [1000], 'Selisih beban': [100], 'Jenis kapal': [Kapal kargo],})
+new_test = pd.DataFrame({'displacement': [1000], 'Selisih beban': [100], 'Jenis kapal': [1],})
 predicted_Incline = model.predict(new_test)
 print('Predicted GM:', predicted_Incline)
