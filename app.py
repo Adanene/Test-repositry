@@ -56,7 +56,12 @@ Kapal = (
         )
 
 Kapal = st.selectbox("Jenis Kapal", Kapal)
-
+Loa = st.number_input("Length Over All (m)", min_value= 0.00, step =0.01)
+Lwl = st.number_input("Length Water Line (m)",min_value= 0.00, max_value= Loa)
+Breadth = st.number_input("Breadth (m)", min_value= 0.00, step =0.01)
+Depth = st.number_input("Depth (m) ", min_value= 0.00, step =0.01)
+Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0.01)
+Cb = st.number_input("Coefficient Block", min_value= 0.00, max_value= 1.00, step =0.01)
 
     
 new_test = pd.DataFrame({'Jenis Kapal': [1], 'Displacement': [150], 'Selisih beban': [1],})
