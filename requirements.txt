@@ -1,2 +1,6 @@
+google
+gspread
+pandas
+pip == 22.0
 scikit-learn==1.1.2
-python ==3.11.1
+py ==3.11.1
