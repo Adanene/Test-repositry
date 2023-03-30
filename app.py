@@ -19,11 +19,7 @@ data = pd.read_excel(xls , 'Sheet2' , header = 0)
 
 
 # chnge some data into numeric
-from sklearn.preprocessing import LabelEncoder
-from sklearn.multioutput import MultiOutputRegressor
-le_kapal = LabelEncoder()
-data['Jenis Kapal'] = le_kapal.fit_transform(data['Jenis Kapal'])
-data["Jenis Kapal"].unique()
+
 
 data['Jenis Kapal'] = data['Jenis Kapal'].astype(int)
 
