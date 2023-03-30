@@ -78,21 +78,36 @@ if jumlah_beban == "4" :
         beban_F = 0
         proses = st.slider("Proses incline", 0, 7, 0)
         if proses == 0:
-            st.write("""### Beban di kiri : AB                 Beban di kanan  : CD """)
+            st.write("""### Beban di kiri : AB""") 
+            st.write("""### Beban di kanan  : CD """)
+                
         if proses == 1:
-            st.write("""### Beban di kiri : B                 Beban di kanan  : ACD """)
+            st.write("""### Beban di kiri : B""") 
+            st.write("""### Beban di kanan  : ACD """)
+
         if proses == 2:
-            st.write("""### Beban di kiri : None                 Beban di kanan  : ABCD """)
+            st.write("""### Beban di kiri : None """) 
+            st.write("""### Beban di kanan  : ABCD """)
+                
         if proses == 3:
-            st.write("""### Beban di kiri : C                 Beban di kanan  : ABD """)
+            st.write("""### Beban di kiri : C""") 
+            st.write("""### Beban di kanan  : ABD """)
+
         if proses == 4:
-            st.write("""### Beban di kiri : CD                 Beban di kanan  : AB """)
+            st.write("""### Beban di kiri : CD""") 
+            st.write("""### Beban di kanan  : AB """)
+
         if proses == 5:
-            st.write("""### Beban di kiri : ABC                 Beban di kanan  : D """)
+            st.write("""### Beban di kiri : ABC""") 
+            st.write("""### Beban di kanan  : D """)
+                
         if proses == 6:
-            st.write("""### Beban di kiri : ABCD                 Beban di kanan  : None """)
+            st.write("""### Beban di kiri : ABCD""") 
+            st.write("""### Beban di kanan  : None """)
+
         if proses == 7:
-            st.write("""### Beban di kiri : C                Beban di kanan  : ABD """)
+            st.write("""### Beban di kiri : ABD """) 
+            st.write("""### Beban di kanan  : C """)
 
     
 new_test = pd.DataFrame({'Jenis Kapal': [1], 'Displacement': [150], 'Selisih beban': [1],})
