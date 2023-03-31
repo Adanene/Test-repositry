@@ -148,8 +148,13 @@ if jumlah_beban == "6" :
             st.write("""### Beban di kiri : ABCD""") 
             st.write("""### Beban di kanan : EF""")
             selisih = (beban_A + beban_B + beban_C + beban_D - beban_E - beban_F) * (-1)
+#Calculation     
 
-#Calculation        
-new_test = pd.DataFrame({'Jenis Kapal': [1], 'Displacement': [150], 'Selisih beban': [1],})
-predicted_Incline = model.predict(new_test)
-print('Predicted GM:', predicted_Incline)
+ok = st.button("Calculate Incline")
+    if ok:
+           displacement = (Lwl * Breadth * Draft * Cb)
+           new_test = pd.DataFrame({'Jenis Kapal': [Kapal], 'Displacement': [displacement], 'Selisih beban': [selisih],})
+           predicted_Incline = model.predict(new_test)
+           print('Inclining Prediction:', predicted_Incline)
+   
+
