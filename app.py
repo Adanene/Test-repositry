@@ -151,7 +151,7 @@ if jumlah_beban == "6" :
 #Calculation     
 
 ok = st.button("Calculate Incline")
-    if ok:
+if ok:
            displacement = (Lwl * Breadth * Draft * Cb)
            new_test = pd.DataFrame({'Jenis Kapal': [Kapal], 'Displacement': [displacement], 'Selisih beban': [selisih],})
            predicted_Incline = model.predict(new_test)
