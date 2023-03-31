@@ -63,7 +63,15 @@ beban = (
 
 
 Kapal = st.selectbox("Jenis Kapal", Kapal)
-Ship =  Kapal.map(grades_mapping).astype(float)
+if Kapal == "Kapal penumpang":
+        Ship =  1.0
+if Kapal == "Kapal patroli":
+        Ship = 2.0
+if Kapal == "Kapal kargo":
+        Ship = 3.0
+if Kapal == "Kapal multipurpose":
+        Ship = 4.0
+
 Loa = st.number_input("Length Over All (m)", min_value= 0.00, step =0.01)
 Lwl = st.number_input("Length Water Line (m)",min_value= 0.00, max_value= Loa)
 Breadth = st.number_input("Breadth (m)", min_value= 0.00, step =0.01)
@@ -154,6 +162,7 @@ if jumlah_beban == "6" :
 ok = st.button("Calculate Incline")
 if ok:
            displacement = (Lwl * Breadth * Draft * Cb)
+           
            new_test = pd.DataFrame({'Jenis Kapal': [Ship], 'Displacement': [displacement], 'Selisih beban': [selisih],})
            predicted_Incline = model.predict(new_test)
            print('Inclining Prediction:', predicted_Incline)
