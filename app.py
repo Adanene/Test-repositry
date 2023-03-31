@@ -165,6 +165,7 @@ if ok:
            
            new_test = pd.DataFrame({'Jenis Kapal': [Ship], 'Displacement': [displacement], 'Selisih beban': [selisih],})
            predicted_Incline = model.predict(new_test)
+           st.write("""### Ship will incline in""", predicted_Incline)
            print('Inclining Prediction:', predicted_Incline)
    
 
