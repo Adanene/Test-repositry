@@ -29,7 +29,7 @@ data['Jenis Kapal'] =  data['Jenis Kapal'].map(grades_mapping).astype(float)
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 
 # Select the features and target variable
-features = ['Jenis Kapal','Displacement', ]
+features = ['Jenis Kapal','Displacement', 'Selisih beban', ]
 target = 'Inclinement'
 
 # Train a linear regression model
