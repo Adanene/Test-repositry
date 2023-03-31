@@ -20,7 +20,8 @@ data = pd.read_excel(xls , 'Sheet2' , header = 0)
 
 # chnge some data into numeric
 
-data['Jenis Kapal'] =  data['Jenis Kapal'].astype(float)
+grades_mapping = {'Kapal penumpang' : 0, 'Kapal patroli' : 1.0, 'Kapal kargo' : 2.0, 'Kapal multipurpose' : 3.0,}
+data['Jenis Kapal'] =  data['Jenis Kapal'].map(grades_mapping).astype(float)
 
 
 
