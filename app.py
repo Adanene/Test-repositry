@@ -14,7 +14,7 @@ from sklearn.metrics import mean_squared_error
 
 # Load the dataset
 sheet_id ='d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs'
-xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs/pub?output=xlsx")
+xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/e/2PACX-1vSzJ2McdS3aIboBFt0MaFuwPxONxqOOr6wr3BPDoftmdAA7NR-nfqwdBNRzB8jpvmeBt5tfdJZzj4WU/pub?output=xlsx")
 data = pd.read_excel(xls , 'Used sheet' , header = 0)
 
 
