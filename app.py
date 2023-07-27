@@ -13,23 +13,19 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
 # Load the dataset
-sheet_id ='1vSeqmo559uXl_sjwCorKsENK2boOihERFrmrM-V5D2Y'
-xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/1vSeqmo559uXl_sjwCorKsENK2boOihERFrmrM-V5D2Y/export?format-xlsx")
-data = pd.read_excel(xls , 'Sheet2' , header = 0)
+sheet_id ='d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs'
+xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs/edit#gid=1732295199")
+data = pd.read_excel(xls , 'Used sheet' , header = 0)
 
 
 # chnge some data into numeric
-
-grades_mapping = {'Kapal penumpang' : 1.0, 'Kapal patroli' : 2.0, 'Kapal kargo' : 3.0, 'Kapal multipurpose' : 4.0,}
-data['Jenis Kapal'] =  data['Jenis Kapal'].map(grades_mapping).astype(float)
-
 
 
 # Split the dataset into training and test sets
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 
 # Select the features and target variable
-features = ['Jenis Kapal','Displacement', 'Selisih beban', ]
+features = ['L/B', 'Cb', 'Momen beban T','Displacement', 'Selisih beban', ]
 target = 'Inclinement'
 
 # Train a linear regression model
@@ -50,27 +46,12 @@ st.title("Ship inclining prediction")
 st.write("""### We need some data to predict ship inclining angle""")
 
 #input the new data here
-Kapal = (
-        "Kapal penumpang",
-        "Kapal patroli",
-        "Kapal kargo",
-        "Kapal multipurpose",
-        )
+#input some choose answer
 beban = (
         "4",
         "6",
         )
-
-
-Kapal = st.selectbox("Jenis Kapal", Kapal)
-if Kapal == "Kapal penumpang":
-        Ship =  1.0
-if Kapal == "Kapal patroli":
-        Ship = 2.0
-if Kapal == "Kapal kargo":
-        Ship = 3.0
-if Kapal == "Kapal multipurpose":
-        Ship = 4.0
+# input some wrrited answer
 
 Loa = st.number_input("Length Over All (m)", min_value= 0.00, step =0.01)
 Lwl = st.number_input("Length Water Line (m)",min_value= 0.00, max_value= Loa)
@@ -91,35 +72,35 @@ if jumlah_beban == "4" :
         if proses == 0:
             st.write("""### Beban di kiri : AB""") 
             st.write("""### Beban di kanan  : CD """)
-            selisih = (beban_A + beban_B - beban_C - beban_D) * (-1)
+            Mselisih = (beban_A + beban_B - beban_C - beban_D) * (-1) * ((Breadth) / 2)
         if proses == 1:
             st.write("""### Beban di kiri : B""") 
             st.write("""### Beban di kanan  : ACD """)
-            selisih =  (beban_B - beban_A - beban_C - beban_D)  * (-1)
+            Mselisih =  (beban_B - beban_A - beban_C - beban_D)  * (-1) * ((Breadth) / 2)
         if proses == 2:
             st.write("""### Beban di kiri : None """) 
             st.write("""### Beban di kanan  : ABCD """)
-            selisih =  (0 - beban_B - beban_A - beban_C - beban_D) * (-1)    
+            Mselisih =  (0 - beban_B - beban_A - beban_C - beban_D) * (-1) * ((Breadth) / 2)    
         if proses == 3:
             st.write("""### Beban di kiri : C""") 
             st.write("""### Beban di kanan  : ABD """)
-            selisih =  (beban_C - beban_B - beban_A -  beban_D) * (-1)
+            Mselisih =  (beban_C - beban_B - beban_A -  beban_D) * (-1) * ((Breadth) / 2)
         if proses == 4:
             st.write("""### Beban di kiri : CD""") 
             st.write("""### Beban di kanan  : AB """)
-            selisih =  (beban_C + beban_D - beban_A -  beban_B) * (-1)   
+            Mselisih =  (beban_C + beban_D - beban_A -  beban_B) * (-1) * ((Breadth) / 2)   
         if proses == 5:
             st.write("""### Beban di kiri : ABC""") 
             st.write("""### Beban di kanan  : D """)
-            selisih =  (beban_A + beban_B + beban_C -  beban_D) * (-1)      
+            Mselisih =  (beban_A + beban_B + beban_C -  beban_D) * (-1) * ((Breadth) / 2)      
         if proses == 6:
             st.write("""### Beban di kiri : ABCD""") 
             st.write("""### Beban di kanan  : None """)
-            selisih =  (beban_C + beban_D - beban_A +  beban_B) * (-1)  
+            Mselisih =  (beban_C + beban_D - beban_A +  beban_B) * (-1) * ((Breadth) / 2)  
         if proses == 7:
             st.write("""### Beban di kiri : ABD """) 
             st.write("""### Beban di kanan  : C """)
-            selisih =  (beban_A + beban_B + beban_D -  beban_C) * (-1)  
+            Mselisih =  (beban_A + beban_B + beban_D -  beban_C) * (-1) * ((Breadth) / 2)  
     
 if jumlah_beban == "6" :
         beban_E = st.number_input("Beban E (Ton)",min_value= 0.00, step =0.01)
@@ -128,42 +109,43 @@ if jumlah_beban == "6" :
         if proses == 0:
             st.write("""### Beban di kiri : ABC""")
             st.write("""### Beban di kanan : DEF""") 
-            selisih = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1)
+            Mselisih = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
         if proses == 1:
             st.write("""### Beban di kiri : BC""") 
             st.write("""### Beban di kanan : ADEF""")
-            selisih = (0 -beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1)    
+            Mselisih = (0 -beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
         if proses == 2:
             st.write("""### Beban di kiri : C""") 
             st.write("""### Beban di kanan : ABDEF""")
-            selisih = (0 - beban_A - beban_B + beban_C - beban_D - beban_E - beban_F) * (-1)
+            Mselisih = (0 - beban_A - beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
         if proses == 3:
             st.write("""### Beban di kiri : None""") 
             st.write("""### Beban di kanan : ABCDEF""")
-            selisih = (0 - beban_A - beban_B - beban_C - beban_D - beban_E - beban_F) * (-1)    
+            Mselisih = (0 - beban_A - beban_B - beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
         if proses == 4:
             st.write("""### Beban di kiri : ABC""") 
             st.write("""### Beban di kanan : DEF""")
-            selisih = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1)
+            Mselisih = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
         if proses == 5:
             st.write("""### Beban di kiri : ABCDE""") 
             st.write("""### Beban di kanan : F""")
-            selisih = (beban_A + beban_B + beban_C + beban_D + beban_E - beban_F) * (-1)
+            Mselisih = (beban_A + beban_B + beban_C + beban_D + beban_E - beban_F) * (-1) * ((Breadth) / 2)
         if proses == 6:
             st.write("""### Beban di kiri : ABCDEF""") 
             st.write("""### Beban di kanan : None""")
-            selisih = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F) * (-1)    
+            Mselisih = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F) * (-1) * ((Breadth) / 2)    
         if proses == 7:
             st.write("""### Beban di kiri : ABCD""") 
             st.write("""### Beban di kanan : EF""")
-            selisih = (beban_A + beban_B + beban_C + beban_D - beban_E - beban_F) * (-1)
+            Mselisih = (beban_A + beban_B + beban_C + beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
 #Calculation     
 
 ok = st.button("Calculate Incline")
 if ok:
            displacement = (Lwl * Breadth * Draft * Cb)
+           L/B = (Lwl /Breadth)
            
-           new_test = pd.DataFrame({'Jenis Kapal': [Ship], 'Displacement': [displacement], 'Selisih beban': [selisih],})
+           new_test = pd.DataFrame({'Jenis Kapal': [Ship],'Cb': [Cb], 'Displacement': [displacement], 'Selisih beban': [Mselisih],'L/B'[L/B]})
            predicted_Incline = model.predict(new_test)
            st.subheader(f" Ship will incline in {predicted_Incline} degrees")
            print('Inclining Prediction:', predicted_Incline)
