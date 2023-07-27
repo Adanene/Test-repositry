@@ -25,7 +25,7 @@ data = pd.read_excel(xls , 'Used sheet' , header = 0)
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 
 # Select the features and target variable
-features = ['L/B', 'Cb', 'Momen beban T','Displacement', 'Selisih beban', ]
+features = ['L/B', 'Cb', 'Momen beban T','Displacement', ]
 target = 'Inclinement'
 
 # Train a linear regression model
@@ -145,7 +145,7 @@ if ok:
         displacement = (Lwl * Breadth * Draft * Cb)
         LB = (Lwl /Breadth)
            
-        new_test = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Selisih beban': [Mselisih],'L/B': [LB]})
+        new_test = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih],'L/B': [LB]})
         predicted_Incline = model.predict(new_test)
         st.subheader(f" Ship will incline in {predicted_Incline} degrees")
         print('Inclining Prediction:', predicted_Incline)
