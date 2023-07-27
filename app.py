@@ -10,6 +10,8 @@ import streamlit as st
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 
 # Load the dataset
@@ -149,5 +151,5 @@ if ok:
         predicted_Incline = model.predict(new_test)
         st.subheader(f" Ship will incline in {predicted_Incline} degrees")
         print('Inclining Prediction:', predicted_Incline)
-   
+        print('Mean squared error:', mse)
 
