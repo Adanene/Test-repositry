@@ -145,7 +145,7 @@ if ok:
         displacement = (Lwl * Breadth * Draft * Cb)
         LB = (Lwl /Breadth)
            
-        new_test = pd.DataFrame({'Jenis Kapal': [Ship],'Cb': [Cb], 'Displacement': [displacement], 'Selisih beban': [Mselisih],'L/B'[LB]})
+        new_test = pd.DataFrame({'Jenis Kapal': [Ship],'Cb': [Cb], 'Displacement': [displacement], 'Selisih beban': [Mselisih],'L/B': [LB]})
         predicted_Incline = model.predict(new_test)
         st.subheader(f" Ship will incline in {predicted_Incline} degrees")
         print('Inclining Prediction:', predicted_Incline)
