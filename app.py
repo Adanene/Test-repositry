@@ -143,9 +143,9 @@ if jumlah_beban == "6" :
 ok = st.button("Calculate Incline")
 if ok:
         displacement = (Lwl * Breadth * Draft * Cb)
-        LB ratio= (Lwl /Breadth)
+        LB = (Lwl /Breadth)
            
-        new_test = pd.DataFrame({'Jenis Kapal': [Ship],'Cb': [Cb], 'Displacement': [displacement], 'Selisih beban': [Mselisih],'L/B'[LB ratio]})
+        new_test = pd.DataFrame({'Jenis Kapal': [Ship],'Cb': [Cb], 'Displacement': [displacement], 'Selisih beban': [Mselisih],'L/B'[LB]})
         predicted_Incline = model.predict(new_test)
         st.subheader(f" Ship will incline in {predicted_Incline} degrees")
         print('Inclining Prediction:', predicted_Incline)
