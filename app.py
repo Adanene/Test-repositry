@@ -1,4 +1,4 @@
-2 / 2
+ 2 / 2
 
 #Here is an example Jupyter code for machine learning to predict ship stability during an inclining test using Python and scikit-learn library:
 
@@ -61,85 +61,38 @@ Breadth = st.number_input("Breadth (m)", min_value= 0.00, step =0.01)
 Depth = st.number_input("Depth (m) ", min_value= 0.00, step =0.01)
 Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0.01)
 Cb = st.number_input("Coefficient Block", min_value= 0.00, max_value= 1.00, step =0.01)
-beban_A = st.number_input("Beban A (Ton)",min_value= 0.00,  step =0.01)
-beban_B = st.number_input("Beban B (Ton)",min_value= 0.00,  step =0.01)
-beban_C = st.number_input("Beban C (Ton)",min_value= 0.00,  step =0.01)
-beban_D = st.number_input("Beban D (Ton)",min_value= 0.00,  step =0.01)
+beban_A = st.number_input("Beban A (Ton)",min_value= 0.0000,  step =0.0001)
+beban_B = st.number_input("Beban B (Ton)",min_value= 0.0000,  step =0.0001)
+beban_C = st.number_input("Beban C (Ton)",min_value= 0.0000,  step =0.0001)
+beban_D = st.number_input("Beban D (Ton)",min_value= 0.0000,  step =0.0001)
 jumlah_beban = st.selectbox("Jumlah beban uji", beban)
 
 if jumlah_beban == "4" :
         beban_E = 0
         beban_F = 0
-        proses = st.slider("Proses incline", 0, 7, 0)
-        if proses == 0:
-            st.write("""### Beban di kiri : AB""") 
-            st.write("""### Beban di kanan  : CD """)
-            Mselisih = (beban_A + beban_B - beban_C - beban_D) * (-1) * ((Breadth) / 2)
-        if proses == 1:
-            st.write("""### Beban di kiri : B""") 
-            st.write("""### Beban di kanan  : ACD """)
-            Mselisih =  (beban_B - beban_A - beban_C - beban_D)  * (-1) * ((Breadth) / 2)
-        if proses == 2:
-            st.write("""### Beban di kiri : None """) 
-            st.write("""### Beban di kanan  : ABCD """)
-            Mselisih =  (0 - beban_B - beban_A - beban_C - beban_D) * (-1) * ((Breadth) / 2)    
-        if proses == 3:
-            st.write("""### Beban di kiri : C""") 
-            st.write("""### Beban di kanan  : ABD """)
-            Mselisih =  (beban_C - beban_B - beban_A -  beban_D) * (-1) * ((Breadth) / 2)
-        if proses == 4:
-            st.write("""### Beban di kiri : CD""") 
-            st.write("""### Beban di kanan  : AB """)
-            Mselisih =  (beban_C + beban_D - beban_A -  beban_B) * (-1) * ((Breadth) / 2)   
-        if proses == 5:
-            st.write("""### Beban di kiri : ABC""") 
-            st.write("""### Beban di kanan  : D """)
-            Mselisih =  (beban_A + beban_B + beban_C -  beban_D) * (-1) * ((Breadth) / 2)      
-        if proses == 6:
-            st.write("""### Beban di kiri : ABCD""") 
-            st.write("""### Beban di kanan  : None """)
-            Mselisih =  (beban_C + beban_D - beban_A +  beban_B) * (-1) * ((Breadth) / 2)  
-        if proses == 7:
-            st.write("""### Beban di kiri : ABD """) 
-            st.write("""### Beban di kanan  : C """)
-            Mselisih =  (beban_A + beban_B + beban_D -  beban_C) * (-1) * ((Breadth) / 2)  
+        
+        Mselisih1 = (beban_A + beban_B - beban_C - beban_D) * (-1) * ((Breadth) / 2)
+        Mselisih2 =  (beban_B - beban_A - beban_C - beban_D)  * (-1) * ((Breadth) / 2)
+        Mselisih3 =  (0 - beban_B - beban_A - beban_C - beban_D) * (-1) * ((Breadth) / 2)    
+        Mselisih4 =  (beban_C - beban_B - beban_A -  beban_D) * (-1) * ((Breadth) / 2)
+        Mselisih5 =  (beban_C + beban_D - beban_A -  beban_B) * (-1) * ((Breadth) / 2)   
+        Mselisih6 =  (beban_A + beban_B + beban_C -  beban_D) * (-1) * ((Breadth) / 2)      
+        Mselisih7 =  (beban_C + beban_D - beban_A +  beban_B) * (-1) * ((Breadth) / 2)  
+        Mselisih8 =  (beban_A + beban_B + beban_D -  beban_C) * (-1) * ((Breadth) / 2)  
     
 if jumlah_beban == "6" :
         beban_E = st.number_input("Beban E (Ton)",min_value= 0.00, step =0.01)
         beban_F = st.number_input("Beban F (Ton)",min_value= 0.00, step =0.01)
-        proses = st.slider("Proses incline", 0, 7, 0)
-        if proses == 0:
-            st.write("""### Beban di kiri : ABC""")
-            st.write("""### Beban di kanan : DEF""") 
-            Mselisih = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-        if proses == 1:
-            st.write("""### Beban di kiri : BC""") 
-            st.write("""### Beban di kanan : ADEF""")
-            Mselisih = (0 -beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
-        if proses == 2:
-            st.write("""### Beban di kiri : C""") 
-            st.write("""### Beban di kanan : ABDEF""")
-            Mselisih = (0 - beban_A - beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-        if proses == 3:
-            st.write("""### Beban di kiri : None""") 
-            st.write("""### Beban di kanan : ABCDEF""")
-            Mselisih = (0 - beban_A - beban_B - beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
-        if proses == 4:
-            st.write("""### Beban di kiri : ABC""") 
-            st.write("""### Beban di kanan : DEF""")
-            Mselisih = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-        if proses == 5:
-            st.write("""### Beban di kiri : ABCDE""") 
-            st.write("""### Beban di kanan : F""")
-            Mselisih = (beban_A + beban_B + beban_C + beban_D + beban_E - beban_F) * (-1) * ((Breadth) / 2)
-        if proses == 6:
-            st.write("""### Beban di kiri : ABCDEF""") 
-            st.write("""### Beban di kanan : None""")
-            Mselisih = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F) * (-1) * ((Breadth) / 2)    
-        if proses == 7:
-            st.write("""### Beban di kiri : ABCD""") 
-            st.write("""### Beban di kanan : EF""")
-            Mselisih = (beban_A + beban_B + beban_C + beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+
+        Mselisih1 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+        Mselisih2 = (0 -beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
+        Mselisih3 = (0 - beban_A - beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+        Mselisih4 = (0 - beban_A - beban_B - beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
+        Mselisih5 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+        Mselisih6 = (beban_A + beban_B + beban_C + beban_D + beban_E - beban_F) * (-1) * ((Breadth) / 2)
+        Mselisih7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F) * (-1) * ((Breadth) / 2)    
+        Mselisih8 = (beban_A + beban_B + beban_C + beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+            
 #Calculation     
 
 ok = st.button("Calculate Incline")
@@ -147,9 +100,34 @@ if ok:
         displacement = (Lwl * Breadth * Draft * Cb)
         LB = (Lwl /Breadth)
            
-        new_test = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih],'L/B': [LB]})
-        predicted_Incline = model.predict(new_test)
-        st.subheader(f" Ship will incline in {predicted_Incline} degrees")
-        print('Inclining Prediction:', predicted_Incline)
-        print('Mean squared error:', mse)
-
+        new_test1 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih1],'L/B': [LB]})
+        predicted_Incline1 = model.predict(new_test1)
+        
+        new_test2 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih2],'L/B': [LB]})
+        predicted_Incline2 = model.predict(new_test2)
+        
+        new_test3 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih3],'L/B': [LB]})
+        predicted_Incline3 = model.predict(new_test3)
+        
+        new_test4 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih4],'L/B': [LB]})
+        predicted_Incline4 = model.predict(new_test4)
+        
+        new_test5 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih5],'L/B': [LB]})
+        predicted_Incline5 = model.predict(new_test5)
+        
+        new_test6 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih6],'L/B': [LB]})
+        predicted_Incline6 = model.predict(new_test6)
+        
+        new_test7 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih7],'L/B': [LB]})
+        predicted_Incline7 = model.predict(new_test7)
+        
+        new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih8],'L/B': [LB]})
+        predicted_Incline8 = model.predict(new_test8)
+        
+dataS = pd.DataFrame({
+        'No': ['1','2','3','4','5','6','7','8'],
+        'Moment': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
+        'incline': [predicted_Incline1, predicted_Incline2, predicted_Incline3, predicted_Incline4, predicted_Incline5, predicted_Incline6, predicted_Incline7, predicted_Incline8],
+                }
+)
+st.table(dataS)
