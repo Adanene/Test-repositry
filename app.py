@@ -123,10 +123,10 @@ if ok:
         new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih8],'L/B': [LB]})
         predicted_Incline8 = model.predict(new_test8)
         
-dataS = pd.DataFrame({
-        'No': ['1','2','3','4','5','6','7','8'],
-        'Moment': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
-        'incline': [predicted_Incline1, predicted_Incline2, predicted_Incline3, predicted_Incline4, predicted_Incline5, predicted_Incline6, predicted_Incline7, predicted_Incline8],
-                }
-)
-st.table(dataS)
+        dataS = pd.DataFrame({
+                'No': ['1','2','3','4','5','6','7','8'],
+                'Moment': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
+                'incline': [predicted_Incline1, predicted_Incline2, predicted_Incline3, predicted_Incline4, predicted_Incline5, predicted_Incline6, predicted_Incline7, predicted_Incline8],
+                        }
+        )
+        st.table(dataS)
