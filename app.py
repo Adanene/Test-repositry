@@ -60,12 +60,17 @@ Breadth = st.number_input("Breadth (m)", min_value= 0.00, step =0.01)
 Depth = st.number_input("Depth (m) ", min_value= 0.00, step =0.01)
 Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0.01)
 Cb = st.number_input("Coefficient Block", min_value= 0.00, max_value= 1.00, step =0.01)
-beban_A = st.number_input("Beban A (Ton)",min_value= 0.0000,  step =0.0001)
-beban_B = st.number_input("Beban B (Ton)",min_value= 0.0000,  step =0.0001)
-beban_C = st.number_input("Beban C (Ton)",min_value= 0.0000,  step =0.0001)
-beban_D = st.number_input("Beban D (Ton)",min_value= 0.0000,  step =0.0001)
+bebanA = st.number_input("Beban A (Kg)",min_value= 0.0000,  step =0.0001)
+bebanB = st.number_input("Beban B (Kg)",min_value= 0.0000,  step =0.0001)
+bebanC = st.number_input("Beban C (Kg)",min_value= 0.0000,  step =0.0001)
+bebanD = st.number_input("Beban D (Kg)",min_value= 0.0000,  step =0.0001)
 jumlah_beban = st.selectbox("Jumlah beban uji", beban)
 
+##convert to anohter
+beban_A = bebanA/1000
+beban_B = bebanB/1000
+beban_C = bebanC/1000
+beban_D = bebanD/1000
 if jumlah_beban == "4" :
         beban_E = 0
         beban_F = 0
@@ -80,8 +85,11 @@ if jumlah_beban == "4" :
         Mselisih8 =  (beban_A + beban_B + beban_D -  beban_C) * (-1) * ((Breadth) / 2)  
     
 if jumlah_beban == "6" :
-        beban_E = st.number_input("Beban E (Ton)",min_value= 0.00, step =0.01)
-        beban_F = st.number_input("Beban F (Ton)",min_value= 0.00, step =0.01)
+        bebanE = st.number_input("Beban E (Kg)",min_value= 0.00, step =0.01)
+        bebanF = st.number_input("Beban F (Kg)",min_value= 0.00, step =0.01)
+
+        beban_E = bebanE/1000
+        beban_F = bebanF/1000
 
         Mselisih1 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
         Mselisih2 = (0 -beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
