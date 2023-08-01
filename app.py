@@ -29,8 +29,8 @@ train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 features = ['L/B', 'Cb', 'Momen beban T','Displacement', ]
 target = 'Inclinement'
 
-# Train a linear regression model
-model = LinearRegression()
+# Train a Random Forest Regressor model
+model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(train_data[features], train_data[target])
 
 # Make predictions on the test set
@@ -138,3 +138,4 @@ if ok:
                         }
         )
         st.table(dataS)
+        st.subheader("the accuracy of this inclinement model is {mse} " )
