@@ -138,4 +138,4 @@ if ok:
                         }
         )
         st.table(dataS)
-        st.subheader("the accuracy of this inclinement model is {mse} " )
+        st.subheader(f"the accuracy of this inclinement model is {mse} " )
