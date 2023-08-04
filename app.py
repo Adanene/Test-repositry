@@ -105,8 +105,12 @@ if jumlah_beban == "6" :
 ok = st.button("Calculate Incline")
 if ok:
         displacement = (Lwl * Breadth * Draft * Cb)
-        LB = (Lwl /Breadth)
-           
+                
+        if Breadth == 0:
+                LB = 0
+        else :
+                LB = (Lwl /Breadth) 
+                
         new_test1 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih1],'L/B': [LB]})
         predicted_Incline1 = model.predict(new_test1)
         
