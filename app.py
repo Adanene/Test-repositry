@@ -42,7 +42,7 @@ print('Mean squared error:', mse)
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.0300")
+st.title("Ship inclining prediction Ver 0.03333333")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -56,9 +56,9 @@ beban = (
 
 Loa = st.number_input("Length Over All (m)", min_value= 0.00, step =0.01)
 Lwl = st.number_input("Length Water Line (m)",min_value= 0.00, max_value= Loa)
-Breadth = st.number_input("Breadth (m)", min_value= 0.00, step =0.01)
-Depth = st.number_input("Depth (m) ", min_value= 0.00, step =0.01)
-Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0.01)
+Breadth = st.number_input("Breadth Water Line (m)", min_value= 0.00, step =0.01)
+Depth = st.number_input("Depth Water Line (m) ", min_value= 0.00, step =0.01)
+Draft = st.number_input("Draft Water Line (m) ", min_value= 0.00, max_value= Depth, step =0.01)
 Cb = st.number_input("Coefficient Block", min_value= 0.00, max_value= 1.00, step =0.01)
 bebanA = st.number_input("Beban A (Kg)",min_value= 0.0000,  step =0.0001)
 bebanB = st.number_input("Beban B (Kg)",min_value= 0.0000,  step =0.0001)
