@@ -42,7 +42,7 @@ print('Mean squared error:', mse)
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.02")
+st.title("Ship inclining prediction Ver 0.03")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
