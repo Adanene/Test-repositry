@@ -155,5 +155,4 @@ if ok:
                 'title': 'Inclining moment',
                 'xaxis': {'title': 'Moment'},
                 'yaxis': {'title': 'Inclining Degree'},
-            }
-        })
+            }})
