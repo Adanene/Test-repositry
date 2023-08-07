@@ -7,6 +7,7 @@
 import pandas as pd
 import streamlit as st
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
@@ -144,4 +145,13 @@ if ok:
         st.table(dataS)
         st.subheader(f"the accuracy of this inclinement model is {mse} " )
         # make graphics
-        st.line_chart(dataS[['Moment Beban', 'incline']])
+        fig, ax = plt.subplots()
+
+        # Create a scatter plot
+        ax.scatter(dataS['Moment Beban'], dataS['incline'])
+
+        ax.set_xlabel('Moment Beban')
+        ax.set_ylabel('Incline')
+
+        # Display the plot in Streamlit
+        st.pyplot(fig)
