@@ -145,4 +145,4 @@ if ok:
         st.subheader(f"the accuracy of this inclinement model is {mse} " )
         # make graphics
  
-        st.line_chart(dataS, dataS['Moment'], dataS['incline'])
+        st.line_chart(data = dataS, 'x' : ['Moment'], 'y' : ['incline'])
