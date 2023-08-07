@@ -26,7 +26,7 @@ data = pd.read_excel(xls , 'Used sheet' , header = 0)
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 
 # Select the features and target variable
-features = ['L/B', 'Cb', 'Momen beban T','Displacement', ]
+features = ['L/B', 'Cb', 'Momen beban','Displacement', ]
 target = 'Inclinement'
 
 # Train a Random Forest Regressor model
@@ -111,37 +111,37 @@ if ok:
         else :
                 LB = (Lwl /Breadth) 
                 
-        new_test1 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih1],'L/B': [LB]})
+        new_test1 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban': [Mselisih1],'L/B': [LB]})
         predicted_Incline1 = model.predict(new_test1)
         
-        new_test2 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih2],'L/B': [LB]})
+        new_test2 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban': [Mselisih2],'L/B': [LB]})
         predicted_Incline2 = model.predict(new_test2)
         
-        new_test3 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih3],'L/B': [LB]})
+        new_test3 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban': [Mselisih3],'L/B': [LB]})
         predicted_Incline3 = model.predict(new_test3)
         
-        new_test4 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih4],'L/B': [LB]})
+        new_test4 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban': [Mselisih4],'L/B': [LB]})
         predicted_Incline4 = model.predict(new_test4)
         
-        new_test5 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih5],'L/B': [LB]})
+        new_test5 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban': [Mselisih5],'L/B': [LB]})
         predicted_Incline5 = model.predict(new_test5)
         
-        new_test6 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih6],'L/B': [LB]})
+        new_test6 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban': [Mselisih6],'L/B': [LB]})
         predicted_Incline6 = model.predict(new_test6)
         
-        new_test7 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih7],'L/B': [LB]})
+        new_test7 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban': [Mselisih7],'L/B': [LB]})
         predicted_Incline7 = model.predict(new_test7)
         
-        new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban T': [Mselisih8],'L/B': [LB]})
+        new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'Momen Beban': [Mselisih8],'L/B': [LB]})
         predicted_Incline8 = model.predict(new_test8)
         
         dataS = pd.DataFrame({
                 'No': ['1','2','3','4','5','6','7','8'],
-                'Moment': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
+                'Moment Beban': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
                 'incline': [predicted_Incline1, predicted_Incline2, predicted_Incline3, predicted_Incline4, predicted_Incline5, predicted_Incline6, predicted_Incline7, predicted_Incline8],
                         }
                 )
         st.table(dataS)
         st.subheader(f"the accuracy of this inclinement model is {mse} " )
         # make graphics
-        st.line_chart(dataS[['Moment', 'incline']])
+        st.line_chart(dataS[['Moment Beban', 'incline']])
