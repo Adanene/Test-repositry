@@ -140,7 +140,7 @@ if ok:
                 'Moment': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
                 'incline': [predicted_Incline1, predicted_Incline2, predicted_Incline3, predicted_Incline4, predicted_Incline5, predicted_Incline6, predicted_Incline7, predicted_Incline8],
                         }
-        )
+                )
         st.table(dataS)
         st.subheader(f"the accuracy of this inclinement model is {mse} " )
         # make graphics
