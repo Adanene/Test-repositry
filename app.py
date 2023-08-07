@@ -144,15 +144,5 @@ if ok:
         st.table(dataS)
         st.subheader(f"the accuracy of this inclinement model is {mse} " )
         # make graphics
-        st.plotly_chart({
-            'data': [{
-                'x': dataS['Moment'],
-                'y': dataS['incline'],
-                'mode': 'markers',
-                'marker': {'opacity': 0.5},
-            }],
-            'layout': {
-                'title': 'Inclining moment',
-                'xaxis': {'title': 'Moment'},
-                'yaxis': {'title': 'Inclining Degree'},
-            }})
+ 
+         st.line_chart(pandas.DataFrame, *, dataS['Moment'], dataS['incline'])
