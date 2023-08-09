@@ -58,13 +58,13 @@ beban = (
 Loa = st.number_input("Length Over All (m)", min_value= 0.00, step =0.01)
 Lwl = st.number_input("Length Water Line (m)",min_value= 0.00, max_value= Loa)
 Breadth = st.number_input("Breadth Water Line (m)", min_value= 0.00, step =0.01)
-Depth = st.number_input("Depth Water Line (m) ", min_value= 0.00, step =0.01)
-Draft = st.number_input("Draft Water Line (m) ", min_value= 0.00, max_value= Depth, step =0.01)
+Depth = st.number_input("Depth  (m) ", min_value= 0.00, step =0.01)
+Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0.01)
 Cb = st.number_input("Coefficient Block", min_value= 0.00, max_value= 1.00, step =0.01)
-bebanA = st.number_input("Beban A (Kg)",min_value= 0.0000,  step =0.0001)
-bebanB = st.number_input("Beban B (Kg)",min_value= 0.0000,  step =0.0001)
-bebanC = st.number_input("Beban C (Kg)",min_value= 0.0000,  step =0.0001)
-bebanD = st.number_input("Beban D (Kg)",min_value= 0.0000,  step =0.0001)
+bebanA = st.number_input("Beban 1 (Kg)",min_value= 0.0000,  step =0.0001)
+bebanB = st.number_input("Beban 2 (Kg)",min_value= 0.0000,  step =0.0001)
+bebanC = st.number_input("Beban 3 (Kg)",min_value= 0.0000,  step =0.0001)
+bebanD = st.number_input("Beban 4 (Kg)",min_value= 0.0000,  step =0.0001)
 jumlah_beban = st.selectbox("Jumlah beban uji", beban)
 
 ##convert to anohter
@@ -86,8 +86,8 @@ if jumlah_beban == "4" :
         Mselisih8 =  (beban_A + beban_B + beban_D -  beban_C) * (-1) * ((Breadth) / 2)  
     
 if jumlah_beban == "6" :
-        bebanE = st.number_input("Beban E (Kg)",min_value= 0.00, step =0.01)
-        bebanF = st.number_input("Beban F (Kg)",min_value= 0.00, step =0.01)
+        bebanE = st.number_input("Beban 5 (Kg)",min_value= 0.00, step =0.01)
+        bebanF = st.number_input("Beban 6 (Kg)",min_value= 0.00, step =0.01)
 
         beban_E = bebanE/1000
         beban_F = bebanF/1000
