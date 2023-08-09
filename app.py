@@ -24,14 +24,14 @@ data = pd.read_excel(xls , 'Used sheet' , header = 0)
 
 
 # Split the dataset into training and test sets
-train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
+train_data, test_data = train_test_split(data, test_size=0.2, random_state=90)
 
 # Select the features and target variable
 features = ['L/B', 'Cb', 'MB','Displacement', ]
 target = 'Inclinement'
 
 # Train a Random Forest Regressor model
-model = RandomForestRegressor(n_estimators=300, random_state=50)
+model = RandomForestRegressor(n_estimators=400, random_state=50)
 model.fit(train_data[features], train_data[target])
 
 # Make predictions on the test set
