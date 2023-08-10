@@ -15,13 +15,16 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 
 # Load the dataset
-sheet_id ='d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs'
-xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/e/2PACX-1vSzJ2McdS3aIboBFt0MaFuwPxONxqOOr6wr3BPDoftmdAA7NR-nfqwdBNRzB8jpvmeBt5tfdJZzj4WU/pub?output=xlsx")
-data = pd.read_excel(xls , 'Used sheet' , header = 0)
+@st.cache(allow_output_mutation=True)
+def fetch_data():
+        sheet_id ='d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs'
+        xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/e/2PACX-1vSzJ2McdS3aIboBFt0MaFuwPxONxqOOr6wr3BPDoftmdAA7NR-nfqwdBNRzB8jpvmeBt5tfdJZzj4WU/pub?output=xlsx")
+        data = pd.read_excel(xls , 'Used sheet' , header = 0)
+        return data
 
+data = fetch_data()
 
 # chnge some data into numeric
-
 
 # Split the dataset into training and test sets
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=90)
