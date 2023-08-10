@@ -34,7 +34,7 @@ features = ['L/B', 'Cb', 'MB','Displacement', ]
 target = 'Inclinement'
 
 # Train a Random Forest Regressor model
-model = RandomForestRegressor(n_estimators=400, random_state=100)
+model = RandomForestRegressor(n_estimators=4000, random_state=100)
 model.fit(train_data[features], train_data[target])
 
 # Make predictions on the test set
