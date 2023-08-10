@@ -172,7 +172,7 @@ if ok:
         ax.legend()
 
         # Customization: draw a horizontal  line (you can adjust this as per your requirement)
-        thresholds = dataS['Incline'].mean()  # example threshold using mean, adjust as needed
+        thresholds = dataS['incline'].mean()  # example threshold using mean, adjust as needed
         ax.axhline(y=thresholds, color='red', linestyle='--', label="")
         ax.legend()
         
