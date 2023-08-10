@@ -151,13 +151,25 @@ if ok:
         fig, ax = plt.subplots()
 
         # Create a scatter plot
-        ax.scatter(dataS['Moment Beban'], dataS['incline'])
+        scatter = ax.scatter(dataS['Moment Beban'], dataS['incline'], color='blue', label='Incliing result')
+        
+        # Set title, labels, and legend
+        ax.set_title("Inclining graphic")
+        ax.set_xlabel('Moment Beban')
+        ax.set_ylabel('Incline')
+        ax.legend()
+
         # Add annotations
         for i in range(len(dataS)):
                 ax.annotate(i+1, (dataS['Moment Beban'].iloc[i], dataS['incline'].iloc[i])) # i+1 because Python's indexing starts at 0
 
         ax.set_xlabel('Moment Beban')
         ax.set_ylabel('Incline')
+
+        # Customization: draw a vertical line (you can adjust this as per your requirement)
+        threshold = dataS['Moment Beban'].mean()  # example threshold using mean, adjust as needed
+        ax.axvline(x=threshold, color='red', linestyle='--', label="Basic Needs Threshold")
+        ax.legend()
         
         # Display the plot in Streamlit
         st.pyplot(fig)
