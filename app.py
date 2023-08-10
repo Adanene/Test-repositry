@@ -156,7 +156,7 @@ if ok:
         # Set title, labels, and legend
         ax.set_title("Inclining graphic")
         ax.set_xlabel('Moment Beban')
-        ax.set_ylabel('Incline')
+        ax.set_ylabel('incline')
         ax.legend()
 
         # Add annotations
@@ -164,7 +164,7 @@ if ok:
                 ax.annotate(i+1, (dataS['Moment Beban'].iloc[i], dataS['incline'].iloc[i])) # i+1 because Python's indexing starts at 0
 
         ax.set_xlabel('Moment Beban')
-        ax.set_ylabel('Incline')
+        ax.set_ylabel('incline')
 
         # Customization: draw a vertical line (you can adjust this as per your requirement)
         threshold = dataS['Moment Beban'].mean()  # example threshold using mean, adjust as needed
