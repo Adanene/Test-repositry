@@ -71,10 +71,10 @@ bebanD = st.number_input("Beban 4 (Kg)",min_value= 0.0000,  step =0.0001)
 jumlah_beban = st.selectbox("Jumlah beban uji", beban)
 
 ##convert to anohter
-beban_A = bebanA/1000
-beban_B = bebanB/1000
-beban_C = bebanC/1000
-beban_D = bebanD/1000
+beban_A = bebanA
+beban_B = bebanB
+beban_C = bebanC
+beban_D = bebanD
 if jumlah_beban == "4" :
         beban_E = 0
         beban_F = 0
@@ -92,8 +92,8 @@ if jumlah_beban == "6" :
         bebanE = st.number_input("Beban 5 (Kg)",min_value= 0.00, step =0.01)
         bebanF = st.number_input("Beban 6 (Kg)",min_value= 0.00, step =0.01)
 
-        beban_E = bebanE/1000
-        beban_F = bebanF/1000
+        beban_E = bebanE
+        beban_F = bebanF
 
         Mselisih1 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
         Mselisih2 = (0 -beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
