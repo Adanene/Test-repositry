@@ -106,7 +106,7 @@ if jumlah_beban == "6" :
             
 #Calculation     
 
-ok = st.button("Calculate Incline")
+ok = st.button("Calculate Incline ")
 if ok:
         displacement = (Lwl * Breadth * Draft * Cb)
                 
