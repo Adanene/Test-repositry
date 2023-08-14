@@ -38,8 +38,8 @@ target = 'Inclinement'
 param_grid = {
     'n_estimators': [50, 100, 200, 500, 1000],  # Adjust as needed
     'max_depth': [None, 10, 20],       # Adjust as needed
-    'min_samples_split': [1, 2, 3, 4, 5],      # Adjust as needed
-    'min_samples_leaf': [1, 2, 3, 4]        # Adjust as needed
+    'min_samples_split': [ 2, 3, 4, 5],      # Adjust as needed
+    'min_samples_leaf': [ 2, 3, 4]        # Adjust as needed
 }
 
 # Create the RandomForestRegressor
