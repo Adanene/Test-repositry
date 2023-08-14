@@ -97,14 +97,7 @@ if jumlah_beban == "4" :
         beban_E = 0
         beban_F = 0
         
-        Mselisih1 = (beban_A + beban_B - beban_C - beban_D) * (-1) * ((Breadth) / 2)
-        Mselisih2 =  (beban_B - beban_A - beban_C - beban_D)  * (-1) * ((Breadth) / 2)
-        Mselisih3 =  (0 - beban_B - beban_A - beban_C - beban_D) * (-1) * ((Breadth) / 2)    
-        Mselisih4 =  (beban_C - beban_B - beban_A -  beban_D) * (-1) * ((Breadth) / 2)
-        Mselisih5 =  (beban_C + beban_D - beban_A -  beban_B) * (-1) * ((Breadth) / 2)   
-        Mselisih6 =  (beban_A + beban_B + beban_C -  beban_D) * (-1) * ((Breadth) / 2)      
-        Mselisih7 =  (beban_C + beban_D + beban_A +  beban_B) * (-1) * ((Breadth) / 2)  
-        Mselisih8 =  (beban_A + beban_B + beban_D -  beban_C) * (-1) * ((Breadth) / 2)  
+         
     
 if jumlah_beban == "6" :
         bebanE = st.number_input("Beban 5 (Kg)",min_value= 0.00, step =0.01)
@@ -112,21 +105,33 @@ if jumlah_beban == "6" :
 
         beban_E = bebanE
         beban_F = bebanF
-
-        Mselisih1 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-        Mselisih2 = (0 -beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
-        Mselisih3 = (0 - beban_A - beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-        Mselisih4 = (0 - beban_A - beban_B - beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
-        Mselisih5 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-        Mselisih6 = (beban_A + beban_B + beban_C + beban_D + beban_E - beban_F) * (-1) * ((Breadth) / 2)
-        Mselisih7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F) * (-1) * ((Breadth) / 2)    
-        Mselisih8 = (beban_A + beban_B + beban_C + beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
             
 #Calculation     
 
 ok = st.button("Calculate Incline ")
 if ok:
         displacement = (Lwl * Breadth * Draft * Cb)
+
+        #calculate moment
+        if jumlah_beban == "4" :
+                Mselisih1 = (beban_A + beban_B - beban_C - beban_D) * (-1) * ((Breadth) / 2)
+                Mselisih2 =  (beban_B - beban_A - beban_C - beban_D)  * (-1) * ((Breadth) / 2)
+                Mselisih3 =  (0 - beban_B - beban_A - beban_C - beban_D) * (-1) * ((Breadth) / 2)    
+                Mselisih4 =  (beban_C - beban_B - beban_A -  beban_D) * (-1) * ((Breadth) / 2)
+                Mselisih5 =  (beban_C + beban_D - beban_A -  beban_B) * (-1) * ((Breadth) / 2)   
+                Mselisih6 =  (beban_A + beban_B + beban_C -  beban_D) * (-1) * ((Breadth) / 2)      
+                Mselisih7 =  (beban_C + beban_D + beban_A +  beban_B) * (-1) * ((Breadth) / 2)  
+                Mselisih8 =  (beban_A + beban_B + beban_D -  beban_C) * (-1) * ((Breadth) / 2)
+                
+        if jumlah_beban == "6" :
+                Mselisih1 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+                Mselisih2 = (0 -beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
+                Mselisih3 = (0 - beban_A - beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+                Mselisih4 = (0 - beban_A - beban_B - beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
+                Mselisih5 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+                Mselisih6 = (beban_A + beban_B + beban_C + beban_D + beban_E - beban_F) * (-1) * ((Breadth) / 2)
+                Mselisih7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F) * (-1) * ((Breadth) / 2)    
+                Mselisih8 = (beban_A + beban_B + beban_C + beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
                 
         if Breadth == 0:
                 LB = 0
