@@ -43,7 +43,7 @@ param_grid = {
 }
 
 # Create the RandomForestRegressor
-rf = RandomForestRegressor(random_state=100)
+rf = RandomForestRegressor(random_state=500)
 
 # Create the GridSearchCV object
 grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, 
