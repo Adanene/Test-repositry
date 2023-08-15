@@ -64,7 +64,7 @@ print('Mean squared error:', mse)
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.041")
+st.title("Ship inclining prediction Ver 0.042")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -83,7 +83,6 @@ Breadth = st.number_input("Breadth Water Line (m)", min_value= 0.00, step =0.01)
 Depth = st.number_input("Depth  (m) ", min_value= 0.00, step =0.01)
 Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0.01)
 Cb = st.number_input("Coefficient Block", min_value= 0.00, max_value= 1.00, step =0.01)
-
 jumlah_beban = st.selectbox("Number Weight", beban)
 
 ##convert to anohter
