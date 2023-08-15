@@ -95,11 +95,7 @@ if jumlah_beban == "4" :
         bebanD = st.number_input("Beban 4 (Kg)",min_value= 0.0000,  step =0.0001)
         beban_E = 0
         beban_F = 0
-        
-        ok = st.button("Calculate Incline ")
-        
-         
-    
+
 if jumlah_beban == "6" :
         bebanA = st.number_input("Beban 1 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanB = st.number_input("Beban 2 (Kg)",min_value= 0.0000,  step =0.0001)
@@ -108,110 +104,114 @@ if jumlah_beban == "6" :
         bebanE = st.number_input("Beban 5 (Kg)",min_value= 0.0000, step =0.0001)
         bebanF = st.number_input("Beban 6 (Kg)",min_value= 0.0000, step =0.0001)
         
-        ok = st.button("Calculate Incline ")
-
         
+
+ok = st.button("Calculate Incline")       
             
 #Calculation     
-
-if ok:
-        #transfer weight
-        beban_A = bebanA
-        beban_B = bebanB
-        beban_C = bebanC
-        beban_D = bebanD
-        beban_E = bebanE
-        beban_F = bebanF
-        
-        #calculate displacement
-        displacement = (Lwl * Breadth * Draft * Cb)
-
-        #calculate moment
-        if jumlah_beban == "4" :
-                Mselisih1 = (beban_A + beban_B - beban_C - beban_D) * (-1) * ((Breadth) / 2)
-                Mselisih2 =  (beban_B - beban_A - beban_C - beban_D)  * (-1) * ((Breadth) / 2)
-                Mselisih3 =  (0 - beban_B - beban_A - beban_C - beban_D) * (-1) * ((Breadth) / 2)    
-                Mselisih4 =  (beban_C - beban_B - beban_A -  beban_D) * (-1) * ((Breadth) / 2)
-                Mselisih5 =  (beban_C + beban_D - beban_A -  beban_B) * (-1) * ((Breadth) / 2)   
-                Mselisih6 =  (beban_A + beban_B + beban_C -  beban_D) * (-1) * ((Breadth) / 2)      
-                Mselisih7 =  (beban_C + beban_D + beban_A +  beban_B) * (-1) * ((Breadth) / 2)  
-                Mselisih8 =  (beban_A + beban_B + beban_D -  beban_C) * (-1) * ((Breadth) / 2)
-                
-        if jumlah_beban == "6" :
-                Mselisih1 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-                Mselisih2 = (0 -beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
-                Mselisih3 = (0 - beban_A - beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-                Mselisih4 = (0 - beban_A - beban_B - beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
-                Mselisih5 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-                Mselisih6 = (beban_A + beban_B + beban_C + beban_D + beban_E - beban_F) * (-1) * ((Breadth) / 2)
-                Mselisih7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F) * (-1) * ((Breadth) / 2)    
-                Mselisih8 = (beban_A + beban_B + beban_C + beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-                
-        if Breadth == 0:
-                LB = 0
-        else :
-                LB = (Lwl /Breadth) 
-                
-        new_test1 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih1],'L/B': [LB]})
-        predicted_Incline1 = best_model.predict(new_test1)
-        
-        new_test2 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih2],'L/B': [LB]})
-        predicted_Incline2 = best_model.predict(new_test2)
-        
-        new_test3 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih3],'L/B': [LB]})
-        predicted_Incline3 = best_model.predict(new_test3)
-        
-        new_test4 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih4],'L/B': [LB]})
-        predicted_Incline4 = best_model.predict(new_test4)
-        
-        new_test5 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih5],'L/B': [LB]})
-        predicted_Incline5 = best_model.predict(new_test5)
-        
-        new_test6 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih6],'L/B': [LB]})
-        predicted_Incline6 = best_model.predict(new_test6)
-        
-        new_test7 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih7],'L/B': [LB]})
-        predicted_Incline7 = best_model.predict(new_test7)
-        
-        new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih8],'L/B': [LB]})
-        predicted_Incline8 = best_model.predict(new_test8)
-        
-        dataS = pd.DataFrame({
-                'No': ['1','2','3','4','5','6','7','8'],
-                'Moment Beban': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
-                'incline': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0]],
-                        }
-                )
-        st.table(dataS)
+if jumlah_beban =="0" :
         st.subheader(f"the accuracy of this inclinement model is {mse} " )
-        # make graphics
-        fig, ax = plt.subplots()
-
-        # Create a scatter plot
-        scatter = ax.scatter(dataS['Moment Beban'], dataS['incline'], color='blue', label='Incliing result')
         
-        # Set title, labels, and legend
-        ax.set_title("Inclining graphic")
-        ax.set_xlabel('Moment Beban')
-        ax.set_ylabel('incline')
-        ax.legend()
-
-        # Add annotations
-        for i in range(len(dataS)):
-                ax.annotate(i+1, (dataS['Moment Beban'].iloc[i], dataS['incline'].iloc[i])) # i+1 because Python's indexing starts at 0
-
-        ax.set_xlabel('Moment Beban')
-        ax.set_ylabel('incline')
-
-        # Customization: draw a vertical line (you can adjust this as per your requirement)
-        threshold = dataS['Moment Beban'].mean()  # example threshold using mean, adjust as needed
-        ax.axvline(x=threshold, color='red', linestyle='--', label=" 0,0 coordinate")
-        ax.legend()
-
-        # Customization: draw a horizontal  line (you can adjust this as per your requirement)
-        thresholds = dataS['incline'].mean()  # example threshold using mean, adjust as needed
-        ax.axhline(y=thresholds, color='red', linestyle='--', label="")
-        ax.legend()
+else:
+        if ok:
         
-        # Display the plot in Streamlit
-        st.pyplot(fig)
+                #transfer weight
+                beban_A = bebanA
+                beban_B = bebanB
+                beban_C = bebanC
+                beban_D = bebanD
+                beban_E = bebanE
+                beban_F = bebanF
+        
+                #calculate displacement
+                displacement = (Lwl * Breadth * Draft * Cb)
+
+                #calculate moment
+                if jumlah_beban == "4" :
+                        Mselisih1 = (beban_A + beban_B - beban_C - beban_D) * (-1) * ((Breadth) / 2)
+                        Mselisih2 =  (beban_B - beban_A - beban_C - beban_D)  * (-1) * ((Breadth) / 2)
+                        Mselisih3 =  (0 - beban_B - beban_A - beban_C - beban_D) * (-1) * ((Breadth) / 2)    
+                        Mselisih4 =  (beban_C - beban_B - beban_A -  beban_D) * (-1) * ((Breadth) / 2)
+                        Mselisih5 =  (beban_C + beban_D - beban_A -  beban_B) * (-1) * ((Breadth) / 2)   
+                        Mselisih6 =  (beban_A + beban_B + beban_C -  beban_D) * (-1) * ((Breadth) / 2)      
+                        Mselisih7 =  (beban_C + beban_D + beban_A +  beban_B) * (-1) * ((Breadth) / 2)  
+                        Mselisih8 =  (beban_A + beban_B + beban_D -  beban_C) * (-1) * ((Breadth) / 2)
+                
+                if jumlah_beban == "6" :
+                        Mselisih1 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+                        Mselisih2 = (0 -beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
+                        Mselisih3 = (0 - beban_A - beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+                        Mselisih4 = (0 - beban_A - beban_B - beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
+                        Mselisih5 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+                        Mselisih6 = (beban_A + beban_B + beban_C + beban_D + beban_E - beban_F) * (-1) * ((Breadth) / 2)
+                        Mselisih7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F) * (-1) * ((Breadth) / 2)    
+                        Mselisih8 = (beban_A + beban_B + beban_C + beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+                
+                if Breadth == 0:
+                        LB = 0
+                else :
+                        LB = (Lwl /Breadth) 
+                
+                new_test1 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih1],'L/B': [LB]})
+                predicted_Incline1 = best_model.predict(new_test1)
+        
+                new_test2 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih2],'L/B': [LB]})
+                predicted_Incline2 = best_model.predict(new_test2)
+        
+                new_test3 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih3],'L/B': [LB]})
+                predicted_Incline3 = best_model.predict(new_test3)
+        
+                new_test4 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih4],'L/B': [LB]})
+                predicted_Incline4 = best_model.predict(new_test4)
+        
+                new_test5 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih5],'L/B': [LB]})
+                predicted_Incline5 = best_model.predict(new_test5)
+        
+                new_test6 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih6],'L/B': [LB]})
+                predicted_Incline6 = best_model.predict(new_test6)
+        
+                new_test7 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih7],'L/B': [LB]})
+                predicted_Incline7 = best_model.predict(new_test7)
+        
+                new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih8],'L/B': [LB]})
+                predicted_Incline8 = best_model.predict(new_test8)
+        
+                dataS = pd.DataFrame({
+                        'No': ['1','2','3','4','5','6','7','8'],
+                        'Moment Beban': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
+                        'incline': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0]],
+                                }
+                        )
+                st.table(dataS)
+                st.subheader(f"the accuracy of this inclinement model is {mse} " )
+                # make graphics
+                fig, ax = plt.subplots()
+
+                # Create a scatter plot
+                scatter = ax.scatter(dataS['Moment Beban'], dataS['incline'], color='blue', label='Incliing result')
+        
+                # Set title, labels, and legend
+                ax.set_title("Inclining graphic")
+                ax.set_xlabel('Moment Beban')
+                ax.set_ylabel('incline')
+                ax.legend()
+
+                # Add annotations
+                for i in range(len(dataS)):
+                        ax.annotate(i+1, (dataS['Moment Beban'].iloc[i], dataS['incline'].iloc[i])) # i+1 because Python's indexing starts at 0
+
+                ax.set_xlabel('Moment Beban')
+                ax.set_ylabel('incline')
+
+                # Customization: draw a vertical line (you can adjust this as per your requirement)
+                threshold = dataS['Moment Beban'].mean()  # example threshold using mean, adjust as needed
+                ax.axvline(x=threshold, color='red', linestyle='--', label=" 0,0 coordinate")
+                ax.legend()
+
+                # Customization: draw a horizontal  line (you can adjust this as per your requirement)
+                thresholds = dataS['incline'].mean()  # example threshold using mean, adjust as needed
+                ax.axhline(y=thresholds, color='red', linestyle='--', label="")
+                ax.legend()
+        
+                # Display the plot in Streamlit
+                st.pyplot(fig)
