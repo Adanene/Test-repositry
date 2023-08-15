@@ -108,12 +108,13 @@ if jumlah_beban == "6" :
 
 ok = st.button("Calculate Incline")       
             
-#Calculation     
-if jumlah_beban =="0" :
-        st.subheader(f"the accuracy of this inclinement model is {mse} " )
+#Calculation
+if ok:
+        if jumlah_beban =="0" :
+                st.subheader(f"the accuracy of this inclinement model is {mse}  " )
         
-else:
-        if ok:
+        else:
+        
         
                 #transfer weight
                 beban_A = bebanA
