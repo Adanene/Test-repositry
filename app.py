@@ -62,6 +62,7 @@ test_predictions = best_model.predict(test_data[features])
 mse = mean_squared_error(test_data[target], test_predictions)
 print('Mean squared error:', mse) 
 
+
 # Predict stability for a new inclining test
 #make the interface
 st.title("Ship inclining prediction Ver 0.044")
@@ -77,7 +78,9 @@ beban = (
         )
 # input some wrrited answer
 
-Loa = st.number_input("Length Over All (m)", min_value= 0.00, step =0.01)
+if 'Loa' not in st.session_state:
+    st.session_state.Loa = 0.00
+Loa = st.number_input("Length Over All (m)", value=st.session_state.Loa, step=0.01)
 Lwl = st.number_input("Length Water Line (m)",min_value= 0.00, max_value= Loa)
 Breadth = st.number_input("Breadth Water Line (m)", min_value= 0.00, step =0.01)
 Depth = st.number_input("Depth  (m) ", min_value= 0.00, step =0.01)
