@@ -92,8 +92,8 @@ if jumlah_beban == "4" :
         bebanB = st.number_input("Beban 2 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanC = st.number_input("Beban 3 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanD = st.number_input("Beban 4 (Kg)",min_value= 0.0000,  step =0.0001)
-        beban_E = 0
-        beban_F = 0
+        bebanE = 0
+        bebanF = 0
 
 if jumlah_beban == "6" :
         bebanA = st.number_input("Beban 1 (Kg)",min_value= 0.0000,  step =0.0001)
