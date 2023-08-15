@@ -1,5 +1,5 @@
 
-#Here is an example Jupyter code for machine learning to predict ship stability during an inclining test using Python and scikit-learn library:
+#Here is an Jupyter code for machine learning to predict ship stability during an inclining test using Python and scikit-learn library:
 
 #python
 #Copy code
@@ -64,13 +64,14 @@ print('Mean squared error:', mse)
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.035")
+st.title("Ship inclining prediction Ver 0.04")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
 #input the new data here
 #input some choose answer
 beban = (
+        "0"
         "4",
         "6",
         )
@@ -82,34 +83,47 @@ Breadth = st.number_input("Breadth Water Line (m)", min_value= 0.00, step =0.01)
 Depth = st.number_input("Depth  (m) ", min_value= 0.00, step =0.01)
 Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0.01)
 Cb = st.number_input("Coefficient Block", min_value= 0.00, max_value= 1.00, step =0.01)
-bebanA = st.number_input("Beban 1 (Kg)",min_value= 0.0000,  step =0.0001)
-bebanB = st.number_input("Beban 2 (Kg)",min_value= 0.0000,  step =0.0001)
-bebanC = st.number_input("Beban 3 (Kg)",min_value= 0.0000,  step =0.0001)
-bebanD = st.number_input("Beban 4 (Kg)",min_value= 0.0000,  step =0.0001)
-jumlah_beban = st.selectbox("Jumlah beban uji", beban)
+
+jumlah_beban = st.selectbox("Number Weight", beban)
 
 ##convert to anohter
-beban_A = bebanA
-beban_B = bebanB
-beban_C = bebanC
-beban_D = bebanD
+
 if jumlah_beban == "4" :
+        bebanA = st.number_input("Beban 1 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanB = st.number_input("Beban 2 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanC = st.number_input("Beban 3 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanD = st.number_input("Beban 4 (Kg)",min_value= 0.0000,  step =0.0001)
         beban_E = 0
         beban_F = 0
+        
+        ok = st.button("Calculate Incline ")
         
          
     
 if jumlah_beban == "6" :
-        bebanE = st.number_input("Beban 5 (Kg)",min_value= 0.00, step =0.01)
-        bebanF = st.number_input("Beban 6 (Kg)",min_value= 0.00, step =0.01)
+        bebanA = st.number_input("Beban 1 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanB = st.number_input("Beban 2 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanC = st.number_input("Beban 3 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanD = st.number_input("Beban 4 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanE = st.number_input("Beban 5 (Kg)",min_value= 0.0000, step =0.0001)
+        bebanF = st.number_input("Beban 6 (Kg)",min_value= 0.0000, step =0.0001)
+        
+        ok = st.button("Calculate Incline ")
 
-        beban_E = bebanE
-        beban_F = bebanF
+        
             
 #Calculation     
 
-ok = st.button("Calculate Incline ")
 if ok:
+        #transfer weight
+        beban_A = bebanA
+        beban_B = bebanB
+        beban_C = bebanC
+        beban_D = bebanD
+        beban_E = bebanE
+        beban_F = bebanF
+        
+        #calculate displacement
         displacement = (Lwl * Breadth * Draft * Cb)
 
         #calculate moment
