@@ -71,7 +71,7 @@ st.write("""### We need some data to predict ship inclining angle""")
 #input the new data here
 #input some choose answer
 beban = (
-        "0"
+        "0",
         "4",
         "6",
         )
