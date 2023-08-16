@@ -49,7 +49,7 @@ beban = (
 # input some wrrited answer
 
 
-Loa = st.number_input("Length Over All (m)", value=st.session_state.Loa, step=0.01)
+Loa = st.number_input("Length Over All (m)", value=st.0.00, step=0.01)
 Lwl = st.number_input("Length Water Line (m)",min_value= 0.00, max_value= Loa)
 Breadth = st.number_input("Breadth Water Line (m)", min_value= 0.00, step =0.01)
 Depth = st.number_input("Depth  (m) ", min_value= 0.00, step =0.01)
