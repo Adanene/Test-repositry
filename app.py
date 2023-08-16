@@ -17,6 +17,15 @@ from sklearn.metrics import mean_squared_error
 
 # Load the dataset
 @st.cache(allow_output_mutation=True)
+# Define a dictionary to store the session state values
+session_state = {}
+
+# Define a custom caching function to retain values across reruns
+def cached_value(key, value, func):
+    if key not in session_state:
+        session_state[key] = value
+    return func(session_state[key])
+        
 def fetch_data():
         sheet_id ='d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs'
         xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/e/2PACX-1vSzJ2McdS3aIboBFt0MaFuwPxONxqOOr6wr3BPDoftmdAA7NR-nfqwdBNRzB8jpvmeBt5tfdJZzj4WU/pub?output=xlsx")
@@ -78,8 +87,7 @@ beban = (
         )
 # input some wrrited answer
 
-if 'Loa' not in st.session_state:
-    st.session_state.Loa = 0.00
+
 Loa = st.number_input("Length Over All (m)", value=st.session_state.Loa, step=0.01)
 Lwl = st.number_input("Length Water Line (m)",min_value= 0.00, max_value= Loa)
 Breadth = st.number_input("Breadth Water Line (m)", min_value= 0.00, step =0.01)
