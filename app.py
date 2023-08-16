@@ -16,13 +16,8 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error
 
 # Define a dictionary to store the session state values
-session_state = {}
-
-# Define a custom caching function to retain values across reruns
-def cached_value(key, value, func):
-    if key not in session_state:
-        session_state[key] = value
-    return func(session_state[key])
+if 'button_pressed' not in st.session_state:
+    st.session_state.button_pressed = False
     
 # Load the dataset
 @st.cache(allow_output_mutation=True)
@@ -76,7 +71,7 @@ print('Mean squared error:', mse)
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.0441111111")
+st.title("Ship inclining prediction Ver 0.045")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -120,11 +115,13 @@ if jumlah_beban == "6" :
 
 ok = st.button("Calculate Incline")       
 if ok:
+    st.session_state.button_pressed = True
+
+if st.session_state.button_pressed:
         if jumlah_beban =="0" :
                 st.subheader(f"the accuracy of this inclinement model is {mse}  " )
         
         else:
-        
         
                 #transfer weight
                 beban_A = bebanA
