@@ -31,42 +31,6 @@ def fetch_data():
 
 data = fetch_data()
 
-# chnge some data into numeric
-
-# Split the dataset into training and test sets
-train_data, test_data = train_test_split(data, test_size=0.2, random_state=90)
-
-# Select the features and target variable
-features = ['L/B', 'Cb', 'MB','Displacement', ]
-target = 'Inclinement'
-
-# Define the parameter grid
-param_grid = {
-    'n_estimators': [50, 100, 200, 500, 1000],  # Adjust as needed
-    'max_depth': [None, 10, 20],       # Adjust as needed
-    'min_samples_split': [ 2, 3, 4, 5],      # Adjust as needed
-    'min_samples_leaf': [ 2, 3, 4]        # Adjust as needed
-}
-
-# Create the RandomForestRegressor
-rf = RandomForestRegressor(random_state=500)
-
-# Create the GridSearchCV object
-grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, 
-                           cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error')
-
-# Fit the GridSearchCV to the training data
-grid_search.fit(train_data[features], train_data[target])
-
-# Get the best model from GridSearchCV
-best_model = grid_search.best_estimator_
-
-# Make predictions on the test set
-test_predictions = best_model.predict(test_data[features])
-
-# Evaluate the model performance
-mse = mean_squared_error(test_data[target], test_predictions)
-print('Mean squared error:', mse) 
 
 
 # Predict stability for a new inclining test
@@ -116,6 +80,44 @@ if jumlah_beban == "6" :
 ok = st.button("Calculate Incline")       
 if ok:
     st.session_state.button_pressed = True
+
+    #start machine learning process
+    # chnge some data into numeric
+
+    # Split the dataset into training and test sets
+    train_data, test_data = train_test_split(data, test_size=0.2, random_state=90)
+
+    # Select the features and target variable
+    features = ['L/B', 'Cb', 'MB','Displacement', ]
+    target = 'Inclinement'
+
+    # Define the parameter grid
+    param_grid = {
+        'n_estimators': [50, 100, 200, 500, 1000],  # Adjust as needed
+        'max_depth': [None, 10, 20],       # Adjust as needed
+        'min_samples_split': [ 2, 3, 4, 5],      # Adjust as needed
+        'min_samples_leaf': [ 2, 3, 4]        # Adjust as needed
+    }
+
+    # Create the RandomForestRegressor
+    rf = RandomForestRegressor(random_state=500)
+
+    # Create the GridSearchCV object
+    grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, 
+                               cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error')
+
+    # Fit the GridSearchCV to the training data
+    grid_search.fit(train_data[features], train_data[target])
+
+    # Get the best model from GridSearchCV
+    best_model = grid_search.best_estimator_
+
+    # Make predictions on the test set
+    test_predictions = best_model.predict(test_data[features])
+
+    # Evaluate the model performance
+    mse = mean_squared_error(test_data[target], test_predictions)
+    print('Mean squared error:', mse) 
 
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
