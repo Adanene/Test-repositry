@@ -15,8 +15,6 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error
 
-# Load the dataset
-@st.cache(allow_output_mutation=True)
 # Define a dictionary to store the session state values
 session_state = {}
 
@@ -25,6 +23,10 @@ def cached_value(key, value, func):
     if key not in session_state:
         session_state[key] = value
     return func(session_state[key])
+    
+# Load the dataset
+@st.cache(allow_output_mutation=True)
+
         
 def fetch_data():
         sheet_id ='d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs'
