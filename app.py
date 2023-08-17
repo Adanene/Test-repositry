@@ -220,7 +220,7 @@ if st.session_state.button_pressed:
                     kk5 = (kiri5 / kanan5)
                 if kiri5 >= kanan5 :
                     kk5 = -(kanan5 / kiri5)
-                 if kiri6 <= kanan6 :
+                if kiri6 <= kanan6 :
                     kk6 = (kiri6 / kanan6)
                 if kiri6 >= kanan6 :
                     kk6 = -(kanan6 / kiri6)   
