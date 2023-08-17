@@ -88,7 +88,7 @@ if ok:
     train_data, test_data = train_test_split(data, test_size=0.2, random_state=90)
 
     # Select the features and target variable
-    features = ['L/B', 'Cb', 'MB','Displacement', ]
+    features = ['L/B', 'Cb', 'MB','Displacement', 'kirikanan',]
     target = 'Inclinement'
 
     # Define the parameter grid
@@ -138,52 +138,123 @@ if st.session_state.button_pressed:
 
                 #calculate moment
                 if jumlah_beban == "4" :
-                        Mselisih1 = (beban_A + beban_B - beban_C - beban_D) * (-1) * ((Breadth) / 2)
-                        Mselisih2 =  (beban_B - beban_A - beban_C - beban_D)  * (-1) * ((Breadth) / 2)
-                        Mselisih3 =  (0 - beban_B - beban_A - beban_C - beban_D) * (-1) * ((Breadth) / 2)    
-                        Mselisih4 =  (beban_C - beban_B - beban_A -  beban_D) * (-1) * ((Breadth) / 2)
-                        Mselisih5 =  (beban_C + beban_D - beban_A -  beban_B) * (-1) * ((Breadth) / 2)   
-                        Mselisih6 =  (beban_A + beban_B + beban_C -  beban_D) * (-1) * ((Breadth) / 2)      
-                        Mselisih7 =  (beban_C + beban_D + beban_A +  beban_B) * (-1) * ((Breadth) / 2)  
-                        Mselisih8 =  (beban_A + beban_B + beban_D -  beban_C) * (-1) * ((Breadth) / 2)
+
+                        kiri1 = (beban_A + beban_B)
+                        kiri2 = (beban_B)
+                        kiri3 = 0
+                        kiri4 = (beban_C)
+                        kiri5 = (beban_C + beban_D)
+                        kiri6 = (beban_A + beban_B + beban_C)
+                        kiri7 = (beban_A + beban_B + beban_C + beban_D)
+                        kiri8 = (beban_A + beban_B + beban_D)
+
+                        kanan1 = (beban_C + beban_D)
+                        kanan2 = (beban_A + beban_C + beban_D)
+                        kanan3 = (beban_A + beban_B + beban_C + beban_D)
+                        kanan4 = (beban_A + beban_B + beban_D)
+                        kanan5 = (beban_A + beban_B)
+                        kanan6 = (beban_D)
+                        kanan7 = 0
+                        kanan8 = (beban_C)
+                        
+                        Mselisih1 =  (kiri1 - kanan1) * (-1) * ((Breadth) / 2)
+                        Mselisih2 =  (kiri2 - kanan2)  * (-1) * ((Breadth) / 2)
+                        Mselisih3 =  (kiri3 - kanan3) * (-1) * ((Breadth) / 2)    
+                        Mselisih4 =  (kiri4 - kanan4) * (-1) * ((Breadth) / 2)
+                        Mselisih5 =  (kiri5 - kanan5) * (-1) * ((Breadth) / 2)   
+                        Mselisih6 =  (kiri6 - kanan6) * (-1) * ((Breadth) / 2)      
+                        Mselisih7 =  (kiri7 - kanan7) * (-1) * ((Breadth) / 2)  
+                        Mselisih8 =  (kiri8 - kanan8) * (-1) * ((Breadth) / 2)
                 
                 if jumlah_beban == "6" :
-                        Mselisih1 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-                        Mselisih2 = (0 -beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
-                        Mselisih3 = (0 - beban_A - beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-                        Mselisih4 = (0 - beban_A - beban_B - beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)    
-                        Mselisih5 = (beban_A + beban_B + beban_C - beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
-                        Mselisih6 = (beban_A + beban_B + beban_C + beban_D + beban_E - beban_F) * (-1) * ((Breadth) / 2)
-                        Mselisih7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F) * (-1) * ((Breadth) / 2)    
-                        Mselisih8 = (beban_A + beban_B + beban_C + beban_D - beban_E - beban_F) * (-1) * ((Breadth) / 2)
+
+                        kiri1 = (beban_A + beban_C + beban_E)
+                        kiri2 = (beban_A + beban_B + beban_C + beban_E)
+                        kiri3 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F)
+                        kiri4 = (beban_A + beban_B + beban_C + beban_D + beban_E )
+                        kiri5 = (beban_A + beban_C + beban_E)
+                        kiri6 = (beban_E)
+                        kiri7 = 0
+                        kiri8 = (beban_C + beban_E)
+
+                        kanan1 = (beban_B + beban_D + beban_F)
+                        kanan2 = (beban_D + beban_F)
+                        kanan3 = 0
+                        kanan4 = (beban_F)
+                        kanan5 = (beban_B + beban_D + beban_F)
+                        kanan6 = (beban_A + beban_B + beban_C + beban_D + beban_F )
+                        kanan7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F)
+                        kanan8 = (beban_A + beban_B + beban_D + beban_F)
+                    
+                        Mselisih1 =  (kiri1 - kanan1) * (-1) * ((Breadth) / 2)
+                        Mselisih2 =  (kiri2 - kanan2)  * (-1) * ((Breadth) / 2)
+                        Mselisih3 =  (kiri3 - kanan3) * (-1) * ((Breadth) / 2)    
+                        Mselisih4 =  (kiri4 - kanan4) * (-1) * ((Breadth) / 2)
+                        Mselisih5 =  (kiri5 - kanan5) * (-1) * ((Breadth) / 2)   
+                        Mselisih6 =  (kiri6 - kanan6) * (-1) * ((Breadth) / 2)      
+                        Mselisih7 =  (kiri7 - kanan7) * (-1) * ((Breadth) / 2)  
+                        Mselisih8 =  (kiri8 - kanan8) * (-1) * ((Breadth) / 2)
                 
                 if Breadth == 0:
                         LB = 0
                 else :
                         LB = (Lwl /Breadth) 
+
+                if kiri1 <= kanan1 :
+                    kk1 = (kiri1 / kanan1)
+                if kiri1 >= kanan1 :
+                    kk1 = -(kanan1 / kiri1)
+                if kiri2 <= kanan2 :
+                    kk2 = (kiri2 / kanan2)
+                if kiri2 >= kanan2 :
+                    kk2 = -(kanan2 / kiri2)
+                if kiri3 <= kanan3 :
+                    kk3 = (kiri3 / kanan3)
+                if kiri3 >= kanan3 :
+                    kk3 = -(kanan3 / kiri3)
+                if kiri4 <= kanan4 :
+                    kk4 = (kiri4 / kanan4)
+                if kiri4 >= kanan4 :
+                    kk4 = -(kanan4 / kiri4)
+                if kiri5 <= kanan5 :
+                    kk5 = (kiri5 / kanan5)
+                if kiri5 >= kanan5 :
+                    kk5 = -(kanan5 / kiri5)
+                 if kiri6 <= kanan6 :
+                    kk6 = (kiri6 / kanan6)
+                if kiri6 >= kanan6 :
+                    kk6 = -(kanan6 / kiri6)   
+                if kiri7 <= kanan7 :
+                    kk7 = (kiri7 / kanan7)
+                if kiri7 >= kanan7 :
+                    kk7 = -(kanan7 / kiri7)
+                if kiri8 <= kanan8 :
+                    kk5 = (kiri8 / kanan8)
+                if kiri8 >= kanan8 :
+                    kk8 = -(kanan8 / kiri8)
                 
-                new_test1 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih1],'L/B': [LB]})
+                new_test1 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih1],'L/B': [LB], 'kirikanan': [kk1],})
                 predicted_Incline1 = best_model.predict(new_test1)
         
-                new_test2 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih2],'L/B': [LB]})
+                new_test2 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih2],'L/B': [LB], 'kirikanan': [kk2],})
                 predicted_Incline2 = best_model.predict(new_test2)
         
-                new_test3 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih3],'L/B': [LB]})
+                new_test3 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih3],'L/B': [LB], 'kirikanan': [kk3],})
                 predicted_Incline3 = best_model.predict(new_test3)
         
-                new_test4 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih4],'L/B': [LB]})
+                new_test4 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih4],'L/B': [LB], 'kirikanan': [kk4],})
                 predicted_Incline4 = best_model.predict(new_test4)
         
-                new_test5 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih5],'L/B': [LB]})
+                new_test5 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih5],'L/B': [LB], 'kirikanan': [kk5],})
                 predicted_Incline5 = best_model.predict(new_test5)
         
-                new_test6 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih6],'L/B': [LB]})
+                new_test6 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih6],'L/B': [LB], 'kirikanan': [kk6],})
                 predicted_Incline6 = best_model.predict(new_test6)
         
-                new_test7 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih7],'L/B': [LB]})
+                new_test7 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih7],'L/B': [LB], 'kirikanan': [kk7],})
                 predicted_Incline7 = best_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih8],'L/B': [LB]})
+                new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih8],'L/B': [LB], 'kirikanan': [kk8],})
                 predicted_Incline8 = best_model.predict(new_test8)
         
                 dataS = pd.DataFrame({
