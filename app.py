@@ -278,7 +278,7 @@ if st.session_state.button_pressed:
 
                 # Add annotations
                 for i in range(len(dataS)):
-                        ax.annotate(i+1, (dataS['Moment Beban'].iloc[i], dataS['incline'].iloc[i])) # i+1 because Python's indexing starts at 0
+                        ax.annotate(i, (dataS['Moment Beban'].iloc[i], dataS['incline'].iloc[i])) # i+1 because Python's indexing starts at 0
 
                 ax.set_xlabel('Moment Beban')
                 ax.set_ylabel('incline')
