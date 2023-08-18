@@ -35,7 +35,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.047")
+st.title("Ship inclining prediction Ver 0.5")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -93,7 +93,7 @@ if ok:
 
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [50, 100, 200, 500, 1000],  # Adjust as needed
+        'n_estimators': [50, 100, 200, 500, 1000, 1250],  # Adjust as needed
         'max_depth': [None, 10, 20],       # Adjust as needed
         'min_samples_split': [ 2, 3, 4, 5],      # Adjust as needed
         'min_samples_leaf': [ 2, 3, 4]        # Adjust as needed
@@ -258,7 +258,6 @@ if st.session_state.button_pressed:
                 predicted_Incline8 = best_model.predict(new_test8)
         
                 dataS = pd.DataFrame({
-                        'No': ['1','2','3','4','5','6','7','8'],
                         'Moment Beban': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
                         'incline': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0]],
                                 }
