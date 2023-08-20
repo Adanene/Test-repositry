@@ -260,7 +260,7 @@ if st.session_state.button_pressed:
                 new_test7 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih7], 'B/T' :[BT], 'kirkan': [kk7],})
                 predicted_Incline7 = best_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih8],, 'B/T' :[BT], 'kirkan': [kk8],})
+                new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih8], 'B/T' :[BT], 'kirkan': [kk8],})
                 predicted_Incline8 = best_model.predict(new_test8)
         
                 dataS = pd.DataFrame({
