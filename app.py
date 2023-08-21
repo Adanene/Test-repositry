@@ -35,7 +35,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.55")
+st.title("Ship inclining prediction Ver 0.58")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -239,28 +239,28 @@ if st.session_state.button_pressed:
                 if kiri8 >= kanan8 :
                     kk8 = -(kanan8 / kiri8)
                 
-                new_test1 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih1], 'B/T' :[BT], 'kirkan': [kk1],})
+                new_test1 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih1], 'B/T' :[BT], 'kirkan': [kk1]})
                 predicted_Incline1 = best_model.predict(new_test1)
         
-                new_test2 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih2], 'B/T' :[BT], 'kirkan': [kk2],})
+                new_test2 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih2], 'B/T' :[BT], 'kirkan': [kk2]})
                 predicted_Incline2 = best_model.predict(new_test2)
         
-                new_test3 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih3], 'B/T' :[BT], 'kirkan': [kk3],})
+                new_test3 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih3], 'B/T' :[BT], 'kirkan': [kk3]})
                 predicted_Incline3 = best_model.predict(new_test3)
         
-                new_test4 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih4], 'B/T' :[BT], 'kirkan': [kk4],})
+                new_test4 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih4], 'B/T' :[BT], 'kirkan': [kk4]})
                 predicted_Incline4 = best_model.predict(new_test4)
         
-                new_test5 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih5], 'B/T' :[BT], 'kirkan': [kk5],})
+                new_test5 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih5], 'B/T' :[BT], 'kirkan': [kk5]})
                 predicted_Incline5 = best_model.predict(new_test5)
         
-                new_test6 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih6], 'B/T' :[BT], 'kirkan': [kk6],})
+                new_test6 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih6], 'B/T' :[BT], 'kirkan': [kk6]})
                 predicted_Incline6 = best_model.predict(new_test6)
         
-                new_test7 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih7], 'B/T' :[BT], 'kirkan': [kk7],})
+                new_test7 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih7], 'B/T' :[BT], 'kirkan': [kk7]})
                 predicted_Incline7 = best_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih8], 'B/T' :[BT], 'kirkan': [kk8],})
+                new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih8], 'B/T' :[BT], 'kirkan': [kk8]})
                 predicted_Incline8 = best_model.predict(new_test8)
         
                 dataS = pd.DataFrame({
