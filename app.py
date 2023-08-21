@@ -93,8 +93,8 @@ if ok:
 
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [50, 100, 200, 500, 1000],  # Adjust as needed
-        'max_depth': [None, 10, 20, 30],       # Adjust as needed
+        'n_estimators': [100, 200, 500, 1000, 1250],  # Adjust as needed
+        'max_depth': [None, 10, 20, 30, 40],       # Adjust as needed
         'min_samples_split': [ 2, 3, 4, 5],      # Adjust as needed
         'min_samples_leaf': [ 2, 3, 4]        # Adjust as needed
     }
