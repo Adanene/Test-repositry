@@ -35,7 +35,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.6")
+st.title("Ship inclining prediction Ver 0.61")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -93,14 +93,14 @@ if ok:
 
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [200, 500, 1000],  # Adjust as needed
+        'n_estimators': [250, 500, 750, 1000],  # Adjust as needed
         'max_depth': [None, 10, 20, 30, 40],       # Adjust as needed
         'min_samples_split': [ 2, 3, 4, 5],      # Adjust as needed
         'min_samples_leaf': [ 2, 3, 4]        # Adjust as needed
     }
 
     # Create the RandomForestRegressor
-    rf = RandomForestRegressor(random_state=500)
+    rf = RandomForestRegressor(random_state=600)
 
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, 
