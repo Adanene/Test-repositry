@@ -35,7 +35,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.62")
+st.title("Ship inclining prediction Ver 0.63")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -88,7 +88,7 @@ if ok:
     train_data, test_data = train_test_split(data, test_size=0.2, random_state=90)
 
     # Select the features and target variable
-    features = ['B/T', 'Cb', 'MB', 'D/T', 'Displacement',]
+    features = ['B/T', 'MB', 'D/T', 'MB/Disp',]
     target = 'Inclinement'
 
     # Define the parameter grid
@@ -158,14 +158,14 @@ if st.session_state.button_pressed:
                         kanan7 = 0
                         kanan8 = (beban_C)
                         
-                        Mselisih1 =  (kiri1 - kanan1) * (-1) * ((Breadth) / 2)
-                        Mselisih2 =  (kiri2 - kanan2)  * (-1) * ((Breadth) / 2)
-                        Mselisih3 =  (kiri3 - kanan3) * (-1) * ((Breadth) / 2)    
-                        Mselisih4 =  (kiri4 - kanan4) * (-1) * ((Breadth) / 2)
-                        Mselisih5 =  (kiri5 - kanan5) * (-1) * ((Breadth) / 2)   
-                        Mselisih6 =  (kiri6 - kanan6) * (-1) * ((Breadth) / 2)      
-                        Mselisih7 =  (kiri7 - kanan7) * (-1) * ((Breadth) / 2)  
-                        Mselisih8 =  (kiri8 - kanan8) * (-1) * ((Breadth) / 2)
+                        Mselisih1 =  ((kiri1 - kanan1) * (-1) * ((Breadth) / 2) / displacement)
+                        Mselisih2 =  ((kiri2 - kanan2)  * (-1) * ((Breadth) / 2) / displacement)
+                        Mselisih3 =  ((kiri3 - kanan3) * (-1) * ((Breadth) / 2) / displacement)    
+                        Mselisih4 =  ((kiri4 - kanan4) * (-1) * ((Breadth) / 2) / displacement)
+                        Mselisih5 =  ((kiri5 - kanan5) * (-1) * ((Breadth) / 2) / displacement)   
+                        Mselisih6 =  ((kiri6 - kanan6) * (-1) * ((Breadth) / 2) / displacement)      
+                        Mselisih7 =  ((kiri7 - kanan7) * (-1) * ((Breadth) / 2) / displacement) 
+                        Mselisih8 =  ((kiri8 - kanan8) * (-1) * ((Breadth) / 2) / displacement)
                 
                 if jumlah_beban == "6" :
 
@@ -187,14 +187,14 @@ if st.session_state.button_pressed:
                         kanan7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F)
                         kanan8 = (beban_A + beban_B + beban_D + beban_F)
                     
-                        Mselisih1 =  (kiri1 - kanan1) * (-1) * ((Breadth) / 2)
-                        Mselisih2 =  (kiri2 - kanan2)  * (-1) * ((Breadth) / 2)
-                        Mselisih3 =  (kiri3 - kanan3) * (-1) * ((Breadth) / 2)    
-                        Mselisih4 =  (kiri4 - kanan4) * (-1) * ((Breadth) / 2)
-                        Mselisih5 =  (kiri5 - kanan5) * (-1) * ((Breadth) / 2)   
-                        Mselisih6 =  (kiri6 - kanan6) * (-1) * ((Breadth) / 2)      
-                        Mselisih7 =  (kiri7 - kanan7) * (-1) * ((Breadth) / 2)  
-                        Mselisih8 =  (kiri8 - kanan8) * (-1) * ((Breadth) / 2)
+                        Mselisih1 =  ((kiri1 - kanan1) * (-1) * ((Breadth) / 2)  / displacement)
+                        Mselisih2 =  ((kiri2 - kanan2)  * (-1) * ((Breadth) / 2) / displacement)
+                        Mselisih3 =  ((kiri3 - kanan3) * (-1) * ((Breadth) / 2) / displacement)    
+                        Mselisih4 =  ((kiri4 - kanan4) * (-1) * ((Breadth) / 2) / displacement)
+                        Mselisih5 =  ((kiri5 - kanan5) * (-1) * ((Breadth) / 2) / displacement)   
+                        Mselisih6 =  ((kiri6 - kanan6) * (-1) * ((Breadth) / 2) / displacement)      
+                        Mselisih7 =  ((kiri7 - kanan7) * (-1) * ((Breadth) / 2) / displacement) 
+                        Mselisih8 =  ((kiri8 - kanan8) * (-1) * ((Breadth) / 2) / displacement)
 
                 #finding ratio
                 if Breadth == 0:
@@ -210,28 +210,28 @@ if st.session_state.button_pressed:
                         DT = (Depth / Draft)
 
                 
-                new_test1 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih1], 'B/T' :[BT], 'D/T' :[DT] })
+                new_test1 = pd.DataFrame({'Displacement': [displacement], 'MB/Disp': [Mselisih1], 'B/T' :[BT], 'D/T' :[DT] })
                 predicted_Incline1 = best_model.predict(new_test1)
         
-                new_test2 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih2], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test2 = pd.DataFrame({'Displacement': [displacement], 'MB/Disp': [Mselisih2], 'B/T' :[BT], 'D/T' :[DT]})
                 predicted_Incline2 = best_model.predict(new_test2)
         
-                new_test3 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih3], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test3 = pd.DataFrame({'Displacement': [displacement], 'MB/Disp': [Mselisih3], 'B/T' :[BT], 'D/T' :[DT]})
                 predicted_Incline3 = best_model.predict(new_test3)
         
-                new_test4 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih4], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test4 = pd.DataFrame({'Displacement': [displacement], 'MB/Disp': [Mselisih4], 'B/T' :[BT], 'D/T' :[DT]})
                 predicted_Incline4 = best_model.predict(new_test4)
         
-                new_test5 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih5], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test5 = pd.DataFrame({'Displacement': [displacement], 'MB/Disp': [Mselisih5], 'B/T' :[BT], 'D/T' :[DT]})
                 predicted_Incline5 = best_model.predict(new_test5)
         
-                new_test6 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih6], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test6 = pd.DataFrame({'Displacement': [displacement], 'MB/Disp': [Mselisih6], 'B/T' :[BT], 'D/T' :[DT]})
                 predicted_Incline6 = best_model.predict(new_test6)
         
-                new_test7 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih7], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test7 = pd.DataFrame({'Displacement': [displacement], 'MB/Disp': [Mselisih7], 'B/T' :[BT], 'D/T' :[DT]})
                 predicted_Incline7 = best_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({'Cb': [Cb], 'Displacement': [displacement], 'MB': [Mselisih8], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test8 = pd.DataFrame({'Displacement': [displacement], 'MB/Disp': [Mselisih8], 'B/T' :[BT], 'D/T' :[DT]})
                 predicted_Incline8 = best_model.predict(new_test8)
         
                 dataS = pd.DataFrame({
