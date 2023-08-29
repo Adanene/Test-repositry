@@ -87,7 +87,7 @@ if ok:
     train_data, test_data = train_test_split(data, test_size=0.2, random_state=90)
 
     # Select the features and target variable
-    features = ['Displacement','B/T', 'Cb', 'D/T', 'MB',]
+    features = ['B/T', 'Cb', 'D/T', 'MB', 'Displacement',]
     target = 'Inclinement'
 
     # Define the parameter grid
