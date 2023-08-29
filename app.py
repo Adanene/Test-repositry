@@ -1,4 +1,3 @@
-e3
 #Here is an Jupyter code for machine learning to predict ship stability during an inclining test using Python and scikit-learn library:
 
 #python
