@@ -1,4 +1,4 @@
-
+e3
 #Here is an Jupyter code for machine learning to predict ship stability during an inclining test using Python and scikit-learn library:
 
 #python
@@ -158,14 +158,14 @@ if st.session_state.button_pressed:
                         kanan7 = 0
                         kanan8 = (beban_C)
                         
-                        Mselisih1 =  ((kiri1 - kanan1) * (-1) * ((Breadth) / 2) / displacement)
-                        Mselisih2 =  ((kiri2 - kanan2)  * (-1) * ((Breadth) / 2) / displacement)
-                        Mselisih3 =  ((kiri3 - kanan3) * (-1) * ((Breadth) / 2) / displacement)    
-                        Mselisih4 =  ((kiri4 - kanan4) * (-1) * ((Breadth) / 2) / displacement)
-                        Mselisih5 =  ((kiri5 - kanan5) * (-1) * ((Breadth) / 2) / displacement)   
-                        Mselisih6 =  ((kiri6 - kanan6) * (-1) * ((Breadth) / 2) / displacement)      
-                        Mselisih7 =  ((kiri7 - kanan7) * (-1) * ((Breadth) / 2) / displacement) 
-                        Mselisih8 =  ((kiri8 - kanan8) * (-1) * ((Breadth) / 2) / displacement)
+                        Mselisih1 =  ((kiri1 - kanan1) * (-1) * ((Breadth) / 2))
+                        Mselisih2 =  ((kiri2 - kanan2)  * (-1) * ((Breadth) / 2))
+                        Mselisih3 =  ((kiri3 - kanan3) * (-1) * ((Breadth) / 2))    
+                        Mselisih4 =  ((kiri4 - kanan4) * (-1) * ((Breadth) / 2))
+                        Mselisih5 =  ((kiri5 - kanan5) * (-1) * ((Breadth) / 2))   
+                        Mselisih6 =  ((kiri6 - kanan6) * (-1) * ((Breadth) / 2))      
+                        Mselisih7 =  ((kiri7 - kanan7) * (-1) * ((Breadth) / 2)) 
+                        Mselisih8 =  ((kiri8 - kanan8) * (-1) * ((Breadth) / 2))
                 
                 if jumlah_beban == "6" :
 
@@ -187,14 +187,14 @@ if st.session_state.button_pressed:
                         kanan7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F)
                         kanan8 = (beban_A + beban_B + beban_D + beban_F)
                     
-                        Mselisih1 =  ((kiri1 - kanan1) * (-1) * ((Breadth) / 2)  / displacement)
-                        Mselisih2 =  ((kiri2 - kanan2)  * (-1) * ((Breadth) / 2) / displacement)
-                        Mselisih3 =  ((kiri3 - kanan3) * (-1) * ((Breadth) / 2) / displacement)    
-                        Mselisih4 =  ((kiri4 - kanan4) * (-1) * ((Breadth) / 2) / displacement)
-                        Mselisih5 =  ((kiri5 - kanan5) * (-1) * ((Breadth) / 2) / displacement)   
-                        Mselisih6 =  ((kiri6 - kanan6) * (-1) * ((Breadth) / 2) / displacement)      
-                        Mselisih7 =  ((kiri7 - kanan7) * (-1) * ((Breadth) / 2) / displacement) 
-                        Mselisih8 =  ((kiri8 - kanan8) * (-1) * ((Breadth) / 2) / displacement)
+                        Mselisih1 =  ((kiri1 - kanan1) * (-1) * ((Breadth) / 2))
+                        Mselisih2 =  ((kiri2 - kanan2)  * (-1) * ((Breadth) / 2))
+                        Mselisih3 =  ((kiri3 - kanan3) * (-1) * ((Breadth) / 2))    
+                        Mselisih4 =  ((kiri4 - kanan4) * (-1) * ((Breadth) / 2))
+                        Mselisih5 =  ((kiri5 - kanan5) * (-1) * ((Breadth) / 2))   
+                        Mselisih6 =  ((kiri6 - kanan6) * (-1) * ((Breadth) / 2))      
+                        Mselisih7 =  ((kiri7 - kanan7) * (-1) * ((Breadth) / 2)) 
+                        Mselisih8 =  ((kiri8 - kanan8) * (-1) * ((Breadth) / 2))
 
                 #finding ratio
                 if Breadth == 0:
