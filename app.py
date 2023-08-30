@@ -87,7 +87,7 @@ if ok:
     train_data, test_data = train_test_split(data, test_size=0.2, random_state=90)
 
     # Select the features and target variable
-    features = ['B/T', 'Cb', 'D/T', 'bebankk', 'displacement', 'proses ke', 'kirkan']
+    features = ['B/T', 'Cb', 'D/T', 'MB', 'displacement', 'proses ke', 'kirkan']
     target = 'Inclinement'
 
     # Define the parameter grid
@@ -247,38 +247,38 @@ if st.session_state.button_pressed:
                     kikan8 = (-(kanan8 / kiri8))
                     
                     
-                Mselisih1 =  kikan1 * totalB * Breadth / 2
-                Mselisih2 =  kikan2 * totalB * Breadth / 2
-                Mselisih3 =  kikan3 * totalB * Breadth / 2
-                Mselisih4 =  kikan4 * totalB * Breadth / 2
-                Mselisih5 =  kikan5 * totalB * Breadth / 2 
-                Mselisih6 =  kikan6 * totalB * Breadth / 2    
-                Mselisih7 =  kikan7 * totalB * Breadth / 2
-                Mselisih8 =  kikan8 * totalB * Breadth / 2             
+                Mselisih1 =  (kiri1 - kanan1) * (-1) * ((Breadth) / 2)
+                Mselisih2 =  (kiri2 - kanan2)  * (-1) * ((Breadth) / 2)
+                Mselisih3 =  (kiri3 - kanan3) * (-1) * ((Breadth) / 2)    
+                Mselisih4 =  (kiri4 - kanan4) * (-1) * ((Breadth) / 2)
+                Mselisih5 =  (kiri5 - kanan5) * (-1) * ((Breadth) / 2)   
+                Mselisih6 =  (kiri6 - kanan6) * (-1) * ((Breadth) / 2)      
+                Mselisih7 =  (kiri7 - kanan7) * (-1) * ((Breadth) / 2)  
+                Mselisih8 =  (kiri8 - kanan8) * (-1) * ((Breadth) / 2)        
 
                 
-                new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'bebankk': [Mselisih1], 'displacement' : [displacement], 'proses ke' : [1], 'kirkan' : [kikan1], })
+                new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih1], 'displacement' : [displacement], 'proses ke' : [1], 'kirkan' : [kikan1], })
                 predicted_Incline1 = best_model.predict(new_test1)
         
-                new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'bebankk': [Mselisih2], 'displacement' : [displacement], 'proses ke' : [2], 'kirkan' : [kikan2], })
+                new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih2], 'displacement' : [displacement], 'proses ke' : [2], 'kirkan' : [kikan2], })
                 predicted_Incline2 = best_model.predict(new_test2)
         
-                new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'bebankk': [Mselisih3], 'displacement' : [displacement], 'proses ke' : [3], 'kirkan' : [kikan3], })
+                new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih3], 'displacement' : [displacement], 'proses ke' : [3], 'kirkan' : [kikan3], })
                 predicted_Incline3 = best_model.predict(new_test3)
         
-                new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'bebankk': [Mselisih4], 'displacement' : [displacement], 'proses ke' : [4], 'kirkan' : [kikan4], })
+                new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih4], 'displacement' : [displacement], 'proses ke' : [4], 'kirkan' : [kikan4], })
                 predicted_Incline4 = best_model.predict(new_test4)
         
-                new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'bebankk': [Mselisih5], 'displacement' : [displacement], 'proses ke' : [5], 'kirkan' : [kikan5], })
+                new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih5], 'displacement' : [displacement], 'proses ke' : [5], 'kirkan' : [kikan5], })
                 predicted_Incline5 = best_model.predict(new_test5)
         
-                new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'bebankk': [Mselisih6], 'displacement' : [displacement], 'proses ke' : [6], 'kirkan' : [kikan6], })
+                new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih6], 'displacement' : [displacement], 'proses ke' : [6], 'kirkan' : [kikan6], })
                 predicted_Incline6 = best_model.predict(new_test6)
         
-                new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'bebankk': [Mselisih7], 'displacement' : [displacement], 'proses ke' : [7], 'kirkan' : [kikan7], })
+                new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih7], 'displacement' : [displacement], 'proses ke' : [7], 'kirkan' : [kikan7], })
                 predicted_Incline7 = best_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'bebankk': [Mselisih8], 'displacement' : [displacement], 'proses ke' : [8], 'kirkan' : [kikan8], })
+                new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih8], 'displacement' : [displacement], 'proses ke' : [8], 'kirkan' : [kikan8], })
                 predicted_Incline8 = best_model.predict(new_test8)
         
                 dataS = pd.DataFrame({
