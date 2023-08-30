@@ -247,14 +247,14 @@ if st.session_state.button_pressed:
                     kikan8 = ((kanan8 / kiri8))
                     
                     
-                Mselisih1 =  kikan1 * totalB
-                Mselisih2 =  kikan2 * totalB
-                Mselisih3 =  kikan3 * totalB 
-                Mselisih4 =  kikan4 * totalB
-                Mselisih5 =  kikan5 * totalB   
-                Mselisih6 =  kikan6 * totalB    
-                Mselisih7 =  kikan7 * totalB 
-                Mselisih8 =  kikan8 * totalB              
+                Mselisih1 =  kikan1 * totalB * Breadth / 2
+                Mselisih2 =  kikan2 * totalB * Breadth / 2
+                Mselisih3 =  kikan3 * totalB * Breadth / 2
+                Mselisih4 =  kikan4 * totalB * Breadth / 2
+                Mselisih5 =  kikan5 * totalB * Breadth / 2 
+                Mselisih6 =  kikan6 * totalB * Breadth / 2    
+                Mselisih7 =  kikan7 * totalB * Breadth / 2
+                Mselisih8 =  kikan8 * totalB * Breadth / 2             
 
                 
                 new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'bebankk': [Mselisih1], 'displacement' : [displacement], 'proses ke' : [1], 'kirkan' : [kikan1], })
