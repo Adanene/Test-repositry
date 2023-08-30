@@ -34,7 +34,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.73")
+st.title("Ship inclining prediction Ver 0.75")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -225,7 +225,7 @@ if st.session_state.button_pressed:
                     kikan2 = ((kanan2 / kiri2)) 
                     
                 if kiri3 < kanan3:
-                    kikan1 = ((kiri3 / kanan3))
+                    kikan3 = ((kiri3 / kanan3))
                 else :
                     kikan3 = ((kanan3 / kiri3))
                     
