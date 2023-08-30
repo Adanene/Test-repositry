@@ -279,13 +279,12 @@ if st.session_state.button_pressed:
                 st.pyplot(fig)
             
                 # Plotting feature importances
-                import matplotlib.pyplot as plt
-                plt.figure(figsize=(10, 6))
-                plt.title("Feature Importances")
-                plt.bar(range(len(importances)), importances[sorted_indices], align='center')
-                plt.xticks(range(len(importances)), np.array(features)[sorted_indices])
-                plt.ylabel('Importance')
-                plt.xlabel('Features')
-                plt.tight_layout()
-                st.pyplot()
+                imp, ax = plt.subplots(figsize=(10, 6))
+                ax.bar(range(len(importances)), importances[sorted_indices], align='center')
+                ax.set_xticks(range(len(importances)))
+                ax.set_xticklabels(np.array(features)[sorted_indices])
+                ax.set_title("Feature Importances")
+                ax.set_ylabel('Importance')
+                ax.set_xlabel('Features')
 
+                st.pyplot(imp)  # Pass the figure object to st.pyplot()
