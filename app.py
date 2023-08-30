@@ -34,7 +34,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.72")
+st.title("Ship inclining prediction Ver 0.73")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -92,8 +92,8 @@ if ok:
 
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [50, 100, 250, 500],  # Adjust as needed
-        'max_depth': [None, 5, 10, 25, 50],       # Adjust as needed
+        'n_estimators': [100, 250, 500, 750],  # Adjust as needed
+        'max_depth': [None, 10, 25, 50, 75],       # Adjust as needed
         'min_samples_split': [ 2, 3, 4, 5],      # Adjust as needed
         'min_samples_leaf': [ 2, 3, 4]        # Adjust as needed
     }
