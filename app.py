@@ -225,28 +225,28 @@ if st.session_state.button_pressed:
                 Mselisih8 =  ((kiri8 - kanan8) * (-1) * ((Breadth) / 2))
 
                 
-                new_test1 = pd.DataFrame({'displacement' : [displacement], 'Cb': [Cb], 'MB': [Mselisih1], 'B/T' :[BT], 'D/T' :[DT] })
+                new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih1], 'displacement' : [displacement], })
                 predicted_Incline1 = best_model.predict(new_test1)
         
-                new_test2 = pd.DataFrame({'displacement' : [displacement], 'Cb': [Cb], 'MB': [Mselisih2], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih2], 'displacement' : [displacement], })
                 predicted_Incline2 = best_model.predict(new_test2)
         
-                new_test3 = pd.DataFrame({'displacement' : [displacement], 'Cb': [Cb], 'MB': [Mselisih3], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih3], 'displacement' : [displacement], })
                 predicted_Incline3 = best_model.predict(new_test3)
         
-                new_test4 = pd.DataFrame({'displacement' : [displacement], 'Cb': [Cb], 'MB': [Mselisih4], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih4], 'displacement' : [displacement], })
                 predicted_Incline4 = best_model.predict(new_test4)
         
-                new_test5 = pd.DataFrame({'displacement' : [displacement], 'Cb': [Cb], 'MB': [Mselisih5], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih5], 'displacement' : [displacement], })
                 predicted_Incline5 = best_model.predict(new_test5)
         
-                new_test6 = pd.DataFrame({'displacement' : [displacement], 'Cb': [Cb], 'MB': [Mselisih6], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih6], 'displacement' : [displacement], })
                 predicted_Incline6 = best_model.predict(new_test6)
         
-                new_test7 = pd.DataFrame({'displacement' : [displacement], 'Cb': [Cb], 'MB': [Mselisih7], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih7], 'displacement' : [displacement], })
                 predicted_Incline7 = best_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({'displacement' : [displacement], 'Cb': [Cb], 'MB': [Mselisih8], 'B/T' :[BT], 'D/T' :[DT]})
+                new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih8], 'displacement' : [displacement], })
                 predicted_Incline8 = best_model.predict(new_test8)
         
                 dataS = pd.DataFrame({
