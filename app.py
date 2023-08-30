@@ -110,6 +110,28 @@ if ok:
 
     # Get the best model from GridSearchCV
     best_model = grid_search.best_estimator_
+    
+    # Extract feature importances
+    importances = best_model.feature_importances_
+    sorted_indices = np.argsort(importances)[::-1]
+
+    # Plotting feature importances
+    import matplotlib.pyplot as plt
+    plt.figure(figsize=(10, 6))
+    plt.title("Feature Importances")
+    plt.bar(range(len(importances)), importances[sorted_indices], align='center')
+    plt.xticks(range(len(importances)), np.array(features)[sorted_indices])
+    plt.ylabel('Importance')
+    plt.xlabel('Features')
+    plt.tight_layout()
+    plt.show()
+
+    # Make predictions on the test set
+    test_predictions = best_model.predict(test_data[features])
+
+    # Evaluate the model performance
+    mse = mean_squared_error(test_data[target], test_predictions)
+    print('Mean squared error:', mse) 
 
     # Make predictions on the test set
     test_predictions = best_model.predict(test_data[features])
@@ -192,6 +214,7 @@ if st.session_state.button_pressed:
                 else :
                         BT = (Breadth /Draft) 
                         DT = (Depth / Draft)
+                    
                 Mselisih1 =  ((kiri1 - kanan1) * (-1) * ((Breadth) / 2))
                 Mselisih2 =  ((kiri2 - kanan2)  * (-1) * ((Breadth) / 2))
                 Mselisih3 =  ((kiri3 - kanan3) * (-1) * ((Breadth) / 2))    
@@ -200,7 +223,6 @@ if st.session_state.button_pressed:
                 Mselisih6 =  ((kiri6 - kanan6) * (-1) * ((Breadth) / 2))      
                 Mselisih7 =  ((kiri7 - kanan7) * (-1) * ((Breadth) / 2)) 
                 Mselisih8 =  ((kiri8 - kanan8) * (-1) * ((Breadth) / 2))
-
 
                 
                 new_test1 = pd.DataFrame({'displacement' : [displacement], 'Cb': [Cb], 'MB': [Mselisih1], 'B/T' :[BT], 'D/T' :[DT] })
