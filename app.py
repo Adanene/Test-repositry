@@ -287,5 +287,5 @@ if st.session_state.button_pressed:
                 plt.ylabel('Importance')
                 plt.xlabel('Features')
                 plt.tight_layout()
-                plt.show()
+                st.pyplot()
 
