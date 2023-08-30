@@ -34,7 +34,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.68")
+st.title("Ship inclining prediction Ver 0.70")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -115,16 +115,6 @@ if ok:
     importances = best_model.feature_importances_
     sorted_indices = np.argsort(importances)[::-1]
 
-    # Plotting feature importances
-    import matplotlib.pyplot as plt
-    plt.figure(figsize=(10, 6))
-    plt.title("Feature Importances")
-    plt.bar(range(len(importances)), importances[sorted_indices], align='center')
-    plt.xticks(range(len(importances)), np.array(features)[sorted_indices])
-    plt.ylabel('Importance')
-    plt.xlabel('Features')
-    plt.tight_layout()
-    plt.show()
 
     # Make predictions on the test set
     test_predictions = best_model.predict(test_data[features])
@@ -287,3 +277,15 @@ if st.session_state.button_pressed:
         
                 # Display the plot in Streamlit
                 st.pyplot(fig)
+            
+                # Plotting feature importances
+                import matplotlib.pyplot as plt
+                plt.figure(figsize=(10, 6))
+                plt.title("Feature Importances")
+                plt.bar(range(len(importances)), importances[sorted_indices], align='center')
+                plt.xticks(range(len(importances)), np.array(features)[sorted_indices])
+                plt.ylabel('Importance')
+                plt.xlabel('Features')
+                plt.tight_layout()
+                plt.show()
+
