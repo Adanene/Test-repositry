@@ -98,10 +98,6 @@ if ok:
 
     # Make predictions on the test set
     test_predictions = model.predict(test_data[features])
-
-    # Extract feature importances
-    importances = model.feature_importances_
-    sorted_indices = np.argsort(importances)[::-1]
     
     # Evaluate the model performance
     mse = mean_squared_error(test_data[target], test_predictions)
