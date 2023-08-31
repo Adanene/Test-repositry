@@ -34,7 +34,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.81")
+st.title("Ship inclining prediction Ver 0.82")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -99,6 +99,10 @@ if ok:
     # Make predictions on the test set
     test_predictions = model.predict(test_data[features])
 
+    # Extract feature importances
+    importances = model.feature_importances_
+    sorted_indices = np.argsort(importances)[::-1]
+    
     # Evaluate the model performance
     mse = mean_squared_error(test_data[target], test_predictions)
     print('Mean squared error:', mse)
