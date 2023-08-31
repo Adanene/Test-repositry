@@ -90,45 +90,18 @@ if ok:
     features = ['B/T', 'Cb', 'D/T', 'MB', 'displacement',]
     target = 'Inclinement'
 
-    # Define the parameter grid
-    param_grid = {
-        'n_estimators': [100, 250, 500, 750],  # Adjust as needed
-        'max_depth': [None, 10, 25, 50, 75],       # Adjust as needed
-        'min_samples_split': [ 2, 3, 4, 5],      # Adjust as needed
-        'min_samples_leaf': [ 2, 3, 4]        # Adjust as needed
-    }
+    Create the LinearRegression model
+    model = LinearRegression()
 
-    # Create the RandomForestRegressor
-    rf = RandomForestRegressor(random_state=600)
-
-    # Create the GridSearchCV object
-    grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, 
-                               cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error')
-
-    # Fit the GridSearchCV to the training data
-    grid_search.fit(train_data[features], train_data[target])
-
-    # Get the best model from GridSearchCV
-    best_model = grid_search.best_estimator_
-    
-    # Extract feature importances
-    importances = best_model.feature_importances_
-    sorted_indices = np.argsort(importances)[::-1]
-
+    # Fit the model to the training data
+    model.fit(train_data[features], train_data[target])
 
     # Make predictions on the test set
-    test_predictions = best_model.predict(test_data[features])
+    test_predictions = model.predict(test_data[features])
 
     # Evaluate the model performance
     mse = mean_squared_error(test_data[target], test_predictions)
-    print('Mean squared error:', mse) 
-
-    # Make predictions on the test set
-    test_predictions = best_model.predict(test_data[features])
-
-    # Evaluate the model performance
-    mse = mean_squared_error(test_data[target], test_predictions)
-    print('Mean squared error:', mse) 
+    print('Mean squared error:', mse)
 
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
