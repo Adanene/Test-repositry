@@ -290,8 +290,11 @@ if st.session_state.button_pressed:
                 ax.axhline(y=0, color='red', linestyle='--', label="")
                 ax.legend()
 
+                # After fitting the model
+                coefficients = model.coef_
                 coef_df = pd.DataFrame(coefficients, features, columns=['Coefficient'])
                 print(coef_df)
+
                 # Display the plot in Streamlit
                 st.pyplot(fig)
             
