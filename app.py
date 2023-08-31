@@ -97,7 +97,7 @@ if ok:
     model.fit(train_data[features], train_data[target])
 
     # Make predictions on the test set
-    test_predictions = model.predict(test_data[features])
+    test_predictions = best_model.predict(test_data[features])
 
     # Evaluate the model performance
     mse = mean_squared_error(test_data[target], test_predictions)
