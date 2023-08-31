@@ -34,7 +34,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.82")
+st.title("Ship inclining prediction Ver 0.84")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -87,7 +87,7 @@ if ok:
     train_data, test_data = train_test_split(data, test_size=0.2, random_state=90)
 
     # Select the features and target variable
-    features = ['B/T', 'Cb', 'D/T', 'MB', 'displacement',]
+    features = ['B/T', 'Cb', 'D/T', 'kirkan', 'beban/disp',]
     target = 'Inclinement'
 
     #Create the LinearRegression model
@@ -120,6 +120,8 @@ if st.session_state.button_pressed:
         
                 #calculate displacement
                 displacement = (Lwl * Breadth * Draft * Cb)
+
+                totdisp = (totalB / displacement)
                 
 
                 #calculate moment
@@ -230,28 +232,28 @@ if st.session_state.button_pressed:
                 Mselisih8 =  (kiri8 - kanan8) * (-1) * ((Breadth) / 2)        
 
                 
-                new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih1], 'displacement' : [displacement], })
+                new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kikan1], 'beban/disp' : [totdisp], })
                 predicted_Incline1 = model.predict(new_test1)
         
-                new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih2], 'displacement' : [displacement], })
+                new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kikan2], 'beban/disp' : [totdisp], })
                 predicted_Incline2 = model.predict(new_test2)
         
-                new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih3], 'displacement' : [displacement], })
+                new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kikan3], 'beban/disp' : [totdisp], })
                 predicted_Incline3 = model.predict(new_test3)
         
-                new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih4], 'displacement' : [displacement], })
+                new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kikan4], 'beban/disp' : [totdisp], })
                 predicted_Incline4 = model.predict(new_test4)
         
-                new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih5], 'displacement' : [displacement], })
+                new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kikan5], 'beban/disp' : [totdisp], })
                 predicted_Incline5 = model.predict(new_test5)
         
-                new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih6], 'displacement' : [displacement], })
+                new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kikan6], 'beban/disp' : [totdisp], })
                 predicted_Incline6 = model.predict(new_test6)
         
-                new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih7], 'displacement' : [displacement], })
+                new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kikan7], 'beban/disp' : [totdisp], })
                 predicted_Incline7 = model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih8], 'displacement' : [displacement], })
+                new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kikan8], 'beban/disp' : [totdisp], })
                 predicted_Incline8 = model.predict(new_test8)
         
                 dataS = pd.DataFrame({
