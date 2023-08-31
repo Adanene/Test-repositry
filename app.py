@@ -97,7 +97,7 @@ if ok:
     model.fit(train_data[features], train_data[target])
 
     # Make predictions on the test set
-    test_predictions = best_model.predict(test_data[features])
+    test_predictions = model.predict(test_data[features])
 
     # Evaluate the model performance
     mse = mean_squared_error(test_data[target], test_predictions)
@@ -231,28 +231,28 @@ if st.session_state.button_pressed:
 
                 
                 new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih1], 'displacement' : [displacement], })
-                predicted_Incline1 = best_model.predict(new_test1)
+                predicted_Incline1 = model.predict(new_test1)
         
                 new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih2], 'displacement' : [displacement], })
-                predicted_Incline2 = best_model.predict(new_test2)
+                predicted_Incline2 = model.predict(new_test2)
         
                 new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih3], 'displacement' : [displacement], })
-                predicted_Incline3 = best_model.predict(new_test3)
+                predicted_Incline3 = model.predict(new_test3)
         
                 new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih4], 'displacement' : [displacement], })
-                predicted_Incline4 = best_model.predict(new_test4)
+                predicted_Incline4 = model.predict(new_test4)
         
                 new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih5], 'displacement' : [displacement], })
-                predicted_Incline5 = best_model.predict(new_test5)
+                predicted_Incline5 = model.predict(new_test5)
         
                 new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih6], 'displacement' : [displacement], })
-                predicted_Incline6 = best_model.predict(new_test6)
+                predicted_Incline6 = model.predict(new_test6)
         
                 new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih7], 'displacement' : [displacement], })
-                predicted_Incline7 = best_model.predict(new_test7)
+                predicted_Incline7 = model.predict(new_test7)
         
                 new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'MB': [Mselisih8], 'displacement' : [displacement], })
-                predicted_Incline8 = best_model.predict(new_test8)
+                predicted_Incline8 = model.predict(new_test8)
         
                 dataS = pd.DataFrame({
                         'Moment Beban': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
