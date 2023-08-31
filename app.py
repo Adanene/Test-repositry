@@ -208,22 +208,22 @@ if st.session_state.button_pressed:
                         BT = (Breadth /Draft) 
                         DT = (Depth / Draft)
                     
-                if kiri1 < kanan1:
-                    kikan1 = ((kanan1 - kiri1) / totalB)
-                if kiri2 < kanan2:
-                    kikan2 = ((kanan2 - kiri2) / totalB)                 
-                if kiri3 < kanan3:
-                    kikan3 = ((kanan3 - kiri3) / totalB)
-                if kiri4 < kanan4:
-                    kikan4 = ((kanan4 - kiri4) / totalB)      
-                if kiri5 < kanan5:
-                    kikan5 = ((kanan5 - kiri5) / totalB)
-                if kiri6 < kanan6:
-                    kikan6 = ((kanan6 - kiri6) / totalB)                   
-                if kiri7 < kanan7:
-                    kikan7 = ((kanan7 - kiri7) / totalB)
-                if kiri8 < kanan8:
-                    kikan8 = ((kanan8 - kiri8) / totalB)
+               
+                kikan1 = ((kanan1 - kiri1) / totalB)
+              
+                kikan2 = ((kanan2 - kiri2) / totalB)                 
+            
+                kikan3 = ((kanan3 - kiri3) / totalB)
+              
+                kikan4 = ((kanan4 - kiri4) / totalB)      
+             
+                kikan5 = ((kanan5 - kiri5) / totalB)
+               
+                kikan6 = ((kanan6 - kiri6) / totalB)                   
+              
+                kikan7 = ((kanan7 - kiri7) / totalB)
+             
+                kikan8 = ((kanan8 - kiri8) / totalB)
                     
                     
                 Mselisih1 =  (kiri1 - kanan1) * (-1) * ((Breadth) / 2)
