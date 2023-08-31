@@ -209,44 +209,21 @@ if st.session_state.button_pressed:
                         DT = (Depth / Draft)
                     
                 if kiri1 < kanan1:
-                    kikan1 = ((kiri1 / kanan1))
-                else :
-                    kikan1 = (-(kanan1 / kiri1)) 
-                    
+                    kikan1 = ((kanan1 - kiri1) / totalB)
                 if kiri2 < kanan2:
-                    kikan2 = ((kiri2 / kanan2))
-                else :
-                    kikan2 = (-(kanan2 / kiri2)) 
-                    
+                    kikan2 = ((kanan2 - kiri2) / totalB)                 
                 if kiri3 < kanan3:
-                    kikan3 = ((kiri3 / kanan3))
-                else :
-                    kikan3 = (-(kanan3 / kiri3))
-                    
+                    kikan3 = ((kanan3 - kiri3) / totalB)
                 if kiri4 < kanan4:
-                    kikan4 = ((kiri4 / kanan4))
-                else :
-                    kikan4 = (-(kanan4 / kiri4))
-                    
+                    kikan4 = ((kanan4 - kiri4) / totalB)      
                 if kiri5 < kanan5:
-                    kikan5 = ((kiri5 / kanan5))
-                else :
-                    kikan5 = (-(kanan5 / kiri5))
-                    
+                    kikan5 = ((kanan5 - kiri5) / totalB)
                 if kiri6 < kanan6:
-                    kikan6 = ((kiri6 / kanan6))
-                else :
-                    kikan6 = (-(kanan6 / kiri6))
-                    
+                    kikan6 = ((kanan6 - kiri6) / totalB)                   
                 if kiri7 < kanan7:
-                    kikan7 = ((kiri7 / kanan7))
-                else :
-                    kikan7 = (-(kanan7 / kiri7)) 
-
+                    kikan7 = ((kanan7 - kiri7) / totalB)
                 if kiri8 < kanan8:
-                    kikan8 = ((kiri8 / kanan8))
-                else :
-                    kikan8 = (-(kanan8 / kiri8))
+                    kikan8 = ((kanan8 - kiri8) / totalB)
                     
                     
                 Mselisih1 =  (kiri1 - kanan1) * (-1) * ((Breadth) / 2)
