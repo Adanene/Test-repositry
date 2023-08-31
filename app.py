@@ -289,7 +289,9 @@ if st.session_state.button_pressed:
                 thresholds = dataS['incline'].mean()  # example threshold using mean, adjust as needed
                 ax.axhline(y=0, color='red', linestyle='--', label="")
                 ax.legend()
-        
+
+                coef_df = pd.DataFrame(coefficients, features, columns=['Coefficient'])
+                print(coef_df)
                 # Display the plot in Streamlit
                 st.pyplot(fig)
             
