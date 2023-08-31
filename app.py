@@ -34,7 +34,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.84")
+st.title("Ship inclining prediction Ver 0.86")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -89,19 +89,46 @@ if ok:
     # Select the features and target variable
     features = ['B/T', 'Cb', 'D/T', 'kirkan', 'beban/disp',]
     target = 'Inclinement'
+    
+    # Define the parameter grid
+    param_grid = {
+        'n_estimators': [100, 250, 500, 750],  # Adjust as needed
+        'max_depth': [None, 10, 25, 50, 75],       # Adjust as needed
+        'min_samples_split': [ 2, 3, 4, 5],      # Adjust as needed
+        'min_samples_leaf': [ 2, 3, 4]        # Adjust as needed
+    }
 
-    #Create the LinearRegression model
-    model = LinearRegression()
+    # Create the RandomForestRegressor
+    rf = RandomForestRegressor(random_state=600)
 
-    # Fit the model to the training data
-    model.fit(train_data[features], train_data[target])
+    # Create the GridSearchCV object
+    grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, 
+                               cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error')
+
+    # Fit the GridSearchCV to the training data
+    grid_search.fit(train_data[features], train_data[target])
+
+    # Get the best model from GridSearchCV
+    best_model = grid_search.best_estimator_
+    
+    # Extract feature importances
+    importances = best_model.feature_importances_
+    sorted_indices = np.argsort(importances)[::-1]
+
 
     # Make predictions on the test set
-    test_predictions = model.predict(test_data[features])
-    
+    test_predictions = best_model.predict(test_data[features])
+
     # Evaluate the model performance
     mse = mean_squared_error(test_data[target], test_predictions)
-    print('Mean squared error:', mse)
+    print('Mean squared error:', mse) 
+
+    # Make predictions on the test set
+    test_predictions = best_model.predict(test_data[features])
+
+    # Evaluate the model performance
+    mse = mean_squared_error(test_data[target], test_predictions)
+    print('Mean squared error:', mse) 
 
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
@@ -291,11 +318,6 @@ if st.session_state.button_pressed:
                 thresholds = dataS['incline'].mean()  # example threshold using mean, adjust as needed
                 ax.axhline(y=0, color='red', linestyle='--', label="")
                 ax.legend()
-
-                # After fitting the model
-                coefficients = model.coef_
-                coef_df = pd.DataFrame(coefficients, features, columns=['Coefficient'])
-                st.subheader(f"{coef_df}")
 
                 # Display the plot in Streamlit
                 st.pyplot(fig)
