@@ -90,7 +90,7 @@ if ok:
     features = ['B/T', 'Cb', 'D/T', 'MB', 'displacement',]
     target = 'Inclinement'
 
-    Create the LinearRegression model
+    #Create the LinearRegression model
     model = LinearRegression()
 
     # Fit the model to the training data
