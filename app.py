@@ -103,35 +103,26 @@ if ok:
     # Create the XGBoost regressor
     xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
 
-
     # Create the GridSearchCV object
-    grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, 
-                               cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error')
+    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid, 
+                           cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error')
 
     # Fit the GridSearchCV to the training data
     grid_search.fit(train_data[features], train_data[target])
 
     # Get the best model from GridSearchCV
     best_model = grid_search.best_estimator_
-    
-    # Extract feature importances
+
+    # Make predictions on the test set
+    test_predictions = best_model.predict(test_data[features])
+
+    # Evaluate the model performance
+    mse = mean_squared_error(test_data[target], test_predictions)
+    print('Mean squared error:', mse)
+
+    # Note: XGBoost also provides feature importances similar to Random Forest
     importances = best_model.feature_importances_
     sorted_indices = np.argsort(importances)[::-1]
-
-
-    # Make predictions on the test set
-    test_predictions = best_model.predict(test_data[features])
-
-    # Evaluate the model performance
-    mse = mean_squared_error(test_data[target], test_predictions)
-    print('Mean squared error:', mse) 
-
-    # Make predictions on the test set
-    test_predictions = best_model.predict(test_data[features])
-
-    # Evaluate the model performance
-    mse = mean_squared_error(test_data[target], test_predictions)
-    print('Mean squared error:', mse) 
 
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
