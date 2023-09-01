@@ -7,6 +7,7 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+import xgboost as xgb
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
@@ -34,7 +35,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.86")
+st.title("Ship inclining prediction Ver 0.87 (XGB)")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -92,14 +93,16 @@ if ok:
     
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [100, 250, 500, 750],  # Adjust as needed
-        'max_depth': [None, 10, 25, 50, 75],       # Adjust as needed
-        'min_samples_split': [ 2, 3, 4, 5],      # Adjust as needed
-        'min_samples_leaf': [ 2, 3, 4]        # Adjust as needed
+        'n_estimators': [100, 250, 500, 750], 
+        'max_depth': [3, 5, 7, 9],
+        'learning_rate': [0.01, 0.05, 0.1],
+        'subsample': [0.8, 0.9, 1.0],
+        'colsample_bytree': [0.8, 0.9, 1.0]
     }
 
-    # Create the RandomForestRegressor
-    rf = RandomForestRegressor(random_state=600)
+    # Create the XGBoost regressor
+    xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
+
 
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, 
