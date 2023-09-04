@@ -97,7 +97,7 @@ if ok:
         'max_depth': [2, 4, 6, 8],
         'learning_rate': [0.1, 0.15, 0.2],
         'subsample': [0.7, 0.8, 0.9, 1.0],
-        'colsample_bytree': [0.6, 0.7, 0.8, 0.9,]
+        'colsample_bytree': [0.7, 0.8, 0.9, 0.1,]
     }
 
     # Create the XGBoost regressor
