@@ -35,7 +35,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.89 (XGB)")
+st.title("Ship inclining prediction Ver 0.90 (XGB)")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -95,7 +95,7 @@ if ok:
     param_grid = {
         'n_estimators': [100, 250, 500, 750], 
         'max_depth': [3, 5, 7, 9],
-        'learning_rate': [0.01, 0.05, 0.1],
+        'learning_rate': [0.05, 0.01, 0.15],
         'subsample': [0.7, 0.8, 0.9, 1.0],
         'colsample_bytree': [0.6, 0.7, 0.8, 0.9,]
     }
