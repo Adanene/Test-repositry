@@ -85,7 +85,7 @@ if ok:
     # chnge some data into numeric
 
     # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.2, random_state=90)
+    train_data, test_data = train_test_split(data, test_size=0.2, random_state=100)
 
     # Select the features and target variable
     features = ['B/T', 'Cb', 'D/T', 'MB', 'beban/disp',]
@@ -93,11 +93,11 @@ if ok:
     
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [100, 250, 500, 1000], 
+        'n_estimators': [250, 500, 750, 1000], 
         'max_depth': [3, 5, 7, 9],
-        'learning_rate': [0.01, 0.05, 0.1],
-        'subsample': [0.8, 0.9, 1.0],
-        'colsample_bytree': [0.8, 0.9, 1.0]
+        'learning_rate': [0,01, 0.025, 0.05, 0.1],
+        'subsample': [0.7, 0.8, 0.9, 1.0],
+        'colsample_bytree': [0.7, 0.8, 0.9, 1.0]
     }
 
     # Create the XGBoost regressor
