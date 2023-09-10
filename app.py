@@ -35,7 +35,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 0.97 (XGB)")
+st.title("Ship inclining prediction Ver 0.99 (XGB)")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -96,8 +96,8 @@ if ok:
         'n_estimators': [400, 500, 600, 700, 800, 900], 
         'max_depth': [3, 4, 5, 6],
         'learning_rate': [0.03, 0.05, 0.1, 0.15],
-        'subsample': [0.8, 0.9, 1.0],
-        'colsample_bytree': [0.8 , 0.9, 1.0]
+        'subsample': [0.7, 0.8, 0.9, 1.0],
+        'colsample_bytree': [0.7, 0.8 , 0.9, 1.0]
     }
 
     # Create the XGBoost regressor
