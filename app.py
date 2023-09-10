@@ -85,7 +85,7 @@ if ok:
     # chnge some data into numeric
 
     # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.2, random_state=150)
+    train_data, test_data = train_test_split(data, test_size=0.2, random_state=100)
 
     # Select the features and target variable
     features = ['B/T', 'Cb', 'D/T', 'MB', 'beban/disp',]
@@ -95,7 +95,7 @@ if ok:
     param_grid = {
         'n_estimators': [400, 500, 600, 700, 800, 900], 
         'max_depth': [3, 4, 5, 6],
-        'learning_rate': [0.01, 0.05, 0.075, 0.1],
+        'learning_rate': [0.01, 0.05, 0.1],
         'subsample': [ 0.8, 0.9, 1.0],
         'colsample_bytree': [ 0.8, 0.9, 1.0]
     }
