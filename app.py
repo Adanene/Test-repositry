@@ -95,9 +95,9 @@ if ok:
     param_grid = {
         'n_estimators': [400, 500, 600, 700, 800, 900], 
         'max_depth': [3, 4, 5, 6],
-        'learning_rate': [0.01, 0.05, 0.1, 0.13],
-        'subsample': [ 0.85, 0.95, 1.0],
-        'colsample_bytree': [ 0.85, 0.95, 1.0]
+        'learning_rate': [0.01, 0.05, 0.075, 0.1],
+        'subsample': [ 0.8, 0.9, 1.0],
+        'colsample_bytree': [ 0.8, 0.9, 1.0]
     }
 
     # Create the XGBoost regressor
