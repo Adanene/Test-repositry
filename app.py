@@ -93,7 +93,7 @@ if ok:
     
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [600, 650, 700, 750, 800], 
+        'n_estimators': [500, 600, 700, 800, 900], 
         'max_depth': [6, 7, 8, 9, 10],
         'learning_rate': [0.03, 0.06, 0.1, 0.13],
         'subsample': [0.6, 0.7, 0.8 , 0.9, 1.0],
