@@ -240,7 +240,9 @@ if st.session_state.button_pressed:
                 dataS = pd.DataFrame({
                         'Moment Beban': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
                         'incline': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0],
-                                   ].round(2)
+                                   ]
+                        dataS['Moment Beban (Kg.m)'] = dataS['Moment Beban']
+                        dataS['incline (degrees)'] = dataS['incline'].round(2)
                         })
                 st.table(dataS)
                 st.subheader(f"the accuracy of this inclinement model is {mse} " )
@@ -248,28 +250,28 @@ if st.session_state.button_pressed:
                 fig, ax = plt.subplots()
 
                 # Create a scatter plot
-                scatter = ax.scatter(dataS['Moment Beban'], dataS['incline'], color='blue', label='Incliing result')
+                scatter = ax.scatter(dataS['Moment Beban (Kg.m)'], dataS['incline'], color='blue', label='Incliing result')
         
                 # Set title, labels, and legend
                 ax.set_title("Inclining graphic")
-                ax.set_xlabel('Moment Beban')
-                ax.set_ylabel('incline')
+                ax.set_xlabel('Moment Beban (Kg.m)')
+                ax.set_ylabel('incline (degrees)')
                 ax.legend()
 
                 # Add annotations
                 for i in range(len(dataS)):
-                        ax.annotate(i, (dataS['Moment Beban'].iloc[i], dataS['incline'].iloc[i])) # i+1 because Python's indexing starts at 0
+                        ax.annotate(i, (dataS['Moment Beban'].iloc[i], dataS['incline (degrees)'].iloc[i])) # i+1 because Python's indexing starts at 0
 
-                ax.set_xlabel('Moment Beban')
-                ax.set_ylabel('incline')
+                ax.set_xlabel('Moment Beban (Kg.m)')
+                ax.set_ylabel('incline (degrees)')
 
                 # Customization: draw a vertical line (you can adjust this as per your requirement)
-                threshold = dataS['Moment Beban'].mean()  # example threshold using mean, adjust as needed
+                threshold = dataS['Moment Beban (Kg.m)'].mean()  # example threshold using mean, adjust as needed
                 ax.axvline(x=0, color='red', linestyle='--', label=" 0,0 coordinate")
                 ax.legend()
 
                 # Customization: draw a horizontal  line (you can adjust this as per your requirement)
-                thresholds = dataS['incline'].mean()  # example threshold using mean, adjust as needed
+                thresholds = dataS['incline (degrees)'].mean()  # example threshold using mean, adjust as needed
                 ax.axhline(y=0, color='red', linestyle='--', label="")
                 ax.legend()
 
