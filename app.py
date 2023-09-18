@@ -238,13 +238,16 @@ if st.session_state.button_pressed:
                 predicted_Incline8 = best_model.predict(new_test8)
         
                 dataS = pd.DataFrame({
-                        'Moment Beban': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
-                        'incline': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0],
+                        'Moment Beban (Kg.m)': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
+                        'incline (degrees)': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0],
                                    ]
                         })
-                dataS['Moment Beban (Kg.m)'] = dataS['Moment Beban']
-                dataS['incline (degrees)'] = dataS['incline'].round(2)
-                st.table(dataS)
+                dataS_display = dataS.copy()
+                dataS_display['Moment Beban (Kg.m)'] = dataS['Moment Beban (Kg.m)'].apply(lambda x: '{:.2f}'.format(x))
+                dataS_display['incline (degrees)'] = dataS['incline (degrees)'].apply(lambda x: '{:.2f}'.format(x))
+
+                st.table(dataS_display)
+            
                 st.subheader(f"the accuracy of this inclinement model is {mse} " )
                 # make graphics
                 fig, ax = plt.subplots()
@@ -260,7 +263,7 @@ if st.session_state.button_pressed:
 
                 # Add annotations
                 for i in range(len(dataS)):
-                        ax.annotate(i, (dataS['Moment Beban'].iloc[i], dataS['incline (degrees)'].iloc[i])) # i+1 because Python's indexing starts at 0
+                        ax.annotate(i, (dataS['Moment Beban (Kg.m)'].iloc[i], dataS['incline (degrees)'].iloc[i])) # i+1 because Python's indexing starts at 0
 
                 ax.set_xlabel('Moment Beban (Kg.m)')
                 ax.set_ylabel('incline (degrees)')
