@@ -253,7 +253,7 @@ if st.session_state.button_pressed:
                 fig, ax = plt.subplots()
 
                 # Create a scatter plot
-                scatter = ax.scatter(dataS['Moment Beban (Kg.m)'], dataS['incline'], color='blue', label='Incliing result')
+                scatter = ax.scatter(dataS['Moment Beban (Kg.m)'], dataS['incline (degrees)'], color='blue', label='Incliing result')
         
                 # Set title, labels, and legend
                 ax.set_title("Inclining graphic")
