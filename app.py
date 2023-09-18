@@ -241,8 +241,8 @@ if st.session_state.button_pressed:
                         'Moment Beban': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
                         'incline': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0],
                                    ]
-                        dataS['Moment Beban (Kg.m)'] = dataS['Moment Beban']
-                        dataS['incline (degrees)'] = dataS['incline'].round(2)
+                        ['Moment Beban (Kg.m)'] =['Moment Beban']
+                        ['incline (degrees)'] = ['incline'].round(2)
                         })
                 st.table(dataS)
                 st.subheader(f"the accuracy of this inclinement model is {mse} " )
