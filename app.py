@@ -37,11 +37,11 @@ data = fetch_data()
 #make the interface
 st.title("Ship inclining prediction Ver 1.3 (XGB)")
 st.write("""### How to use: """)
-st.write("""## 1. this only applicable to monohull""")
-st.write("""## 2. only 4 and 6 weight method used on this inclining test  """)
-st.write("""## 3. each weight must have simmiliar (or close enough) weight """)
-st.write("""## 4. inclining weight must placed symetrical and no further than ship's half breadth """)
-st.write("""## 5. the result of this app is inclining angle during 4 or 6 weight method process """)
+st.write("""#### 1. this only applicable to monohull""")
+st.write("""#### 2. only 4 and 6 weight method used on this inclining test  """)
+st.write("""#### 3. each weight must have simmiliar (or close enough) weight """)
+st.write("""#### 4. inclining weight must placed symetrical and no further than ship's half breadth """)
+st.write("""#### 5. the result of this app is inclining angle during 4 or 6 weight method process """)
 st.write("""### We need some data to predict ship inclining angle""")
 
 #input the new data here
