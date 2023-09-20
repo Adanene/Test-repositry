@@ -157,23 +157,23 @@ if st.session_state.button_pressed:
                 #calculate moment
                 if jumlah_beban == "4" :
                 # 4 pembebanan
-                        kiri1 = (beban_B + beban_D)
-                        kiri2 = (beban_D)
-                        kiri3 = 0
-                        kiri4 = (beban_A)
-                        kiri5 = (beban_A + beban_C)
-                        kiri6 = (beban_A + beban_B + beban_C)
-                        kiri7 = (beban_A + beban_B + beban_C + beban_D)
-                        kiri8 = (beban_B + beban_C + beban_D)
+                        kanan1 = (beban_B + beban_D)
+                        kanan2 = (beban_D)
+                        kanan3 = 0
+                        kanan4 = (beban_A)
+                        kanan5 = (beban_A + beban_C)
+                        kanan6 = (beban_A + beban_B + beban_C)
+                        kanan7 = (beban_A + beban_B + beban_C + beban_D)
+                        kanan8 = (beban_B + beban_C + beban_D)
 
-                        kanan1 = (beban_A + beban_C)
-                        kanan2 = (beban_A + beban_B + beban_C)
-                        kanan3 = (beban_A + beban_B + beban_C + beban_D)
-                        kanan4 = (beban_B + beban_C + beban_D)
-                        kanan5 = (beban_B + beban_D)
-                        kanan6 = (beban_D)
-                        kanan7 = 0
-                        kanan8 = (beban_A)
+                        kiri1 = (beban_A + beban_C)
+                        kiri2 = (beban_A + beban_B + beban_C)
+                        kiri3 = (beban_A + beban_B + beban_C + beban_D)
+                        kiri4 = (beban_B + beban_C + beban_D)
+                        kiri5 = (beban_B + beban_D)
+                        kiri6 = (beban_D)
+                        kiri7 = 0
+                        kiri8 = (beban_A)
                         
                         
                 
@@ -212,7 +212,7 @@ if st.session_state.button_pressed:
                         DT = (Depth / Draft)
 
                     
-                Mselisih1 =  (kiri1 - kanan1)  
+                Mselisih1 =  (kiri1 - kanan1) * (-1)
                 Mselisih2 =  (kiri2 - kanan2)  * (-1)
                 Mselisih3 =  (kiri3 - kanan3) * (-1) 
                 Mselisih4 =  (kiri4 - kanan4) * (-1) 
