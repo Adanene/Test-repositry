@@ -83,7 +83,7 @@ if jumlah_beban == "6" :
         bebanD = st.number_input("Weight 4 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanE = st.number_input("Weight 5 (Kg)",min_value= 0.0000, step =0.0001)
         bebanF = st.number_input("Weight 6 (Kg)",min_value= 0.0000, step =0.0001)
-        Jbeban = st.number_input("Weight Distance from midship (m)",,min_value= 0.00, max_value= Breadth , step =0.01)
+        Jbeban = st.number_input("Weight Distance from midship (m)",min_value= 0.00, max_value= Breadth , step =0.01)
         
 
 ok = st.button("Calculate Incline")       
