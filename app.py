@@ -42,6 +42,7 @@ st.write("""#### 2. only 4 and 6 weight method used on this inclining test  """)
 st.write("""#### 3. each weight must have simmiliar (or close enough) weight """)
 st.write("""#### 4. inclining weight must placed symetrical and no further than ship's half breadth """)
 st.write("""#### 5. the result of this app is inclining angle during 4 or 6 weight method process """)
+st.write("""#### 6. Inclining test is based on BKI rules "Guidance for inclining test 2015" """)
 st.write("""### We need some data to predict ship inclining angle""")
 
 #input the new data here
