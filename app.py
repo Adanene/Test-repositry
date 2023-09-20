@@ -212,7 +212,7 @@ if st.session_state.button_pressed:
                         DT = (Depth / Draft)
 
                     
-                Mselisih1 =  (kiri1 - kanan1) * (-1) 
+                Mselisih1 =  (kiri1 - kanan1)  
                 Mselisih2 =  (kiri2 - kanan2)  * (-1)
                 Mselisih3 =  (kiri3 - kanan3) * (-1) 
                 Mselisih4 =  (kiri4 - kanan4) * (-1) 
