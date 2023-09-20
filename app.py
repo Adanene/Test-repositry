@@ -170,23 +170,23 @@ if st.session_state.button_pressed:
                 
                 if jumlah_beban == "6" :
 
-                        kiri1 = (beban_A + beban_C + beban_E)
-                        kiri2 = (beban_A + beban_B + beban_C + beban_E)
-                        kiri3 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F)
-                        kiri4 = (beban_A + beban_B + beban_C + beban_D + beban_E )
-                        kiri5 = (beban_A + beban_C + beban_E)
-                        kiri6 = (beban_E)
-                        kiri7 = 0
-                        kiri8 = (beban_C + beban_E)
+                        kanan1 = (beban_A + beban_C + beban_E)
+                        kanan2 = (beban_A + beban_B + beban_C + beban_E)
+                        kanan3 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F)
+                        kanan4 = (beban_A + beban_B + beban_C + beban_D + beban_E )
+                        kanan5 = (beban_A + beban_C + beban_E)
+                        kanan6 = (beban_E)
+                        kanan7 = 0
+                        kanan8 = (beban_C + beban_E)
 
-                        kanan1 = (beban_B + beban_D + beban_F)
-                        kanan2 = (beban_D + beban_F)
-                        kanan3 = 0
-                        kanan4 = (beban_F)
-                        kanan5 = (beban_B + beban_D + beban_F)
-                        kanan6 = (beban_A + beban_B + beban_C + beban_D + beban_F )
-                        kanan7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F)
-                        kanan8 = (beban_A + beban_B + beban_D + beban_F)
+                        kiri1 = (beban_B + beban_D + beban_F)
+                        kiri2 = (beban_D + beban_F)
+                        kiri3 = 0
+                        kiri4 = (beban_F)
+                        kiri5 = (beban_B + beban_D + beban_F)
+                        kiri6 = (beban_A + beban_B + beban_C + beban_D + beban_F )
+                        kiri7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F)
+                        kiri8 = (beban_A + beban_B + beban_D + beban_F)
                     
                      
                 #finding ratio
