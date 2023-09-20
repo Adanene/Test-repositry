@@ -69,6 +69,7 @@ if jumlah_beban == "4" :
         bebanF = 0
 
 if jumlah_beban == "6" :
+        st.image('https://drive.google.com/uc?id=1BqM-jtRUqNR5w9NNU2teF4R5qYJ2GI7D')
         bebanA = st.number_input("Beban 1 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanB = st.number_input("Beban 2 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanC = st.number_input("Beban 3 (Kg)",min_value= 0.0000,  step =0.0001)
