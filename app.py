@@ -42,7 +42,7 @@ st.write("""##### 2. only 4 and 6 weight method used on this inclining test  """
 st.write("""##### 3. each weight must have simmiliar (or close enough) weight """)
 st.write("""##### 4. inclining weight must placed symetrical and no further than ship's half breadth """)
 st.write("""##### 5. the result of this app is inclining angle during 4 or 6 weight method process """)
-st.write("""##### 6. To prevent error, dont put "0" on ship dimension unless "Number Weight" also 0  """)
+st.write("""##### 6. To prevent error, dont put "0" on ship dimension unless "Number Weight" also "0"  """)
 st.write("""##### 7. Inclining test is based on BKI rules "Guidance for inclining test 2015" """)
 st.markdown("For more information about BKI rules, [you can click on here](https://rules-api.bki.co.id/v1/publication?path=cHVibGljYXRpb25zL0d1aWRhbmNlL1BhcnQgNi4gU3RhdHV0b3J5LyggVm9sIEMgKSBQZXR1bmp1ayBQZW5ndWppYW4gS2VtaXJpbmdhbiBkYW4gUGVyaW9kZSBPbGVuZyBLYXBhbC8yMDE1Lzc3X1BldHVuanVrIFBlbmd1amlhbiBLZW1pcmluZ2FuIGRhbiBQZXJpb2RlIE9sZW5nIEthcGFsXzIwMTUtNl8zLnBkZg,,&act=view&app=252f31d48ff053e3a7bba35251ad78d1).")
 st.write("""### We need some data to predict ship inclining angle""")
@@ -73,7 +73,7 @@ if jumlah_beban == "4" :
         bebanD = st.number_input("Weight 4 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanE = 0
         bebanF = 0
-        Jbeban = st.number_input("Weight Distance from midship (m)",min_value= 0.0000, max_value= Breadth , step =0.01)
+        Jbeban = st.number_input("Weight Distance from midship (m)",min_value= 0.0000, max_value= Breadth/2 , step =0.01)
 
 if jumlah_beban == "6" :
         st.image('https://drive.google.com/uc?id=1BqM-jtRUqNR5w9NNU2teF4R5qYJ2GI7D')
