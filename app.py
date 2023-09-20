@@ -60,7 +60,7 @@ jumlah_beban = st.selectbox("Number Weight", beban)
 ##convert to anohter
 
 if jumlah_beban == "4" :
-        st.image(https://drive.google.com/uc?id=14WooQDOBkHLHqVkCy6wFwLfzb6Jxq8YS)
+        st.image('https://drive.google.com/uc?id=14WooQDOBkHLHqVkCy6wFwLfzb6Jxq8YS')
         bebanA = st.number_input("Beban 1 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanB = st.number_input("Beban 2 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanC = st.number_input("Beban 3 (Kg)",min_value= 0.0000,  step =0.0001)
