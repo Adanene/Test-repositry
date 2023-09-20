@@ -35,7 +35,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 1.35 (XGB)")
+st.title("Ship inclining prediction Ver 1.4 (XGB)")
 st.write("""### How to use: """)
 st.write("""##### 1. this only applicable to monohull""")
 st.write("""##### 2. only 4 and 6 weight method used on this inclining test  """)
@@ -55,9 +55,7 @@ beban = (
         )
 # input some wrrited answer
 
-
-Loa = st.number_input("Length Over All (m)", value= 0.00, step=0.01)
-Lwl = st.number_input("Length Water Line (m)",min_value= 0.00, max_value= Loa)
+Lwl = st.number_input("Length Water Line (m)",min_value= 0.00, step =0.01)
 Breadth = st.number_input("Breadth Water Line (m)", min_value= 0.00, step =0.01)
 Depth = st.number_input("Depth  (m) ", min_value= 0.00, step =0.01)
 Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0.01)
@@ -68,22 +66,23 @@ jumlah_beban = st.selectbox("Number Weight", beban)
 
 if jumlah_beban == "4" :
         st.image('https://drive.google.com/uc?id=14WooQDOBkHLHqVkCy6wFwLfzb6Jxq8YS')
-        bebanA = st.number_input("Beban 1 (Kg)",min_value= 0.0000,  step =0.0001)
-        bebanB = st.number_input("Beban 2 (Kg)",min_value= 0.0000,  step =0.0001)
-        bebanC = st.number_input("Beban 3 (Kg)",min_value= 0.0000,  step =0.0001)
-        bebanD = st.number_input("Beban 4 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanA = st.number_input("Weight 1 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanB = st.number_input("Weight 2 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanC = st.number_input("Weight 3 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanD = st.number_input("Weight 4 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanE = 0
         bebanF = 0
+        Jbeban = st.number_input("Weight Distance from midship (m)",min_value= 0.0000, max_value= Breadth/2 , step =0.0001)
 
 if jumlah_beban == "6" :
         st.image('https://drive.google.com/uc?id=1BqM-jtRUqNR5w9NNU2teF4R5qYJ2GI7D')
-        bebanA = st.number_input("Beban 1 (Kg)",min_value= 0.0000,  step =0.0001)
-        bebanB = st.number_input("Beban 2 (Kg)",min_value= 0.0000,  step =0.0001)
-        bebanC = st.number_input("Beban 3 (Kg)",min_value= 0.0000,  step =0.0001)
-        bebanD = st.number_input("Beban 4 (Kg)",min_value= 0.0000,  step =0.0001)
-        bebanE = st.number_input("Beban 5 (Kg)",min_value= 0.0000, step =0.0001)
-        bebanF = st.number_input("Beban 6 (Kg)",min_value= 0.0000, step =0.0001)
-        
+        bebanA = st.number_input("Weight 1 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanB = st.number_input("Weight 2 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanC = st.number_input("Weight 3 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanD = st.number_input("Weight 4 (Kg)",min_value= 0.0000,  step =0.0001)
+        bebanE = st.number_input("Weight 5 (Kg)",min_value= 0.0000, step =0.0001)
+        bebanF = st.number_input("Weight 6 (Kg)",min_value= 0.0000, step =0.0001)
+        Jbeban = st.number_input("Weight Distance from midship (m)",min_value= 0.0000, max_value= Breadth/2 , step =0.0001)
         
 
 ok = st.button("Calculate Incline")       
