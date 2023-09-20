@@ -35,7 +35,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 1.2 (XGB)")
+st.title("Ship inclining prediction Ver 1.3 (XGB)")
 
 st.write("""### We need some data to predict ship inclining angle""")
 
@@ -147,24 +147,24 @@ if st.session_state.button_pressed:
 
                 #calculate moment
                 if jumlah_beban == "4" :
-
-                        kiri1 = (beban_A + beban_B)
-                        kiri2 = (beban_B)
+                # 4 pembebanan
+                        kiri1 = (beban_B + beban_D)
+                        kiri2 = (beban_D)
                         kiri3 = 0
-                        kiri4 = (beban_C)
-                        kiri5 = (beban_C + beban_D)
+                        kiri4 = (beban_A)
+                        kiri5 = (beban_A + beban_C)
                         kiri6 = (beban_A + beban_B + beban_C)
                         kiri7 = (beban_A + beban_B + beban_C + beban_D)
-                        kiri8 = (beban_A + beban_B + beban_D)
+                        kiri8 = (beban_B + beban_C + beban_D)
 
-                        kanan1 = (beban_C + beban_D)
-                        kanan2 = (beban_A + beban_C + beban_D)
+                        kanan1 = (beban_A + beban_C)
+                        kanan2 = (beban_A + beban_B + beban_C)
                         kanan3 = (beban_A + beban_B + beban_C + beban_D)
-                        kanan4 = (beban_A + beban_B + beban_D)
-                        kanan5 = (beban_A + beban_B)
+                        kanan4 = (beban_B + beban_C + beban_D)
+                        kanan5 = (beban_B + beban_D)
                         kanan6 = (beban_D)
                         kanan7 = 0
-                        kanan8 = (beban_C)
+                        kanan8 = (beban_A)
                         
                         
                 
