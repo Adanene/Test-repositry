@@ -35,7 +35,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 1.3 (XGB)")
+st.title("Ship inclining prediction Ver 1.35 (XGB)")
 st.write("""### How to use: """)
 st.write("""##### 1. this only applicable to monohull""")
 st.write("""##### 2. only 4 and 6 weight method used on this inclining test  """)
@@ -43,6 +43,7 @@ st.write("""##### 3. each weight must have simmiliar (or close enough) weight ""
 st.write("""##### 4. inclining weight must placed symetrical and no further than ship's half breadth """)
 st.write("""##### 5. the result of this app is inclining angle during 4 or 6 weight method process """)
 st.write("""##### 6. Inclining test is based on BKI rules "Guidance for inclining test 2015" """)
+st.markdown("For more information about BKI rules, [you can click on here](https://rules-api.bki.co.id/v1/publication?path=cHVibGljYXRpb25zL0d1aWRhbmNlL1BhcnQgNi4gU3RhdHV0b3J5LyggVm9sIEMgKSBQZXR1bmp1ayBQZW5ndWppYW4gS2VtaXJpbmdhbiBkYW4gUGVyaW9kZSBPbGVuZyBLYXBhbC8yMDE1Lzc3X1BldHVuanVrIFBlbmd1amlhbiBLZW1pcmluZ2FuIGRhbiBQZXJpb2RlIE9sZW5nIEthcGFsXzIwMTUtNl8zLnBkZg,,&act=view&app=252f31d48ff053e3a7bba35251ad78d1).")
 st.write("""### We need some data to predict ship inclining angle""")
 
 #input the new data here
