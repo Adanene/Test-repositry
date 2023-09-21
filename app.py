@@ -1,4 +1,4 @@
-#Here is an Jupyter code for machine learning to predict ship stability during an inclining test using Python and scikit-learn library:
+         vvvvvvvg#Here is an Jupyter code for machine learning to predict ship stability during an inclining test using Python and scikit-learn library:
 
 #python
 #Copy code
@@ -73,7 +73,7 @@ if jumlah_beban == "4" :
         bebanD = st.number_input("Weight 4 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanE = 0
         bebanF = 0
-        Jbeban = st.number_input("Weight Distance from midship (m)" ,min_value= 0.00, max_value= halfBreadth , step =0.01)
+        
 
 if jumlah_beban == "6" :
         st.image('https://drive.google.com/uc?id=1BqM-jtRUqNR5w9NNU2teF4R5qYJ2GI7D')
@@ -83,7 +83,7 @@ if jumlah_beban == "6" :
         bebanD = st.number_input("Weight 4 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanE = st.number_input("Weight 5 (Kg)",min_value= 0.0000, step =0.0001)
         bebanF = st.number_input("Weight 6 (Kg)",min_value= 0.0000, step =0.0001)
-        Jbeban = st.number_input("Weight Distance from midship (m)",min_value= 0.00, max_value= halfBreadth , step =0.01)
+        
         
 
 ok = st.button("Calculate Incline")       
@@ -140,12 +140,12 @@ if st.session_state.button_pressed:
         else:
         
                 #transfer weight
-                beban_A = bebanA * Jbeban
-                beban_B = bebanB * Jbeban
-                beban_C = bebanC * Jbeban
-                beban_D = bebanD * Jbeban
-                beban_E = bebanE * Jbeban
-                beban_F = bebanF * Jbeban
+                beban_A = bebanA * halfBreadth
+                beban_B = bebanB * halfBreadth
+                beban_C = bebanC * halfBreadth
+                beban_D = bebanD * halfBreadth
+                beban_E = bebanE * halfBreadth
+                beban_F = bebanF * halfBreadth
                 totalB = (bebanA + bebanB + bebanC + bebanD + bebanE + bebanF)
         
                 #calculate displacement
