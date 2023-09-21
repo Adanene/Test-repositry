@@ -35,7 +35,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 1.4 (XGB)")
+st.title("Ship inclining prediction Ver 1.5 (XGB)")
 st.write("""### How to use: """)
 st.write("""##### 1. this only applicable to monohull""")
 st.write("""##### 2. only 4 and 6 weight method used on this inclining test  """)
@@ -67,6 +67,7 @@ halfBreadth = Breadth/2
 
 if jumlah_beban == "4" :
         st.image('https://drive.google.com/uc?id=14WooQDOBkHLHqVkCy6wFwLfzb6Jxq8YS')
+        st.write("""##### please make sure if every weight at one side, at least it inclined 1 degree""")
         bebanA = st.number_input("Weight 1 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanB = st.number_input("Weight 2 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanC = st.number_input("Weight 3 (Kg)",min_value= 0.0000,  step =0.0001)
@@ -76,6 +77,7 @@ if jumlah_beban == "4" :
         
 
 if jumlah_beban == "6" :
+        st.write("""##### please make sure if every weight at one side, at least it inclined 1 degree""")
         st.image('https://drive.google.com/uc?id=1BqM-jtRUqNR5w9NNU2teF4R5qYJ2GI7D')
         bebanA = st.number_input("Weight 1 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanB = st.number_input("Weight 2 (Kg)",min_value= 0.0000,  step =0.0001)
@@ -245,6 +247,8 @@ if st.session_state.button_pressed:
         
                 new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih8], 'beban/disp' : [totdisp], })
                 predicted_Incline8 = best_model.predict(new_test8)
+
+                st.subheader(f"the accuracy of this inclinement model is {mse} " )
         
                 dataS = pd.DataFrame({
                         'Moment Beban (Kg.m)': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
@@ -257,7 +261,7 @@ if st.session_state.button_pressed:
 
                 st.table(dataS_display)
             
-                st.subheader(f"the accuracy of this inclinement model is {mse} " )
+               
                 # make graphics
                 fig, ax = plt.subplots()
 
