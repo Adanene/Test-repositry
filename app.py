@@ -112,7 +112,7 @@ if ok:
     }
 
     # Create the XGBoost regressor
-    xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
+    xgboost_model = xgb.XGBRegressor(random_state=700, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
 
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid, 
