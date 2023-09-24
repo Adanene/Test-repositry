@@ -116,7 +116,7 @@ if ok:
 
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid, 
-                           cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error')
+                           cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error')
 
     # Fit the GridSearchCV to the training data
     grid_search.fit(train_data[features], train_data[target])
@@ -218,10 +218,10 @@ if st.session_state.button_pressed:
                 Mselisih2 =  (kiri2 - kanan2)  
                 Mselisih3 =  (kiri3 - kanan3) 
                 Mselisih4 =  (kiri4 - kanan4) 
-                Mselisih5 =  (kiri5 - kanan5) *-1
-                Mselisih6 =  (kiri6 - kanan6) *-1
-                Mselisih7 =  (kiri7 - kanan7) *-1
-                Mselisih8 =  (kiri8 - kanan8) *-1
+                Mselisih5 =  (kiri5 - kanan5) 
+                Mselisih6 =  (kiri6 - kanan6) 
+                Mselisih7 =  (kiri7 - kanan7) 
+                Mselisih8 =  (kiri8 - kanan8)
                 
                 new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih1], 'beban/disp' : [totdisp], })
                 predicted_Incline1 = best_model.predict(new_test1)
