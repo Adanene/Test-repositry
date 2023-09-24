@@ -218,10 +218,10 @@ if st.session_state.button_pressed:
                 Mselisih2 =  (kiri2 - kanan2)  
                 Mselisih3 =  (kiri3 - kanan3) 
                 Mselisih4 =  (kiri4 - kanan4) 
-                Mselisih5 =  (kiri5 - kanan5) 
-                Mselisih6 =  (kiri6 - kanan6) 
-                Mselisih7 =  (kiri7 - kanan7) 
-                Mselisih8 =  (kiri8 - kanan8) 
+                Mselisih5 =  (kiri5 - kanan5) *-1
+                Mselisih6 =  (kiri6 - kanan6) *-1
+                Mselisih7 =  (kiri7 - kanan7) *-1
+                Mselisih8 =  (kiri8 - kanan8) *-1
                 
                 new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih1], 'beban/disp' : [totdisp], })
                 predicted_Incline1 = best_model.predict(new_test1)
