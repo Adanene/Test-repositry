@@ -104,7 +104,7 @@ if ok:
     
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [300], 
+        'n_estimators': [325], 
         'max_depth': [8],
         'learning_rate': [0.15],
         'subsample': [0.6, 0.7, 0.8 , 0.9],
@@ -112,7 +112,7 @@ if ok:
     }
 
     # Create the XGBoost regressor
-    xgboost_model = xgb.XGBRegressor(random_state=650, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
+    xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
 
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid, 
