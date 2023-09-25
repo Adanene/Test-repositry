@@ -62,7 +62,7 @@ Depth = st.number_input("Depth  (m) ", min_value= 0.00, step =0.01)
 Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0.01)
 Cb = st.number_input("Coefficient Block", min_value= 0.00, max_value= 1.00, step =0.01)
 jumlah_beban = st.selectbox("Number Weight", beban)
-halfBreadth = Breadth/2
+
 ##convert to anohter
 
 if jumlah_beban == "4" :
@@ -140,7 +140,7 @@ if st.session_state.button_pressed:
                 st.subheader(f"the accuracy of this inclinement model is {mse}  " )
         
         else:
-        
+                halfBreadth = Breadth/2
                 #transfer weight
                 beban_A = bebanA * halfBreadth
                 beban_B = bebanB * halfBreadth
