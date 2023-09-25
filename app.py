@@ -77,8 +77,8 @@ if jumlah_beban == "4" :
         
 
 if jumlah_beban == "6" :
-        st.write("""##### please make sure if every weight at one side, at least it inclined 1 degree""")
         st.image('https://drive.google.com/uc?id=1BqM-jtRUqNR5w9NNU2teF4R5qYJ2GI7D')
+        st.write("""##### please make sure if every weight at one side, at least it inclined 1 degree""")
         bebanA = st.number_input("Weight 1 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanB = st.number_input("Weight 2 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanC = st.number_input("Weight 3 (Kg)",min_value= 0.0000,  step =0.0001)
