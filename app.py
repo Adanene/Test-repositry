@@ -99,7 +99,7 @@ if ok:
     train_data, test_data = train_test_split(data, test_size=0.3, random_state=80)
 
     # Select the features and target variable
-    features = ['B/T', 'Cb', 'D/T', 'kirkan', 'beban/disp',]
+    features = ['B/T', 'Cb', 'kirkan', 'beban/disp',]
     target = 'Inclinement'
     
     # Define the parameter grid
@@ -232,28 +232,28 @@ if st.session_state.button_pressed:
                 Mratio7 = (Mselisih7 / totalB) * 10
                 Mratio8 = (Mselisih8 / totalB) * 10
                 
-                new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [Mratio1], 'beban/disp' : [totdisp], })
+                new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb],  'kirkan': [Mratio1], 'beban/disp' : [totdisp], })
                 predicted_Incline1 = best_model.predict(new_test1)
         
-                new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [Mratio2], 'beban/disp' : [totdisp], })
+                new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb],  'kirkan': [Mratio2], 'beban/disp' : [totdisp], })
                 predicted_Incline2 = best_model.predict(new_test2)
         
-                new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [Mratio3], 'beban/disp' : [totdisp], })
+                new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb],  'kirkan': [Mratio3], 'beban/disp' : [totdisp], })
                 predicted_Incline3 = best_model.predict(new_test3)
         
-                new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [Mratio4], 'beban/disp' : [totdisp], })
+                new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb],  'kirkan': [Mratio4], 'beban/disp' : [totdisp], })
                 predicted_Incline4 = best_model.predict(new_test4)
         
-                new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [Mratio5], 'beban/disp' : [totdisp], })
+                new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb],  'kirkan': [Mratio5], 'beban/disp' : [totdisp], })
                 predicted_Incline5 = best_model.predict(new_test5)
         
-                new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [Mratio6], 'beban/disp' : [totdisp], })
+                new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb],  'kirkan': [Mratio6], 'beban/disp' : [totdisp], })
                 predicted_Incline6 = best_model.predict(new_test6)
         
-                new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [Mratio7], 'beban/disp' : [totdisp], })
+                new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb],  'kirkan': [Mratio7], 'beban/disp' : [totdisp], })
                 predicted_Incline7 = best_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [Mratio8], 'beban/disp' : [totdisp], })
+                new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb],  'kirkan': [Mratio8], 'beban/disp' : [totdisp], })
                 predicted_Incline8 = best_model.predict(new_test8)
 
                 st.subheader(f"the accuracy of this inclinement model is {mse} " )
