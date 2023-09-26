@@ -223,14 +223,14 @@ if st.session_state.button_pressed:
                 Mselisih7 =  (kiri7 - kanan7) 
                 Mselisih8 =  (kiri8 - kanan8)
 
-                Mratio1 = (Mselisih1 / totalB) * 10
-                Mratio2 = (Mselisih2 / totalB) * 10
-                Mratio3 = (Mselisih3 / totalB) * 10
-                Mratio4 = (Mselisih4 / totalB) * 10
-                Mratio5 = (Mselisih5 / totalB) * 10
-                Mratio6 = (Mselisih6 / totalB) * 10
-                Mratio7 = (Mselisih7 / totalB) * 10
-                Mratio8 = (Mselisih8 / totalB) * 10
+                Mratio1 = (Mselisih1 / totalB) * 100
+                Mratio2 = (Mselisih2 / totalB) * 100
+                Mratio3 = (Mselisih3 / totalB) * 100
+                Mratio4 = (Mselisih4 / totalB) * 100
+                Mratio5 = (Mselisih5 / totalB) * 100
+                Mratio6 = (Mselisih6 / totalB) * 100
+                Mratio7 = (Mselisih7 / totalB) * 100
+                Mratio8 = (Mselisih8 / totalB) * 100
                 
                 new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb],  'kirkan': [Mratio1], 'beban/disp' : [totdisp], })
                 predicted_Incline1 = best_model.predict(new_test1)
