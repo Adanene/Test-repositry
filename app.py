@@ -106,7 +106,7 @@ if ok:
     param_grid = {
         'n_estimators': [400], 
         'max_depth': [11],
-        'learning_rate': [0.5],
+        'learning_rate': [0.15],
         'subsample': [1.0],
         'colsample_bytree': [1.0]
     }
