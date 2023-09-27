@@ -90,7 +90,7 @@ if jumlah_beban == "6" :
 
 ok = st.button("Calculate Incline")       
 if ok:
-    st.session_state.button_pressed = True
+st.session_state.button_pressed = True
 
     #start machine learning process
     # chnge some data into numeric
@@ -108,15 +108,15 @@ if ok:
         'max_depth': [9],
         'learning_rate': [0.5],
         'subsample': [1.0],
-        'colsample_bytree': [1.0],
- 
+        'colsample_bytree': [1.0]
     }
 
     # Create the XGBoost regressor
     xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
 
     # Create the GridSearchCV object
-    grid_search = GridSearchCV(estimator=xgboost_model, param_grid = param_grid, cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error' )
+    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid, 
+                           cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error')
 
     # Fit the GridSearchCV to the training data
     grid_search.fit(train_data[features], train_data[target])
