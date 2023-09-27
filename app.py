@@ -1,4 +1,4 @@
-         #Here is an Jupyter code for machine learning to predict ship stability during an inclining test using Python and scikit-learn library:
+#Here is an Jupyter code for machine learning to predict ship stability during an inclining test using Python and scikit-learn library:
 
 #python
 #Copy code
@@ -35,7 +35,7 @@ data = fetch_data()
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 1.8 (XGB)")
+st.title("Ship inclining prediction Ver 1.5 (XGB)")
 st.write("""### How to use: """)
 st.write("""##### 1. this only applicable to monohull""")
 st.write("""##### 2. only 4 and 6 weight method used on this inclining test  """)
@@ -134,7 +134,7 @@ if ok:
     # Note: XGBoost also provides feature importances similar to Random Forest
     importances = best_model.feature_importances_
     sorted_indices = np.argsort(importances)[::-1]
-         
+
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
                 st.subheader(f"the accuracy of this inclinement model is {mse}  " )
