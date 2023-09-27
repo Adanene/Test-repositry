@@ -109,9 +109,9 @@ if ok:
         'learning_rate': [0.5],
         'subsample': [1.0],
         'colsample_bytree': [1.0]
-        'reg_alpha': [0.1, 1, 10],  # L1 regularization (you can adjust the list as needed)
-        'reg_lambda': [0.1, 1, 10],  # L2 regularization (adjust as needed)
-        'reg_gamma': [0, 0.1, 0.5, 1]  # Regularization for tree splitting (adjust as needed)
+        reg_alpha: [0.1, 1, 10],  # L1 regularization (you can adjust the list as needed)
+        reg_lambda: [0.1, 1, 10],  # L2 regularization (adjust as needed)
+        reg_gamma: [0, 0.1, 0.5, 1]  # Regularization for tree splitting (adjust as needed)
     }
 
     # Create the XGBoost regressor
