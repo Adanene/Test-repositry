@@ -109,9 +109,6 @@ if ok:
         'learning_rate': [0.5],
         'subsample': [1.0],
         'colsample_bytree': [1.0]
-        'reg_alpha' : [0.1, 1, 10],  # L1 regularization (you can adjust the list as needed)
-        'reg_lambda' : [0.1, 1, 10],  # L2 regularization (adjust as needed)
-        'reg_gamma' : [0, 0.1, 0.5, 1]  # Regularization for tree splitting (adjust as needed)
     }
 
     # Create the XGBoost regressor
@@ -119,7 +116,7 @@ if ok:
 
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid, 
-                           cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error')
+                           cv=3, n_jobs=-1, verbose=2, reg_alpha : 0.1 , reg_lambda : 0.1,reg_gamma : 0.1,   scoring='neg_mean_squared_error')
 
     # Fit the GridSearchCV to the training data
     grid_search.fit(train_data[features], train_data[target])
