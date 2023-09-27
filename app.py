@@ -109,13 +109,16 @@ if ok:
         'learning_rate': [0.5],
         'subsample': [1.0],
         'colsample_bytree': [1.0]
+        'alpha': [0.1, 0.5, 1],  # Add possible values for alpha here
+        'lambda': [0.1, 0.5, 1],  # Add possible values for lambda here
+        'gamma': [0.1, 0.5, 1]  # Add possible values for gamma here
     }
 
     # Create the XGBoost regressor
     xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
 
     # Create the GridSearchCV object
-    grid_search = GridSearchCV(estimator=xgboost_model, param_grid = param_grid, cv=3, n_jobs=-1, verbose=2, alpha = 0.1 , lambda : 0.1 , gamma = 0.1,   scoring='neg_mean_squared_error' )
+    grid_search = GridSearchCV(estimator=xgboost_model, param_grid = param_grid, cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error' )
 
     # Fit the GridSearchCV to the training data
     grid_search.fit(train_data[features], train_data[target])
