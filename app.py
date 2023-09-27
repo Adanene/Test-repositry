@@ -109,9 +109,7 @@ if ok:
         'learning_rate': [0.5],
         'subsample': [1.0],
         'colsample_bytree': [1.0],
-        'reg_alpha': [0.1, 0.5, 1],  # Add possible values for alpha here
-        'reg_lambda': [0.1, 0.5, 1],  # Add possible values for lambda here
-        'reg_gamma': [0.1, 0.5, 1]  # Add possible values for gamma here
+ 
     }
 
     # Create the XGBoost regressor
