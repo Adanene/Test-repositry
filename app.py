@@ -90,7 +90,7 @@ if jumlah_beban == "6" :
 
 ok = st.button("Calculate Incline")       
 if ok:
-st.session_state.button_pressed = True
+    st.session_state.button_pressed = True
 
     #start machine learning process
     # chnge some data into numeric
@@ -134,7 +134,7 @@ st.session_state.button_pressed = True
     # Note: XGBoost also provides feature importances similar to Random Forest
     importances = best_model.feature_importances_
     sorted_indices = np.argsort(importances)[::-1]
-
+         
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
                 st.subheader(f"the accuracy of this inclinement model is {mse}  " )
