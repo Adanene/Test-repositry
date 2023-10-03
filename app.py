@@ -110,7 +110,7 @@ if ok:
         'subsample': [1.0],
         'colsample_bytree': [1.0],   
         'reg_alpha': [1.0],  # Using reg_alpha instead of alpha
-        'reg_lambda': [1.0],  # Using reg_lambda instead of lambda
+        'reg_lambda': [0.9],  # Using reg_lambda instead of lambda
         'reg_gamma': [1.0]
     }
 
