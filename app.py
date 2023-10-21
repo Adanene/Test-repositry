@@ -99,7 +99,7 @@ if ok:
     train_data, test_data = train_test_split(data, test_size=0.3, random_state=240)
 
     # Select the features and target variable
-    features = ['B/T', 'Cb', 'D/T', 'Moment', 'beban/disp',]
+    features = ['B/T', 'Cb', 'D/T', 'beban uji', 'kirkan', 'displacement']
     target = 'Inclinement'
     
     # Define the parameter grid
@@ -201,7 +201,15 @@ if st.session_state.button_pressed:
                         kiri6 = (beban_A + beban_B + beban_C + beban_D + beban_F )
                         kiri7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F)
                         kiri8 = (beban_A + beban_B + beban_D + beban_F)
-                    
+
+                kk1 = ((kanan1 / kiri1) * totalB) * 100
+                kk2 = ((kanan2 / kiri2) * totalB) * 100
+                kk3 = ((kanan3 / kiri3) * totalB) * 100
+                kk4 = ((kanan4 / kiri4) * totalB) * 100
+                kk5 = ((kanan5 / kiri5) * totalB) * 100
+                kk6 = ((kanan6 / kiri6) * totalB) * 100
+                kk7 = ((kanan7 / kiri7) * totalB) * 100
+                kk8 = ((kanan8 / kiri8) * totalB) * 100
                      
                 #finding ratio
                 if Breadth == 0:
@@ -226,28 +234,28 @@ if st.session_state.button_pressed:
                 Mselisih7 =  (kiri7 - kanan7) 
                 Mselisih8 =  (kiri8 - kanan8)
                 
-                new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih1], 'beban/disp' : [totdisp], })
+                new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kk1], 'beban uji' : [totalB], 'displacement' : [displacement] })
                 predicted_Incline1 = best_model.predict(new_test1)
         
-                new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih2], 'beban/disp' : [totdisp], })
+                new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kk2], 'beban uji' : [totalB], 'displacement' : [displacement]})
                 predicted_Incline2 = best_model.predict(new_test2)
         
-                new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih3], 'beban/disp' : [totdisp], })
+                new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kk3], 'beban uji' : [totalB], 'displacement' : [displacement]})
                 predicted_Incline3 = best_model.predict(new_test3)
         
-                new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih4], 'beban/disp' : [totdisp], })
+                new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kk4], 'beban uji' : [totalB], 'displacement' : [displacement]})
                 predicted_Incline4 = best_model.predict(new_test4)
         
-                new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih5], 'beban/disp' : [totdisp], })
+                new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kk5], 'beban uji' : [totalB], 'displacement' : [displacement]})
                 predicted_Incline5 = best_model.predict(new_test5)
         
-                new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih6], 'beban/disp' : [totdisp], })
+                new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kk6], 'beban uji' : [totalB], 'displacement' : [displacement]})
                 predicted_Incline6 = best_model.predict(new_test6)
         
-                new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih7], 'beban/disp' : [totdisp], })
+                new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kk7], 'beban uji' : [totalB], 'displacement' : [displacement]})
                 predicted_Incline7 = best_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih8], 'beban/disp' : [totdisp], })
+                new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'kirkan': [kk8], 'beban uji' : [totalB], 'displacement' : [displacement]})
                 predicted_Incline8 = best_model.predict(new_test8)
 
                 st.subheader(f"the accuracy of this inclinement model is {mse} " )
