@@ -202,14 +202,14 @@ if st.session_state.button_pressed:
                         kiri7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F)
                         kiri8 = (beban_A + beban_B + beban_D + beban_F)
 
-                kk1 = ((kanan1 / kiri1) * totalB) * 100
-                kk2 = ((kanan2 / kiri2) * totalB) * 100
-                kk3 = ((kanan3 / kiri3) * totalB) * 100
-                kk4 = ((kanan4 / kiri4) * totalB) * 100
-                kk5 = ((kanan5 / kiri5) * totalB) * 100
-                kk6 = ((kanan6 / kiri6) * totalB) * 100
-                kk7 = ((kanan7 / kiri7) * totalB) * 100
-                kk8 = ((kanan8 / kiri8) * totalB) * 100
+                kk1 = (( kanan1 - kiri1) / totalB) * 100
+                kk2 = (( kanan2 - kiri2) / totalB) * 100
+                kk3 = (( kanan3 - kiri3) / totalB) * 100
+                kk4 = (( kanan4 - kiri4) / totalB) * 100
+                kk5 = (( kanan5 - kiri5) / totalB) * 100
+                kk6 = (( kanan6 - kiri6) / totalB) * 100
+                kk7 = (( kanan7 - kiri7) / totalB) * 100
+                kk8 = (( kanan8 - kiri8) / totalB) * 100
                      
                 #finding ratio
                 if Breadth == 0:
