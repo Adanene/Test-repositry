@@ -118,9 +118,7 @@ if ok:
     # Create the XGBoost regressor
     xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")
 
-    random_search = RandomizedSearchCV(estimator=xgboost_model, param_distributions=param_dist, 
-                                   n_iter=100, scoring='neg_mean_squared_error', 
-                                   n_jobs=-1, cv=3, verbose=2, random_state=600)
+    random_search = RandomizedSearchCV(estimator=xgboost_model, param_distributions=param_dist,n_iter=100, scoring='neg_mean_squared_error', n_jobs=-1, cv=3, verbose=2, random_state=600)
 
     random_search.fit(train_data[features], train_data[target])
 
