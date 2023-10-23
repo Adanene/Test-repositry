@@ -97,7 +97,7 @@ if ok:
     # chnge some data into numeric
 
     # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.3, random_state=300)
+    train_data, test_data = train_test_split(data, test_size=0.3, random_state=200)
 
     # Select the features and target variable
     features = ['B/T', 'Cb', 'D/T', 'Moment', 'displacement',]
@@ -105,7 +105,7 @@ if ok:
     
     # Define the parameter grid
     param_dist = {
-        'n_estimators': randint(1, 600), 
+        'n_estimators': randint(1, 1000), 
         'max_depth':  randint(3, 11),
         'learning_rate':  uniform(0.01, 0.15),
         'subsample':  uniform(0.1, 1.0),
@@ -124,7 +124,7 @@ if ok:
 
     fit_params = {
     'eval_metric': 'rmse',  # Or another suitable metric for your problem
-    'early_stopping_rounds': 100,
+    'early_stopping_rounds': 200,
     'eval_set': [(test_data[features], test_data[target])],
     'verbose': False
     }
