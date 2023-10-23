@@ -126,12 +126,6 @@ if ok:
 
     # Make predictions on the test set
     test_predictions = xgboost_model.predict(test_data[features])
-    
-    # Get the best model from GridSearchCV
-    best_model = grid_search.best_estimator_
-
-    # Make predictions on the test set
-    test_predictions = best_model.predict(test_data[features])
 
     # Evaluate the model performance
     mse = mean_squared_error(test_data[target], test_predictions)
