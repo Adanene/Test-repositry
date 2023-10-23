@@ -127,17 +127,13 @@ if ok:
     # Make predictions on the test set
     test_predictions = xgboost_model.predict(test_data[features])
 
-    # Evaluate the model performance
-    mse = mean_squared_error(val_data[target], test_predictions)
-    print('Mean squared error:', mse)
-
     # Note: XGBoost also provides feature importances similar to Random Forest
     importances = best_model.feature_importances_
     sorted_indices = np.argsort(importances)[::-1]
 
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
-                st.subheader(f"the accuracy of this inclinement model is {mse}  " )
+                
         
         else:
                 halfBreadth = Breadth/2
@@ -247,7 +243,7 @@ if st.session_state.button_pressed:
                 new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih8], 'displacement' : [displacement], })
                 predicted_Incline8 = best_model.predict(new_test8)
 
-                st.subheader(f"the accuracy of this inclinement model is {mse} " )
+                
         
                 dataS = pd.DataFrame({
                         'Moment Beban (Kg.m)': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
