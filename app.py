@@ -127,9 +127,6 @@ if ok:
     # Make predictions on the test set
     test_predictions = xgboost_model.predict(test_data[features])
 
-    # Note: XGBoost also provides feature importances similar to Random Forest
-    importances = best_model.feature_importances_
-    sorted_indices = np.argsort(importances)[::-1]
 
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
@@ -289,13 +286,3 @@ if st.session_state.button_pressed:
                 # Display the plot in Streamlit
                 st.pyplot(fig)
             
-                # Plotting feature importances
-                imp, ax = plt.subplots(figsize=(10, 6))
-                ax.bar(range(len(importances)), importances[sorted_indices], align='center')
-                ax.set_xticks(range(len(importances)))
-                ax.set_xticklabels(np.array(features)[sorted_indices])
-                ax.set_title("Feature Importances")
-                ax.set_ylabel('Importance')
-                ax.set_xlabel('Features')
-
-                st.pyplot(imp)  # Pass the figure object to st.pyplot()
