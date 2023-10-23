@@ -119,20 +119,23 @@ if ok:
     xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")
 
     random_search = RandomizedSearchCV(estimator=xgboost_model, param_distributions=param_dist,n_iter=100, scoring='neg_mean_squared_error', n_jobs=-1, cv=3, verbose=2, random_state=600)
-    
+
+
+
     fit_params = {
     'eval_metric': 'rmse',  # Or another suitable metric for your problem
     'early_stopping_rounds': 50,
     'eval_set': [(test_data[features], test_data[target])],
     'verbose': False
     }
-
+        
+    #Fit RandomizedSearchCV object to training data
     random_search.fit(train_data[features], train_data[target], **fit_params)
-
-    best_model_random = random_search.best_estimator_
+    
+    predictions = random_search.best_estimator_.predict(test_data[features])
 
     # Evaluate the model performance
-    mse = mean_squared_error(test_data[target], best_model_random)
+    mse = mean_squared_error(test_data[target], predictions)
     print('Mean squared error:', mse)
 
     # Extract feature importances
@@ -228,28 +231,28 @@ if st.session_state.button_pressed:
                 Mselisih8 =  (kiri8 - kanan8)
                 
                 new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih1], 'displacement' : [displacement], })
-                predicted_Incline1 = random_search.predict(new_test1)
+                predicted_Incline1 = random_search.best_estimator_.predictt(new_test1)
         
                 new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih2], 'displacement' : [displacement], })
-                predicted_Incline2 = random_search.predict(new_test2)
+                predicted_Incline2 = random_search.best_estimator_.predict(new_test2)
         
                 new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih3], 'displacement' : [displacement], })
-                predicted_Incline3 = random_search.predict(new_test3)
+                predicted_Incline3 = random_search.best_estimator_.predict(new_test3)
         
                 new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih4], 'displacement' : [displacement], })
-                predicted_Incline4 = random_search.predict(new_test4)
+                predicted_Incline4 = random_search.best_estimator_.predict(new_test4)
         
                 new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih5], 'displacement' : [displacement], })
-                predicted_Incline5 = random_search.predict(new_test5)
+                predicted_Incline5 = random_search.best_estimator_.predict(new_test5)
         
                 new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih6], 'displacement' : [displacement], })
-                predicted_Incline6 = random_search.predict(new_test6)
+                predicted_Incline6 = random_search.best_estimator_.predict(new_test6)
         
                 new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih7], 'displacement' : [displacement], })
-                predicted_Incline7 = random_search.predict(new_test7)
+                predicted_Incline7 = random_search.best_estimator_.predict(new_test7)
         
                 new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih8], 'displacement' : [displacement], })
-                predicted_Incline8 = random_search.predict(new_test8)
+                predicted_Incline8 = random_search.best_estimator_.predict(new_test8)
 
                 
         
