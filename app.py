@@ -140,7 +140,7 @@ if ok:
 
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
-                print('please input weight used')
+                st.subheader(f"the accuracy of this inclinement model is {mse}  " )
         
         else:
                 halfBreadth = Breadth/2
@@ -295,4 +295,16 @@ if st.session_state.button_pressed:
 
                 # Display the plot in Streamlit
                 st.pyplot(fig)
+
+                st.subheader(f"the accuracy of this inclinement model is {mse}  " )
             
+                # Plotting feature importances
+                imp, ax = plt.subplots(figsize=(10, 6))
+                ax.bar(range(len(importances)), importances[sorted_indices], align='center')
+                ax.set_xticks(range(len(importances)))
+                ax.set_xticklabels(np.array(features)[sorted_indices])
+                ax.set_title("Feature Importances")
+                ax.set_ylabel('Importance')
+                ax.set_xlabel('Features')
+
+                st.pyplot(imp)  # Pass the figure object to st.pyplot()
