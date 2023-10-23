@@ -102,7 +102,7 @@ if ok:
     train_data, val_data = train_test_split(train_data, test_size=0.1, random_state=42)
 
     # Select the features and target variable
-    features = ['B/T', 'Cb', 'Moment', 'displacement',]
+    features = ['B/T', 'Cb', 'D/T', 'Moment', 'displacement',]
     target = 'Inclinement'
     
     # Define the parameter grid
@@ -208,7 +208,7 @@ if st.session_state.button_pressed:
                         LB = 0
                 else :
                         LB = (Lwl /Breadth) 
-
+                        DT = (Depth / Draft)
                 if Draft == 0:
                         BT = 0
                         DT = 0
@@ -226,28 +226,28 @@ if st.session_state.button_pressed:
                 Mselisih7 =  (kiri7 - kanan7) 
                 Mselisih8 =  (kiri8 - kanan8)
                 
-                new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih1], 'displacement' : [displacement], })
+                new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih1], 'displacement' : [displacement], })
                 predicted_Incline1 = xgboost_model.predict(new_test1)
         
-                new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih2], 'displacement' : [displacement], })
+                new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih2], 'displacement' : [displacement], })
                 predicted_Incline2 = xgboost_model.predict(new_test2)
         
-                new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih3], 'displacement' : [displacement], })
+                new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih3], 'displacement' : [displacement], })
                 predicted_Incline3 = xgboost_model.predict(new_test3)
         
-                new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih4], 'displacement' : [displacement], })
+                new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih4], 'displacement' : [displacement], })
                 predicted_Incline4 = xgboost_model.predict(new_test4)
         
-                new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih5], 'displacement' : [displacement], })
+                new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih5], 'displacement' : [displacement], })
                 predicted_Incline5 = xgboost_model.predict(new_test5)
         
-                new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih6], 'displacement' : [displacement], })
+                new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih6], 'displacement' : [displacement], })
                 predicted_Incline6 = xgboost_model.predict(new_test6)
         
-                new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih7], 'displacement' : [displacement], })
+                new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih7], 'displacement' : [displacement], })
                 predicted_Incline7 = xgboost_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih8], 'displacement' : [displacement], })
+                new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih8], 'displacement' : [displacement], })
                 predicted_Incline8 = xgboost_model.predict(new_test8)
 
                 
