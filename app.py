@@ -124,7 +124,7 @@ if ok:
 
     fit_params = {
     'eval_metric': 'rmse',  # Or another suitable metric for your problem
-    'early_stopping_rounds': 50,
+    'early_stopping_rounds': 100,
     'eval_set': [(test_data[features], test_data[target])],
     'verbose': False
     }
