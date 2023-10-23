@@ -107,12 +107,12 @@ if ok:
     param_dist = {
         'n_estimators': randint(1, 600), 
         'max_depth':  randint(3, 11),
-        'learning_rate':  randint(0.03, 0.125),
-        'subsample':  randint(0.5, 1.0),
-        'colsample_bytree':  randint(0.5, 1.0),   
-        'reg_alpha': [1],  # Using reg_alpha instead of alpha
-        'reg_lambda': [1],  # Using reg_lambda instead of lambda
-        'reg_gamma': [1]
+        'learning_rate':  uniform(0.03, 0.125),
+        'subsample':  uniform(0.5, 1.0),
+        'colsample_bytree':  uniform(0.5, 1.0),   
+        'reg_alpha': uniform(1,1),  # Using reg_alpha instead of alpha
+        'reg_lambda': uniform(1,1),  # Using reg_lambda instead of lambda
+        'reg_gamma': uniform(1,1)
     }
 
     # Create the XGBoost regressor
