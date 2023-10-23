@@ -104,7 +104,7 @@ if ok:
     target = 'Inclinement'
     
     # Define the parameter grid
-    param_grid = {
+    param_dist = {
         'n_estimators': randint(1, 600), 
         'max_depth':  randint(3, 11),
         'learning_rate':  randint(0.03, 0.125),
