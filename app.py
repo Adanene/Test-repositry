@@ -107,12 +107,12 @@ if ok:
     param_dist = {
         'n_estimators': randint(1, 600), 
         'max_depth':  randint(3, 11),
-        'learning_rate':  uniform(0.03, 0.125),
-        'subsample':  uniform(0.5, 0.5),
-        'colsample_bytree':  uniform(0.5, 0.5),   
-        'reg_alpha': uniform(1,1),  # Using reg_alpha instead of alpha
-        'reg_lambda': uniform(1,1),  # Using reg_lambda instead of lambda
-        'reg_gamma': uniform(1,1)
+        'learning_rate':  uniform(0.01, 0.15),
+        'subsample':  uniform(0.1, 1.0),
+        'colsample_bytree':  uniform(0.1, 1.0),   
+        'reg_alpha': uniform(0,1),  # Using reg_alpha instead of alpha
+        'reg_lambda': uniform(0,1),  # Using reg_lambda instead of lambda
+        'reg_gamma': uniform(0,1)
     }
 
     # Create the XGBoost regressor
@@ -129,9 +129,9 @@ if ok:
     'verbose': False
     }
         
-    #Fit RandomizedSearchCV object to training data
+    # Fit RandomizedSearchCV object to training data
     random_search.fit(train_data[features], train_data[target], **fit_params)
-    
+
     predictions = random_search.best_estimator_.predict(test_data[features])
 
     # Evaluate the model performance
@@ -139,7 +139,7 @@ if ok:
     print('Mean squared error:', mse)
 
     # Extract feature importances
-    importances = xgboost_model.feature_importances_
+    importances = random_search.best_estimator_.feature_importances_
     sorted_indices = np.argsort(importances)[::-1]
 
 if st.session_state.button_pressed:
