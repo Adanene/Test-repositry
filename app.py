@@ -98,6 +98,9 @@ if ok:
     # Split the dataset into training and test sets
     train_data, test_data = train_test_split(data, test_size=0.3, random_state=320)
 
+     # Further split the training data to get a validation set for early stopping
+    train_data, val_data = train_test_split(train_data, test_size=0.1, random_state=42)
+
     # Select the features and target variable
     features = ['B/T', 'Cb', 'Moment', 'displacement',]
     target = 'Inclinement'
@@ -117,13 +120,13 @@ if ok:
     # Create the XGBoost regressor
     xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
 
-    # Create the GridSearchCV object
-    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid, 
-                           cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
+    # We will fit the XGBoost model directly (without GridSearch) to demonstrate early stopping
+    eval_set = [(val_data[features], val_data[target])]
+    xgboost_model.fit(train_data[features], train_data[target], eval_metric="rmse", eval_set=eval_set, early_stopping_rounds=50, verbose=True)
 
-    # Fit the GridSearchCV to the training data
-    grid_search.fit(train_data[features], train_data[target])
-
+    # Make predictions on the test set
+    test_predictions = xgboost_model.predict(test_data[features])
+    
     # Get the best model from GridSearchCV
     best_model = grid_search.best_estimator_
 
