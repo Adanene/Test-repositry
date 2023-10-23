@@ -127,6 +127,16 @@ if ok:
     # Make predictions on the test set
     test_predictions = xgboost_model.predict(test_data[features])
 
+    # After fitting the model with early stopping...
+    test_predictions = xgboost_model.predict(test_data[features])
+
+    # Evaluate the model performance
+    mse = mean_squared_error(test_data[target], test_predictions)
+    print('Mean squared error:', mse)
+
+    # Extract feature importances
+    importances = xgboost_model.feature_importances_
+    sorted_indices = np.argsort(importances)[::-1]
 
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
@@ -217,28 +227,28 @@ if st.session_state.button_pressed:
                 Mselisih8 =  (kiri8 - kanan8)
                 
                 new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih1], 'displacement' : [displacement], })
-                predicted_Incline1 = best_model.predict(new_test1)
+                predicted_Incline1 = xgboost_model.predict(new_test1)
         
                 new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih2], 'displacement' : [displacement], })
-                predicted_Incline2 = best_model.predict(new_test2)
+                predicted_Incline2 = xgboost_model.predict(new_test2)
         
                 new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih3], 'displacement' : [displacement], })
-                predicted_Incline3 = best_model.predict(new_test3)
+                predicted_Incline3 = xgboost_model.predict(new_test3)
         
                 new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih4], 'displacement' : [displacement], })
-                predicted_Incline4 = best_model.predict(new_test4)
+                predicted_Incline4 = xgboost_model.predict(new_test4)
         
                 new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih5], 'displacement' : [displacement], })
-                predicted_Incline5 = best_model.predict(new_test5)
+                predicted_Incline5 = xgboost_model.predict(new_test5)
         
                 new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih6], 'displacement' : [displacement], })
-                predicted_Incline6 = best_model.predict(new_test6)
+                predicted_Incline6 = xgboost_model.predict(new_test6)
         
                 new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih7], 'displacement' : [displacement], })
-                predicted_Incline7 = best_model.predict(new_test7)
+                predicted_Incline7 = xgboost_model.predict(new_test7)
         
                 new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'Moment': [Mselisih8], 'displacement' : [displacement], })
-                predicted_Incline8 = best_model.predict(new_test8)
+                predicted_Incline8 = xgboost_model.predict(new_test8)
 
                 
         
