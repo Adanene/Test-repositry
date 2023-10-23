@@ -119,13 +119,20 @@ if ok:
     xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")
 
     random_search = RandomizedSearchCV(estimator=xgboost_model, param_distributions=param_dist,n_iter=100, scoring='neg_mean_squared_error', n_jobs=-1, cv=3, verbose=2, random_state=600)
+    
+    fit_params = {
+    'eval_metric': 'rmse',  # Or another suitable metric for your problem
+    'early_stopping_rounds': 50,
+    'eval_set': [(test_data[features], test_data[target])],
+    'verbose': False
+    }
 
-    random_search.fit(train_data[features], train_data[target])
+    random_search.fit(train_data[features], train_data[target], **fit_params)
 
     best_model_random = random_search.best_estimator_
 
     # Evaluate the model performance
-    mse = mean_squared_error(test_data[target], test_predictions)
+    mse = mean_squared_error(test_data[target], best_model_random)
     print('Mean squared error:', mse)
 
     # Extract feature importances
