@@ -99,7 +99,7 @@ if ok:
     train_data, test_data = train_test_split(data, test_size=0.3, random_state=320)
 
      # Further split the training data to get a validation set for early stopping
-    train_data, val_data = train_test_split(train_data, test_size=0.1, random_state=40)
+    train_data, val_data = train_test_split(train_data, test_size=0.1, random_state=42)
 
     # Select the features and target variable
     features = ['B/T', 'Cb', 'Moment', 'displacement',]
@@ -107,9 +107,9 @@ if ok:
     
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [500], 
-        'max_depth': [8],
-        'learning_rate': [0.125],
+        'n_estimators': [500, 550], 
+        'max_depth': [8, 9],
+        'learning_rate': [0.125, 0.15],
         'subsample': [1.0],
         'colsample_bytree': [1.0],   
         'reg_alpha': [0.75],  # Using reg_alpha instead of alpha
