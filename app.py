@@ -99,7 +99,7 @@ if ok:
     train_data, test_data = train_test_split(data, test_size=0.3, random_state=42)
 
      # Further split the training data to get a validation set for early stopping
-    train_data, val_data = train_test_split(train_data, test_size=0.1, random_state=42)
+    train_data, val_data = train_test_split(train_data, test_size=0.3, random_state=42)
 
     # Select the features and target variable
     features = ['B/T', 'Cb', 'D/T', 'Moment', 'displacement',]
