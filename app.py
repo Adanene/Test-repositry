@@ -133,7 +133,7 @@ if ok:
 
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
-                
+                print('please input weight used')
         
         else:
                 halfBreadth = Breadth/2
