@@ -128,7 +128,7 @@ if ok:
     test_predictions = xgboost_model.predict(test_data[features])
 
     # Evaluate the model performance
-    mse = mean_squared_error(test_data[target], test_predictions)
+    mse = mean_squared_error(val_data[target], test_predictions)
     print('Mean squared error:', mse)
 
     # Note: XGBoost also provides feature importances similar to Random Forest
