@@ -12,7 +12,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RandomizedSearchCV
+from scipy.stats import randint, uniform
 from sklearn.metrics import mean_squared_error
 
 # Define a dictionary to store the session state values
@@ -98,37 +99,32 @@ if ok:
     # Split the dataset into training and test sets
     train_data, test_data = train_test_split(data, test_size=0.3, random_state=420)
 
-     # Further split the training data to get a validation set for early stopping
-    train_data, val_data = train_test_split(train_data, test_size=0.3, random_state=42)
-
     # Select the features and target variable
     features = ['B/T', 'Cb', 'D/T', 'Moment', 'displacement',]
     target = 'Inclinement'
     
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [450, 500, 550], 
-        'max_depth': [7 ,8, 9],
-        'learning_rate': [0.1, 0.125, 0.15],
-        'subsample': [0.8, 0.9, 1.0],
-        'colsample_bytree': [0.8, 0.9, 1.0],   
+        'n_estimators': randint(1, 600), 
+        'max_depth':  randint(3, 11),
+        'learning_rate':  randint(0.03, 0.125),
+        'subsample':  randint(0.5, 1.0),
+        'colsample_bytree':  randint(0.5, 1.0),   
         'reg_alpha': [1],  # Using reg_alpha instead of alpha
         'reg_lambda': [1],  # Using reg_lambda instead of lambda
         'reg_gamma': [1]
     }
 
     # Create the XGBoost regressor
-    xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
+    xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")
 
-    # We will fit the XGBoost model directly (without GridSearch) to demonstrate early stopping
-    eval_set = [(val_data[features], val_data[target])]
-    xgboost_model.fit(train_data[features], train_data[target], eval_metric="rmse", eval_set=eval_set, early_stopping_rounds=50, verbose=True)
+    random_search = RandomizedSearchCV(estimator=xgboost_model, param_distributions=param_dist, 
+                                   n_iter=100, scoring='neg_mean_squared_error', 
+                                   n_jobs=-1, cv=3, verbose=2, random_state=600)
 
-    # Make predictions on the test set
-    test_predictions = xgboost_model.predict(test_data[features])
+    random_search.fit(train_data[features], train_data[target])
 
-    # After fitting the model with early stopping...
-    test_predictions = xgboost_model.predict(test_data[features])
+    best_model_random = random_search.best_estimator_
 
     # Evaluate the model performance
     mse = mean_squared_error(test_data[target], test_predictions)
@@ -227,28 +223,28 @@ if st.session_state.button_pressed:
                 Mselisih8 =  (kiri8 - kanan8)
                 
                 new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih1], 'displacement' : [displacement], })
-                predicted_Incline1 = xgboost_model.predict(new_test1)
+                predicted_Incline1 = random_search.predict(new_test1)
         
                 new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih2], 'displacement' : [displacement], })
-                predicted_Incline2 = xgboost_model.predict(new_test2)
+                predicted_Incline2 = random_search.predict(new_test2)
         
                 new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih3], 'displacement' : [displacement], })
-                predicted_Incline3 = xgboost_model.predict(new_test3)
+                predicted_Incline3 = random_search.predict(new_test3)
         
                 new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih4], 'displacement' : [displacement], })
-                predicted_Incline4 = xgboost_model.predict(new_test4)
+                predicted_Incline4 = random_search.predict(new_test4)
         
                 new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih5], 'displacement' : [displacement], })
-                predicted_Incline5 = xgboost_model.predict(new_test5)
+                predicted_Incline5 = random_search.predict(new_test5)
         
                 new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih6], 'displacement' : [displacement], })
-                predicted_Incline6 = xgboost_model.predict(new_test6)
+                predicted_Incline6 = random_search.predict(new_test6)
         
                 new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih7], 'displacement' : [displacement], })
-                predicted_Incline7 = xgboost_model.predict(new_test7)
+                predicted_Incline7 = random_search.predict(new_test7)
         
                 new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih8], 'displacement' : [displacement], })
-                predicted_Incline8 = xgboost_model.predict(new_test8)
+                predicted_Incline8 = random_search.predict(new_test8)
 
                 
         
