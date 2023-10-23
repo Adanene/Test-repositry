@@ -231,7 +231,7 @@ if st.session_state.button_pressed:
                 Mselisih8 =  (kiri8 - kanan8)
                 
                 new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih1], 'displacement' : [displacement], })
-                predicted_Incline1 = random_search.best_estimator_.predictt(new_test1)
+                predicted_Incline1 = random_search.best_estimator_.predict(new_test1)
         
                 new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih2], 'displacement' : [displacement], })
                 predicted_Incline2 = random_search.best_estimator_.predict(new_test2)
