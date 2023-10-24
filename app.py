@@ -12,8 +12,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import RandomizedSearchCV
-from scipy.stats import randint, uniform
+from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error
 
 # Define a dictionary to store the session state values
@@ -27,7 +26,7 @@ if 'button_pressed' not in st.session_state:
 def fetch_data():
         sheet_id ='d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs'
         xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/e/2PACX-1vSzJ2McdS3aIboBFt0MaFuwPxONxqOOr6wr3BPDoftmdAA7NR-nfqwdBNRzB8jpvmeBt5tfdJZzj4WU/pub?output=xlsx")
-        data = pd.read_excel(xls , 'Usesheet' , header = 0)
+        data = pd.read_excel(xls , 'Usedsheet' , header = 0)
         return data
 
 data = fetch_data()
@@ -97,49 +96,46 @@ if ok:
     # chnge some data into numeric
 
     # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.3, random_state=350)
+    train_data, test_data = train_test_split(data, test_size=0.3, random_state=240)
 
     # Select the features and target variable
-    features = ['B/T', 'Cb', 'D/T', 'Moment', 'displacement',]
+    features = ['Moment']
     target = 'Inclinement'
     
     # Define the parameter grid
-    param_dist = {
-        'n_estimators': randint(1, 1000), 
-        'max_depth':  randint(3, 11),
-        'learning_rate':  uniform(0.01, 0.15),
-        'subsample':  uniform(0.1, 1.0),
-        'colsample_bytree':  uniform(0.1, 1.0),   
-        'reg_alpha': uniform(0,1),  # Using reg_alpha instead of alpha
-        'reg_lambda': uniform(0,1),  # Using reg_lambda instead of lambda
-        'reg_gamma': uniform(0,1)
+    param_grid = {
+        'n_estimators': [500], 
+        'max_depth': [9],
+        'learning_rate': [0.125],
+        'subsample': [1.0],
+        'colsample_bytree': [1.0],   
+        'reg_alpha': [0.75],  # Using reg_alpha instead of alpha
+        'reg_lambda': [0.75],  # Using reg_lambda instead of lambda
+        'reg_gamma': [0.75]
     }
 
     # Create the XGBoost regressor
-    xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")
+    xgboost_model = xgb.XGBRegressor(random_state=600, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
 
-    random_search = RandomizedSearchCV(estimator=xgboost_model, param_distributions=param_dist,n_iter=100, scoring='neg_mean_squared_error', n_jobs=-1, cv=3, verbose=2, random_state=600)
+    # Create the GridSearchCV object
+    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid, 
+                           cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
 
+    # Fit the GridSearchCV to the training data
+    grid_search.fit(train_data[features], train_data[target])
 
+    # Get the best model from GridSearchCV
+    best_model = grid_search.best_estimator_
 
-    fit_params = {
-    'eval_metric': 'rmse',  # Or another suitable metric for your problem
-    'early_stopping_rounds': 300,
-    'eval_set': [(test_data[features], test_data[target])],
-    'verbose': False
-    }
-        
-    # Fit RandomizedSearchCV object to training data
-    random_search.fit(train_data[features], train_data[target], **fit_params)
-
-    predictions = random_search.best_estimator_.predict(test_data[features])
+    # Make predictions on the test set
+    test_predictions = best_model.predict(test_data[features])
 
     # Evaluate the model performance
-    mse = mean_squared_error(test_data[target], predictions)
+    mse = mean_squared_error(test_data[target], test_predictions)
     print('Mean squared error:', mse)
 
-    # Extract feature importances
-    importances = random_search.best_estimator_.feature_importances_
+    # Note: XGBoost also provides feature importances similar to Random Forest
+    importances = best_model.feature_importances_
     sorted_indices = np.argsort(importances)[::-1]
 
 if st.session_state.button_pressed:
@@ -212,7 +208,7 @@ if st.session_state.button_pressed:
                         LB = 0
                 else :
                         LB = (Lwl /Breadth) 
-                        DT = (Depth / Draft)
+
                 if Draft == 0:
                         BT = 0
                         DT = 0
@@ -230,31 +226,31 @@ if st.session_state.button_pressed:
                 Mselisih7 =  (kiri7 - kanan7) 
                 Mselisih8 =  (kiri8 - kanan8)
                 
-                new_test1 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih1], 'displacement' : [displacement], })
-                predicted_Incline1 = random_search.best_estimator_.predict(new_test1)
+                new_test1 = pd.DataFrame({'Moment': [Mselisih1]})
+                predicted_Incline1 = best_model.predict(new_test1)
         
-                new_test2 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih2], 'displacement' : [displacement], })
-                predicted_Incline2 = random_search.best_estimator_.predict(new_test2)
+                new_test2 = pd.DataFrame({'Moment': [Mselisih2], })
+                predicted_Incline2 = best_model.predict(new_test2)
         
-                new_test3 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih3], 'displacement' : [displacement], })
-                predicted_Incline3 = random_search.best_estimator_.predict(new_test3)
+                new_test3 = pd.DataFrame({'Moment': [Mselisih3],})
+                predicted_Incline3 = best_model.predict(new_test3)
         
-                new_test4 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih4], 'displacement' : [displacement], })
-                predicted_Incline4 = random_search.best_estimator_.predict(new_test4)
+                new_test4 = pd.DataFrame({'Moment': [Mselisih4],})
+                predicted_Incline4 = best_model.predict(new_test4)
         
-                new_test5 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih5], 'displacement' : [displacement], })
-                predicted_Incline5 = random_search.best_estimator_.predict(new_test5)
+                new_test5 = pd.DataFrame({ 'Moment': [Mselisih5],})
+                predicted_Incline5 = best_model.predict(new_test5)
         
-                new_test6 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih6], 'displacement' : [displacement], })
-                predicted_Incline6 = random_search.best_estimator_.predict(new_test6)
+                new_test6 = pd.DataFrame({'Moment': [Mselisih6],})
+                predicted_Incline6 = best_model.predict(new_test6)
         
-                new_test7 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih7], 'displacement' : [displacement], })
-                predicted_Incline7 = random_search.best_estimator_.predict(new_test7)
+                new_test7 = pd.DataFrame({'Moment': [Mselisih7],})
+                predicted_Incline7 = best_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({ 'B/T' :[BT], 'Cb': [Cb], 'D/T' :[DT] , 'Moment': [Mselisih8], 'displacement' : [displacement], })
-                predicted_Incline8 = random_search.best_estimator_.predict(new_test8)
+                new_test8 = pd.DataFrame({'Moment': [Mselisih8],})
+                predicted_Incline8 = best_model.predict(new_test8)
 
-                
+                st.subheader(f"the accuracy of this inclinement model is {mse} " )
         
                 dataS = pd.DataFrame({
                         'Moment Beban (Kg.m)': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
@@ -299,8 +295,6 @@ if st.session_state.button_pressed:
 
                 # Display the plot in Streamlit
                 st.pyplot(fig)
-
-                st.subheader(f"the accuracy of this inclinement model is {mse}  " )
             
                 # Plotting feature importances
                 imp, ax = plt.subplots(figsize=(10, 6))
