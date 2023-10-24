@@ -104,12 +104,12 @@ if ok:
     
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [325], 
+        'n_estimators': [300], 
         'max_depth': [8],
         'learning_rate': [0.125],
         'subsample': [1.0],
         'colsample_bytree': [1.0],   
-        'reg_alpha': [1.0],  # Using reg_alpha instead of alpha
+        'reg_alpha': [0.75],  # Using reg_alpha instead of alpha
         'reg_lambda': [0.75],  # Using reg_lambda instead of lambda
         'reg_gamma': [0.75]
     }
