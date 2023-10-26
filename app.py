@@ -99,7 +99,7 @@ if ok:
     train_data, test_data = train_test_split(data, test_size=0.3, random_state=300)
 
     # Select the features and target variable
-    features = ['Moment', 'displacement','B/T','Cb' ]
+    features = ['Moment', 'displacement','B/T','Cb','MB/Disp' ]
     target = 'Inclinement'
     
     # Define the parameter grid
@@ -226,29 +226,38 @@ if st.session_state.button_pressed:
                 Mselisih7 =  (kiri7 - kanan7) 
                 Mselisih8 =  (kiri8 - kanan8)
 
+                M/D1 = (Mselisih1 / displacement)
+                M/D2 = (Mselisih2 / displacement)
+                M/D3 = (Mselisih3 / displacement)
+                M/D4 = (Mselisih4 / displacement)
+                M/D5 = (Mselisih5 / displacement)
+                M/D6 = (Mselisih6 / displacement)
+                M/D7 = (Mselisih7 / displacement)
+                M/D8 = (Mselisih8 / displacement)
+
                 
-                new_test1 = pd.DataFrame({'Moment': [Mselisih1], 'displacement': [displacement],'B/T' :[BT] , 'Cb': [Cb], })
+                new_test1 = pd.DataFrame({'Moment': [Mselisih1], 'displacement': [displacement],'B/T' :[BT] , 'Cb': [Cb],'MB/Disp' : [M/D1], })
                 predicted_Incline1 = best_model.predict(new_test1)
         
-                new_test2 = pd.DataFrame({'Moment': [Mselisih2], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb], })
+                new_test2 = pd.DataFrame({'Moment': [Mselisih2], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],'MB/Disp' : [M/D2], })
                 predicted_Incline2 = best_model.predict(new_test2)
         
-                new_test3 = pd.DataFrame({'Moment': [Mselisih3], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],})
+                new_test3 = pd.DataFrame({'Moment': [Mselisih3], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],'MB/Disp' : [M/D3],})
                 predicted_Incline3 = best_model.predict(new_test3)
         
-                new_test4 = pd.DataFrame({'Moment': [Mselisih4], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb], })
+                new_test4 = pd.DataFrame({'Moment': [Mselisih4], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],'MB/Disp' : [M/D4], })
                 predicted_Incline4 = best_model.predict(new_test4)
         
-                new_test5 = pd.DataFrame({ 'Moment': [Mselisih5], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb], })
+                new_test5 = pd.DataFrame({ 'Moment': [Mselisih5], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],'MB/Disp' : [M/D5], })
                 predicted_Incline5 = best_model.predict(new_test5)
         
-                new_test6 = pd.DataFrame({'Moment': [Mselisih6], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],})
+                new_test6 = pd.DataFrame({'Moment': [Mselisih6], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],'MB/Disp' : [M/D6],})
                 predicted_Incline6 = best_model.predict(new_test6)
         
-                new_test7 = pd.DataFrame({'Moment': [Mselisih7], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],})
+                new_test7 = pd.DataFrame({'Moment': [Mselisih7], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],'MB/Disp' : [M/D7],})
                 predicted_Incline7 = best_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({'Moment': [Mselisih8], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],})
+                new_test8 = pd.DataFrame({'Moment': [Mselisih8], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb]'MB/Disp' : [M/D8],,})
                 predicted_Incline8 = best_model.predict(new_test8)
 
                 st.subheader(f"the accuracy of this inclinement model is {mse} " )
