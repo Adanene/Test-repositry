@@ -257,7 +257,7 @@ if st.session_state.button_pressed:
                 new_test7 = pd.DataFrame({'Moment': [Mselisih7], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],'MB/Disp' : [MD7],})
                 predicted_Incline7 = best_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({'Moment': [Mselisih8], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb]'MB/Disp' : [MD8],,})
+                new_test8 = pd.DataFrame({'Moment': [Mselisih8], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],'MB/Disp' : [MD8],})
                 predicted_Incline8 = best_model.predict(new_test8)
 
                 st.subheader(f"the accuracy of this inclinement model is {mse} " )
