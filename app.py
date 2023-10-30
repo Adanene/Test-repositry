@@ -170,6 +170,7 @@ if st.session_state.button_pressed:
                         kanan6 = (beban_A + beban_B + beban_C)
                         kanan7 = (beban_A + beban_B + beban_C + beban_D)
                         kanan8 = (beban_B + beban_C + beban_D)
+                        kanan9 = (beban_B + beban_D) 
 
                         kiri1 = (beban_A + beban_C)
                         kiri2 = (beban_A + beban_B + beban_C)
@@ -179,6 +180,7 @@ if st.session_state.button_pressed:
                         kiri6 = (beban_D)
                         kiri7 = 0
                         kiri8 = (beban_A)
+                        kiri9 = (beban_A + beban_C)
                         
                         
                 
@@ -192,6 +194,7 @@ if st.session_state.button_pressed:
                         kanan6 = (beban_E)
                         kanan7 = 0
                         kanan8 = (beban_C + beban_E)
+                        kanan9 = (beban_A + beban_C + beban_E)
 
                         kiri1 = (beban_B + beban_D + beban_F)
                         kiri2 = (beban_D + beban_F)
@@ -201,6 +204,7 @@ if st.session_state.button_pressed:
                         kiri6 = (beban_A + beban_B + beban_C + beban_D + beban_F )
                         kiri7 = (beban_A + beban_B + beban_C + beban_D + beban_E + beban_F)
                         kiri8 = (beban_A + beban_B + beban_D + beban_F)
+                        kiri9 = (beban_B + beban_D + beban_F)
                     
                      
                 #finding ratio
@@ -225,6 +229,7 @@ if st.session_state.button_pressed:
                 Mselisih6 =  (kiri6 - kanan6) 
                 Mselisih7 =  (kiri7 - kanan7) 
                 Mselisih8 =  (kiri8 - kanan8)
+                Mselisih9 =  (kiri9 - kanan9)
 
                 MD1 = (Mselisih1 / displacement)
                 MD2 = (Mselisih2 / displacement)
@@ -234,6 +239,7 @@ if st.session_state.button_pressed:
                 MD6 = (Mselisih6 / displacement)
                 MD7 = (Mselisih7 / displacement)
                 MD8 = (Mselisih8 / displacement)
+                ND9 = (Mselisih9 / displacement)
 
                 
                 new_test1 = pd.DataFrame({'Moment': [Mselisih1], 'displacement': [displacement],'B/T' :[BT] , 'Cb': [Cb], })
@@ -260,11 +266,14 @@ if st.session_state.button_pressed:
                 new_test8 = pd.DataFrame({'Moment': [Mselisih8], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],})
                 predicted_Incline8 = best_model.predict(new_test8)
 
+                new_test9 = pd.DataFrame({'Moment': [Mselisih9], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],})
+                predicted_Incline9 = best_model.predict(new_test9)
+
                 st.subheader(f"the accuracy of this inclinement model is {mse} " )
         
                 dataS = pd.DataFrame({
-                        'Moment Beban (Kg.m)': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8],
-                        'incline (degrees)': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0],
+                        'Moment Beban (Kg.m)': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8, Mselisih9],
+                        'incline (degrees)': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0], predicted_Incline9[0],
                                    ]
                         })
                 dataS_display = dataS.copy()
