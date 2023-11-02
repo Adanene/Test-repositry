@@ -100,7 +100,7 @@ if ok:
 
     # Select the features and target variable
     features = ['Moment', 'displacement','B/T','Cb' ]
-    target = 'Inclinement'
+    target = 'Tanth'
     
     # Define the parameter grid
     param_grid = {
