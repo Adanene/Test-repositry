@@ -278,7 +278,7 @@ if st.session_state.button_pressed:
                         })
                 dataS_display = dataS.copy()
                 dataS_display['Moment Beban (Kg.m)'] = dataS['Moment Beban (Kg.m)']
-                dataS_display['incline (degrees)'] = dataS['incline (degrees)'].apply(lambda x: '{:.2f}'.format(x))
+                dataS_display['incline (tan θ)'] = dataS['incline (tan θ)'].apply(lambda x: '{:.2f}'.format(x))
 
                 st.table(dataS_display)
             
@@ -287,12 +287,12 @@ if st.session_state.button_pressed:
                 fig, ax = plt.subplots()
 
                 # Create a scatter plot
-                scatter = ax.scatter(dataS['Moment Beban (Kg.m)'], dataS['incline (degrees)'], color='blue', label='Incliing result')
+                scatter = ax.scatter(dataS['Moment Beban (Kg.m)'], dataS['incline (tan θ)'], color='blue', label='Incliing result')
         
                 # Set title, labels, and legend
                 ax.set_title("Inclining graphic")
                 ax.set_xlabel('Moment Beban (Kg.m)')
-                ax.set_ylabel('incline (degrees)')
+                ax.set_ylabel('incline (tan θ)')
                 ax.legend()
 
                 # Add annotations
@@ -300,7 +300,7 @@ if st.session_state.button_pressed:
                         ax.annotate(i, (dataS['Moment Beban (Kg.m)'].iloc[i], dataS['incline (degrees)'].iloc[i])) # i+1 because Python's indexing starts at 0
 
                 ax.set_xlabel('Moment Beban (Kg.m)')
-                ax.set_ylabel('incline (degrees)')
+                ax.set_ylabel('incline (tan θ)')
 
                 # Customization: draw a vertical line (you can adjust this as per your requirement)
                 threshold = dataS['Moment Beban (Kg.m)'].mean()  # example threshold using mean, adjust as needed
@@ -308,7 +308,7 @@ if st.session_state.button_pressed:
                 ax.legend()
 
                 # Customization: draw a horizontal  line (you can adjust this as per your requirement)
-                thresholds = dataS['incline (degrees)'].mean()  # example threshold using mean, adjust as needed
+                thresholds = dataS['incline (tan θ)'].mean()  # example threshold using mean, adjust as needed
                 ax.axhline(y=0, color='red', linestyle='--', label="")
                 ax.legend()
 
