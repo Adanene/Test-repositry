@@ -273,7 +273,7 @@ if st.session_state.button_pressed:
         
                 dataS = pd.DataFrame({
                         'Moment Beban (Kg.m)': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8, Mselisih9],
-                        'incline (degrees)': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0], predicted_Incline9[0],
+                        'incline (tan θ)': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0], predicted_Incline9[0],
                                    ]
                         })
                 dataS_display = dataS.copy()
