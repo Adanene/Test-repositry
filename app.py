@@ -4,6 +4,7 @@
 #Copy code
 # Import necessary libraries
 import pandas as pd
+import math
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
@@ -269,12 +270,34 @@ if st.session_state.button_pressed:
                 new_test9 = pd.DataFrame({'Moment': [Mselisih9], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],})
                 predicted_Incline9 = best_model.predict(new_test9)
 
+                ##Convert into rad and tan θ
+                radians1 = math.radians(predicted_Incline1[0])
+                radians2 = math.radians(predicted_Incline2[0])
+                radians3 = math.radians(predicted_Incline3[0])
+                radians4 = math.radians(predicted_Incline4[0])
+                radians5 = math.radians(predicted_Incline5[0])
+                radians6 = math.radians(predicted_Incline6[0])
+                radians7 = math.radians(predicted_Incline7[0])
+                radians8 = math.radians(predicted_Incline8[0])
+                radians9 = math.radians(predicted_Incline9[0])
+
+                tantheta1 = math.tan(radians1)
+                tantheta2 = math.tan(radians2)
+                tantheta3 = math.tan(radians3)
+                tantheta4 = math.tan(radians4)
+                tantheta5 = math.tan(radians5)
+                tantheta6 = math.tan(radians6)
+                tantheta7 = math.tan(radians7)
+                tantheta8 = math.tan(radians8)
+                tantheta9 = math.tan(radians9)
+                
                 st.subheader(f"the accuracy of this inclinement model is {mse} " )
         
                 dataS = pd.DataFrame({
                         'Moment Beban (Kg.m)': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8, Mselisih9],
-                        'incline (tan θ)': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0], predicted_Incline9[0],
-                                   ]
+                        'incline (degrees)': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0], predicted_Incline9[0],]
+                        'tantheta' : [tantheta1, tantheta2, tantheta3, tantheta4, tantheta5, tantheta6, tantheta7, tantheta8, tantheta9]
+                                   
                         })
                 dataS_display = dataS.copy()
                 dataS_display['Moment Beban (Kg.m)'] = dataS['Moment Beban (Kg.m)']
