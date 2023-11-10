@@ -97,7 +97,7 @@ if ok:
     # chnge some data into numeric
 
     # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.3, random_state=350)
+    train_data, test_data = train_test_split(data, test_size=0.25, random_state=350)
 
     # Select the features and target variable
     features = ['Moment', 'displacement','B/T','Cb', ]
@@ -106,7 +106,7 @@ if ok:
     # Define the parameter grid
     param_grid = {
         'n_estimators': [400], 
-        'max_depth': [7],
+        'max_depth': [9],
         'learning_rate': [0.5],
         'subsample': [1.0],
         'colsample_bytree': [1.0],   
