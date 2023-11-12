@@ -108,8 +108,8 @@ if ok:
         'n_estimators': [500], 
         'max_depth': [11],
         'learning_rate': [0.125],
-        'subsample': [0.9],
-        'colsample_bytree': [1.0],   
+        'subsample': [1.0],
+        'colsample_bytree': [0.9],   
         'reg_alpha': [1],  # Using reg_alpha instead of alpha
         'reg_lambda': [1],  # Using reg_lambda instead of lambda
         'reg_gamma': [1]
