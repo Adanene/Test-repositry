@@ -96,8 +96,8 @@ if ok:
     #start machine learning process
     # chnge some data into numeric
 
-    # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.3, random_state=400)
+   # Split the dataset into training and test sets
+    train_data, test_data = train_test_split(data, test_size=0.3, random_state=300)
 
     # Select the features and target variable
     features = ['Moment', 'displacement','B/T','Cb', ]
@@ -105,9 +105,9 @@ if ok:
     
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [300], 
-        'max_depth': [11],
-        'learning_rate': [0.125],
+        'n_estimators': [500], 
+        'max_depth': [9],
+        'learning_rate': [0.1],
         'subsample': [1.0],
         'colsample_bytree': [1.0],   
         'reg_alpha': [1],  # Using reg_alpha instead of alpha
