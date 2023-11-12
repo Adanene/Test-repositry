@@ -301,7 +301,8 @@ if st.session_state.button_pressed:
                         })
                 dataS_display = dataS.copy()
                 dataS_display['Moment Beban (Kg.m)'] = dataS['Moment Beban (Kg.m)']
-                dataS_display['incline (tan θ)'] = dataS['incline (tan θ)'].apply(lambda x: '{:.2f}'.format(x))
+                dataS_display['incline (degrees)'] = dataS['incline (tan θ)'].apply(lambda x: '{:.2f}'.format(x))
+                dataS_display['incline (tan θ)'] = dataS['incline (tan θ)'].apply(lambda x: '{:.3f}'.format(x))
 
                 st.table(dataS_display)
             
