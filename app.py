@@ -112,7 +112,7 @@ if ok:
         'colsample_bytree': [1.0],   
         'reg_alpha': [1],  # Using reg_alpha instead of alpha
         'reg_lambda': [1],  # Using reg_lambda instead of lambda
-        'reg_gamma': [0.9]
+        'reg_gamma': [0.8]
     }
 
     # Create the XGBoost regressor
