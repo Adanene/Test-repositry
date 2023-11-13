@@ -137,10 +137,11 @@ if ok:
 
     #MAPE Prediction
     # Calculate absolute percentage errors
-    absolute_percentage_errors = np.abs((test_data[target] - test_predictions) / (test_data[target] + 1e-10 ))
+    def mean_absolute_percentage_error(test_data[target], test_predictions): 
+    test_data[target], test_predictions = np.array(test_data[target]), np.array(test_predictions)
+    return np.mean(np.abs((test_data[target]-test_predictions) / (test_data[target] + 1e-10))) * 100
 
-    # Calculate Mean Absolute Percentage Error (MAPE)
-    mape = np.mean(absolute_percentage_errors) * 100
+    mape = mean_absolute_percentage_error(test_data[target], test_predictions)
     
     # Note: XGBoost also provides feature importances similar to Random Forest
     importances = best_model.feature_importances_
