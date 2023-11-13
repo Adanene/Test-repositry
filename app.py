@@ -139,7 +139,7 @@ if ok:
     # Calculate absolute percentage errors
     y_true = test_data[target]
     y_pred = test_predictions
-    mape = sklearn.metrics.mean_absolute_percentage_error(y_true, y_pred, *, sample_weight=None, multioutput='uniform_average')
+    mape = sklearn.metrics.mean_absolute_percentage_error(y_true, y_pred, sample_weight=None, multioutput='uniform_average')
 
    
     
