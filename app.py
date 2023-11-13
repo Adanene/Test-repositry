@@ -135,6 +135,13 @@ if ok:
     mse = mean_squared_error(test_data[target], test_predictions)
     print('Mean squared error:', mse)
 
+    #MAPE Prediction
+    # Calculate absolute percentage errors
+    absolute_percentage_errors = np.abs((test_data[target] - test_predictions) / test_data[target])
+
+    # Calculate Mean Absolute Percentage Error (MAPE)
+    mape = np.mean(absolute_percentage_errors) * 100
+    
     # Note: XGBoost also provides feature importances similar to Random Forest
     importances = best_model.feature_importances_
     sorted_indices = np.argsort(importances)[::-1]
@@ -142,7 +149,8 @@ if ok:
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
                 st.subheader(f"the accuracy of this inclinement model is {mse}  " )
-        
+                # Print MAPE
+                st.subheader(f"Mean Absolute Percentage Error is {mape}")
         else:
                 halfBreadth = Breadth/2
                 #transfer weight
@@ -292,7 +300,8 @@ if st.session_state.button_pressed:
                 tantheta9 = math.tan(radians9)
                 
                 st.subheader(f"the accuracy of this inclinement model is {mse} " )
-        
+                st.subheader(f"Mean Absolute Percentage Error is {mape}")
+            
                 dataS = pd.DataFrame({
                         'Moment Beban (Kg.m)': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8, Mselisih9],
                         'incline (degrees)': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0], predicted_Incline9[0]],
