@@ -97,7 +97,7 @@ if ok:
     # chnge some data into numeric
 
    # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.24554285714285714285714285714286, stratify=data['Jenis Kapal'], random_state=355)
+    train_data, test_data = train_test_split(data, test_size=0.25, stratify=data['Jenis Kapal'], random_state=355)
 
     # Select the features and target variable
     features = ['Moment', 'displacement','B/T','Cb', ]
@@ -347,5 +347,7 @@ if st.session_state.button_pressed:
                 ax.set_title("Feature Importances")
                 ax.set_ylabel('Importance')
                 ax.set_xlabel('Features')
+
+            ###0.24554285714285714285714285714286
 
                 st.pyplot(imp)  # Pass the figure object to st.pyplot()
