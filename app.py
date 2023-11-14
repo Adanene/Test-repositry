@@ -151,8 +151,8 @@ if ok:
 
         return mape_str
 
-# Calculate MAPE
-mape = calculate_mape(actual_values, predicted_values)
+    # Calculate MAPE
+    mape = calculate_mape(actual_values, predicted_values)
    
     
     # Note: XGBoost also provides feature importances similar to Random Forest
