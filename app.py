@@ -135,10 +135,13 @@ if ok:
     mse = mean_squared_error(test_data[target], test_predictions)
     print('Mean squared error:', mse)
 
+    actual =  test_data[target]
+    predicted = test_predictions
+
     #MAPE Prediction
-    def calculate_mape(test_data[target], test_predictions):
-        errors = np.abs(test_data[target] - test_predictions)
-        denominator = np.abs(test_data[target])
+    def calculate_mape(actual, predicted):
+        errors = np.abs(actual - predicted)
+        denominator = np.abs(actual)
     
         # Handle cases where denominator is zero
         denominator[denominator == 0] = np.nan  # Convert zeros to NaN to avoid division by zero
@@ -152,7 +155,7 @@ if ok:
         return mape_str
 
     # Calculate MAPE
-    mape = calculate_mape(test_data[target], test_predictions)
+    mape = calculate_mape(actual, predicted)
    
     
     # Note: XGBoost also provides feature importances similar to Random Forest
