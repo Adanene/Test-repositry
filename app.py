@@ -137,15 +137,15 @@ if ok:
 
     #MAPE Prediction
     def calculate_mape(actual, predicted):
-    errors = np.abs(actual - predicted)
-    denominator = np.abs(actual)
+        errors = np.abs(actual - predicted)
+        denominator = np.abs(actual)
     
-    # Handle cases where denominator is zero
-    denominator[denominator == 0] = np.nan  # Convert zeros to NaN to avoid division by zero
+        # Handle cases where denominator is zero
+        denominator[denominator == 0] = np.nan  # Convert zeros to NaN to avoid division by zero
     
-    # Calculate MAPE
-    mape = np.nanmean(errors / denominator) * 100
-
+        # Calculate MAPE
+        mape = np.nanmean(errors / denominator) * 100
+    
    
     
     # Note: XGBoost also provides feature importances similar to Random Forest
