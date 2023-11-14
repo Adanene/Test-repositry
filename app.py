@@ -136,10 +136,15 @@ if ok:
     print('Mean squared error:', mse)
 
     #MAPE Prediction
-    # Calculate absolute percentage errors
-    y_true = test_data[target]
-    y_pred = test_predictions
-    mape = sklearn.metrics.mean_absolute_percentage_error(y_true, y_pred, sample_weight=None, multioutput='uniform_average')
+    def calculate_mape(actual, predicted):
+    errors = np.abs(actual - predicted)
+    denominator = np.abs(actual)
+    
+    # Handle cases where denominator is zero
+    denominator[denominator == 0] = np.nan  # Convert zeros to NaN to avoid division by zero
+    
+    # Calculate MAPE
+    mape = np.nanmean(errors / denominator) * 100
 
    
     
