@@ -145,7 +145,14 @@ if ok:
     
         # Calculate MAPE
         mape = np.nanmean(errors / denominator) * 100
-    
+        
+         # Convert mape to a string
+        mape_str = f"{mape:.2f}"
+
+        return mape_str
+
+# Calculate MAPE
+mape = calculate_mape(actual_values, predicted_values)
    
     
     # Note: XGBoost also provides feature importances similar to Random Forest
@@ -306,7 +313,7 @@ if st.session_state.button_pressed:
                 tantheta9 = math.tan(radians9)
                 
                 st.subheader(f"the accuracy of this inclinement model is {mse} " )
-                st.subheader(f"Mean Absolute Percentage Error is {mape}")
+                st.subheader(f"Mean Absolute Percentage Error is { mape }")
             
                 dataS = pd.DataFrame({
                         'Moment Beban (Kg.m)': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8, Mselisih9],
