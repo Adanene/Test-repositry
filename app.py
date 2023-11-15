@@ -137,6 +137,11 @@ if ok:
 
     actual =  test_data[target]
     predicted = test_predictions
+    # Define your threshold
+    threshold = 0.5  # You can adjust this value based on your domain knowledge
+
+    # Apply the threshold to predicted values
+    predicted[predicted < threshold] = 0
 
     #MAPE Prediction
     def calculate_mape(actual, predicted):
