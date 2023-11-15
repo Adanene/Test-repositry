@@ -135,8 +135,8 @@ if ok:
     mse = mean_squared_error(test_data[target], test_predictions)
     print('Mean squared error:', mse)
 
-    actual =  test_data[target]
-    predicted = test_predictions
+    actual =  test_data[target].round(3)
+    predicted = test_predictions.round(3)
     # Define your threshold
     threshold = 0.5  # You can adjust this value based on your domain knowledge
 
