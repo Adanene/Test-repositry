@@ -149,7 +149,7 @@ if ok:
         denominator = np.abs(actual)
     
         # Handle cases where denominator is zero
-        denominator[denominator == 0] = np.nan  # Convert zeros to NaN to avoid division by zero
+        denominator[denominator == 0] = 0.5  # Convert zeros to NaN to avoid division by zero
     
         # Calculate MAPE
         mape = np.nanmean(errors / denominator) * 100
