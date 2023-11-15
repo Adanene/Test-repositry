@@ -27,7 +27,7 @@ if 'button_pressed' not in st.session_state:
 def fetch_data():
         sheet_id ='d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs'
         xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/e/2PACX-1vSzJ2McdS3aIboBFt0MaFuwPxONxqOOr6wr3BPDoftmdAA7NR-nfqwdBNRzB8jpvmeBt5tfdJZzj4WU/pub?output=xlsx")
-        data = pd.read_excel(xls , 'Usedsheet' , header = 0)
+        data = pd.read_excel(xls , 'Usesheet' , header = 0)
         return data
 
 data = fetch_data()
@@ -105,7 +105,7 @@ if ok:
     
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [250, 300, 350], 
+        'n_estimators': [400, 500, 600], 
         'max_depth': [8, 9, 10],
         'learning_rate': [0.75, 0.1, 0.125],
         'subsample': [1.0],
