@@ -164,7 +164,7 @@ if ok:
 
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
-                st.subheader(f"the accuracy of this inclinement model is {mse}  " )
+                st.subheader(f"Mean squared error is {mse}  " )
                 # Print MAPE
                 st.subheader(f"Mean Absolute Percentage Error is {mape}")
         else:
@@ -315,7 +315,7 @@ if st.session_state.button_pressed:
                 tantheta8 = math.tan(radians8)
                 tantheta9 = math.tan(radians9)
                 
-                st.subheader(f"the accuracy of this inclinement model is {mse} " )
+                st.subheader(f"Mean squared error is {mse} " )
                 st.subheader(f"Mean Absolute Percentage Error is { mape }")
             
                 dataS = pd.DataFrame({
