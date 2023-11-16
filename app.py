@@ -172,11 +172,9 @@ if st.session_state.button_pressed:
                 st.subheader(f"Mean squared error is {mse}  " )
                 # Print MAPE
                 st.subheader(f"Mean Absolute Percentage Error is {mape}")
-                convert = st.button("Save Predictions to CSV")
-                if convert:
-                     predictions_df = pd.DataFrame({'Actual':actual, 'Predicted': predicted})
-                     predictions_df.to_csv('predictions.csv', index=False)
-                     st.success("Predictions saved to predictions.csv")
+                predictions_df = pd.DataFrame({'Actual':actual, 'Predicted': predicted})
+                predictions_df.to_csv('predictions.csv', index=False)
+                st.success("Predictions saved to predictions.csv")
             
         else:
                 halfBreadth = Breadth/2
