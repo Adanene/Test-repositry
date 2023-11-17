@@ -5,6 +5,7 @@
 # Import necessary libraries
 import pandas as pd
 import math
+import base64
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
@@ -172,9 +173,15 @@ if st.session_state.button_pressed:
                 st.subheader(f"Mean squared error is {mse}  " )
                 # Print MAPE
                 st.subheader(f"Mean Absolute Percentage Error is {mape}")
-                predictions_df = pd.DataFrame({'Actual':actual, 'Predicted': predicted})
-                predictions_df.to_csv('predictions.csv', index=False)
-                st.success("Predictions saved to predictions.csv")
+                # Create a download link
+                def create_download_link(df, filename="predictions.csv"):
+                    csv = df.to_csv(index=False)
+                    b64 = base64.b64encode(csv.encode()).decode()  # Encoding the CSV file
+                    href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">Download CSV</a>'
+                    return href
+
+                # Display the link
+                st.markdown(create_download_link(predictions_df), unsafe_allow_html=True)
             
         else:
                 halfBreadth = Breadth/2
