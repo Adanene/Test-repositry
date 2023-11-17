@@ -28,7 +28,7 @@ if 'button_pressed' not in st.session_state:
 def fetch_data():
         sheet_id ='d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs'
         xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/e/2PACX-1vSzJ2McdS3aIboBFt0MaFuwPxONxqOOr6wr3BPDoftmdAA7NR-nfqwdBNRzB8jpvmeBt5tfdJZzj4WU/pub?output=xlsx")
-        data = pd.read_excel(xls , 'Usesheet' , header = 0, decimal=',')
+        data = pd.read_excel(xls , 'Usedsheet' , header = 0, decimal=',')
         return data
 
 data = fetch_data()
