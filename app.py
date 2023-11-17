@@ -97,7 +97,7 @@ if ok:
     #start machine learning process
     # chnge some data into numeric
    # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.25, stratify=data['Jenis Kapal'], random_state=350)
+    train_data, test_data = train_test_split(data, test_size=0.25, stratify=data['groups'], random_state=350)
 
     # Select the features and target variable
     features = ['Moment', 'displacement','B/T','Cb','D/T']
@@ -176,7 +176,7 @@ if st.session_state.button_pressed:
                 # Create a DataFrame
                 datap = {'Actual': actual, 'Predicted': predicted}
                 dg = pd.DataFrame(datap)
-                predictions_dg = pd.DataFrame({'Group' : Group, 'Actual':actual, 'Predicted': predicted})
+                predictions_dg = pd.DataFrame({'Group' : groups, 'Actual':actual, 'Predicted': predicted})
                 predictions_dg.to_csv( index=False)
                 st.success("Predictions saved to predictions.csv")
                 
