@@ -180,7 +180,7 @@ if st.session_state.button_pressed:
                 predictions_dg = pd.DataFrame({'Group' : Group, 'Actual':actual, 'Predicted': predicted})
                 predictions_dg.to_csv( index=False)
                 st.success("Predictions saved to predictions.csv")
-            
+                print(data.columns)
                 def create_download_link(dg, filename="predictions.csv"):
                     csv = dg.to_csv(index=False, sep=';')
                     b64 = base64.b64encode(csv.encode()).decode()  # Encoding the CSV file
