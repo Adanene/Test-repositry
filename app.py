@@ -98,7 +98,7 @@ if ok:
     # chnge some data into numeric
 
    # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.24554285714285714285714285714286, stratify=data['Jenis Kapal'], random_state=350)
+    train_data, test_data = train_test_split(data, test_size=0.25, stratify=data['Jenis Kapal'], random_state=350)
 
     # Select the features and target variable
     features = ['Moment', 'displacement','B/T','Cb','D/T']
@@ -107,7 +107,7 @@ if ok:
     # Define the parameter grid
     param_grid = {
         'n_estimators': [350], 
-        'max_depth': [11],
+        'max_depth': [9],
         'learning_rate': [0.125],
         'subsample': [1.0],
         'colsample_bytree': [1.0],   
@@ -117,7 +117,7 @@ if ok:
     }
 
     # Create the XGBoost regressor
-    xgboost_model = xgb.XGBRegressor(random_state=500, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
+    xgboost_model = xgb.XGBRegressor(random_state=1547, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
 
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid, 
