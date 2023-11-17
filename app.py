@@ -178,7 +178,7 @@ if st.session_state.button_pressed:
                 datap = {'Actual': actual, 'Predicted': predicted}
                 dg = pd.DataFrame(datap)
                 predictions_dg = pd.DataFrame({'Actual':actual, 'Predicted': predicted})
-                predictions_dg.to_csv('predictions.csv', index=False)
+                predictions_dg.to_csv( index=False)
                 st.success("Predictions saved to predictions.csv")
             
                 def create_download_link(dg, filename="predictions.csv"):
