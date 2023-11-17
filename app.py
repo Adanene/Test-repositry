@@ -98,7 +98,7 @@ if ok:
     # chnge some data into numeric
 
    # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.25, stratify=data['group'], random_state=350)
+    train_data, test_data = train_test_split(data, test_size=0.25, stratify=data[group], random_state=350)
 
     # Select the features and target variable
     features = ['Moment', 'displacement','B/T','Cb','D/T']
