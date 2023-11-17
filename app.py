@@ -177,7 +177,8 @@ if st.session_state.button_pressed:
                 # Create a DataFrame
                 datap = {'Actual': actual, 'Predicted': predicted}
                 dg = pd.DataFrame(datap)
-               
+                predictions_dg = pd.DataFrame({'Actual':actual, 'Predicted': predicted})
+                predictions_dg.to_csv('predictions.csv', index=False)
                 st.success("Predictions saved to predictions.csv")
             
                 def create_download_link(dg, filename="predictions.csv"):
@@ -187,7 +188,7 @@ if st.session_state.button_pressed:
                     return href
 
                 # Display the link
-                st.markdown(create_download_link(predictions_df), unsafe_allow_html=True)
+                st.markdown(create_download_link(predictions_dg), unsafe_allow_html=True)
             
         else:
                 halfBreadth = Breadth/2
