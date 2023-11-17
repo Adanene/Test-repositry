@@ -177,7 +177,7 @@ if st.session_state.button_pressed:
                 # Create a DataFrame
                 datap = {'Actual': actual, 'Predicted': predicted}
                 dg = pd.DataFrame(datap)
-                predictions_dg = pd.DataFrame({'Actual':actual, 'Predicted': predicted})
+                predictions_dg = pd.DataFrame({'Group' : Jenis Kapal, 'Actual':actual, 'Predicted': predicted})
                 predictions_dg.to_csv( index=False)
                 st.success("Predictions saved to predictions.csv")
             
