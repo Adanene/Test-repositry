@@ -174,6 +174,10 @@ if st.session_state.button_pressed:
                 # Print MAPE
                 st.subheader(f"Mean Absolute Percentage Error is {mape}")
                 # Create a download link
+                predictions_df = pd.DataFrame({'Actual': test_data[target], 'Predicted': test_predictions})
+                predictions_df.to_csv('predictions.csv', index=False)
+                st.success("Predictions saved to predictions.csv")
+            
                 def create_download_link(df, filename="predictions.csv"):
                     csv = df.to_csv(index=False)
                     b64 = base64.b64encode(csv.encode()).decode()  # Encoding the CSV file
