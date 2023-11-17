@@ -96,7 +96,7 @@ if ok:
 
     #start machine learning process
     # chnge some data into numeric
-
+    print(data.columns)
    # Split the dataset into training and test sets
     train_data, test_data = train_test_split(data, test_size=0.25, stratify=data['group'], random_state=350)
 
@@ -180,7 +180,7 @@ if st.session_state.button_pressed:
                 predictions_dg = pd.DataFrame({'Group' : Group, 'Actual':actual, 'Predicted': predicted})
                 predictions_dg.to_csv( index=False)
                 st.success("Predictions saved to predictions.csv")
-                print(data.columns)
+                
                 def create_download_link(dg, filename="predictions.csv"):
                     csv = dg.to_csv(index=False, sep=';')
                     b64 = base64.b64encode(csv.encode()).decode()  # Encoding the CSV file
