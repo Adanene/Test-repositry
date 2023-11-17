@@ -28,7 +28,7 @@ if 'button_pressed' not in st.session_state:
 def fetch_data():
         sheet_id ='d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs'
         xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/e/2PACX-1vSzJ2McdS3aIboBFt0MaFuwPxONxqOOr6wr3BPDoftmdAA7NR-nfqwdBNRzB8jpvmeBt5tfdJZzj4WU/pub?output=xlsx")
-        data = pd.read_excel(xls , 'Usesheet' , header = 0)
+        data = pd.read_excel(xls , 'Usesheet' , header = 0, decimal=',')
         return data
 
 data = fetch_data()
@@ -182,7 +182,7 @@ if st.session_state.button_pressed:
                 st.success("Predictions saved to predictions.csv")
             
                 def create_download_link(dg, filename="predictions.csv"):
-                    csv = dg.to_csv(index=False, sep=',')
+                    csv = dg.to_csv(index=False, sep=';')
                     b64 = base64.b64encode(csv.encode()).decode()  # Encoding the CSV file
                     href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">Download CSV</a>'
                     return href
