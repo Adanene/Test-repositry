@@ -175,6 +175,7 @@ if st.session_state.button_pressed:
                 # Create a download link
                 # Get the values from the 'groups' column
                 # Load the specific sheet
+                xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/e/2PACX-1vSzJ2McdS3aIboBFt0MaFuwPxONxqOOr6wr3BPDoftmdAA7NR-nfqwdBNRzB8jpvmeBt5tfdJZzj4WU/pub?output=xlsx")
                 worksheet_name = 'Usesheet'  # Replace with the actual name of your sheet
                 worksheet = xls.parse(sheet_name=worksheet_name)
                 groups = worksheet['groups'].tolist()
