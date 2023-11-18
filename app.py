@@ -173,9 +173,6 @@ if st.session_state.button_pressed:
                 # Print MAPE
                 st.subheader(f"Mean Absolute Percentage Error is {mape}")
                 # Create a download link
-                # Assuming you've already authenticated and opened the worksheet
-                worksheet = gc.open('Your Spreadsheet').sheet1
-
                 # Get the values from the 'groups' column
                 # Load the specific sheet
                 worksheet_name = 'Usesheet'  # Replace with the actual name of your sheet
