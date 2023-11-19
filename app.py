@@ -155,7 +155,7 @@ if ok:
         # Convert mape to a string
         mape_str = f"{mape:.2f}"
 
-    return mape_str
+        return mape_str
 
     # Calculate MAPE
     mape = calculate_mape(y, all_predictions)
