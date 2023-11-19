@@ -131,7 +131,7 @@ if ok:
     best_model = grid_search.best_estimator_
 
     # Make predictions on the test set
-    test_predictions = best_model.predict(test_data[features])
+    test_predictions = best_model.predict(X)
 
     actual =  test_data[target].round(3)
     predicted = test_predictions.round(3)
