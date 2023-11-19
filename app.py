@@ -97,13 +97,14 @@ if ok:
     #start machine learning process
     #start machine learning process
     # chnge some data into numeric
-   # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.25, stratify=data['groups'], random_state=350)
+
 
     # Select the features and target variable
     features = ['Moment', 'displacement','B/T','Cb','D/T']
     target = 'Inclinement'
-    
+
+    X = data[features]
+    y = data[target]
     # Define the parameter grid
     param_grid = {
         'n_estimators': [350], 
@@ -124,7 +125,7 @@ if ok:
                            cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
 
     # Fit the GridSearchCV to the training data
-    grid_search.fit(train_data[features], train_data[target])
+    grid_search.fit(X,y)
 
     # Get the best model from GridSearchCV
     best_model = grid_search.best_estimator_
