@@ -95,22 +95,22 @@ if ok:
     st.session_state.button_pressed = True
 
     #start machine learning process
+    #start machine learning process
     # chnge some data into numeric
    # Split the dataset into training and test sets
-    # Split the dataset into training and test sets
     train_data, test_data = train_test_split(data, test_size=0.25, stratify=data['groups'], random_state=350)
 
     # Select the features and target variable
-    features = ['Moment', 'displacement', 'B/T', 'Cb', 'D/T']
+    features = ['Moment', 'displacement','B/T','Cb','D/T']
     target = 'Inclinement'
-
+    
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [350],
+        'n_estimators': [350], 
         'max_depth': [9],
         'learning_rate': [0.125],
         'subsample': [1.0],
-        'colsample_bytree': [1.0],
+        'colsample_bytree': [1.0],   
         'reg_alpha': [1],  # Using reg_alpha instead of alpha
         'reg_lambda': [1],  # Using reg_lambda instead of lambda
         'reg_gamma': [1]
@@ -120,7 +120,7 @@ if ok:
     xgboost_model = xgb.XGBRegressor(random_state=1547, objective="reg:squarederror")  # Note: objective is set to handle regression tasks
 
     # Create the GridSearchCV object
-    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
+    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid, 
                            cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
 
     # Fit the GridSearchCV to the training data
@@ -136,29 +136,29 @@ if ok:
     mse = mean_squared_error(test_data[target], test_predictions)
     print('Mean squared error:', mse)
 
-    # Apply a threshold to predicted values
-    threshold = 0.5  # You can adjust this value based on your domain knowledge
-    test_predictions[test_predictions < threshold] = 0
-
-    # Calculate MAPE
-    actual = test_data[target].round(3)
+    actual =  test_data[target].round(3)
     predicted = test_predictions.round(3)
-
     # Define your threshold
     threshold = 0.5  # You can adjust this value based on your domain knowledge
 
     # Apply the threshold to predicted values
     predicted[predicted < threshold] = 0
 
-    # Calculate MAPE
-    mape = calculate_mape(actual, predicted)
+    #MAPE Prediction
+    def calculate_mape(actual, predicted):
+        errors = np.abs(actual - predicted)
+        denominator = np.abs(actual)
+    
+        # Handle cases where denominator is zero
+        denominator[denominator == 0] = 0.01  # Convert zeros to NaN to avoid division by zero
+    
+        # Calculate MAPE
+        mape = np.nanmean(errors / denominator) * 100
+        
+         # Convert mape to a string
+        mape_str = f"{mape:.2f}"
 
-    # Note: XGBoost also provides feature importances similar to Random Forest
-    importances = best_model.feature_importances_
-    sorted_indices = np.argsort(importances)[::-1]
-
-    # Print or use the results as needed
-    print('Mean Absolute Percentage Error:', mape)
+        return mape_str
 
     # Calculate MAPE
     mape = calculate_mape(actual, predicted)
@@ -167,7 +167,7 @@ if ok:
     # Note: XGBoost also provides feature importances similar to Random Forest
     importances = best_model.feature_importances_
     sorted_indices = np.argsort(importances)[::-1]
-
+    
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
                 st.subheader(f"Mean squared error is {mse}  " )
