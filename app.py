@@ -132,10 +132,6 @@ if ok:
     # Make predictions on the test set
     test_predictions = best_model.predict(test_data[features])
 
-    # Evaluate the model performance
-    mse = mean_squared_error(test_data[target], test_predictions)
-    print('Mean squared error:', mse)
-
     actual =  test_data[target].round(3)
     predicted = test_predictions.round(3)
     # Define your threshold
@@ -159,10 +155,13 @@ if ok:
         mape_str = f"{mape:.2f}"
 
         return mape_str
-
+    
     # Calculate MAPE
     mape = calculate_mape(actual, predicted)
    
+    # Evaluate the model performance
+    mse = mean_squared_error(test_data[target], test_predictions)
+    print('Mean squared error:', mse)
     
     # Note: XGBoost also provides feature importances similar to Random Forest
     importances = best_model.feature_importances_
