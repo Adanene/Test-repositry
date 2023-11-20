@@ -190,7 +190,7 @@ if st.session_state.button_pressed:
                 st.success("Predictions saved to predictions.csv")
                 
                 def create_download_link(dg, filename="predictions.csv"):
-                    csv = dg.to_csv(index=False, quoting=csv.QUOTE_NONNUMERIC, sep=';')
+                    csv = dg.to_csv(index=False,sep='|')
                     b64 = base64.b64encode(csv.encode()).decode()  # Encoding the CSV file
                     href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">Download CSV</a>'
                     return href
