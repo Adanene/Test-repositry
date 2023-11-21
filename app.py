@@ -11,6 +11,7 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 import xgboost as xgb
+from sklearn.ensemble import AdaBoostRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
@@ -100,7 +101,7 @@ if ok:
     # chnge some data into numeric
 
 
-    #Select the features and target variable
+    # Select the features and target variable
     features = ['Moment', 'displacement', 'B/T', 'Cb', 'D/T']
     target = 'Inclinement'
 
@@ -111,20 +112,14 @@ if ok:
     # Define the parameter grid
     param_grid = {
         'n_estimators': [400],
-        'max_depth': [9],
         'learning_rate': [0.15],
-        'subsample': [1.0],
-        'colsample_bytree': [1.0],
-        'reg_alpha': [1],
-        'reg_lambda': [1],
-        'reg_gamma': [1]
     }
 
-    # Create the XGBoost regressor
-    xgboost_model = xgb.XGBRegressor(random_state=1547, objective="reg:squarederror")
+    # Create the AdaBoost regressor
+    adaboost_model = AdaBoostRegressor(random_state=1547)
 
     # Create the GridSearchCV object
-    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
+    grid_search = GridSearchCV(estimator=adaboost_model, param_grid=param_grid,
                            cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
 
     # Fit the GridSearchCV to the training data
@@ -136,18 +131,17 @@ if ok:
     # Make predictions on all data points
     all_predictions = best_model.predict(X)
 
-    # Now, all_predictions contains the predictions for all data points in your dataset
-
     # Apply the threshold to predicted values
     threshold = 0.5  # You can adjust this value based on your domain knowledge
     all_predictions[all_predictions < threshold] = 0
+
     # MAPE Prediction
     def calculate_mape(actual, predicted):
         errors = np.abs(actual - predicted)
         denominator = np.abs(actual)
-    
+
         # Handle cases where denominator is zero
-        denominator[denominator == 0] = 0.01  # Convert zeros to NaN to avoid division by zero
+        denominator[denominator == 0] = 0.001  # Convert zeros to NaN to avoid division by zero
 
         # Calculate MAPE
         mape = np.nanmean(errors / denominator) * 100
@@ -164,8 +158,11 @@ if ok:
     mse = mean_squared_error(y, all_predictions)
     print('Mean squared error:', mse)
 
-    # Note: XGBoost also provides feature importances similar to Random Forest
-    importances = best_model.feature_importances_
+    # AdaBoost doesn't provide direct feature importances like XGBoost
+    # However, you can use the feature importance of the base model (usually DecisionTreeRegressor)
+    # Accessing the feature_importances_ attribute of the base model in AdaBoost
+    base_model = best_model.base_estimator_
+    importances = base_model.feature_importances_
     sorted_indices = np.argsort(importances)[::-1]
     
 if st.session_state.button_pressed:
