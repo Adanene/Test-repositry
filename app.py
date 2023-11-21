@@ -119,11 +119,10 @@ if ok:
         'reg_alpha': [1],
         'reg_lambda': [1],
         'reg_gamma': [1],
-        'early_stopping_rounds': 5,  # Number of rounds without improvement before early stopping
     }
 
     # Create the XGBoost regressor
-    xgboost_model = xgb.XGBRegressor(random_state=1547, objective="reg:squarederror")
+    xgboost_model = xgb.XGBRegressor(random_state=1547, objective="reg:squarederror", 'early_stopping_rounds': 5,)
 
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
