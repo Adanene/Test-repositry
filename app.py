@@ -112,7 +112,7 @@ if ok:
     # Define the parameter grid
     param_grid = {
         'n_estimators': [500],
-        'learning_rate': [0.15],
+        'learning_rate': [1.0],
     }
 
     # Create the AdaBoost regressor
