@@ -147,7 +147,7 @@ if ok:
     print('Mean squared error:', mse)
 
     # Note: XGBoost also provides feature importances similar to Random Forest
-    importances = best_model.feature_importances_
+    importances = model.feature_importances_
     sorted_indices = np.argsort(importances)[::-1]
     
 if st.session_state.button_pressed:
