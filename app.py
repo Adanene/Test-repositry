@@ -164,7 +164,7 @@ if ok:
     # Extract feature importances from base models
     importances = np.zeros(X.shape[1])
     for tree in best_model.estimators_:
-    importances += tree.feature_importances_
+        importances += tree.feature_importances_
         
     # Normalize the importances
     importances /= len(best_model.estimators_)
