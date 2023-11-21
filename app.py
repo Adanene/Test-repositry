@@ -122,7 +122,7 @@ if ok:
     }
 
     # Create the XGBoost regressor
-    xgboost_model = xgb.XGBRegressor(random_state=1547, objective="reg:squarederror", 'early_stopping_rounds': 5,)
+    xgboost_model = xgb.XGBRegressor(random_state=1547, objective="reg:squarederror", 'early_stopping_rounds'= 5,)
 
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
