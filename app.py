@@ -119,19 +119,17 @@ if ok:
         'reg_alpha': [1],
         'reg_lambda': [1],
         'reg_gamma': [1],
-        'objective': ['reg:squarederror'],  # Note: objective is set to handle regression tasks
-        'early_stopping_rounds': [6,7,8],  # Number of rounds without improvement before early stopping
     }
 
     # Create the XGBoost regressor
-    xgboost_model = xgb.XGBRegressor(random_state=1547)
+    xgboost_model = xgb.XGBRegressor(random_state=300, objective="reg:squarederror")
 
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
                            cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
 
     # Fit the GridSearchCV to the training data
-    grid_search.fit(X, y)
+    grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=6))
 
     # Get the best model from GridSearchCV
     best_model = grid_search.best_estimator_
