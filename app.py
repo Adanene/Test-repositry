@@ -108,30 +108,11 @@ if ok:
     X = data[features]
     y = data[target]
 
-    # Define the parameter grid
-    param_grid = {
-        'n_estimators': [400],
-        'max_depth': [9],
-        'learning_rate': [0.15],
-        'subsample': [1.0],
-        'colsample_bytree': [1.0],
-        'reg_alpha': [1],
-        'reg_lambda': [1],
-        'reg_gamma': [1]
-    }
+    # Create a linear regression model
+    model = LinearRegression()
 
-    # Create the XGBoost regressor
-    xgboost_model = xgb.XGBRegressor(random_state=1547, objective="reg:squarederror")
-
-    # Create the GridSearchCV object
-    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
-                           cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
-
-    # Fit the GridSearchCV to the training data
-    grid_search.fit(X, y)
-
-    # Get the best model from GridSearchCV
-    best_model = grid_search.best_estimator_
+    # Fit the model to the entire dataset
+    model.fit(X, y)
 
     # Make predictions on all data points
     all_predictions = best_model.predict(X)
