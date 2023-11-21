@@ -120,7 +120,7 @@ if ok:
         'reg_lambda': [1],
         'reg_gamma': [1],
         'objective': ['reg:squarederror'],  # Note: objective is set to handle regression tasks
-        'early_stopping_rounds': 5,  # Number of rounds without improvement before early stopping
+        'early_stopping_rounds': [6,7,8],  # Number of rounds without improvement before early stopping
     }
 
     # Create the XGBoost regressor
