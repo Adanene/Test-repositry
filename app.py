@@ -161,9 +161,19 @@ if ok:
     # AdaBoost doesn't provide direct feature importances like XGBoost
     # However, you can use the feature importance of the base model (usually DecisionTreeRegressor)
     # Accessing the feature_importances_ attribute of the base model in AdaBoost
-    base_model = best_model.base_estimator_
-    importances = base_model.feature_importances_
+    # Extract feature importances from base models
+    importances = np.zeros(X.shape[1])
+    for tree in best_model.estimators_:
+    importances += tree.feature_importances_
+        
+    # Normalize the importances
+    importances /= len(best_model.estimators_)
+
+    # Sort the features by importance
     sorted_indices = np.argsort(importances)[::-1]
+
+    # Print or use sorted_indices as needed
+    print(sorted_indices)
     
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
