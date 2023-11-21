@@ -164,7 +164,9 @@ if ok:
     mse = mean_squared_error(y, all_predictions)
     print('Mean squared error:', mse)
 
-  
+    # Note: XGBoost also provides feature importances similar to Random Forest
+    importances = model.feature_importances_
+    sorted_indices = np.argsort(importances)[::-1]
     
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
