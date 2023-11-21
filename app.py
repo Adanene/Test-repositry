@@ -135,7 +135,7 @@ if ok:
     best_model = grid_search.best_estimator_
 
     # Make predictions on all data points
-    all_predictions = best_model.predict(X)
+    all_predictions = model.predict(X)
 
     # Now, all_predictions contains the predictions for all data points in your dataset
 
