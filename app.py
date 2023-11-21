@@ -111,12 +111,12 @@ if ok:
 
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [400],
+        'n_estimators': [500],
         'learning_rate': [0.15],
     }
 
     # Create the AdaBoost regressor
-    adaboost_model = AdaBoostRegressor(random_state=1547)
+    adaboost_model = AdaBoostRegressor(random_state=100)
 
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=adaboost_model, param_grid=param_grid,
@@ -141,7 +141,7 @@ if ok:
         denominator = np.abs(actual)
 
         # Handle cases where denominator is zero
-        denominator[denominator == 0] = 0.001  # Convert zeros to NaN to avoid division by zero
+        denominator[denominator == 0] = 0.01  # Convert zeros to NaN to avoid division by zero
 
         # Calculate MAPE
         mape = np.nanmean(errors / denominator) * 100
