@@ -100,7 +100,7 @@ if ok:
     # chnge some data into numeric
 
 
-    # Select the features and target variable
+    #Select the features and target variable
     features = ['Moment', 'displacement', 'B/T', 'Cb', 'D/T']
     target = 'Inclinement'
 
@@ -108,21 +108,39 @@ if ok:
     X = data[features]
     y = data[target]
 
-    # Create a linear regression model
-    model = LinearRegression()
+    # Define the parameter grid
+    param_grid = {
+        'n_estimators': [400],
+        'max_depth': [9],
+        'learning_rate': [0.15],
+        'subsample': [1.0],
+        'colsample_bytree': [1.0],
+        'reg_alpha': [1],
+        'reg_lambda': [1],
+        'reg_gamma': [1]
+    }
 
-    # Fit the model to the entire dataset
-    model.fit(X, y)
+    # Create the XGBoost regressor
+    xgboost_model = xgb.XGBRegressor(random_state=1547, objective="reg:squarederror")
+
+    # Create the GridSearchCV object
+    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
+                           cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
+
+    # Fit the GridSearchCV to the training data
+    grid_search.fit(X, y)
+
+    # Get the best model from GridSearchCV
+    best_model = grid_search.best_estimator_
 
     # Make predictions on all data points
-    all_predictions = model.predict(X)
+    all_predictions = best_model.predict(X)
 
     # Now, all_predictions contains the predictions for all data points in your dataset
 
     # Apply the threshold to predicted values
     threshold = 0.5  # You can adjust this value based on your domain knowledge
     all_predictions[all_predictions < threshold] = 0
-
     # MAPE Prediction
     def calculate_mape(actual, predicted):
         errors = np.abs(actual - predicted)
@@ -373,5 +391,17 @@ if st.session_state.button_pressed:
 
                 # Display the plot in Streamlit
                 st.pyplot(fig)
-            
+
+                # Plotting feature importances
+                imp, ax = plt.subplots(figsize=(10, 6))
+                ax.bar(range(len(importances)), importances[sorted_indices], align='center')
+                ax.set_xticks(range(len(importances)))
+                ax.set_xticklabels(np.array(features)[sorted_indices])
+                ax.set_title("Feature Importances")
+                ax.set_ylabel('Importance')
+                ax.set_xlabel('Features')
+
+            ###0.24554285714285714285714285714286
+
+                st.pyplot(imp)  # Pass the figure object to st.pyplot()
     
