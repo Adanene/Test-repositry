@@ -123,7 +123,7 @@ if ok:
 
     # Create the XGBoost regressor
     xgboost_model = xgb.XGBRegressor(random_state=300, objective="reg:squarederror")
-
+    model = xgb.XGBRegressor(n_estimators=300, max_depth=11, learning_rate=1.0)
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
                            cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
