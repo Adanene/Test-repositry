@@ -191,9 +191,9 @@ if ok:
     
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
-                st.subheader(f"Mean squared error is {mse}  " )
+                st.subheader(f"Mean squared error is {mse_best_model}  " )
                 # Print MAPE
-                st.subheader(f"Mean Absolute Percentage Error is {mape}")
+                st.subheader(f"Mean Absolute Percentage Error is {mape_model}")
                 # Create a download link
                 # Get the values from the 'groups' column
                 # Load the specific sheet
@@ -366,8 +366,8 @@ if st.session_state.button_pressed:
                 tantheta8 = math.tan(radians8)
                 tantheta9 = math.tan(radians9)
                 
-                st.subheader(f"Mean squared error is {mse} " )
-                st.subheader(f"Mean Absolute Percentage Error is { mape }")
+                st.subheader(f"Mean squared error is {mse_best_model}  " )
+                st.subheader(f"Mean Absolute Percentage Error is {mape_model}")
             
                 dataS = pd.DataFrame({
                         'Moment Beban (Kg.m)': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8, Mselisih9],
