@@ -123,53 +123,56 @@ if ok:
 
     # Create the XGBoost regressor
     xgboost_model = xgb.XGBRegressor(random_state=300, objective="reg:squarederror")
-    model = xgb.XGBRegressor(n_estimators=300, max_depth=11, learning_rate=1.0)
+
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
                            cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
 
     # Fit the GridSearchCV to the training data
     grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=200)
-    model.fit(X_train, y_train)
+
     # Get the best model from GridSearchCV
     best_model = grid_search.best_estimator_
-    
-    #Get the modeel 
 
-    # Make predictions on all data points
-    all_predictions = model.predict(X)
+    # Create another XGBoost regressor (model) with fixed parameters
+    model = xgb.XGBRegressor(n_estimators=300, max_depth=11, learning_rate=1.0, random_state=300)
 
-    # Now, all_predictions contains the predictions for all data points in your dataset
+    # Fit the model to the training data
+    model.fit(X, y)
+
+    # Make predictions on all data points using the best model
+    all_predictions_best_model = best_model.predict(X)
+
+    # Make predictions on all data points using the model
+    all_predictions_model = model.predict(X)
+
+    # Now, all_predictions_best_model and all_predictions_model contain the predictions for all data points in your dataset
 
     # Apply the threshold to predicted values
     threshold = 0.5  # You can adjust this value based on your domain knowledge
-    all_predictions[all_predictions < threshold] = 0
-    # MAPE Prediction
-    def calculate_mape(actual, predicted):
-        errors = np.abs(actual - predicted)
-        denominator = np.abs(actual)
-    
-        # Handle cases where denominator is zero
-        denominator[denominator == 0] = 0.01  # Convert zeros to NaN to avoid division by zero
+    all_predictions_best_model[all_predictions_best_model < threshold] = 0
+    all_predictions_model[all_predictions_model < threshold] = 0
 
-        # Calculate MAPE
-        mape = np.nanmean(errors / denominator) * 100
+    # MAPE Prediction for best_model
+    mape_best_model = calculate_mape(y, all_predictions_best_model)
 
-        # Convert mape to a string
-        mape_str = f"{mape:.2f}"
+    # MAPE Prediction for model
+    mape_model = calculate_mape(y, all_predictions_model)
 
-        return mape_str
+    # Evaluate the model performance for best_model
+    mse_best_model = mean_squared_error(y, all_predictions_best_model)
+    print('Mean squared error for best_model:', mse_best_model)
 
-    # Calculate MAPE
-    mape = calculate_mape(y, all_predictions)
-
-    # Evaluate the model performance
-    mse = mean_squared_error(y, all_predictions)
-    print('Mean squared error:', mse)
+    # Evaluate the model performance for model
+    mse_model = mean_squared_error(y, all_predictions_model)
+    print('Mean squared error for model:', mse_model)
 
     # Note: XGBoost also provides feature importances similar to Random Forest
-    importances = best_model.feature_importances_
-    sorted_indices = np.argsort(importances)[::-1]
+    importances_best_model = best_model.feature_importances_
+    importances_model = model.feature_importances_
+
+    sorted_indices_best_model = np.argsort(importances_best_model)[::-1]
+    sorted_indices_model = np.argsort(importances_model)[::-1]
     
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
