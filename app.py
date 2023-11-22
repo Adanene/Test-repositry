@@ -130,9 +130,11 @@ if ok:
 
     # Fit the GridSearchCV to the training data
     grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=200)
-
+    model.fit(X_train, y_train)
     # Get the best model from GridSearchCV
     best_model = grid_search.best_estimator_
+    
+    #Get the modeel 
 
     # Make predictions on all data points
     all_predictions = model.predict(X)
