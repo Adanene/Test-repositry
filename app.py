@@ -191,10 +191,10 @@ if ok:
 
     ###Calculate accuracy, precisison ,recall,and F1
     y_pred = (all_predictions_model > threshold).astype(int)
-    y = y.astype(int)
+    yact = y.astype(int)
     
-    st.subheader(f"Jumlah y sebanyak {y.shape}  dan y_pred sebanyak{y_pred.shape}" )
-    st.subheader(f"Jenis data y  {y.dtype}  dan y_pred {y_pred.dtype}" )
+    st.subheader(f"Jumlah y sebanyak {yact.shape}  dan y_pred sebanyak{y_pred.shape}" )
+    st.subheader(f"Jenis data y  {yact.dtype}  dan y_pred {y_pred.dtype}" )
     
     accuracy = accuracy_score(y, y_pred)
     precision = precision_score(y, y_pred)
