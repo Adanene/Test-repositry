@@ -18,6 +18,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 # Define a dictionary to store the session state values
 if 'button_pressed' not in st.session_state:
@@ -160,7 +161,7 @@ if ok:
 
     # Make predictions on all data points using the model
     all_predictions_model = model.predict(X)
-
+    y_pred = (all_predictions_model > threshold).astype(int)
     # Now, all_predictions_best_model and all_predictions_model contain the predictions for all data points in your dataset
 
     # Apply the threshold to predicted values
@@ -188,12 +189,23 @@ if ok:
 
     sorted_indices_best_model = np.argsort(importances_best_model)[::-1]
     sorted_indices_model = np.argsort(importances_model)[::-1]
+
+
+    accuracy = accuracy_score(y, y_pred)
+    precision = precision_score(y, y_pred)
+    recall = recall_score(y, y_pred)
+    f1 = f1_score(y, y_pred)
     
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
+                
+                # Print MAPE and else
                 st.subheader(f"Mean squared error is {mse_best_model}  " )
-                # Print MAPE
                 st.subheader(f"Mean Absolute Percentage Error is {mape_model}")
+                st.subheader(f"Accuracy ML is {accuracy}  " )
+                st.subheader(f"Precision of  ML is {precision}  " )
+                st.subheader(f"Recall ML score is  {recall}  " )
+                st.subheader(f"f1 ML score is {f1}  " )
                 # Create a download link
                 # Get the values from the 'groups' column
                 # Load the specific sheet
