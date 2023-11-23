@@ -190,16 +190,11 @@ if ok:
     sorted_indices_model = np.argsort(importances_model)[::-1]
 
     ###Calculate accuracy, precisison ,recall,and F1
-    y_pred = (all_predictions_model > threshold).astype(int)
-    yact = y.astype(int)
     
     st.subheader(f"Jumlah y sebanyak {yact.shape}  dan y_pred sebanyak{y_pred.shape}" )
     st.subheader(f"Jenis data y  {yact.dtype}  dan y_pred {y_pred.dtype}" )
     
-    accuracy = accuracy_score(yact, y_pred)
-    precision = precision_score(yact, y_pred)
-    recall = recall_score(yact, y_pred)
-    f1 = f1_score(yact, y_pred)
+
     
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
@@ -207,10 +202,6 @@ if st.session_state.button_pressed:
                 # Print MAPE and else
                 st.subheader(f"Mean squared error is {mse_best_model}  " )
                 st.subheader(f"Mean Absolute Percentage Error is {mape_model}")
-                st.subheader(f"Accuracy ML is {accuracy}  " )
-                st.subheader(f"Precision of  ML is {precision}  " )
-                st.subheader(f"Recall ML score is  {recall}  " )
-                st.subheader(f"f1 ML score is {f1}  " )
                 # Create a download link
                 # Get the values from the 'groups' column
                 # Load the specific sheet
