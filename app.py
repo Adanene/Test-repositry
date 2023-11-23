@@ -191,6 +191,7 @@ if ok:
 
     ###Calculate accuracy, precisison ,recall,and F1
     y_pred = (all_predictions_model > threshold).astype(int)
+    y = y.astype(int)
     
     st.subheader(f"Jumlah y sebanyak {y.shape}  dan y_pred sebanyak{y_pred.shape}" )
     st.subheader(f"Jenis data y  {y.dtype}  dan y_pred {y_pred.dtype}" )
