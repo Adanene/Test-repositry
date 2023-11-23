@@ -191,6 +191,9 @@ if ok:
 
     ###Calculate accuracy, precisison ,recall,and F1
     y_pred = (all_predictions_model > threshold).astype(int)
+    
+    print(type(y), type(y_pred))
+    
     accuracy = accuracy_score(y, y_pred)
     precision = precision_score(y, y_pred)
     recall = recall_score(y, y_pred)
