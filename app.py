@@ -193,6 +193,7 @@ if ok:
     y_pred = (all_predictions_model > threshold).astype(int)
     
     st.subheader(f"Jumlah y sebanyak {y.shape}  dan y_pred sebanyak{y_pred.shape}" )
+    st.subheader(f"Jenis data y  {y.dtype}  dan y_pred {y_pred.dtype}" )
     
     accuracy = accuracy_score(y, y_pred)
     precision = precision_score(y, y_pred)
