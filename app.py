@@ -164,7 +164,7 @@ if ok:
     # Now, all_predictions_best_model and all_predictions_model contain the predictions for all data points in your dataset
 
     # Apply the threshold to predicted values
-    threshold = 0.5  # You can adjust this value based on your domain knowledge
+    threshold = 0.05  # You can adjust this value based on your domain knowledge
     all_predictions_best_model[all_predictions_best_model < threshold] = 0
     all_predictions_model[all_predictions_model < threshold] = 0
 
