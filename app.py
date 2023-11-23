@@ -189,11 +189,6 @@ if ok:
     sorted_indices_best_model = np.argsort(importances_best_model)[::-1]
     sorted_indices_model = np.argsort(importances_model)[::-1]
 
-    ###Calculate accuracy, precisison ,recall,and F1
-    
-    st.subheader(f"Jumlah y sebanyak {yact.shape}  dan y_pred sebanyak{y_pred.shape}" )
-    st.subheader(f"Jenis data y  {yact.dtype}  dan y_pred {y_pred.dtype}" )
-    
 
     
 if st.session_state.button_pressed:
