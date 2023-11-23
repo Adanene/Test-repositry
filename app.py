@@ -196,10 +196,10 @@ if ok:
     st.subheader(f"Jumlah y sebanyak {yact.shape}  dan y_pred sebanyak{y_pred.shape}" )
     st.subheader(f"Jenis data y  {yact.dtype}  dan y_pred {y_pred.dtype}" )
     
-    accuracy = accuracy_score(y, y_pred)
-    precision = precision_score(y, y_pred)
-    recall = recall_score(y, y_pred)
-    f1 = f1_score(y, y_pred)
+    accuracy = accuracy_score(yact, y_pred)
+    precision = precision_score(yact, y_pred)
+    recall = recall_score(yact, y_pred)
+    f1 = f1_score(yact, y_pred)
     
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
