@@ -213,12 +213,14 @@ if st.session_state.button_pressed:
                 st.success("Predictions saved to predictions.csv")
                 
                 def create_download_link(dg, filename="predictions.csv"):
-                    b64 = base64.b64encode(csv.encode()).decode()  # Encoding the CSV file
+                    csv_content = dg.to_csv(index=False, sep='|')  # Assuming '|' as separator
+                    b64 = base64.b64encode(csv_content.encode()).decode()  # Encoding the CSV file
                     href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">Download CSV</a>'
                     return href
 
                 # Display the link
                 st.markdown(create_download_link(predictions_dg), unsafe_allow_html=True)
+
             
         else:
                 halfBreadth = Breadth/2
