@@ -161,7 +161,6 @@ if ok:
 
     # Make predictions on all data points using the model
     all_predictions_model = model.predict(X)
-    y_pred = (all_predictions_model > threshold).astype(int)
     # Now, all_predictions_best_model and all_predictions_model contain the predictions for all data points in your dataset
 
     # Apply the threshold to predicted values
@@ -190,7 +189,8 @@ if ok:
     sorted_indices_best_model = np.argsort(importances_best_model)[::-1]
     sorted_indices_model = np.argsort(importances_model)[::-1]
 
-
+    ###Calculate accuracy, precisison ,recall,and F1
+    y_pred = (all_predictions_model > threshold).astype(int)
     accuracy = accuracy_score(y, y_pred)
     precision = precision_score(y, y_pred)
     recall = recall_score(y, y_pred)
