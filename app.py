@@ -223,9 +223,9 @@ if st.session_state.button_pressed:
                 
                 # Plotting feature importances
                 imp, ax = plt.subplots(figsize=(10, 6))
-                ax.bar(range(len(importances_best_model)), importances_best_model[sorted_indices], align='center')
+                ax.bar(range(len(importances_best_model)), importances_best_model[sorted_indices_best_model], align='center')
                 ax.set_xticks(range(len(importances_best_model)))
-                ax.set_xticklabels(np.array(features)[sorted_indices])
+                ax.set_xticklabels(np.array(features)[sorted_indices_best_model])
                 ax.set_title("Feature Importances")
                 ax.set_ylabel('Importance')
                 ax.set_xlabel('Features')
