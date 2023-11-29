@@ -165,8 +165,8 @@ if ok:
 
     # Apply the threshold to predicted values
     threshold = 0.001  # You can adjust this value based on your domain knowledge
-    all_predictions_best_model[all_predictions_best_model < threshold] = 0,01
-    all_predictions_model[all_predictions_model < threshold] = 0,01
+    all_predictions_best_model[all_predictions_best_model < threshold] = 0.01
+    all_predictions_model[all_predictions_model < threshold] = 0.01
 
     # MAPE Prediction for best_model
     mape_best_model = calculate_mape(y, all_predictions_best_model)
