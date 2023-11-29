@@ -104,7 +104,7 @@ if ok:
         denominator = np.abs(actual)
     
         # Handle cases where denominator is zero
-        denominator[denominator == 0] = 0.01  # Convert zeros to NaN to avoid division by zero
+        denominator[denominator == 0] = 0.01  # Convert zeros to other value to avoid division by zero
 
         # Calculate MAPE
         mape = np.nanmean(errors / denominator) * 100
@@ -127,7 +127,7 @@ if ok:
 
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [800],
+        'n_estimators': [500],
         'max_depth': [7],
         'learning_rate': [1.0],
         'subsample': [1.0],
