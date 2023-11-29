@@ -165,8 +165,8 @@ if ok:
 
     # Apply the threshold to predicted values
     threshold = 0.001  # You can adjust this value based on your domain knowledge
-    all_predictions_best_model[all_predictions_best_model < threshold] = 99
-    all_predictions_model[all_predictions_model < threshold] = 99
+    all_predictions_best_model[all_predictions_best_model < threshold] = 0,01
+    all_predictions_model[all_predictions_model < threshold] = 0,01
 
     # MAPE Prediction for best_model
     mape_best_model = calculate_mape(y, all_predictions_best_model)
@@ -220,7 +220,19 @@ if st.session_state.button_pressed:
 
                 # Display the link
                 st.markdown(create_download_link(predictions_dg), unsafe_allow_html=True)
+                
+                # Plotting feature importances
+                imp, ax = plt.subplots(figsize=(10, 6))
+                ax.bar(range(len(importances)), importances[sorted_indices], align='center')
+                ax.set_xticks(range(len(importances)))
+                ax.set_xticklabels(np.array(features)[sorted_indices])
+                ax.set_title("Feature Importances")
+                ax.set_ylabel('Importance')
+                ax.set_xlabel('Features')
 
+            ###0.24554285714285714285714285714286
+
+                st.pyplot(imp)  # Pass the figure object to st.pyplot()
             
         else:
                 halfBreadth = Breadth/2
