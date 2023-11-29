@@ -223,14 +223,12 @@ if st.session_state.button_pressed:
                 
                 # Plotting feature importances
                 imp, ax = plt.subplots(figsize=(10, 6))
-                ax.bar(range(len(importances)), importances[sorted_indices], align='center')
-                ax.set_xticks(range(len(importances)))
+                ax.bar(range(len(importances_best_model)), importances_best_model[sorted_indices], align='center')
+                ax.set_xticks(range(len(importances_best_model)))
                 ax.set_xticklabels(np.array(features)[sorted_indices])
                 ax.set_title("Feature Importances")
                 ax.set_ylabel('Importance')
                 ax.set_xlabel('Features')
-
-            ###0.24554285714285714285714285714286
 
                 st.pyplot(imp)  # Pass the figure object to st.pyplot()
             
