@@ -196,7 +196,7 @@ if st.session_state.button_pressed:
                 
                 # Print MAPE and else
                 st.subheader(f"Mean squared error is {mse_best_model}  " )
-                st.subheader(f"Mean Absolute Percentage Error is {mape_model}")
+                st.subheader(f"Mean Absolute Percentage Error is {mape_best_model}")
                 # Create a download link
                 # Get the values from the 'groups' column
                 # Load the specific sheet
