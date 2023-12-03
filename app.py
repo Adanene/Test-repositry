@@ -132,7 +132,7 @@ if ok:
         'learning_rate': [1.25],
         'subsample': [1.0],
         'colsample_bytree': [1.0],
-        'reg_alpha': [1],
+        'reg_alpha': [0.9],
         'reg_lambda': [1],
         'reg_gamma': [1],
     }
