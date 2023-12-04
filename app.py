@@ -118,7 +118,7 @@ if ok:
     
 
     #Select the features and target variable
-    features = ['beban uji','displacement', 'Cb' , 'cogm', 'B/T',]
+    features = ['beban/disp', 'Cb' , 'cogm', 'B/T',]
     target = 'Inclinement'
 
     # Split the dataset into features (X) and target variable (y)
