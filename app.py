@@ -135,7 +135,7 @@ if ok:
         'reg_alpha': [1],
         'reg_lambda': [1],
         'reg_gamma': [1],
-        'min_child_weight': [8] ,
+        'min_child_weight': [9] ,
     }
 
     # Create the XGBoost regressor
