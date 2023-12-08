@@ -134,7 +134,7 @@ if ok:
         'colsample_bytree': [1.0],
         'reg_alpha': [1],
         'reg_lambda': [1],
-        'reg_gamma': [1],
+        'gamma': [1],
         'min_child_weight': [6] ,
     }
 
