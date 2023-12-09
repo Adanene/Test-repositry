@@ -212,7 +212,7 @@ if st.session_state.button_pressed:
                 BTs = worksheet['B/T'].tolist()
 
                 # Create a DataFrame
-                new_test0 = data[['bebandisps', 'Cbs', 'cogms', 'BTs']]
+                new_test0 = xls[['bebandisps', 'Cbs', 'cogms', 'BTs']]
                 predicted_Incline0 = best_model.predict(new_test0)
                 datap = {'Actual': y, 'Predicted': predicted_Incline0}
                 dg = pd.DataFrame(datap)
