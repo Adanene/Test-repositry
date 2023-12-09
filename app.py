@@ -152,7 +152,7 @@ if ok:
     best_model = grid_search.best_estimator_
 
     # Create another XGBoost regressor (model) with fixed parameters
-    model = xgb.XGBRegressor(n_estimators=300, max_depth=11, learning_rate=1.0, random_state=300)
+    model = xgb.XGBRegressor(n_estimators=300, max_depth=11, learning_rate=1.0, random_state=400)
 
     # Fit the model to the training data
     model.fit(X, y)
