@@ -206,11 +206,17 @@ if st.session_state.button_pressed:
                 worksheet_name = 'Usesheet'  # Replace with the actual name of your sheet
                 worksheet = xls.parse(sheet_name=worksheet_name)
                 groups = worksheet['groups'].tolist()
+                bebandisps = worksheet['beban/disp'].tolist()
+                Cbs = worksheet['Cb'].tolist()
+                cogms = worksheet['cogm'].tolist()
+                BTs = worksheet['B/T'].tolist()
 
                 # Create a DataFrame
-                datap = {'Actual': y, 'Predicted': all_predictions_model}
+                new_test0 = data[['bebandisps', 'Cbs', 'cogms', 'BTs']]
+                predicted_Incline0 = best_model.predict(new_test0)
+                datap = {'Actual': y, 'Predicted': predicted_Incline0}
                 dg = pd.DataFrame(datap)
-                predictions_dg = pd.DataFrame({'Group' : groups, 'Actual':y, 'Predicted':all_predictions_model})
+                predictions_dg = pd.DataFrame({'Group' : groups, 'Actual':y, 'Predicted':predicted_Incline0})
                 predictions_dg.to_csv( index=False, sep='|')
                 st.success("Predictions saved to predictions.csv")
                 
@@ -233,6 +239,7 @@ if st.session_state.button_pressed:
                 ax.set_xlabel('Features')
 
                 st.pyplot(imp)  # Pass the figure object to st.pyplot()
+            
             
         else:
                 halfBreadth = Breadth/2
