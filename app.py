@@ -127,7 +127,7 @@ if ok:
 
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [300],
+        'n_estimators': [100],
         'max_depth': [10],
         'learning_rate': [1.25],
         'subsample': [1.0],
@@ -146,7 +146,7 @@ if ok:
                            cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
 
     # Fit the GridSearchCV to the training data
-    grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=900)
+    grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
 
     # Get the best model from GridSearchCV
     best_model = grid_search.best_estimator_
