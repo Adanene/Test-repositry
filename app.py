@@ -133,7 +133,7 @@ if ok:
         'subsample': [1.0],
         'colsample_bytree': [1.0],
         'reg_alpha': [1],
-        'reg_lambda': [1],
+        'reg_lambda': [0.9],
         'gamma': [0],
         'min_child_weight': [6] ,
     }
