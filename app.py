@@ -98,8 +98,7 @@ if ok:
     st.session_state.button_pressed = True
 
     #start machine learning process
-    #Define mape
-    def calculate_mape(actual, predicted):
+   def calculate_mape(actual, predicted):
         errors = np.abs(actual - predicted)
         denominator = np.abs(actual)
     
@@ -124,15 +123,12 @@ if ok:
     # Split the dataset into features (X) and target variable (y)
     X = data[features]
     y = data[target]
-    
-    # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.25, random_state=150)
-    
+
     # Define the parameter grid
     param_grid = {
-        'n_estimators': [250],
-        'max_depth': [9],
-        'learning_rate': [1.0],
+        'n_estimators': [100],
+        'max_depth': [10],
+        'learning_rate': [1.25],
         'subsample': [1.0],
         'colsample_bytree': [1.0],
         'reg_alpha': [1],
@@ -149,34 +145,50 @@ if ok:
     grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
                            cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
 
-   # Fit the GridSearchCV to the training data
-    grid_search.fit(train_data[features], train_data[target])
+    # Fit the GridSearchCV to the training data
+    grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
 
     # Get the best model from GridSearchCV
     best_model = grid_search.best_estimator_
 
-    # Make predictions on the test set
-    test_predictions = best_model.predict(test_data[features])
+    # Create another XGBoost regressor (model) with fixed parameters
+    model = xgb.XGBRegressor(n_estimators=300, max_depth=11, learning_rate=1.0, random_state=400)
+
+    # Fit the model to the training data
+    model.fit(X, y)
 
     # Make predictions on all data points using the best model
     all_predictions_best_model = best_model.predict(X)
-    
+
+    # Make predictions on all data points using the model
+    all_predictions_model = model.predict(X)
+    # Now, all_predictions_best_model and all_predictions_model contain the predictions for all data points in your dataset
+
     # Apply the threshold to predicted values
     threshold = 0.001  # You can adjust this value based on your domain knowledge
     all_predictions_best_model[all_predictions_best_model < threshold] = 0.01
-    
+    all_predictions_model[all_predictions_model < threshold] = 0.01
+
     # MAPE Prediction for best_model
     mape_best_model = calculate_mape(y, all_predictions_best_model)
+
+    # MAPE Prediction for model
+    mape_model = calculate_mape(y, all_predictions_model)
 
     # Evaluate the model performance for best_model
     mse_best_model = mean_squared_error(y, all_predictions_best_model)
     print('Mean squared error for best_model:', mse_best_model)
 
+    # Evaluate the model performance for model
+    mse_model = mean_squared_error(y, all_predictions_model)
+    print('Mean squared error for model:', mse_model)
 
     # Note: XGBoost also provides feature importances similar to Random Forest
     importances_best_model = best_model.feature_importances_
-    sorted_indices_best_model = np.argsort(importances_best_model)[::-1]
+    importances_model = model.feature_importances_
 
+    sorted_indices_best_model = np.argsort(importances_best_model)[::-1]
+    sorted_indices_model = np.argsort(importances_model)[::-1]
 
 
     
