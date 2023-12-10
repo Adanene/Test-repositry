@@ -172,9 +172,6 @@ if ok:
     mse_best_model = mean_squared_error(y, all_predictions_best_model)
     print('Mean squared error for best_model:', mse_best_model)
 
-    # Evaluate the model performance for model
-    mse_model = mean_squared_error(y, all_predictions_model)
-    print('Mean squared error for model:', mse_model)
 
     # Note: XGBoost also provides feature importances similar to Random Forest
     importances_best_model = best_model.feature_importances_
