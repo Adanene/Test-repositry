@@ -126,7 +126,7 @@ if ok:
     y = data[target]
     
     # Split the dataset into training and test sets
-    train_data, test_data = train_test_split(data, test_size=0.25, random_state=300)
+    train_data, test_data = train_test_split(data, test_size=0.25, random_state=150)
     
     # Define the parameter grid
     param_grid = {
