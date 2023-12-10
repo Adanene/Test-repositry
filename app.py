@@ -196,9 +196,7 @@ if ok:
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
                 
-                # Print MAPE and else
-                st.subheader(f"Mean squared error is {mse_best_model}  " )
-                st.subheader(f"Mean Absolute Percentage Error is {mape_best_model}")
+
                 # Create a download link
                 # Get the values from the 'groups' column
                 # Load the specific sheet
@@ -208,10 +206,18 @@ if st.session_state.button_pressed:
 
                 groups = worksheet['groups'].tolist()
 
-               # Select columns from the DataFrame
+               # Predict data from datasheet
                 new_test0 = worksheet[['beban/disp', 'Cb', 'cogm', 'B/T']]
                 predicted_Incline0 = best_model.predict(new_test0)
                 datap = {'Actual': y, 'Predicted': predicted_Incline0}
+             # Calculate mape and MSE on datasheet
+                # MAPE and MSE Prediction for model
+                mape_datap = calculate_mape(y, predicted_Incline0)
+                mse_datap = mean_squared_error(y, predicted_Incline0)
+            # print the MAPE and MSE
+                st.subheader(f"Mean squared error is {mse_datap}  " )
+                st.subheader(f"Mean Absolute Percentage Error is {mape_datap}")
+             # Preapare the .csv files
                 dg = pd.DataFrame(datap)
                 predictions_dg = pd.DataFrame({'Group' : groups, 'Actual':y, 'Predicted':predicted_Incline0})
                 predictions_dg.to_csv( index=False, sep='|')
