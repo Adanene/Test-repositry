@@ -98,7 +98,7 @@ if ok:
     st.session_state.button_pressed = True
 
     #start machine learning process
-   def calculate_mape(actual, predicted):
+   def calculate_mape(actual, predicted) :
         errors = np.abs(actual - predicted)
         denominator = np.abs(actual)
     
