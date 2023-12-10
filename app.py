@@ -98,21 +98,20 @@ if ok:
     st.session_state.button_pressed = True
 
     #start machine learning process
-   def calculate_mape(actual, predicted):
-        errors = np.abs(actual - predicted)
-        
-        denominator = np.abs(actual)
+     def calculate_mape(actual, predicted):
+            errors = np.abs(actual - predicted)
+            denominator = np.abs(actual)
     
-        # Handle cases where denominator is zero
-        denominator[denominator == 0] = 0.01  # Convert zeros to other value to avoid division by zero
+            # Handle cases where denominator is zero
+            denominator[denominator == 0] = 0.01  # Convert zeros to other value to avoid division by zero
 
-        # Calculate MAPE
-        mape = np.nanmean(errors / denominator) * 100
+            # Calculate MAPE
+            mape = np.nanmean(errors / denominator) * 100
 
-        # Convert mape to a string
-        mape_str = f"{mape:.2f}"
+            # Convert mape to a string
+            mape_str = f"{mape:.2f}"
 
-        return mape_str
+            return mape_str
     #start machine learning process
     # chnge some data into numeric
     
