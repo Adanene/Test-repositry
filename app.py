@@ -215,8 +215,8 @@ if st.session_state.button_pressed:
                 mape_datap = calculate_mape(y, predicted_Incline0)
                 mse_datap = mean_squared_error(y, predicted_Incline0)
             # print the MAPE and MSE
-                st.subheader(f"Mean squared error is {mse_datap}  " )
-                st.subheader(f"Mean Absolute Percentage Error is {mape_datap}")
+                st.subheader(f"Mean squared error for predicting datasheet is {mse_datap}  " )
+                st.subheader(f"Mean Absolute Percentage Error for predicting datasheet is {mape_datap}")
              # Preapare the .csv files
                 dg = pd.DataFrame(datap)
                 predictions_dg = pd.DataFrame({'Group' : groups, 'Actual':y, 'Predicted':predicted_Incline0})
