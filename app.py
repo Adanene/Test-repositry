@@ -117,7 +117,7 @@ if ok:
     
 
     #Select the features and target variable
-    features = ['beban/disp', 'Cb' , 'cogm', 'B/T', 'D/T',]
+    features = ['beban/disp', 'Cb' , 'cogm', 'B/T',]
     target = 'Inclinement'
 
     # Split the dataset into features (X) and target variable (y)
@@ -127,8 +127,8 @@ if ok:
     # Define the parameter grid
     param_grid = {
         'n_estimators': [100],
-        'max_depth': [9],
-        'learning_rate': [1.0],
+        'max_depth': [10],
+        'learning_rate': [1.25],
         'subsample': [1.0],
         'colsample_bytree': [1.0],
         'reg_alpha': [1],
@@ -206,7 +206,7 @@ if st.session_state.button_pressed:
                 groups = worksheet['groups'].tolist()
 
                # Predict data from datasheet
-                new_test0 = worksheet[['beban/disp', 'Cb', 'cogm', 'B/T','D/T']]
+                new_test0 = worksheet[['beban/disp', 'Cb', 'cogm', 'B/T',]]
                 predicted_Incline0 = best_model.predict(new_test0)
                 datap = {'Actual': y, 'Predicted': predicted_Incline0}
              # Calculate mape and MSE on datasheet
