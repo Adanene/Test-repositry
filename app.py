@@ -206,7 +206,7 @@ if st.session_state.button_pressed:
                 groups = worksheet['groups'].tolist()
 
                # Predict data from datasheet
-                new_test0 = worksheet[['beban/disp', 'Cb', 'cogm', 'B/T']]
+                new_test0 = worksheet[['beban/disp', 'Cb', 'cogm', 'B/T','D/T']]
                 predicted_Incline0 = best_model.predict(new_test0)
                 datap = {'Actual': y, 'Predicted': predicted_Incline0}
              # Calculate mape and MSE on datasheet
