@@ -127,7 +127,7 @@ if ok:
     # Define the parameter grid
     param_grid = {
         'n_estimators': [100],
-        'max_depth': [19],
+        'max_depth': [18],
         'learning_rate': [1.25],
         'subsample': [1],
         'colsample_bytree': [1.0],
