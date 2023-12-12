@@ -129,7 +129,7 @@ if ok:
         'n_estimators': [100],
         'max_depth': [10],
         'learning_rate': [1.25],
-        'subsample': [1],
+        'subsample': [2],
         'colsample_bytree': [1.0],
         'reg_alpha': [1],
         'reg_lambda': [1],
