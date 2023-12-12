@@ -1,4 +1,4 @@
-#Here is an Jupyter code for machine learning to predict ship stability during an inclining test using Python and scikit-learn library:
+#Jupyter code for machine learning to predict ship stability during an inclining test using Python and scikit-learn library:
 
 #python
 #Copy code
@@ -91,9 +91,9 @@ if jumlah_beban == "6" :
         bebanE = st.number_input("Weight 5 (Kg)",min_value= 0.0000, step =0.0001)
         bebanF = st.number_input("Weight 6 (Kg)",min_value= 0.0000, step =0.0001)
         
-        
-
 ok = st.button("Calculate Incline")       
+
+
 if ok:
     st.session_state.button_pressed = True
 
@@ -151,46 +151,51 @@ if ok:
     # Get the best model from GridSearchCV
     best_model = grid_search.best_estimator_
 
+    # Make predictions on all data points using the best model
+    all_predictions_best_model = best_model.predict(X)
+    
+    # Now, all_predictions_best_model contain the predictions for all data points in your dataset
+
+    # Apply the threshold to predicted values
+    threshold = 0.001  # You can adjust this value based on your domain knowledge
+    all_predictions_best_model[all_predictions_best_model < threshold] = 0.01
+   
+    # MAPE Prediction for best_model
+    mape_best_model = calculate_mape(y, all_predictions_best_model)
+
+    # Evaluate the MSE performance for best_model
+    mse_best_model = mean_squared_error(y, all_predictions_best_model)
+    print('Mean squared error for best_model:', mse_best_model)
+
+    # Note: XGBoost also provides feature importances similar to Random Forest
+    importances_best_model = best_model.feature_importances_
+    sorted_indices_best_model = np.argsort(importances_best_model)[::-1]
+    
+   
+    ## this is for model section
     # Create another XGBoost regressor (model) with fixed parameters
     model = xgb.XGBRegressor(n_estimators=300, max_depth=11, learning_rate=1.0, random_state=400)
 
     # Fit the model to the training data
     model.fit(X, y)
-
-    # Make predictions on all data points using the best model
-    all_predictions_best_model = best_model.predict(X)
-
+    
     # Make predictions on all data points using the model
     all_predictions_model = model.predict(X)
-    # Now, all_predictions_best_model and all_predictions_model contain the predictions for all data points in your dataset
-
-    # Apply the threshold to predicted values
-    threshold = 0.001  # You can adjust this value based on your domain knowledge
-    all_predictions_best_model[all_predictions_best_model < threshold] = 0.01
+    
+    #Applying Treshold to model 
     all_predictions_model[all_predictions_model < threshold] = 0.01
-
-    # MAPE Prediction for best_model
-    mape_best_model = calculate_mape(y, all_predictions_best_model)
-
-    # MAPE Prediction for model
-    mape_model = calculate_mape(y, all_predictions_model)
-
-    # Evaluate the model performance for best_model
-    mse_best_model = mean_squared_error(y, all_predictions_best_model)
-    print('Mean squared error for best_model:', mse_best_model)
-
-    # Evaluate the model performance for model
+    
+    # Evaluate the model performance for "model"
     mse_model = mean_squared_error(y, all_predictions_model)
     print('Mean squared error for model:', mse_model)
-
-    # Note: XGBoost also provides feature importances similar to Random Forest
-    importances_best_model = best_model.feature_importances_
+    
+    # MAPE Prediction for model
+    mape_model = calculate_mape(y, all_predictions_model)
+    
+    #Feature importances for model
     importances_model = model.feature_importances_
-
-    sorted_indices_best_model = np.argsort(importances_best_model)[::-1]
     sorted_indices_model = np.argsort(importances_model)[::-1]
-
-
+    
     
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
