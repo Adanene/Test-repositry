@@ -246,8 +246,18 @@ if st.session_state.button_pressed:
                 ax.set_xlabel('Features')
 
                 st.pyplot(imp)  # Pass the figure object to st.pyplot()
-            
-            
+
+                # Plotting Actual vs predicted value
+                plt.figure(figsize=(10, 6))
+                plt.scatter(y, predicted_Incline0, alpha=0.5)
+                plt.title('Actual vs Predicted Values')
+                plt.xlabel('Actual Values')
+                plt.ylabel('Predicted Values')
+                plt.grid(True)
+                plt.show()
+
+                st.pyplot(avp)  # Pass the figure object to st.pyplot()
+                
         else:
                 halfBreadth = Breadth/2
                 #transfer weight
