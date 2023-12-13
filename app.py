@@ -327,52 +327,41 @@ if st.session_state.button_pressed:
                         DT = (Depth / Draft)
 
                     
-                Mselisih1 =  (kiri1 - kanan1) 
-                Mselisih2 =  (kiri2 - kanan2)  
-                Mselisih3 =  (kiri3 - kanan3) 
-                Mselisih4 =  (kiri4 - kanan4) 
-                Mselisih5 =  (kiri5 - kanan5) 
-                Mselisih6 =  (kiri6 - kanan6) 
-                Mselisih7 =  (kiri7 - kanan7) 
-                Mselisih8 =  (kiri8 - kanan8)
-                Mselisih9 =  (kiri9 - kanan9)
-
-                MD1 = (Mselisih1 / displacement)
-                MD2 = (Mselisih2 / displacement)
-                MD3 = (Mselisih3 / displacement)
-                MD4 = (Mselisih4 / displacement)
-                MD5 = (Mselisih5 / displacement)
-                MD6 = (Mselisih6 / displacement)
-                MD7 = (Mselisih7 / displacement)
-                MD8 = (Mselisih8 / displacement)
-                ND9 = (Mselisih9 / displacement)
-
+                Cogm1 =  ((kiri1 - kanan1) / totalB )* Breadth/2
+                Cogm2 =  ((kiri2 - kanan2) / totalB )* Breadth/2 
+                Cogm3 =  ((kiri3 - kanan3) / totalB )* Breadth/2
+                Cogm4 =  ((kiri4 - kanan4) / totalB )* Breadth/2
+                Cogm5 =  ((kiri5 - kanan5) / totalB )* Breadth/2
+                Cogm6 =  ((kiri6 - kanan6) / totalB )* Breadth/2 
+                Cogm7 =  ((kiri7 - kanan7) / totalB )* Breadth/2
+                Cogm8 =  ((kiri8 - kanan8) / totalB )* Breadth/2
+                Cogm9 =  ((kiri9 - kanan9) / totalB )* Breadth/2
                 
-                new_test1 = pd.DataFrame({'Moment': [Mselisih1], 'displacement': [displacement],'B/T' :[BT] , 'Cb': [Cb], })
+                new_test1 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm1],'B/T' :[BT],})
                 predicted_Incline1 = best_model.predict(new_test1)
         
-                new_test2 = pd.DataFrame({'Moment': [Mselisih2], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb], })
+                new_test2 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm2],'B/T' :[BT],})
                 predicted_Incline2 = best_model.predict(new_test2)
         
-                new_test3 = pd.DataFrame({'Moment': [Mselisih3], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],})
+                new_test3 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm3],'B/T' :[BT],})
                 predicted_Incline3 = best_model.predict(new_test3)
         
-                new_test4 = pd.DataFrame({'Moment': [Mselisih4], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb], })
+                new_test4 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm4],'B/T' :[BT],})
                 predicted_Incline4 = best_model.predict(new_test4)
         
-                new_test5 = pd.DataFrame({ 'Moment': [Mselisih5], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb], })
+                new_test5 = pd.DataFrame({ 'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm5],'B/T' :[BT],})
                 predicted_Incline5 = best_model.predict(new_test5)
         
-                new_test6 = pd.DataFrame({'Moment': [Mselisih6], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],})
+                new_test6 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm6],'B/T' :[BT],})
                 predicted_Incline6 = best_model.predict(new_test6)
         
-                new_test7 = pd.DataFrame({'Moment': [Mselisih7], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],})
+                new_test7 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm7],'B/T' :[BT],})
                 predicted_Incline7 = best_model.predict(new_test7)
         
-                new_test8 = pd.DataFrame({'Moment': [Mselisih8], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],})
+                new_test8 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm8],'B/T' :[BT],})
                 predicted_Incline8 = best_model.predict(new_test8)
 
-                new_test9 = pd.DataFrame({'Moment': [Mselisih9], 'displacement': [displacement],'B/T' :[BT], 'Cb': [Cb],})
+                new_test9 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm9],'B/T' :[BT],})
                 predicted_Incline9 = best_model.predict(new_test9)
 
                 ##Convert into rad and tan θ
