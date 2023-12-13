@@ -139,11 +139,11 @@ if ok:
     }
 
     # Create the XGBoost regressor
-    xgboost_model = xgb.XGBRegressor(random_state=300, objective="reg:squarederror")
+    xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
 
     # Create the GridSearchCV object
     grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
-                           cv=3, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
+                           cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
 
     # Fit the GridSearchCV to the training data
     grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
