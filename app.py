@@ -274,6 +274,20 @@ if st.session_state.button_pressed:
                   # Pass the figure object to st.pyplot()
                 st.pyplot(fig)
 
+                # make the histogram datasheet
+                predicted_degrees = datap['Predicted']
+
+                # Create a histogram with 1-degree bins
+                bins = np.arange(min(predicted_degrees), max(predicted_degrees) + 1, 1)
+                plt.hist(predicted_degrees, bins=bins, edgecolor='black')
+
+                # Set title and labels
+                plt.title('Frequency Histogram of Predicted Inclining Angles')
+                plt.xlabel('Inclining Angle (degrees)')
+                plt.ylabel('Frequency')
+
+                # Show the plot
+                st.pyplot(bins)
 
         else:
                 halfBreadth = Breadth/2
