@@ -261,8 +261,10 @@ if st.session_state.button_pressed:
 
                 # Add annotations
                 for i in range(len(datap)):
-                        ax.annotate(i, (datap['Actual'].iloc[i],  datap['Predicted'].iloc[i])) # i+1 because Python's indexing starts at 0
-
+                                actual_value = pd.to_numeric(datap['Actual'].iloc[i], errors='coerce')
+                                predicted_value = pd.to_numeric(datap['Predicted'].iloc[i], errors='coerce')
+                    
+                ax.annotate(i, (actual_value, predicted_value))
                 ax.set_xlabel('Actual)')
                 ax.set_ylabel('Predicted')
                   # Pass the figure object to st.pyplot()
