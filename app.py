@@ -248,7 +248,7 @@ if st.session_state.button_pressed:
                 st.pyplot(imp)  # Pass the figure object to st.pyplot()
 
                 # Plotting Actual vs predicted value
-                plt.figure(figsize=(10, 6))
+                avp, plt = plt.figure(figsize=(10, 6))
                 plt.scatter(y, predicted_Incline0, alpha=0.5)
                 plt.title('Actual vs Predicted Values')
                 plt.xlabel('Actual Values')
