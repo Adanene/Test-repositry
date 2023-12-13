@@ -248,16 +248,27 @@ if st.session_state.button_pressed:
                 st.pyplot(imp)  # Pass the figure object to st.pyplot()
 
                 # Plotting Actual vs predicted value
-                plt.figure(figsize=(10, 6))
-                plt.scatter(y, predicted_Incline0, alpha=0.5)
-                plt.title('Actual vs Predicted Values')
-                plt.xlabel('Actual Values')
-                plt.ylabel('Predicted Values')
-                plt.grid(True)
-                plt.show()
+                # make graphics
+                fig, ax = plt.subplots()
+                # Create a scatter plot
+                scatter = ax.scatter(y, predicted_Incline0 , color='blue', label='Incliing result')
+        
+                # Set title, labels, and legend
+                ax.set_title("Actual vs Predicted")
+                ax.set_xlabel('Actual data')
+                ax.set_ylabel('Prediction data')
+                ax.legend()
 
+                # Add annotations
+                for i in range(len(dataS)):
+                        ax.annotate(i, (y.iloc[i], predicted_Incline0.iloc[i])) # i+1 because Python's indexing starts at 0
+
+                ax.set_xlabel('Moment Beban (Kg.m)')
+                ax.set_ylabel('incline (tan θ)')
                   # Pass the figure object to st.pyplot()
-                
+                st.pyplot(fig)
+
+
         else:
                 halfBreadth = Breadth/2
                 #transfer weight
