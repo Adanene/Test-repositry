@@ -248,13 +248,13 @@ if st.session_state.button_pressed:
                 st.pyplot(imp)  # Pass the figure object to st.pyplot()
 
                 # Plotting Actual vs predicted value
-                avp, plt = plt.figure(figsize=(10, 6))
-                plt.scatter(y, predicted_Incline0, alpha=0.5)
-                plt.title('Actual vs Predicted Values')
-                plt.xlabel('Actual Values')
-                plt.ylabel('Predicted Values')
-                plt.grid(True)
-                plt.show()
+                avp, ax = plt.figure(figsize=(10, 6))
+                ax.scatter(y, predicted_Incline0, alpha=0.5)
+                ax.title('Actual vs Predicted Values')
+                ax.xlabel('Actual Values')
+                ax.ylabel('Predicted Values')
+                ax.grid(True)
+                ax.show()
 
                 st.pyplot(avp)  # Pass the figure object to st.pyplot()
                 
