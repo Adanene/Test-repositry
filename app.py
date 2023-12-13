@@ -262,7 +262,11 @@ if st.session_state.button_pressed:
                 # Add annotations
                 for i in range(len(datap)):
                                 actual_value = pd.to_numeric(datap['Actual'].iloc[i], errors='coerce')
-                                predicted_value = pd.to_numeric(datap['Predicted'].iloc[i], errors='coerce')
+                                # Check if 'Predicted' is a DataFrame or NumPy array
+                                if isinstance(datap['Predicted'], pd.DataFrame):
+                                    predicted_value = pd.to_numeric(datap['Predicted'].iloc[i, 0], errors='coerce')
+                                else:
+                                    predicted_value = pd.to_numeric(datap['Predicted'][i], errors='coerce')
                     
                 ax.annotate(i, (actual_value, predicted_value))
                 ax.set_xlabel('Actual)')
