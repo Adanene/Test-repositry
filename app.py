@@ -260,7 +260,7 @@ if st.session_state.button_pressed:
                 ax.legend()
 
                 # Add annotations
-                for i in range(len(dataS)):
+                for i in range(len(datap)):
                         ax.annotate(i, (datap['Actual'].iloc[i],  datap['Predicted'].iloc[i])) # i+1 because Python's indexing starts at 0
 
                 ax.set_xlabel('Actual)')
