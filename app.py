@@ -134,7 +134,7 @@ if ok:
         'reg_alpha': [1],
         'reg_lambda': [1],
         'gamma': [0],
-        'min_child_weight': [5.75] ,
+        'min_child_weight': [5.25] ,
         'scale_pos_weight': [1]
     }
 
