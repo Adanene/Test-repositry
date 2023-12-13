@@ -251,7 +251,7 @@ if st.session_state.button_pressed:
                 # make graphics
                 fig, ax = plt.subplots()
                 # Create a scatter plot
-                scatter = ax.scatter(y, predicted_Incline0 , color='blue', label='Incliing result')
+                scatter = ax.scatter(datap['Actual'], datap['Predicted'] , color='blue', label='Incliing result')
         
                 # Set title, labels, and legend
                 ax.set_title("Actual vs Predicted")
@@ -261,10 +261,10 @@ if st.session_state.button_pressed:
 
                 # Add annotations
                 for i in range(len(dataS)):
-                        ax.annotate(i, (y.iloc[i], predicted_Incline0.iloc[i])) # i+1 because Python's indexing starts at 0
+                        ax.annotate(i, (datap['Actual'].iloc[i],  datap['Predicted'].iloc[i])) # i+1 because Python's indexing starts at 0
 
-                ax.set_xlabel('Moment Beban (Kg.m)')
-                ax.set_ylabel('incline (tan θ)')
+                ax.set_xlabel('Actual)')
+                ax.set_ylabel('Predicted')
                   # Pass the figure object to st.pyplot()
                 st.pyplot(fig)
 
