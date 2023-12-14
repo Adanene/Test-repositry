@@ -119,11 +119,11 @@ if ok:
     def train_or_load_model(X, y):
             if os.path.exists('path/to/save/your_model.pkl'):
                 # Load the model
-            loaded_model = joblib.load('path/to/save/your_model.pkl')
-                else:
-                    # Train the model (your existing training code)
-                    xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
-                    param_grid = {
+                loaded_model = joblib.load('path/to/save/your_model.pkl')
+            else:
+                 # Train the model (your existing training code)
+                xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
+                param_grid = {
                         'n_estimators': [100],
                         'max_depth': [10],
                         'learning_rate': [1.25],
@@ -135,13 +135,13 @@ if ok:
                         'min_child_weight': [6],
                         'scale_pos_weight': [1]
                         }
-                    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
+                grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
                                            cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
-                    grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
-                    loaded_model = grid_search.best_estimator_
+                grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
+                loaded_model = grid_search.best_estimator_
 
-                    # Save the trained model to a file
-                    joblib.dump(loaded_model, 'path/to/save/your_model.pkl')
+                # Save the trained model to a file
+                joblib.dump(loaded_model, 'path/to/save/your_model.pkl')
 
             return loaded_model
     st.session_state.button_pressed = True                 
