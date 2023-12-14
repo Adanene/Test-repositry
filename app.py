@@ -285,7 +285,7 @@ if st.session_state.button_pressed:
                 plt.ylabel('Frequency')
 
                 # Show the plot
-                st.pyplot()
+                st.pyplot(plt.gcf())
 
                 # Clear the current figure
                 plt.clf()
