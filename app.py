@@ -286,7 +286,7 @@ if st.session_state.button_pressed:
                 plt.ylabel('Frequency')
 
                 # Show the plot
-                st.pyplot()
+                st.pyplot(freq)
 
         else:
                 halfBreadth = Breadth/2
