@@ -212,7 +212,7 @@ if st.session_state.button_pressed:
 
                # Predict data from datasheet
                 new_test0 = worksheet[['beban/disp', 'Cb', 'cogm', 'B/T',]]
-                predicted_Incline0 = best_model.predict(new_test0)
+                predicted_Incline0 = model.predict(new_test0) ### the one that will learn and predict the data
                 datap = {'Actual': y, 'Predicted': predicted_Incline0}
              # Calculate mape and MSE on datasheet
                 # MAPE and MSE Prediction for model
