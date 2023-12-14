@@ -278,8 +278,7 @@ if st.session_state.button_pressed:
                 predicted_degrees = datap['Predicted']
 
                 # Create a histogram with 1-degree bins
-                freq, bins = np.arange(min(predicted_degrees), max(predicted_degrees) + 1, 1)
-                plt.hist(predicted_degrees, bins=bins, edgecolor='black')
+                freq, bins, _ = plt.hist(predicted_degrees, bins=np.arange(min(predicted_degrees), max(predicted_degrees) + 1, 1), edgecolor='black')
 
                 # Set title and labels
                 plt.title('Frequency Histogram of Predicted Inclining Angles')
@@ -287,7 +286,7 @@ if st.session_state.button_pressed:
                 plt.ylabel('Frequency')
 
                 # Show the plot
-                st.pyplot(freq)
+                st.pyplot()
 
         else:
                 halfBreadth = Breadth/2
