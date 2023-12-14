@@ -278,7 +278,7 @@ if st.session_state.button_pressed:
                 predicted_degrees = datap['Predicted']
 
                 # Create a histogram with 1-degree bins
-                bins = np.arange(min(predicted_degrees), max(predicted_degrees) + 1, 1)
+                freq, bins = np.arange(min(predicted_degrees), max(predicted_degrees) + 1, 1)
                 plt.hist(predicted_degrees, bins=bins, edgecolor='black')
 
                 # Set title and labels
@@ -287,7 +287,7 @@ if st.session_state.button_pressed:
                 plt.ylabel('Frequency')
 
                 # Show the plot
-                st.pyplot(bins)
+                st.pyplot(freq)
 
         else:
                 halfBreadth = Breadth/2
