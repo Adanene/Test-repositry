@@ -95,7 +95,7 @@ ok = st.button("Calculate Incline")
 
 
 if ok:
-    st.session_state.button_pressed = True
+
 
     #start machine learning process
     def calculate_mape(actual, predicted):
@@ -113,6 +113,37 @@ if ok:
 
             return mape_str
     #start machine learning process
+    #Choose if it should load or re learn the ML
+    def train_or_load_model(X, y):
+            if os.path.exists('path/to/save/your_model.pkl'):
+                # Load the model
+            loaded_model = joblib.load('path/to/save/your_model.pkl')
+                else:
+                    # Train the model (your existing training code)
+                    xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
+                    param_grid = {
+                        'n_estimators': [100],
+                        'max_depth': [10],
+                        'learning_rate': [1.25],
+                        'subsample': [1],
+                        'colsample_bytree': [1.0],
+                        'reg_alpha': [1],
+                        'reg_lambda': [1],
+                        'gamma': [0],
+                        'min_child_weight': [6],
+                        'scale_pos_weight': [1]
+                        }
+                    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
+                                           cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
+                    grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
+                    loaded_model = grid_search.best_estimator_
+
+                    # Save the trained model to a file
+                    joblib.dump(loaded_model, 'path/to/save/your_model.pkl')
+
+            return loaded_model
+    st.session_state.button_pressed = True                 
+        # Train the model (your existing training code)
     # chnge some data into numeric
     
 
@@ -124,35 +155,12 @@ if ok:
     X = data[features]
     y = data[target]
 
-    # Define the parameter grid
-    param_grid = {
-        'n_estimators': [100],
-        'max_depth': [10],
-        'learning_rate': [1.25],
-        'subsample': [1],
-        'colsample_bytree': [1.0],
-        'reg_alpha': [1],
-        'reg_lambda': [1],
-        'gamma': [0],
-        'min_child_weight': [6],
-        'scale_pos_weight': [1]
-    }
+    # Train or load the model
+    best_model = train_or_load_model(X, y)
 
-    # Create the XGBoost regressor
-    xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
-
-    # Create the GridSearchCV object
-    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
-                           cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
-
-    # Fit the GridSearchCV to the training data
-    grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
-
-    # Get the best model from GridSearchCV
-    best_model = grid_search.best_estimator_
-
-    # Make predictions on all data points using the best model
+    # Make predictions on all data points using the model
     all_predictions_best_model = best_model.predict(X)
+
     
     # Now, all_predictions_best_model contain the predictions for all data points in your dataset
 
