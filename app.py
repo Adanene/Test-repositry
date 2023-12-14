@@ -118,8 +118,8 @@ if ok:
     #Choose if it should load or re learn the ML
     def train_or_load_model(X, y):
             if os.path.exists('path/to/save/your_model.pkl'):
-                    # Load the model
-                    loaded_model = joblib.load('path/to/save/your_model.pkl')
+                # Load the model
+                loaded_model = joblib.load('path/to/save/your_model.pkl')
             else:
                  # Train the model (your existing training code)
                 xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
