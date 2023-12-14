@@ -275,6 +275,7 @@ if st.session_state.button_pressed:
                 st.pyplot(fig)
 
                 # make the histogram datasheet
+                predicted_degrees = datap['Predicted']
                 # Create a histogram with 1-degree bins
                 freq, bins, _ = plt.hist(predicted_degrees, bins=np.arange(min(predicted_degrees), max(predicted_degrees) + 1, 1), edgecolor='black')
 
