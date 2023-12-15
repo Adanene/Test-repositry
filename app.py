@@ -1,4 +1,4 @@
-#Jupyter code for machine learning to predict ship stability during an inclining test using Python and scikit-learn library:
+#Jupyter code for machine learning to predict ship stability during an inclining test using Python and XGBOOST library:
 
 #python
 #Copy code
