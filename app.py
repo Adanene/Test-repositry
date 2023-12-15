@@ -43,8 +43,10 @@ data = fetch_data()
 model_url = "https://github.com/Adanene/Test-repositry/edit/main/your_model.pkl"
 
 # Fetch the model from GitHub
-response = requests.get(model_url)
-loaded_model = joblib.load(BytesIO(response.content))
+with open('path/to/your_model.pkl', 'wb') as f:
+    f.write(response.content)
+
+loaded_model = joblib.load('path/to/your_model.pkl')
 
 # Now `loaded_model` contains your model loaded from GitHub
 
