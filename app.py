@@ -40,18 +40,24 @@ def fetch_data():
 data = fetch_data()
 # Specify the shareable link of your JSON file
 # Specify the URL of your model on GitHub
-model_url = "https://github.com/Adanene/Test-repositry/edit/main/your_model.pkl"
+# URL of the raw file on GitHub
+github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.pkl'
 
-# Fetch the model from GitHub
-with open('https://github.com/Adanene/Test-repositry/edit/main/your_model.pkl', 'wb') as f:
-    f.write(response.content)
+# Download the file
+response = requests.get(github_raw_url)
 
-loaded_model = joblib.load('https://github.com/Adanene/Test-repositry/edit/main/your_model.pkl')
+# Check if the download was successful
+if response.status_code == 200:
+    # Save the downloaded content to a local file
+    with open('your_model.pkl', 'wb') as f:
+        f.write(response.content)
 
-# Now `loaded_model` contains your model loaded from GitHub
+    # Load the model using joblib
+    loaded_model = joblib.load('your_model.pkl')
 
-with open('your_model.pkl', 'wb') as f:
-    f.write(file_content)
+    # Now you can use the loaded_model as needed
+else:
+    print(f"Failed to download the model. Status code: {response.status_code}")
 
 # Predict stability for a new inclining test
 #make the interface
