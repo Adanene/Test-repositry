@@ -23,7 +23,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
-
+from io import BytesIO
 
 # Define a dictionary to store the session state values
 if 'button_pressed' not in st.session_state:
@@ -40,24 +40,18 @@ def fetch_data():
         return data
 
 data = fetch_data()
+# Specify the shareable link of your JSON file
+# Specify the URL of your model on GitHub
+model_url = "https://github.com/Adanene/Test-repositry/edit/main/your_model.pkl"
 
-# Authenticate with Google Drive using the credentials file
-SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
-creds = None
-flow = InstalledAppFlow.from_client_secrets_file(
-    'ml-xgboost-ship-inclining-f5e131e0454e.json', SCOPES)
-creds = flow.run_local_server(port=0)
+# Fetch the model from GitHub
+response = requests.get(model_url)
+loaded_model = joblib.load(BytesIO(response.content))
 
-service = build('drive', 'v3', credentials=creds)
-# Save a file to Google Drive
-file = drive.CreateFile({'title': 'your_model.pkl'})
-file.Upload()
+# Now `loaded_model` contains your model loaded from GitHub
 
-# Load a file from Google Drive
-file_id = 'ml-xgboost-ship-inclining'
-file = drive.CreateFile({'id': file_id})
-file.GetContentFile('your_model.pkl')
-
+with open('your_model.pkl', 'wb') as f:
+    f.write(file_content)
 
 # Predict stability for a new inclining test
 #make the interface
