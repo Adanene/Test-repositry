@@ -42,10 +42,13 @@ def fetch_data():
 data = fetch_data()
 
 # Authenticate with Google Drive using the credentials file
-gauth = GoogleAuth()
-gauth.LocalWebserverAuth()  # Handles the OAuth flow
-drive = GoogleDrive(gauth)
+SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
+creds = None
+flow = InstalledAppFlow.from_client_secrets_file(
+    'ml-xgboost-ship-inclining-f5e131e0454e.json', SCOPES)
+creds = flow.run_local_server(port=0)
 
+service = build('drive', 'v3', credentials=creds)
 # Save a file to Google Drive
 file = drive.CreateFile({'title': 'your_model.pkl'})
 file.Upload()
