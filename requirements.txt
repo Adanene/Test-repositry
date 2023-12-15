@@ -1,4 +1,4 @@
-pydrive
+googleapiclient.discovery
 google
 gspread
 pandas
