@@ -21,6 +21,8 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
 
 # Define a dictionary to store the session state values
 if 'button_pressed' not in st.session_state:
@@ -38,6 +40,19 @@ def fetch_data():
 
 data = fetch_data()
 
+# Authenticate with Google Drive using the credentials file
+gauth = GoogleAuth()
+gauth.LocalWebserverAuth()  # Handles the OAuth flow
+drive = GoogleDrive(gauth)
+
+# Save a file to Google Drive
+file = drive.CreateFile({'title': 'your_model.pkl'})
+file.Upload()
+
+# Load a file from Google Drive
+file_id = 'ml-xgboost-ship-inclining'
+file = drive.CreateFile({'id': file_id})
+file.GetContentFile('your_model.pkl')
 
 
 # Predict stability for a new inclining test
