@@ -1,5 +1,4 @@
-googleapiclient.discovery
-google_auth_oauthlib.flow
+google-api-python-client==2.30.0
 google
 gspread
 pandas
@@ -11,3 +10,4 @@ py ==1.11.0
 xgboost
 os
 joblib
+pydrive==1.3.1
