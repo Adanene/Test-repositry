@@ -136,9 +136,9 @@ if ok:
     #start machine learning process
     #Choose if it should load or re learn the ML
     def train_or_load_model(X, y):
-            if os.path.exists('path/to/save/your_model.pkl'):
+            if os.path.exists('https://raw.githubusercontent.com/Adanene/Test-repositry/main'):
                 # Load the model
-                loaded_model = joblib.load('path/to/save/your_model.pkl')
+                loaded_model = joblib.load('https://raw.githubusercontent.com/Adanene/Test-repositry/main')
             else:
                  # Train the model (your existing training code)
                 xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
@@ -160,7 +160,7 @@ if ok:
                 loaded_model = grid_search.best_estimator_
 
                 # Save the trained model to a file
-                joblib.dump(loaded_model, 'path/to/save/your_model.pkl')
+                joblib.dump(loaded_model, 'https://raw.githubusercontent.com/Adanene/Test-repositry/main')
 
             return loaded_model
     st.session_state.button_pressed = True                 
