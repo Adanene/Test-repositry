@@ -147,32 +147,31 @@ if ok:
         # Load the model using joblib
         loaded_model = joblib.load('your_model.pkl')
     else:
-    # Train the model (your existing training code)
-    X, y = ...  # Define your features and target variable
-    xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
-    param_grid = {
-        'n_estimators': [100],
-        'max_depth': [10],
-        'learning_rate': [1.25],
-        'subsample': [1],
-        'colsample_bytree': [1.0],
-        'reg_alpha': [1],
-        'reg_lambda': [1],
-        'gamma': [0],
-        'min_child_weight': [6],
-        'scale_pos_weight': [1]
-    }
-    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
-                               cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
-    grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
-    loaded_model = grid_search.best_estimator_
-
-    # Save the trained model to a local file
-    joblib.dump(loaded_model, 'your_model.pkl')
-    st.session_state.button_pressed = True                 
         # Train the model (your existing training code)
-    # chnge some data into numeric
-    
+        X, y = ...  # Define your features and target variable
+        xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
+        param_grid = {
+            'n_estimators': [100],
+            'max_depth': [10],
+            'learning_rate': [1.25],
+            'subsample': [1],
+            'colsample_bytree': [1.0],
+            'reg_alpha': [1],
+            'reg_lambda': [1],
+            'gamma': [0],
+            'min_child_weight': [6],
+            'scale_pos_weight': [1]
+        }
+        grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
+                                   cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
+        grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
+        loaded_model = grid_search.best_estimator_
+
+        # Save the trained model to a local file
+        joblib.dump(loaded_model, 'your_model.pkl')
+
+    st.session_state.button_pressed = True                 
+    # Train the model (your existing training code)
 
     #Select the features and target variable
     features = ['beban/disp', 'Cb' , 'cogm', 'B/T',]
