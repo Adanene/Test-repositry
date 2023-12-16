@@ -153,7 +153,8 @@ if ok:
         loaded_model = joblib.load('your_model.pkl')
     else:
         # Train the model (your existing training code)
-        X, y = ...  # Define your features and target variable
+        X = data[features]
+        y = data[target]
         xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
         param_grid = {
             'n_estimators': [100],
