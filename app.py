@@ -133,36 +133,42 @@ if ok:
             mape_str = f"{mape:.2f}"
 
             return mape_str
-    #start machine learning process
-    #Choose if it should load or re learn the ML
-    def train_or_load_model(X, y):
-            if os.path.exists('https://raw.githubusercontent.com/Adanene/Test-repositry/main'):
-                # Load the model
-                loaded_model = joblib.load('https://raw.githubusercontent.com/Adanene/Test-repositry/main')
-            else:
-                 # Train the model (your existing training code)
-                xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
-                param_grid = {
-                        'n_estimators': [100],
-                        'max_depth': [10],
-                        'learning_rate': [1.25],
-                        'subsample': [1],
-                        'colsample_bytree': [1.0],
-                        'reg_alpha': [1],
-                        'reg_lambda': [1],
-                        'gamma': [0],
-                        'min_child_weight': [6],
-                        'scale_pos_weight': [1]
-                        }
-                grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
-                                           cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
-                grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
-                loaded_model = grid_search.best_estimator_
+            #start machine learning process
+            #Choose if it should load or re learn the ML
+    if file_exists:
+            # Download the model from GitHub
+        response = requests.get(github_raw_url)
+        response.raise_for_status()
 
-                # Save the trained model to a file
-                joblib.dump(loaded_model, 'https://raw.githubusercontent.com/Adanene/Test-repositry/main')
+        # Save the downloaded content to a local file
+        with open('your_model.pkl', 'wb') as f:
+            f.write(response.content)
 
-            return loaded_model
+        # Load the model using joblib
+        loaded_model = joblib.load('your_model.pkl')
+    else:
+    # Train the model (your existing training code)
+    X, y = ...  # Define your features and target variable
+    xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
+    param_grid = {
+        'n_estimators': [100],
+        'max_depth': [10],
+        'learning_rate': [1.25],
+        'subsample': [1],
+        'colsample_bytree': [1.0],
+        'reg_alpha': [1],
+        'reg_lambda': [1],
+        'gamma': [0],
+        'min_child_weight': [6],
+        'scale_pos_weight': [1]
+    }
+    grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
+                               cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
+    grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
+    loaded_model = grid_search.best_estimator_
+
+    # Save the trained model to a local file
+    joblib.dump(loaded_model, 'your_model.pkl')
     st.session_state.button_pressed = True                 
         # Train the model (your existing training code)
     # chnge some data into numeric
