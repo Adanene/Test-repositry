@@ -116,7 +116,12 @@ ok = st.button("Calculate Incline")
 
 
 if ok:
+    # URL of the raw file on GitHub
+    github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.pkl'
 
+    # Check if the file exists on GitHub
+    response = requests.head(github_raw_url)
+    file_exists = response.status_code == 200
 
     #start machine learning process
     def calculate_mape(actual, predicted):
