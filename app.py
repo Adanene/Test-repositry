@@ -122,9 +122,13 @@ if ok:
     # URL of the raw file on GitHub
     github_raw_url = 'https://github.com/Adanene/Test-repositry/tree/main/your_model.pkl'
 
-    # Check if the file exists on GitHub
-    response = requests.head(github_raw_url)
-    file_exists = response.status_code == 200
+    if response.status_code == 200:
+        # Save the downloaded content to a local file
+        with open('your_model.pkl', 'wb') as f:
+            f.write(response.content)
+        # Load the model using pickle
+        with open('your_model.pkl', 'rb') as f:
+            loaded_model = pickle.load(f)
 
     #start machine learning process
     def calculate_mape(actual, predicted):
