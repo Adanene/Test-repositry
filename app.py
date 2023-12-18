@@ -117,7 +117,7 @@ ok = st.button("Calculate Incline")
 
 if ok:
     # URL of the raw file on GitHub
-    github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.pkl'
+    github_raw_url = 'https://github.com/Adanene/Test-repositry/tree/main/your_model.pkl'
 
     # Check if the file exists on GitHub
     response = requests.head(github_raw_url)
@@ -177,7 +177,7 @@ if ok:
             loaded_model = grid_search.best_estimator_
 
             # Save the trained model to a local file
-            joblib.dump(loaded_model, 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/')
+            joblib.dump(loaded_model, 'https://github.com/Adanene/Test-repositry/tree/main')
             return loaded_model
 
     
