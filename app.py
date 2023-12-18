@@ -144,8 +144,11 @@ if ok:
             #start machine learning process
             #Choose if it should load or re learn the ML
     def train_or_load_model(X, y):
+        github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.pkl'
+        file_exists = check_if_file_exists(github_raw_url)
+
         if file_exists:
-                # Download the model from GitHub
+            # Download the model from GitHub
             response = requests.get(github_raw_url)
             response.raise_for_status()
 
@@ -153,11 +156,12 @@ if ok:
             with open('your_model.pkl', 'wb') as f:
                 f.write(response.content)
 
-            # Load the model using joblib
-            loaded_model = joblib.load('your_model.pkl')
+            # Load the model using pickle
+            with open('your_model.pkl', 'rb') as f:
+                loaded_model = pickle.load(f)
         else:
             # Train the model (your existing training code)
-            features = ['beban/disp', 'Cb' , 'cogm', 'B/T',]
+            features = ['beban/disp', 'Cb', 'cogm', 'B/T', ]
             target = 'Inclinement'
             X = data[features]
             y = data[target]
@@ -179,9 +183,11 @@ if ok:
             grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
             loaded_model = grid_search.best_estimator_
 
-            # Save the trained model to a local file
-            joblib.dump(loaded_model, 'https://github.com/Adanene/Test-repositry/tree/main')
-            return loaded_model
+            # Save the trained model to a local file using pickle
+            with open('your_model.pkl', 'wb') as f:
+                pickle.dump(loaded_model, f)
+
+        return loaded_model
 
     
     st.session_state.button_pressed = True                 
