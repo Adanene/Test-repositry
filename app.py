@@ -177,7 +177,7 @@ if ok:
             loaded_model = grid_search.best_estimator_
 
             # Save the trained model to a local file
-            joblib.dump(loaded_model, 'your_model.pkl')
+            joblib.dump(loaded_model, 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/')
             return loaded_model
 
     
