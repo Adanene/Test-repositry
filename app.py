@@ -153,6 +153,8 @@ if ok:
         loaded_model = joblib.load('your_model.pkl')
     else:
         # Train the model (your existing training code)
+        features = ['beban/disp', 'Cb' , 'cogm', 'B/T',]
+        target = 'Inclinement'
         X = data[features]
         y = data[target]
         xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
