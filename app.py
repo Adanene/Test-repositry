@@ -139,7 +139,6 @@ if ok:
             #Choose if it should load or re learn the ML
     def train_or_load_model(X, y):
         github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.pkl'
-        file_exists = check_if_file_exists(github_raw_url)
 
         if response.status_code == 200:
             # Save the downloaded content to a local file
