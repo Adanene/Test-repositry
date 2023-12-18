@@ -49,13 +49,9 @@ response = requests.get(github_raw_url)
 
 # Check if the download was successful
 if response.status_code == 200:
-    # Save the downloaded content to a local file
-    with open('your_model.pkl', 'wb') as f:
-        f.write(response.content)
-
-    # Load the model using pickle
-    with open('your_model.pkl', 'rb') as f:
-        loaded_model = pickle.load(f)
+    # Check if the file exists on GitHub
+    response = requests.head(github_raw_url)
+    file_exists = response.status_code == 200
 
     # Now you can use the loaded_model as needed
     st.success("Model loaded successfully!")
