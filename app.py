@@ -6,6 +6,7 @@ import pandas as pd
 import csv
 import os
 import joblib
+import pickle
 import requests
 import math
 import base64
@@ -52,10 +53,12 @@ if response.status_code == 200:
     with open('your_model.pkl', 'wb') as f:
         f.write(response.content)
 
-    # Load the model using joblib
-    loaded_model = joblib.load('your_model.pkl')
+    # Load the model using pickle
+    with open('your_model.pkl', 'rb') as f:
+        loaded_model = pickle.load(f)
 
     # Now you can use the loaded_model as needed
+    st.success("Model loaded successfully!")
 else:
     print(f"Failed to download the model. Status code: {response.status_code}")
 
