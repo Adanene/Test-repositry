@@ -31,14 +31,7 @@ if 'button_pressed' not in st.session_state:
 # Load the dataset
 @st.cache(allow_output_mutation=True)
 
-# Modify the content
-content = response.json()
-content['content'] = 'New content'
-
-# Commit the changes
-update_url = f'https://api.github.com/repos/{github_user}/{github_repo}/contents/your_model.pkl'
-response = requests.put(update_url, json={'message': 'Update content', 'content': content['content'], 'sha': content['sha']}, headers={'Authorization': f'token {github_token}'})
-        
+ 
 def fetch_data():
         sheet_id ='d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs'
         xls = pd.ExcelFile(f"https://docs.google.com/spreadsheets/d/e/2PACX-1vSzJ2McdS3aIboBFt0MaFuwPxONxqOOr6wr3BPDoftmdAA7NR-nfqwdBNRzB8jpvmeBt5tfdJZzj4WU/pub?output=xlsx")
