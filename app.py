@@ -46,6 +46,7 @@ def fetch_data():
         return data
 
 data = fetch_data()
+download = false
 # Specify the shareable link of your JSON file
 # Specify the URL of your model on GitHub
 # URL of the raw file on GitHub
@@ -142,6 +143,11 @@ if ok:
             mape_str = f"{mape:.2f}"
 
             return mape_str
+
+    def save_model():
+        with st.spinner("Saving the model..."):
+            joblib.dump(loaded_model, 'your_model.pkl')
+        st.success("Model saved successfully!")
             #start machine learning process
             #Choose if it should load or re learn the ML
     def train_or_load_model(X, y):
@@ -154,6 +160,7 @@ if ok:
             # Load the model using pickle
             with open('your_model.pkl', 'rb') as f:
                 loaded_model = pickle.load(f)
+            download = false
         else:
             # Train the model (your existing training code)
             features = ['beban/disp', 'Cb', 'cogm', 'B/T', ]
@@ -177,11 +184,9 @@ if ok:
                                        cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
             grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
             loaded_model = grid_search.best_estimator_
-
-            # Save the trained model to a local file using pickle
-            with open('your_model.pkl', 'wb') as f:
-                pickle.dump(loaded_model, f)
-
+            download = true
+            save_model()
+            
         return loaded_model
 
     
@@ -281,9 +286,19 @@ if st.session_state.button_pressed:
                     b64 = base64.b64encode(csv_content.encode()).decode()  # Encoding the CSV file
                     href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">Download CSV</a>'
                     return href
-
+                
+                #Create the .pkl download link
+                def create_download_link(dg, filename="your_model.pkl"):
+                    with open('your_model.pkl', 'rb') as f:
+                        pkl_content = f.read()
+                    b64 = base64.b64encode(pkl_content).decode()
+                    href = f'<a href="data:file/pkl;base64,{b64}" download="your_model.pkl">Download Model</a>'
+                    return href
+            
                 # Display the link
                 st.markdown(create_download_link(predictions_dg), unsafe_allow_html=True)
+                if download = true
+                     st.markdown(create_download_link(your_model.pkl), unsafe_allow_html=True)
                 
                 # Plotting feature importances
                 imp, ax = plt.subplots(figsize=(10, 6))
