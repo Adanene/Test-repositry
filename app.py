@@ -39,7 +39,7 @@ def fetch_data():
         return data
 
 data = fetch_data()
-download = false
+download = 0
 # Specify the shareable link of your JSON file
 # Specify the URL of your model on GitHub
 # URL of the raw file on GitHub
@@ -153,7 +153,7 @@ if ok:
             # Load the model using pickle
             with open('your_model.pkl', 'rb') as f:
                 loaded_model = pickle.load(f)
-            download = false
+            download = 0
         else:
             # Train the model (your existing training code)
             features = ['beban/disp', 'Cb', 'cogm', 'B/T', ]
@@ -181,7 +181,7 @@ if ok:
             with open('your_model.pkl', 'wb') as f:
                 pickle.dump(loaded_model, f)
                 
-            download = true
+            download = 1
             save_model()
             
         return loaded_model
@@ -294,7 +294,7 @@ if st.session_state.button_pressed:
             
                 # Display the link
                 st.markdown(create_download_link(predictions_dg), unsafe_allow_html=True)
-                if download == true :
+                if download == 1 :
                      st.markdown(create_download_link(your_model.pkl), unsafe_allow_html=True)
                 
                 # Plotting feature importances
