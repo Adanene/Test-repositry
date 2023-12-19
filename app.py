@@ -184,6 +184,10 @@ if ok:
                                        cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
             grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
             loaded_model = grid_search.best_estimator_
+            # Save the trained model to a local file using pickle
+            with open('your_model.pkl', 'wb') as f:
+                pickle.dump(loaded_model, f)
+                
             download = true
             save_model()
             
