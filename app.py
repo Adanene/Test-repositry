@@ -294,7 +294,7 @@ if st.session_state.button_pressed:
             
                 # Display the link
                 st.markdown(create_download_link(predictions_dg), unsafe_allow_html=True)
-                if download : true
+                if download == true :
                      st.markdown(create_download_link(your_model.pkl), unsafe_allow_html=True)
                 
                 # Plotting feature importances
