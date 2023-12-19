@@ -30,7 +30,22 @@ if 'button_pressed' not in st.session_state:
     
 # Load the dataset
 @st.cache(allow_output_mutation=True)
+# GitHub API settings
+github_user = 'Adanene'
+github_repo = 'Test-repositry'
+github_token = 'your_access_token'  # Generate a token with repo access
 
+# Fetch the current content
+url = f'https://api.github.com/repos/{github_user}/{github_repo}/contents/your_model.pkl'
+response = requests.get(url, headers={'Authorization': f'token {github_token}'})
+
+# Modify the content
+content = response.json()
+content['content'] = 'New content'
+
+# Commit the changes
+update_url = f'https://api.github.com/repos/{github_user}/{github_repo}/contents/your_model.pkl'
+response = requests.put(update_url, json={'message': 'Update content', 'content': content['content'], 'sha': content['sha']}, headers={'Authorization': f'token {github_token}'})
         
 def fetch_data():
         sheet_id ='d/1wLXZ4zRpTlixClfHejjNbqX9KyyTMHVFqHztn630hAs'
