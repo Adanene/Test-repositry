@@ -211,6 +211,8 @@ if ok:
     best_model = train_or_load_model(X, y)
 
     # Make predictions on all data points using the model
+    print(f"Type of best_model: {type(best_model)}")
+    print(f"Shape of X: {X.shape}")
     all_predictions_best_model = best_model.predict(X)
 
     
