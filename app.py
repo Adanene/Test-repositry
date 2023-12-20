@@ -144,29 +144,32 @@ if ok:
 
             return mape_str
 
-    def save_model(model_data):
-        with st.spinner("Saving the model..."):
-            with open('your_model.json', 'w') as f:
-                json.dump(model_data, f)
-            st.success("Model saved successfully!")
+    def save_model(model, file_path='your_model.json'):
+        with open(file_path, 'w') as f:
+            json.dump(model, f)
+
+    def load_model(file_path='your_model.json'):
+        with open(file_path, 'r') as f:
+            model = json.load(f)
+        return model
 
     def train_or_load_model(X, y):
         github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.json'
 
-        response = requests.get(github_raw_url)
-        download = 0
+        if download == 1:
+            # Download the model from GitHub
+            response = requests.get(github_raw_url)
+            response.raise_for_status()
 
-        if response.status_code == 200:
             # Save the downloaded content to a local file
-            with open('your_model.json', 'w') as f:
-                json.dump(response.json(), f)
-            # Load the model using json
-            with open('your_model.json', 'r') as f:
-                loaded_model_data = json.load(f)
-            download = 0
+            with open('your_model.json', 'wb') as f:
+                f.write(response.content)
+
+            # Load the model using JSON
+            loaded_model = load_model('your_model.json')
         else:
             # Train the model (your existing training code)
-            features = ['beban/disp', 'Cb', 'cogm', 'B/T', ]
+            features = ['beban/disp', 'Cb', 'cogm', 'B/T']
             target = 'Inclinement'
             X = data[features]
             y = data[target]
@@ -184,16 +187,17 @@ if ok:
                 'scale_pos_weight': [1]
             }
             grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
-                                       cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
+                                   cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
             grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
-            loaded_model_data = {'model_params': grid_search.best_params_, 'model': 'your_model'}
-            # Save the trained model to a local file using json
-            with open('your_model.json', 'w') as f:
-                json.dump(loaded_model_data, f)
-            download = 1
-            save_model(loaded_model_data)
+            loaded_model = grid_search.best_estimator_
 
-        return loaded_model_data
+            # Save the trained model to a local file using JSON
+            save_model(loaded_model, 'your_model.json')
+
+            download = 1
+            save_model()
+
+        return loaded_model
 
     
     st.session_state.button_pressed = True                 
