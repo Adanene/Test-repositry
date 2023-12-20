@@ -5,6 +5,7 @@
 import pandas as pd
 import csv
 import os
+import json
 import joblib
 import pickle
 import requests
@@ -43,10 +44,13 @@ download = 0
 # Specify the shareable link of your JSON file
 # Specify the URL of your model on GitHub
 # URL of the raw file on GitHub
-github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.pkl'
-file_path = 'your_model.pkl'
+github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.json'
+file_path = 'your_model.json'
+
 if os.path.exists(file_path):
-    loaded_model = joblib.load(file_path)
+    with open(file_path, 'r') as f:
+        loaded_model_data = json.load(f)
+    # Use loaded_model_data as needed
 else:
     print(f"The file {file_path} does not exist.")
 # Download the file
@@ -140,22 +144,25 @@ if ok:
 
             return mape_str
 
-    def save_model():
+    def save_model(model_data):
         with st.spinner("Saving the model..."):
-            joblib.dump(loaded_model, 'your_model.pkl')
-        st.success("Model saved successfully!")
-            #start machine learning process
-            #Choose if it should load or re learn the ML
+            with open('your_model.json', 'w') as f:
+                json.dump(model_data, f)
+            st.success("Model saved successfully!")
+
     def train_or_load_model(X, y):
-        github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.pkl'
+        github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.json'
+
+        response = requests.get(github_raw_url)
+        download = 0
 
         if response.status_code == 200:
             # Save the downloaded content to a local file
-            with open('your_model.pkl', 'wb') as f:
-                f.write(response.content)
-            # Load the model using pickle
-            with open('your_model.pkl', 'rb') as f:
-                loaded_model = pickle.load(f)
+            with open('your_model.json', 'w') as f:
+                json.dump(response.json(), f)
+            # Load the model using json
+            with open('your_model.json', 'r') as f:
+                loaded_model_data = json.load(f)
             download = 0
         else:
             # Train the model (your existing training code)
@@ -179,15 +186,14 @@ if ok:
             grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
                                        cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
             grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
-            loaded_model = grid_search.best_estimator_
-            # Save the trained model to a local file using pickle
-            with open('your_model.pkl', 'wb') as f:
-                pickle.dump(loaded_model, f)
-                
+            loaded_model_data = {'model_params': grid_search.best_params_, 'model': 'your_model'}
+            # Save the trained model to a local file using json
+            with open('your_model.json', 'w') as f:
+                json.dump(loaded_model_data, f)
             download = 1
-            save_model()
-            
-        return loaded_model
+            save_model(loaded_model_data)
+
+        return loaded_model_data
 
     
     st.session_state.button_pressed = True                 
@@ -288,12 +294,14 @@ if st.session_state.button_pressed:
                     return href
                 
                 #Create the .pkl download link
-                def create_download_link(dg, filename="your_model.pkl"):
-                    with open('your_model.pkl', 'rb') as f:
-                        pkl_content = f.read()
-                    b64 = base64.b64encode(pkl_content).decode()
-                    href = f'<a href="data:file/pkl;base64,{b64}" download="your_model.pkl">Download Model</a>'
-                    return href
+                def create_download_link(model_data, filename="your_model.json"):
+                    with open('your_model.json', 'w') as f:
+                        json.dump(model_data, f)
+                    with open('your_model.json', 'r') as f:
+                        json_content = f.read()
+                b64 = base64.b64encode(json_content.encode()).decode()
+                href = f'<a href="data:file/json;base64,{b64}" download="{filename}">Download Model</a>'
+                return href
             
                 # Display the link
                 st.markdown(create_download_link(predictions_dg), unsafe_allow_html=True)
