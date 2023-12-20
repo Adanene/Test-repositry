@@ -299,9 +299,9 @@ if st.session_state.button_pressed:
                         json.dump(model_data, f)
                     with open('your_model.json', 'r') as f:
                         json_content = f.read()
-                b64 = base64.b64encode(json_content.encode()).decode()
-                href = f'<a href="data:file/json;base64,{b64}" download="{filename}">Download Model</a>'
-                return href
+                    b64 = base64.b64encode(json_content.encode()).decode()
+                    href = f'<a href="data:file/json;base64,{b64}" download="{filename}">Download Model</a>'
+                    return href
             
                 # Display the link
                 st.markdown(create_download_link(predictions_dg), unsafe_allow_html=True)
