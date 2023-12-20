@@ -44,7 +44,11 @@ download = 0
 # Specify the URL of your model on GitHub
 # URL of the raw file on GitHub
 github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.pkl'
-loaded_model = joblib.load('your_model.pkl') ######################
+file_path = 'your_model.pkl'
+if os.path.exists(file_path):
+    loaded_model = joblib.load(file_path)
+else:
+    print(f"The file {file_path} does not exist.")
 # Download the file
 response = requests.get(github_raw_url)
 
