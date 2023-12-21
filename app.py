@@ -455,33 +455,33 @@ if st.session_state.button_pressed:
                 Cogm7 =  ((kiri7 - kanan7) / totalB )* Breadth
                 Cogm8 =  ((kiri8 - kanan8) / totalB )* Breadth
                 Cogm9 =  ((kiri9 - kanan9) / totalB )* Breadth
-                
-                new_test1 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm1],'B/T' :[BT],})
-                predicted_Incline1 = best_model.predict(new_test1)
-        
-                new_test2 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm2],'B/T' :[BT],})
-                predicted_Incline2 = best_model.predict(new_test2)
-        
-                new_test3 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm3],'B/T' :[BT],})
-                predicted_Incline3 = best_model.predict(new_test3)
-        
-                new_test4 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm4],'B/T' :[BT],})
-                predicted_Incline4 = best_model.predict(new_test4)
-        
-                new_test5 = pd.DataFrame({ 'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm5],'B/T' :[BT],})
-                predicted_Incline5 = best_model.predict(new_test5)
-        
-                new_test6 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm6],'B/T' :[BT],})
-                predicted_Incline6 = best_model.predict(new_test6)
-        
-                new_test7 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm7],'B/T' :[BT],})
-                predicted_Incline7 = best_model.predict(new_test7)
-        
-                new_test8 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm8],'B/T' :[BT],})
-                predicted_Incline8 = best_model.predict(new_test8)
 
-                new_test9 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm9],'B/T' :[BT],})
-                predicted_Incline9 = best_model.predict(new_test9)
+                new_testmid = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm1],'B/T' :[BT],})
+                predicted_Inclineid = best_model.predict(new_testmid)
+
+                new_testpt = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm3],'B/T' :[BT],})
+                predicted_Inclinept = best_model.predict(new_testpt)
+
+                new_testst = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm7],'B/T' :[BT],})
+                predicted_Inclinest = best_model.predict(new_testst)
+            
+                predicted_Incline1 = predicted_Inclineid
+        
+                predicted_Incline2 = Cogm2/Cogm3 * predicted_Inclinept
+        
+                predicted_Incline3 = predicted_Inclinept
+        
+                predicted_Incline4 = Cogm4/Cogm3 * predicted_Inclinept
+        
+                predicted_Incline5 = predicted_Inclineid
+        
+                predicted_Incline6 = Cogm6/Cogm7 * predicted_Inclinest
+        
+                predicted_Incline7 = predicted_Inclinest
+
+                predicted_Incline8 = Cogm8/Cogm7 * predicted_Inclinest
+
+                predicted_Incline9 = predicted_Inclineid
 
                 ##Convert into rad and tan θ
                 radians1 = math.radians(predicted_Incline1[0])
