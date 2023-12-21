@@ -114,8 +114,8 @@ if ok:
     else:
         print(f"The file {file_path} does not exist.")
         # Download the file
-        response = requests.get(github_raw_url)
-
+        
+    response = requests.get(github_raw_url)
     # Check if the download was successful
     if response.status_code == 200:
     # Check if the file exists on GitHub
