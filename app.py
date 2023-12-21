@@ -44,27 +44,10 @@ download = 0
 # Specify the shareable link of your JSON file
 # Specify the URL of your model on GitHub
 # URL of the raw file on GitHub
-github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.json'
-file_path = 'your_model.json'
+github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.pkl'
+file_path = 'your_model.pkl'
 
-if os.path.exists(file_path):
-    with open(file_path, 'r') as f:
-        loaded_model_data = json.load(f)
-    # Use loaded_model_data as needed
-else:
-    print(f"The file {file_path} does not exist.")
-# Download the file
-response = requests.get(github_raw_url)
 
-# Check if the download was successful
-if response.status_code == 200:
-    # Check if the file exists on GitHub
-    response = requests.head(github_raw_url)
-    file_exists = response.status_code == 200
-    # Now you can use the loaded_model as needed
-    st.success("Model loaded successfully!")
-else:
-    print(f"Failed to download the model. Status code: {response.status_code}")
 
 # Predict stability for a new inclining test
 #make the interface
@@ -144,29 +127,32 @@ if ok:
 
             return mape_str
 
-    def save_model(model, file_path='your_model.json'):
-        with open(file_path, 'w') as f:
-            json.dump(model, f)
+    # Saving the model
+    def save_model(model, file_path='your_model.pkl'):
+        with open(file_path, 'wb') as f:
+            pickle.dump(model, f)
 
-    def load_model(file_path='your_model.json'):
-        with open(file_path, 'r') as f:
-            model = json.load(f)
+    # Loading the model
+    def load_model(file_path='your_model.pkl'):
+        with open(file_path, 'rb') as f:
+            model = pickle.load(f)
         return model
 
+    # Training or loading the model
     def train_or_load_model(X, y):
-        github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.json'
+        github_raw_url = 'https://raw.githubusercontent.com/Adanene/Test-repositry/main/your_model.pkl'
 
         if download == 1:
             # Download the model from GitHub
             response = requests.get(github_raw_url)
             response.raise_for_status()
-
+    
             # Save the downloaded content to a local file
-            with open('your_model.json', 'wb') as f:
+            with open('your_model.pkl', 'wb') as f:
                 f.write(response.content)
 
-            # Load the model using JSON
-            loaded_model = load_model('your_model.json')
+            # Load the model using pickle
+            loaded_model = load_model('your_model.pkl')
         else:
             # Train the model (your existing training code)
             features = ['beban/disp', 'Cb', 'cogm', 'B/T']
@@ -187,15 +173,12 @@ if ok:
                 'scale_pos_weight': [1]
             }
             grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
-                                   cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
+                                       cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
             grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
             loaded_model = grid_search.best_estimator_
 
-            # Save the trained model to a local file using JSON
-            save_model(loaded_model, 'your_model.json')
-
-            download = 1
-            save_model()
+            # Save the trained model to a local file using pickle
+            save_model(loaded_model, 'your_model.pkl')
 
         return loaded_model
 
@@ -265,7 +248,23 @@ if ok:
     
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
-                
+                #Load the model if exist
+                if os.path.exists(file_path):
+                    loaded_model = joblib.load(file_path)
+                else:
+                print(f"The file {file_path} does not exist.")
+                # Download the file
+                response = requests.get(github_raw_url)
+
+                # Check if the download was successful
+                if response.status_code == 200:
+                    # Check if the file exists on GitHub
+                    response = requests.head(github_raw_url)
+                    file_exists = response.status_code == 200
+                    # Now you can use the loaded_model as needed
+                    st.success("Model loaded successfully!")
+                else:
+                    print(f"Failed to download the model. Status code: {response.status_code}")
 
                 # Create a download link
                 # Get the values from the 'groups' column
@@ -299,15 +298,13 @@ if st.session_state.button_pressed:
                     href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">Download CSV</a>'
                     return href
                 
-                #Create the .pkl download link
-                def create_download_link(model_data, filename="your_model.json"):
-                    with open('your_model.json', 'w') as f:
-                        json.dump(model_data, f)
-                    with open('your_model.json', 'r') as f:
-                        json_content = f.read()
-                    b64 = base64.b64encode(json_content.encode()).decode()
-                    href = f'<a href="data:file/json;base64,{b64}" download="{filename}">Download Model</a>'
-                    return href
+                # Creating the .pkl download link
+                def create_download_link(file_path='your_model.pkl', filename="your_model.pkl"):
+                    with open(file_path, 'rb') as f:
+                        pkl_content = f.read()
+                        b64 = base64.b64encode(pkl_content).decode()
+                        href = f'<a href="data:file/pkl;base64,{b64}" download="{filename}">Download Model</a>'
+                return href
             
                 # Display the link
                 st.markdown(create_download_link(predictions_dg), unsafe_allow_html=True)
