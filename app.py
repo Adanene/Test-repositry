@@ -446,15 +446,15 @@ if st.session_state.button_pressed:
                         DT = (Depth / Draft)
 
                     
-                Cogm1 =  ((kiri1 - kanan1) / totalB )* Breadth/2
-                Cogm2 =  ((kiri2 - kanan2) / totalB )* Breadth/2
-                Cogm3 =  ((kiri3 - kanan3) / totalB )* Breadth/2
-                Cogm4 =  ((kiri4 - kanan4) / totalB )* Breadth/2
-                Cogm5 =  ((kiri5 - kanan5) / totalB )* Breadth/2
-                Cogm6 =  ((kiri6 - kanan6) / totalB )* Breadth/2
-                Cogm7 =  ((kiri7 - kanan7) / totalB )* Breadth/2
-                Cogm8 =  ((kiri8 - kanan8) / totalB )* Breadth/2
-                Cogm9 =  ((kiri9 - kanan9) / totalB )* Breadth/2
+                Cogm1 =  ((kiri1 - kanan1) / totalB ) * (Breadth/2)
+                Cogm2 =  ((kiri2 - kanan2) / totalB ) * (Breadth/2)
+                Cogm3 =  ((kiri3 - kanan3) / totalB ) * (Breadth/2)
+                Cogm4 =  ((kiri4 - kanan4) / totalB ) * (Breadth/2)
+                Cogm5 =  ((kiri5 - kanan5) / totalB ) * (Breadth/2)
+                Cogm6 =  ((kiri6 - kanan6) / totalB ) * (Breadth/2)
+                Cogm7 =  ((kiri7 - kanan7) / totalB ) * (Breadth/2)
+                Cogm8 =  ((kiri8 - kanan8) / totalB ) * (Breadth/2)
+                Cogm9 =  ((kiri9 - kanan9) / totalB ) * (Breadth/2)
 
                 new_testmid = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm1],'B/T' :[BT],})
                 predicted_Inclineid = best_model.predict(new_testmid)
@@ -509,7 +509,8 @@ if st.session_state.button_pressed:
             
                 dataS = pd.DataFrame({
                         'Posisi Cog Momen (m)': [Cogm1, Cogm2, Cogm3, Cogm4, Cogm5, Cogm6, Cogm7, Cogm8, Cogm9],
-                        'incline (degrees)': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0], predicted_Incline9[0]],
+                        'incline (degrees)': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], 
+                                                predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0], predicted_Incline9[0]],
                         'incline (tan θ)' : [tantheta1, tantheta2, tantheta3, tantheta4, tantheta5, tantheta6, tantheta7, tantheta8, tantheta9]
                                    
                         })
