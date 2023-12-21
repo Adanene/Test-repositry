@@ -178,20 +178,20 @@ if ok:
             y = data[target]
             xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
             param_grid = {
-                'n_estimators': [100],
-                'max_depth': [10],
-                'learning_rate': [1.25],
-                'subsample': [1],
-                'colsample_bytree': [1.0],
-                'reg_alpha': [1],
-                'reg_lambda': [1],
+                'n_estimators': [50, 100, 200],
+                'max_depth': [5, 10, 20],
+                'learning_rate': [0.75, 1, 1.25],
+                'subsample': [0.75, 0.9, 1],
+                'colsample_bytree': [0.75, 0.9, 1.0],
+                'reg_alpha': [0, 0.5, 1],
+                'reg_lambda': [0, 0.5, 1],
                 'gamma': [0],
-                'min_child_weight': [6],
-                'scale_pos_weight': [1]
+                'min_child_weight': [4,5,6],
+                'scale_pos_weight': [0.75, 1, 1.25]
             }
             grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
                                        cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
-            grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=100)
+            grid_search.fit(X, y, eval_metric='rmse', eval_set=[(X, y)], early_stopping_rounds=50)
             loaded_model = grid_search.best_estimator_
 
             # Save the trained model to a local file using pickle
