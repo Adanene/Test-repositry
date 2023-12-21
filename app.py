@@ -252,9 +252,9 @@ if st.session_state.button_pressed:
                 if os.path.exists(file_path):
                     loaded_model = joblib.load(file_path)
                 else:
-                print(f"The file {file_path} does not exist.")
-                # Download the file
-                response = requests.get(github_raw_url)
+                    print(f"The file {file_path} does not exist.")
+                    # Download the file
+                    response = requests.get(github_raw_url)
 
                 # Check if the download was successful
                 if response.status_code == 200:
