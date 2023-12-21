@@ -178,16 +178,16 @@ if ok:
             y = data[target]
             xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
             param_grid = {
-                'n_estimators': [75, 100, 125],
-                'max_depth': [9, 10, 11],
-                'learning_rate': [0.75, 1, 1.25],
-                'subsample': [0.75, 0.9, 1],
-                'colsample_bytree': [0.75, 0.9, 1.0],
-                'reg_alpha': [0, 0.5, 1],
-                'reg_lambda': [0, 0.5, 1],
+                'n_estimators': [100, 125],
+                'max_depth': [10, 11],
+                'learning_rate': [1, 1.25],
+                'subsample': [0.9, 1],
+                'colsample_bytree': [0.9, 1.0],
+                'reg_alpha': [0.5, 1],
+                'reg_lambda': [0.5, 1],
                 'gamma': [0],
-                'min_child_weight': [4,5,6],
-                'scale_pos_weight': [0.75, 1, 1.25]
+                'min_child_weight': [6],
+                'scale_pos_weight': [1]
             }
             grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
                                        cv=4, n_jobs=-1, verbose=2, scoring='neg_mean_squared_error', error_score='raise')
