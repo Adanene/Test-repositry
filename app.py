@@ -298,17 +298,17 @@ if st.session_state.button_pressed:
                     return href
                 
                 # Creating the .pkl download link
-                def create_download_link(file_path='your_model.pkl', filename="your_model.pkl"):
-                    with open(file_path, 'rb') as f:
+                def create_download_link(model_file_path='your_model.pkl', filename="your_model.pkl"):
+                    with open(model_file_path, 'rb') as f:
                         pkl_content = f.read()
                         b64 = base64.b64encode(pkl_content).decode()
                         href = f'<a href="data:file/pkl;base64,{b64}" download="{filename}">Download Model</a>'
-                    return href
+                return href
             
                 # Display the link
                 st.markdown(create_download_link(predictions_dg), unsafe_allow_html=True)
                 if download == 1 :
-                     st.markdown(create_download_link(your_model.pkl), unsafe_allow_html=True)
+                     st.markdown(create_download_link('your_model.pkl'), unsafe_allow_html=True)
                 
                 # Plotting feature importances
                 imp, ax = plt.subplots(figsize=(10, 6))
