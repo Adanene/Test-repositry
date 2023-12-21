@@ -123,9 +123,10 @@ if ok:
         file_exists = response.status_code == 200
         # Now you can use the loaded_model as needed
         st.success("Model loaded successfully!")
+        download = 1
     else:
         print(f"Failed to download the model. Status code: {response.status_code}")    
-
+        download = 0
 
     #start machine learning process
     def calculate_mape(actual, predicted):
