@@ -108,7 +108,23 @@ ok = st.button("Calculate Incline")
 if ok:
     # URL of the raw file on GitHub
     github_raw_url = 'https://github.com/Adanene/Test-repositry/tree/main/your_model.pkl'
+    #Load the model if exist
+    if os.path.exists(file_path):
+        loaded_model = joblib.load(file_path)
+    else:
+        print(f"The file {file_path} does not exist.")
+        # Download the file
+        response = requests.get(github_raw_url)
 
+    # Check if the download was successful
+    if response.status_code == 200:
+    # Check if the file exists on GitHub
+        response = requests.head(github_raw_url)
+        file_exists = response.status_code == 200
+        # Now you can use the loaded_model as needed
+        st.success("Model loaded successfully!")
+    else:
+        print(f"Failed to download the model. Status code: {response.status_code}")    
 
 
     #start machine learning process
@@ -248,23 +264,6 @@ if ok:
     
 if st.session_state.button_pressed:
         if jumlah_beban =="0" :
-                #Load the model if exist
-                if os.path.exists(file_path):
-                    loaded_model = joblib.load(file_path)
-                else:
-                    print(f"The file {file_path} does not exist.")
-                    # Download the file
-                    response = requests.get(github_raw_url)
-
-                # Check if the download was successful
-                if response.status_code == 200:
-                    # Check if the file exists on GitHub
-                    response = requests.head(github_raw_url)
-                    file_exists = response.status_code == 200
-                    # Now you can use the loaded_model as needed
-                    st.success("Model loaded successfully!")
-                else:
-                    print(f"Failed to download the model. Status code: {response.status_code}")
 
                 # Create a download link
                 # Get the values from the 'groups' column
