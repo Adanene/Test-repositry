@@ -178,8 +178,8 @@ if ok:
             y = data[target]
             xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
             param_grid = {
-                'n_estimators': [50, 100, 200],
-                'max_depth': [5, 10, 20],
+                'n_estimators': [75, 100, 125],
+                'max_depth': [9, 10, 11],
                 'learning_rate': [0.75, 1, 1.25],
                 'subsample': [0.75, 0.9, 1],
                 'colsample_bytree': [0.75, 0.9, 1.0],
