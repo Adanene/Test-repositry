@@ -304,7 +304,7 @@ if st.session_state.button_pressed:
                         pkl_content = f.read()
                         b64 = base64.b64encode(pkl_content).decode()
                         href = f'<a href="data:file/pkl;base64,{b64}" download="{filename}">Download Model</a>'
-                return href
+                    return href
             
                 # Display the link
                 st.markdown(create_download_link(predictions_dg), unsafe_allow_html=True)
