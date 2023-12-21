@@ -508,13 +508,13 @@ if st.session_state.button_pressed:
                 st.subheader(f"Mean Absolute Percentage Error is {mape_model}")
             
                 dataS = pd.DataFrame({
-                        'Moment Beban (Kg.m)': [Mselisih1, Mselisih2, Mselisih3, Mselisih4, Mselisih5, Mselisih6, Mselisih7, Mselisih8, Mselisih9],
+                        'Posisi Cog Momen (m)': [Cogm1, Cogm2, Cogm3, Cogm4, Cogm5, Cogm6, Cogm7, Cogm8, Cogm9],
                         'incline (degrees)': [predicted_Incline1[0], predicted_Incline2[0], predicted_Incline3[0], predicted_Incline4[0], predicted_Incline5[0], predicted_Incline6[0], predicted_Incline7[0], predicted_Incline8[0], predicted_Incline9[0]],
                         'incline (tan θ)' : [tantheta1, tantheta2, tantheta3, tantheta4, tantheta5, tantheta6, tantheta7, tantheta8, tantheta9]
                                    
                         })
                 dataS_display = dataS.copy()
-                dataS_display['Moment Beban (Kg.m)'] = dataS['Moment Beban (Kg.m)']
+                dataS_display['Posisi Cog Momen (m)'] = dataS['Posisi Cog Momen (m)']
                 dataS_display['incline (degrees)'] = dataS['incline (degrees)'].apply(lambda x: '{:.2f}'.format(x))
                 dataS_display['incline (tan θ)'] = dataS['incline (tan θ)'].apply(lambda x: '{:.3f}'.format(x))
 
@@ -525,23 +525,23 @@ if st.session_state.button_pressed:
                 fig, ax = plt.subplots()
 
                 # Create a scatter plot
-                scatter = ax.scatter(dataS['Moment Beban (Kg.m)'], dataS['incline (tan θ)'], color='blue', label='Incliing result')
+                scatter = ax.scatter(dataS['Posisi Cog Momen (m)'], dataS['incline (tan θ)'], color='blue', label='Incliing result')
         
                 # Set title, labels, and legend
                 ax.set_title("Inclining graphic")
-                ax.set_xlabel('Moment Beban (Kg.m)')
+                ax.set_xlabel('Posisi Cog Momen (m)')
                 ax.set_ylabel('incline (tan θ)')
                 ax.legend()
 
                 # Add annotations
                 for i in range(len(dataS)):
-                        ax.annotate(i, (dataS['Moment Beban (Kg.m)'].iloc[i], dataS['incline (tan θ)'].iloc[i])) # i+1 because Python's indexing starts at 0
+                        ax.annotate(i, (dataS['Posisi Cog Momen (m)'].iloc[i], dataS['incline (tan θ)'].iloc[i])) # i+1 because Python's indexing starts at 0
 
-                ax.set_xlabel('Moment Beban (Kg.m)')
+                ax.set_xlabel('Posisi Cog Momen (m)')
                 ax.set_ylabel('incline (tan θ)')
 
                 # Customization: draw a vertical line (you can adjust this as per your requirement)
-                threshold = dataS['Moment Beban (Kg.m)'].mean()  # example threshold using mean, adjust as needed
+                threshold = dataS['Posisi Cog Momen (m)'].mean()  # example threshold using mean, adjust as needed
                 ax.axvline(x=0, color='red', linestyle='--', label=" 0,0 coordinate")
                 ax.legend()
 
