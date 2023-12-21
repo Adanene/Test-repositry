@@ -309,8 +309,8 @@ if st.session_state.button_pressed:
 
                 # Display the links
                 st.markdown(create_csv_download_link(predictions_dg), unsafe_allow_html=True)
-                if download == 1:
-                    st.markdown(create_model_download_link('your_model.pkl'), unsafe_allow_html=True)
+                
+                st.markdown(create_model_download_link('your_model.pkl'), unsafe_allow_html=True)
                 
                 # Plotting feature importances
                 imp, ax = plt.subplots(figsize=(10, 6))
