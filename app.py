@@ -178,13 +178,13 @@ if ok:
             y = data[target]
             xgboost_model = xgb.XGBRegressor(random_state=400, objective="reg:squarederror")
             param_grid = {
-                'n_estimators': [100, 125],
-                'max_depth': [10, 11],
-                'learning_rate': [1, 1.25],
-                'subsample': [0.9, 1],
-                'colsample_bytree': [0.9, 1.0],
-                'reg_alpha': [0.5, 1],
-                'reg_lambda': [0.5, 1],
+                'n_estimators': [100],
+                'max_depth': [10],
+                'learning_rate': [1.25],
+                'subsample': [ 1],
+                'colsample_bytree': [1.0],
+                'reg_alpha': [1],
+                'reg_lambda': [1],
                 'gamma': [0],
                 'min_child_weight': [6],
                 'scale_pos_weight': [1]
