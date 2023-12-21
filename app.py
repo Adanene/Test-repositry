@@ -291,24 +291,25 @@ if st.session_state.button_pressed:
                 predictions_dg.to_csv( index=False, sep='|')
                 st.success("Predictions saved to predictions.csv")
                 
-                def create_download_link(dg, filename="predictions.csv"):
+                # Creating the CSV download link
+                def create_csv_download_link(dg, filename="predictions.csv"):
                     csv_content = dg.to_csv(index=False, sep='|')  # Assuming '|' as separator
                     b64 = base64.b64encode(csv_content.encode()).decode()  # Encoding the CSV file
                     href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">Download CSV</a>'
                     return href
-                
+
                 # Creating the .pkl download link
-                def create_download_link(model_file_path='your_model.pkl', filename="your_model.pkl"):
+                def create_model_download_link(model_file_path='your_model.pkl', filename="your_model.pkl"):
                     with open(model_file_path, 'rb') as f:
                         pkl_content = f.read()
                         b64 = base64.b64encode(pkl_content).decode()
                         href = f'<a href="data:file/pkl;base64,{b64}" download="{filename}">Download Model</a>'
-                    return href
-            
-                # Display the link
-                st.markdown(create_download_link(predictions_dg), unsafe_allow_html=True)
-                if download == 1 :
-                     st.markdown(create_download_link('your_model.pkl'), unsafe_allow_html=True)
+                return href
+
+                # Display the links
+                st.markdown(create_csv_download_link(predictions_dg), unsafe_allow_html=True)
+                if download == 1:
+                    st.markdown(create_model_download_link('your_model.pkl'), unsafe_allow_html=True)
                 
                 # Plotting feature importances
                 imp, ax = plt.subplots(figsize=(10, 6))
