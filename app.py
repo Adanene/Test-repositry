@@ -446,15 +446,15 @@ if st.session_state.button_pressed:
                         DT = (Depth / Draft)
 
                     
-                Cogm1 =  ((kiri1 - kanan1) / totalB )* Breadth/4
-                Cogm2 =  ((kiri2 - kanan2) / totalB )* Breadth/4 
-                Cogm3 =  ((kiri3 - kanan3) / totalB )* Breadth/4
-                Cogm4 =  ((kiri4 - kanan4) / totalB )* Breadth/4
-                Cogm5 =  ((kiri5 - kanan5) / totalB )* Breadth/4
-                Cogm6 =  ((kiri6 - kanan6) / totalB )* Breadth/4 
-                Cogm7 =  ((kiri7 - kanan7) / totalB )* Breadth/4
-                Cogm8 =  ((kiri8 - kanan8) / totalB )* Breadth/4
-                Cogm9 =  ((kiri9 - kanan9) / totalB )* Breadth/4
+                Cogm1 =  ((kiri1 - kanan1) / totalB )* Breadth
+                Cogm2 =  ((kiri2 - kanan2) / totalB )* Breadth
+                Cogm3 =  ((kiri3 - kanan3) / totalB )* Breadth
+                Cogm4 =  ((kiri4 - kanan4) / totalB )* Breadth
+                Cogm5 =  ((kiri5 - kanan5) / totalB )* Breadth
+                Cogm6 =  ((kiri6 - kanan6) / totalB )* Breadth 
+                Cogm7 =  ((kiri7 - kanan7) / totalB )* Breadth
+                Cogm8 =  ((kiri8 - kanan8) / totalB )* Breadth
+                Cogm9 =  ((kiri9 - kanan9) / totalB )* Breadth
                 
                 new_test1 = pd.DataFrame({'beban/disp': [totdisp], 'Cb': [Cb], 'cogm' :[Cogm1],'B/T' :[BT],})
                 predicted_Incline1 = best_model.predict(new_test1)
