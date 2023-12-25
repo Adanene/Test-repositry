@@ -602,8 +602,10 @@ if st.session_state.button_pressed:
                     MG7 = (Cogm7 * totalB) / (displacement * 9.81 * tantheta7)
                     MG8 = (Cogm8 * totalB) / (displacement * 9.81 * tantheta8)
                     MG9 = (Cogm9 * totalB) / (displacement * 9.81 * tantheta9)  
+                if Gmexist =="No":   
+                    MG1 = 0
                     
-                if MG1 != 0 :
+                if not MG1 == 0 :
                     KB1 = MG1 + KG1
                     KB2 = MG2 + KG2
                     KB3 = MG3 + KG3
