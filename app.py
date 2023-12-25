@@ -83,7 +83,7 @@ Depth = st.number_input("Depth  (m) ", min_value= 0.00, step =0.01)
 Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0.01)
 Cb = st.number_input("Coefficient Block", min_value= 0.00, max_value= 1.00, step =0.01)
 jumlah_beban = st.selectbox("Number Weight", beban)
-
+Stab = st.selectbox("Do you need to calculate Stability Point? (Required GM from hydrostatic)", hydros)
 ##convert to anohter
 
 if jumlah_beban == "4" :
@@ -106,8 +106,8 @@ if jumlah_beban == "6" :
         bebanD = st.number_input("Weight 4 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanE = st.number_input("Weight 5 (Kg)",min_value= 0.0000, step =0.0001)
         bebanF = st.number_input("Weight 6 (Kg)",min_value= 0.0000, step =0.0001)
-    
-Stab = st.selectbox("Do you need to calculate Stability Point? (Required GM from hydrostatic)", hydros)
+
+
 if hydros == "Yes I have My Mg from Hydrostatic" :
         Mg = st.number_input("Write Mg From your Hydrostatic",min_value= 0.0000,  step =0.0001)
 
