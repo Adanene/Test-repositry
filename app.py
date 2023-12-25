@@ -70,7 +70,7 @@ beban = (
         "4",
         "6",
         )
-Gmexist = ("No","Predict Automatic (Not Quite Accurate)", "Yes I have My MG from Hydrostatic",)
+Gmexist = ("No","Predict Automatic (Not Quite Accurate)", "Yes I have My Mg from Hydrostatic",)
 # input some wrrited answer
 
 Lwl = st.number_input("Length Water Line (m)",min_value= 0.00, step =0.01)
@@ -104,8 +104,8 @@ if jumlah_beban == "6" :
         bebanF = st.number_input("Weight 6 (Kg)",min_value= 0.0000, step =0.0001)
     
 Stab = st.selectbox("Do you need to calculate Stability Point? (Required GM from hydrostatic)", Gmexist)
-if Gmexist =="Yes I have My MG from Hydrostatic":
-        MG = st.number_input("Write MG From your Hydrostatic",min_value= 0.0000,  step =0.0001)
+if Gmexist =="Yes I have My Mg from Hydrostatic":
+        Mg = st.number_input("Write Mg From your Hydrostatic",min_value= 0.0000,  step =0.0001)
 
 ok = st.button("Calculate Incline")       
 
@@ -582,48 +582,46 @@ if st.session_state.button_pressed:
                 KG8 = (Cogm8 * totalB) / (totalB / halfBreadth)
                 KG9 = (Cogm9 * totalB) / (totalB / halfBreadth)
             
-                if Gmexist =="Yes I have My MG from Hydrostatic":
-                    MG1 = MG
-                    MG2 = MG
-                    MG3 = MG
-                    MG4 = MG
-                    MG5 = MG
-                    MG6 = MG
-                    MG7 = MG
-                    MG8 = MG
-                    MG9 = MG
-                if Gmexist =="Predict Automatic (Not Quite Accurate)":
-                    MG1 = (Cogm1 * totalB) / (displacement * 9.81 * tantheta1)
-                    MG2 = (Cogm2 * totalB) / (displacement * 9.81 * tantheta2)
-                    MG3 = (Cogm3 * totalB) / (displacement * 9.81 * tantheta3)
-                    MG4 = (Cogm4 * totalB) / (displacement * 9.81 * tantheta4)
-                    MG5 = (Cogm5 * totalB) / (displacement * 9.81 * tantheta5)
-                    MG6 = (Cogm6 * totalB) / (displacement * 9.81 * tantheta6)
-                    MG7 = (Cogm7 * totalB) / (displacement * 9.81 * tantheta7)
-                    MG8 = (Cogm8 * totalB) / (displacement * 9.81 * tantheta8)
-                    MG9 = (Cogm9 * totalB) / (displacement * 9.81 * tantheta9)  
-                if Gmexist =="No":   
-                    MG1 = 0
+                if Gmexist == "Yes I have My Mg from Hydrostatic":
+                    Mg1 = Mg
+                    Mg2 = Mg
+                    Mg3 = Mg
+                    Mg4 = Mg
+                    Mg5 = Mg
+                    Mg6 = Mg
+                    Mg7 = Mg
+                    Mg8 = Mg
+                    Mg9 = Mg
+                if Gmexist == "Predict Automatic (Not Quite Accurate)":
+                    Mg1 = (Cogm1 * totalB) / (displacement * 9.81 * tantheta1)
+                    Mg2 = (Cogm2 * totalB) / (displacement * 9.81 * tantheta2)
+                    Mg3 = (Cogm3 * totalB) / (displacement * 9.81 * tantheta3)
+                    Mg4 = (Cogm4 * totalB) / (displacement * 9.81 * tantheta4)
+                    Mg5 = (Cogm5 * totalB) / (displacement * 9.81 * tantheta5)
+                    Mg6 = (Cogm6 * totalB) / (displacement * 9.81 * tantheta6)
+                    Mg7 = (Cogm7 * totalB) / (displacement * 9.81 * tantheta7)
+                    Mg8 = (Cogm8 * totalB) / (displacement * 9.81 * tantheta8)
+                    Mg9 = (Cogm9 * totalB) / (displacement * 9.81 * tantheta9)  
                     
                 if not Gmexist == "No" :
-                    KB1 = MG1 + KG1
-                    KB2 = MG2 + KG2
-                    KB3 = MG3 + KG3
-                    KB4 = MG4 + KG4
-                    KB5 = MG5 + KG5
-                    KB6 = MG6 + KG6
-                    KB7 = MG7 + KG7
-                    KB8 = MG8 + KG8
-                    KB9 = MG9 + KG9
+                    KB1 = Mg1 + KG1
+                    KB2 = Mg2 + KG2
+                    KB3 = Mg3 + KG3
+                    KB4 = Mg4 + KG4
+                    KB5 = Mg5 + KG5
+                    KB6 = Mg6 + KG6
+                    KB7 = Mg7 + KG7
+                    KB8 = Mg8 + KG8
+                    KB9 = Mg9 + KG9
                     #Build the table
                     dataK = pd.DataFrame({
                         'KG': [KG1, KG2, KG3, KG4, KG5, KG6, KG7, KG8, KG9,],
-                        'MG': [MG1, MG2, MG3, MG4, MG5, MG6, MG7, MG8, MG9,],
+                        'Mg': [Mg1, Mg2, Mg3, Mg4, Mg5, Mg6, Mg7, Mg8, Mg9,],
                         'KB' : [tantheta1, tantheta2, tantheta3, tantheta4, tantheta5, tantheta6, tantheta7, tantheta8, tantheta9]            
                         })
                     dataK_display = dataS.copy()
                     dataK_display['KG (m)'] = dataK['KG']
-                    dataK_display['MG (m)'] = dataK['MG'].apply(lambda x: '{:.4f}'.format(x))
+                    dataK_display['Mg (m)'] = dataK['Mg'].apply(lambda x: '{:.4f}'.format(x))
                     dataK_display['KB (m)'] = dataK['KB'].apply(lambda x: '{:.4f}'.format(x))
                     st.write("""##### Hydrostatic Point""")
                     st.table(dataK_display)
