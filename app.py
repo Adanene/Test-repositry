@@ -592,6 +592,16 @@ if st.session_state.button_pressed:
                     Mg7 = Mg
                     Mg8 = Mg
                     Mg9 = Mg
+                    
+                    KB1 = Mg1 + KG1
+                    KB2 = Mg2 + KG2
+                    KB3 = Mg3 + KG3
+                    KB4 = Mg4 + KG4
+                    KB5 = Mg5 + KG5
+                    KB6 = Mg6 + KG6
+                    KB7 = Mg7 + KG7
+                    KB8 = Mg8 + KG8
+                    KB9 = Mg9 + KG9
                 if Gmexist == "Predict Automatic (Not Quite Accurate)":
                     Mg1 = (Cogm1 * totalB) / (displacement * 9.81 * tantheta1)
                     Mg2 = (Cogm2 * totalB) / (displacement * 9.81 * tantheta2)
@@ -603,7 +613,6 @@ if st.session_state.button_pressed:
                     Mg8 = (Cogm8 * totalB) / (displacement * 9.81 * tantheta8)
                     Mg9 = (Cogm9 * totalB) / (displacement * 9.81 * tantheta9)  
                     
-                if not Gmexist == "No" :
                     KB1 = Mg1 + KG1
                     KB2 = Mg2 + KG2
                     KB3 = Mg3 + KG3
@@ -613,15 +622,15 @@ if st.session_state.button_pressed:
                     KB7 = Mg7 + KG7
                     KB8 = Mg8 + KG8
                     KB9 = Mg9 + KG9
-                    #Build the table
-                    dataK = pd.DataFrame({
+                #Build the table
+                dataK = pd.DataFrame({
                         'KG': [KG1, KG2, KG3, KG4, KG5, KG6, KG7, KG8, KG9,],
                         'Mg': [Mg1, Mg2, Mg3, Mg4, Mg5, Mg6, Mg7, Mg8, Mg9,],
                         'KB' : [tantheta1, tantheta2, tantheta3, tantheta4, tantheta5, tantheta6, tantheta7, tantheta8, tantheta9]            
                         })
-                    dataK_display = dataS.copy()
-                    dataK_display['KG (m)'] = dataK['KG']
-                    dataK_display['Mg (m)'] = dataK['Mg'].apply(lambda x: '{:.4f}'.format(x))
-                    dataK_display['KB (m)'] = dataK['KB'].apply(lambda x: '{:.4f}'.format(x))
-                    st.write("""##### Hydrostatic Point""")
-                    st.table(dataK_display)
+                dataK_display = dataS.copy()
+                dataK_display['KG (m)'] = dataK['KG']
+                dataK_display['Mg (m)'] = dataK['Mg'].apply(lambda x: '{:.4f}'.format(x))
+                dataK_display['KB (m)'] = dataK['KB'].apply(lambda x: '{:.4f}'.format(x))
+                st.write("""##### Hydrostatic Point""")
+                st.table(dataK_display)
