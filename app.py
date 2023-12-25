@@ -104,7 +104,7 @@ if jumlah_beban == "6" :
         bebanF = st.number_input("Weight 6 (Kg)",min_value= 0.0000, step =0.0001)
     
 Stab = st.selectbox("Do you need to calculate Stability Point? (Required GM from hydrostatic)", hydros)
-if hydros =="Yes I have My Mg from Hydrostatic":
+if hydros == "Yes I have My Mg from Hydrostatic" :
         Mg = st.number_input("Write Mg From your Hydrostatic",min_value= 0.0000,  step =0.0001)
 
 ok = st.button("Calculate Incline")       
@@ -582,7 +582,7 @@ if st.session_state.button_pressed:
                 KG8 = (Cogm8 * totalB) / (totalB / halfBreadth)
                 KG9 = (Cogm9 * totalB) / (totalB / halfBreadth)
             
-                if hydros == "Yes I have My Mg from Hydrostatic":
+                if hydros == "Yes I have My Mg from Hydrostatic" :
                     Mg1 = Mg
                     Mg2 = Mg
                     Mg3 = Mg
@@ -603,7 +603,7 @@ if st.session_state.button_pressed:
                     KB8 = Mg8 + KG8
                     KB9 = Mg9 + KG9
                     
-                if hydros == "Predict Automatic (Not Quite Accurate)":
+                if hydros == "Predict Automatic (Not Quite Accurate)" :
                     Mg1 = (Cogm1 * totalB) / (displacement * 9.81 * tantheta1)
                     Mg2 = (Cogm2 * totalB) / (displacement * 9.81 * tantheta2)
                     Mg3 = (Cogm3 * totalB) / (displacement * 9.81 * tantheta3)
