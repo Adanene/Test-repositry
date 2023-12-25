@@ -605,7 +605,7 @@ if st.session_state.button_pressed:
                 if Gmexist =="No":   
                     MG1 = 0
                     
-                if not MG1 == 0 :
+                if not Gmexist == "No" :
                     KB1 = MG1 + KG1
                     KB2 = MG2 + KG2
                     KB3 = MG3 + KG3
