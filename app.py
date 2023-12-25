@@ -83,7 +83,6 @@ Depth = st.number_input("Depth  (m) ", min_value= 0.00, step =0.01)
 Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0.01)
 Cb = st.number_input("Coefficient Block", min_value= 0.00, max_value= 1.00, step =0.01)
 jumlah_beban = st.selectbox("Number Weight", beban)
-Stab = st.selectbox("Do you need to calculate Stability Point? (Required GM from hydrostatic)", hydros)
 ##convert to anohter
 
 if jumlah_beban == "4" :
@@ -108,7 +107,8 @@ if jumlah_beban == "6" :
         bebanF = st.number_input("Weight 6 (Kg)",min_value= 0.0000, step =0.0001)
 
 
-if hydros == "Yes I have My Mg from Hydrostatic" :
+Stab = st.selectbox("Do you need to calculate Stability Point? (Required GM from hydrostatic)", hydros)
+if Stab == "Yes I have My Mg from Hydrostatic" :
         Mg = st.number_input("Write Mg From your Hydrostatic",min_value= 0.0000,  step =0.0001)
 
 ok = st.button("Calculate Incline")       
@@ -586,7 +586,7 @@ if st.session_state.button_pressed:
                 KG8 = (Cogm8 * totalB) / (totalB / halfBreadth)
                 KG9 = (Cogm9 * totalB) / (totalB / halfBreadth)
             
-                if hydros == "Yes I have My Mg from Hydrostatic" :
+                if Stab == "Yes I have My Mg from Hydrostatic" :
                     Mg1 = Mg
                     Mg2 = Mg
                     Mg3 = Mg
@@ -607,7 +607,7 @@ if st.session_state.button_pressed:
                     KB8 = Mg8 + KG8
                     KB9 = Mg9 + KG9
                     
-                if hydros == "Predict Automatic (Not Quite Accurate)" :
+                if Stab == "Predict Automatic (Not Quite Accurate)" :
                     Mg1 = (Cogm1 * totalB) / (displacement * 9.81 * tantheta1)
                     Mg2 = (Cogm2 * totalB) / (displacement * 9.81 * tantheta2)
                     Mg3 = (Cogm3 * totalB) / (displacement * 9.81 * tantheta3)
