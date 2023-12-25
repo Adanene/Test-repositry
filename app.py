@@ -70,7 +70,10 @@ beban = (
         "4",
         "6",
         )
-hydros = ("No","Predict Automatic (Not Quite Accurate)", "Yes I have My Mg from Hydrostatic",)
+hydros = ("No",
+          "Predict Automatic (Not Quite Accurate)", 
+          "Yes I have My Mg from Hydrostatic",
+         )
 # input some wrrited answer
 
 Lwl = st.number_input("Length Water Line (m)",min_value= 0.00, step =0.01)
