@@ -322,6 +322,8 @@ if st.session_state.button_pressed:
                 st.markdown(create_model_download_link('your_model.pkl'), unsafe_allow_html=True)
 
                  # Create a scatter plot
+                # make graphics
+                fig, aa = plt.subplots()
                 scatter = aa.scatter(datap['Actual'], datap['Predicted'] , color='blue', label='Incliing result')
                 # Set title, labels, and legend
                 aa.set_title("Actual vs Predicted")
@@ -356,8 +358,7 @@ if st.session_state.button_pressed:
                 st.pyplot(imp)  # Pass the figure object to st.pyplot()
 
                 # Plotting Actual vs predicted value
-                # make graphics
-                fig, aa = plt.subplots()
+                
             
 
                 # make the histogram datasheet
