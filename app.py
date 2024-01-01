@@ -322,7 +322,20 @@ if st.session_state.button_pressed:
                 st.markdown(create_model_download_link('your_model.pkl'), unsafe_allow_html=True)
 
                  # Create a scatter plot
-                # make graphics
+                
+                # Plotting feature importances
+                imp, ax = plt.subplots(figsize=(10, 6))
+                ax.bar(range(len(importances_best_model)), importances_best_model[sorted_indices_best_model], align='center')
+                ax.set_xticks(range(len(importances_best_model)))
+                ax.set_xticklabels(np.array(features)[sorted_indices_best_model])
+                ax.set_title("Feature Importances")
+                ax.set_ylabel('Importance')
+                ax.set_xlabel('Features')
+
+                st.pyplot(imp)  # Pass the figure object to st.pyplot()
+
+                # Plotting Actual vs predicted value
+                                # make graphics
                 fig, aa = plt.subplots()
                 scatter = aa.scatter(datap['Actual'], datap['Predicted'] , color='blue', label='Incliing result')
                 # Set title, labels, and legend
@@ -345,20 +358,6 @@ if st.session_state.button_pressed:
                 aa.set_ylabel('Predicted')
                   # Pass the figure object to st.pyplot()
                 st.pyplot(fig)
-                
-                # Plotting feature importances
-                imp, ax = plt.subplots(figsize=(10, 6))
-                ax.bar(range(len(importances_best_model)), importances_best_model[sorted_indices_best_model], align='center')
-                ax.set_xticks(range(len(importances_best_model)))
-                ax.set_xticklabels(np.array(features)[sorted_indices_best_model])
-                ax.set_title("Feature Importances")
-                ax.set_ylabel('Importance')
-                ax.set_xlabel('Features')
-
-                st.pyplot(imp)  # Pass the figure object to st.pyplot()
-
-                # Plotting Actual vs predicted value
-                
             
 
                 # Make the histogram datasheet
