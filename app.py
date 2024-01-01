@@ -628,7 +628,7 @@ if st.session_state.button_pressed:
                     KM8 = Mg8 + KG8
                     KM9 = Mg9 + KG9
 
-                KGav = 
+                #KGav
                 #Build the table
                 dataK = pd.DataFrame({
                         'KG': [KG1, KG2, KG3, KG4, KG5, KG6, KG7, KG8, KG9,],
