@@ -320,24 +320,9 @@ if st.session_state.button_pressed:
                 st.markdown(create_csv_download_link(predictions_dg), unsafe_allow_html=True)
                 
                 st.markdown(create_model_download_link('your_model.pkl'), unsafe_allow_html=True)
-                
-                # Plotting feature importances
-                imp, ax = plt.subplots(figsize=(10, 6))
-                ax.bar(range(len(importances_best_model)), importances_best_model[sorted_indices_best_model], align='center')
-                ax.set_xticks(range(len(importances_best_model)))
-                ax.set_xticklabels(np.array(features)[sorted_indices_best_model])
-                ax.set_title("Feature Importances")
-                ax.set_ylabel('Importance')
-                ax.set_xlabel('Features')
 
-                st.pyplot(imp)  # Pass the figure object to st.pyplot()
-
-                # Plotting Actual vs predicted value
-                # make graphics
-                fig, aa = plt.subplots()
-                # Create a scatter plot
+                 # Create a scatter plot
                 scatter = aa.scatter(datap['Actual'], datap['Predicted'] , color='blue', label='Incliing result')
-        
                 # Set title, labels, and legend
                 aa.set_title("Actual vs Predicted")
                 aa.set_xlabel('Actual data')
@@ -358,6 +343,22 @@ if st.session_state.button_pressed:
                 aa.set_ylabel('Predicted')
                   # Pass the figure object to st.pyplot()
                 st.pyplot(fig)
+                
+                # Plotting feature importances
+                imp, ax = plt.subplots(figsize=(10, 6))
+                ax.bar(range(len(importances_best_model)), importances_best_model[sorted_indices_best_model], align='center')
+                ax.set_xticks(range(len(importances_best_model)))
+                ax.set_xticklabels(np.array(features)[sorted_indices_best_model])
+                ax.set_title("Feature Importances")
+                ax.set_ylabel('Importance')
+                ax.set_xlabel('Features')
+
+                st.pyplot(imp)  # Pass the figure object to st.pyplot()
+
+                # Plotting Actual vs predicted value
+                # make graphics
+                fig, aa = plt.subplots()
+            
 
                 # make the histogram datasheet
                 predicted_degrees = datap['Predicted']
