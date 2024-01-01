@@ -687,4 +687,4 @@ if st.session_state.button_pressed:
                 st.pyplot(fig)
                 st.subheader(f"Average KG on this ship is {AvKG, 3}  " )
                 st.subheader(f"Average MG on this ship is {AvMg, 3}  " )
-                st.subheader(f"Average KM on this ship is {aVkM, 3}  " )
+                st.subheader(f"Average KM on this ship is {AvKm, 3}  " )
