@@ -651,17 +651,17 @@ if st.session_state.button_pressed:
                 fig, aa = plt.subplots()
 
                 # Create line plot for KG vs Mg
-                aa.plot(dataK['KG'], dataK['Mg'], label='KG vs Mg', marker='o')
+                aa.plot(dataK['KG'],dataS['Posisi Cog Momen (m)'], label='KG ', marker='o')
 
                 # Create line plot for KG vs KM
-                aa.plot(dataK['KG'], dataK['KM'], label='KG vs KM', marker='o')
+                aa.plot(dataK['KM'], dataS['Posisi Cog Momen (m)'], label='KM', marker='o')
 
                 # Create line plot for Mg vs KM
-                aa.plot(dataK['Mg'], dataK['KM'], label='Mg vs KM', marker='o')
+                aa.plot(dataK['Mg'], dataS['Posisi Cog Momen (m)'], label='Mg', marker='o')
 
                 # Set title, labels, and legend
-                aa.set_title("Inclining graphic")
-                aa.set_xlabel('Posisi Cog Momen (m)')
+                aa.set_title("Hydrostatic")
+                aa.set_xlabel('CoG test weight (m)')
                 aa.set_ylabel('hydrostatic data')
                 aa.legend()
 
