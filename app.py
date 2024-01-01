@@ -580,15 +580,15 @@ if st.session_state.button_pressed:
 
                 #### Now for hydrostatic part
                 ###Calulate KG
-                KG1 = (Cogm1 * totalB) / (totalB / halfBreadth)
-                KG2 = (Cogm2 * totalB) / (totalB / halfBreadth)
-                KG3 = (Cogm3 * totalB) / (totalB / halfBreadth)
-                KG4 = (Cogm4 * totalB) / (totalB / halfBreadth)
-                KG5 = (Cogm5 * totalB) / (totalB / halfBreadth)
-                KG6 = (Cogm6 * totalB) / (totalB / halfBreadth)
-                KG7 = (Cogm7 * totalB) / (totalB / halfBreadth)
-                KG8 = (Cogm8 * totalB) / (totalB / halfBreadth)
-                KG9 = (Cogm9 * totalB) / (totalB / halfBreadth)
+                KG1 = (Cogm1 * totalB) / (totalB / halfBreadth)* tantheta1
+                KG2 = (Cogm2 * totalB) / (totalB / halfBreadth)* tantheta2
+                KG3 = (Cogm3 * totalB) / (totalB / halfBreadth)* tantheta3
+                KG4 = (Cogm4 * totalB) / (totalB / halfBreadth)* tantheta4
+                KG5 = (Cogm5 * totalB) / (totalB / halfBreadth)* tantheta5
+                KG6 = (Cogm6 * totalB) / (totalB / halfBreadth)* tantheta6
+                KG7 = (Cogm7 * totalB) / (totalB / halfBreadth)* tantheta7
+                KG8 = (Cogm8 * totalB) / (totalB / halfBreadth)* tantheta8
+                KG9 = (Cogm9 * totalB) / (totalB / halfBreadth)* tantheta9
             
                 if Stab == "Yes I have My Mg from Hydrostatic" :
                     Mg1 = Mg
