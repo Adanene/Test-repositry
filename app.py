@@ -637,12 +637,7 @@ if st.session_state.button_pressed:
                 AvMg = (Mg1+MG2+Mg3+Mg4+Mg5+MG6+Mg7+Mg8+Mg9)
                 AvKm = (KM1+KM2+KM3+KM4+KM5
 
-                # Build the table
-                dataK = pd.DataFrame({
-                'KG': [KG1, KG2, KG3, KG4, KG5, KG6, KG7, KG8, KG9],
-                'Mg': [Mg1, Mg2, Mg3, Mg4, Mg5, Mg6, Mg7, Mg8, Mg9],
-                'KM': [KM1, KM2, KM3, KM4, KM5, KM6, KM7, KM8, KM9],            
-                })
+
                 dataK_display = dataK.copy()  # Corrected variable name here
                 dataK_display['KG (m)'] = dataK['KG']
                 dataK_display['Mg (m)'] = dataK['Mg'].apply(lambda x: '{:.4f}'.format(x))
