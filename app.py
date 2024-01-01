@@ -361,7 +361,7 @@ if st.session_state.button_pressed:
                 
             
 
-                # make the histogram datasheet
+                # Make the histogram datasheet
                 predicted_degrees = datap['Predicted']
                 # Create a histogram with 1-degree bins
                 freq, bins, _ = plt.hist(predicted_degrees, bins=np.arange(min(predicted_degrees), max(predicted_degrees) + 1, 1), edgecolor='black')
@@ -374,7 +374,7 @@ if st.session_state.button_pressed:
                 # Show the plot
                 st.pyplot(plt.gcf())
 
-                # Clear the current figure
+                # Optionally, you can clear the current figure after displaying all plots
                 plt.clf()
                 
     
