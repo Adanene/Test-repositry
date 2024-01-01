@@ -660,9 +660,9 @@ if st.session_state.button_pressed:
                 aa.plot(dataK['Mg'], dataS['Posisi Cog Momen (m)'], label='Mg', marker='o')
 
                 # Set title, labels, and legend
-                aa.set_title("Hydrostatic")
-                aa.set_xlabel('CoG test weight (m)')
-                aa.set_ylabel('hydrostatic data')
+                aa.set_title("Hydrostatic per moment")
+                aa.set_xlabel('hydrostatic data')
+                aa.set_ylabel('CoG test weight (m)')
                 aa.legend()
 
                 # Add annotations
