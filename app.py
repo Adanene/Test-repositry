@@ -322,27 +322,27 @@ if st.session_state.button_pressed:
                 st.markdown(create_model_download_link('your_model.pkl'), unsafe_allow_html=True)
                 
                 # Plotting feature importances
-                imp, aa = plt.subplots(figsize=(10, 6))
-                aa.bar(range(len(importances_best_model)), importances_best_model[sorted_indices_best_model], align='center')
-                aa.set_xticks(range(len(importances_best_model)))
-                aa.set_xticklabels(np.array(features)[sorted_indices_best_model])
-                aa.set_title("Feature Importances")
-                aa.set_ylabel('Importance')
-                aa.set_xlabel('Features')
+                imp, ax = plt.subplots(figsize=(10, 6))
+                ax.bar(range(len(importances_best_model)), importances_best_model[sorted_indices_best_model], align='center')
+                ax.set_xticks(range(len(importances_best_model)))
+                ax.set_xticklabels(np.array(features)[sorted_indices_best_model])
+                ax.set_title("Feature Importances")
+                ax.set_ylabel('Importance')
+                ax.set_xlabel('Features')
 
                 st.pyplot(imp)  # Pass the figure object to st.pyplot()
 
                 # Plotting Actual vs predicted value
                 # make graphics
-                fig, ax = plt.subplots()
+                fig, aa = plt.subplots()
                 # Create a scatter plot
-                scatter = ax.scatter(datap['Actual'], datap['Predicted'] , color='blue', label='Incliing result')
+                scatter = aa.scatter(datap['Actual'], datap['Predicted'] , color='blue', label='Incliing result')
         
                 # Set title, labels, and legend
-                ax.set_title("Actual vs Predicted")
-                ax.set_xlabel('Actual data')
-                ax.set_ylabel('Prediction data')
-                ax.legend()
+                aa.set_title("Actual vs Predicted")
+                aa.set_xlabel('Actual data')
+                aa.set_ylabel('Prediction data')
+                aa.legend()
 
                 # Add annotations
                 for i in range(len(datap)):
@@ -353,9 +353,9 @@ if st.session_state.button_pressed:
                                 else:
                                     predicted_value = pd.to_numeric(datap['Predicted'][i], errors='coerce')
                     
-                ax.annotate(i, (actual_value, predicted_value))
-                ax.set_xlabel('Actual)')
-                ax.set_ylabel('Predicted')
+                aa.annotate(i, (actual_value, predicted_value))
+                aa.set_xlabel('Actual)')
+                aa.set_ylabel('Predicted')
                   # Pass the figure object to st.pyplot()
                 st.pyplot(fig)
 
