@@ -372,9 +372,6 @@ if st.session_state.button_pressed:
 
                 # Show the plot
                 st.pyplot(plt.gcf())
-
-                # Optionally, you can clear the current figure after displaying all plots
-                plt.clf()
                 
     
         else:
