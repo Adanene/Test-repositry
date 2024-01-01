@@ -322,13 +322,13 @@ if st.session_state.button_pressed:
                 st.markdown(create_model_download_link('your_model.pkl'), unsafe_allow_html=True)
                 
                 # Plotting feature importances
-                imp, ax = plt.subplots(figsize=(10, 6))
-                ax.bar(range(len(importances_best_model)), importances_best_model[sorted_indices_best_model], align='center')
-                ax.set_xticks(range(len(importances_best_model)))
-                ax.set_xticklabels(np.array(features)[sorted_indices_best_model])
-                ax.set_title("Feature Importances")
-                ax.set_ylabel('Importance')
-                ax.set_xlabel('Features')
+                imp, aa = plt.subplots(figsize=(10, 6))
+                aa.bar(range(len(importances_best_model)), importances_best_model[sorted_indices_best_model], align='center')
+                aa.set_xticks(range(len(importances_best_model)))
+                aa.set_xticklabels(np.array(features)[sorted_indices_best_model])
+                aa.set_title("Feature Importances")
+                aa.set_ylabel('Importance')
+                aa.set_xlabel('Features')
 
                 st.pyplot(imp)  # Pass the figure object to st.pyplot()
 
@@ -627,6 +627,8 @@ if st.session_state.button_pressed:
                     KM7 = Mg7 + KG7
                     KM8 = Mg8 + KG8
                     KM9 = Mg9 + KG9
+
+                KGav = 
                 #Build the table
                 dataK = pd.DataFrame({
                         'KG': [KG1, KG2, KG3, KG4, KG5, KG6, KG7, KG8, KG9,],
