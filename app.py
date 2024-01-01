@@ -637,7 +637,7 @@ if st.session_state.button_pressed:
                 dataK = pd.DataFrame({
                         'KG': [KG1, KG2, KG3, KG4, KG5, KG6, KG7, KG8, KG9,],
                         'Mg': [Mg1, Mg2, Mg3, Mg4, Mg5, Mg6, Mg7, Mg8, Mg9,],
-                        'KM' : [tantheta1, tantheta2, tantheta3, tantheta4, tantheta5, tantheta6, tantheta7, tantheta8, tantheta9]            
+                        'KM' : [KM1, KM2, KM3, KM4, KM5, KM6, KM7, KM8, KM9]            
                         })
                 dataK_display = dataS.copy()
                 dataK_display['KG (m)'] = dataK['KG']
@@ -645,3 +645,39 @@ if st.session_state.button_pressed:
                 dataK_display['KM (m)'] = dataK['KM'].apply(lambda x: '{:.4f}'.format(x))
                 st.write("""##### Hydrostatic Point""")
                 st.table(dataK_display)
+                ### make a graphic for it
+                                # make graphics
+               # Plotting line diagram
+                fig, aa = plt.subplots()
+
+                # Create line plot for KG vs Mg
+                aa.plot(dataK['KG'], dataK['Mg'], label='KG vs Mg', marker='o')
+
+                # Create line plot for KG vs KM
+                aa.plot(dataK['KG'], dataK['KM'], label='KG vs KM', marker='o')
+
+                # Create line plot for Mg vs KM
+                aa.plot(dataK['Mg'], dataK['KM'], label='Mg vs KM', marker='o')
+
+                # Set title, labels, and legend
+                aa.set_title("Inclining graphic")
+                aa.set_xlabel('Posisi Cog Momen (m)')
+                aa.set_ylabel('hydrostatic data')
+                aa.legend()
+
+                # Add annotations
+                for i in range(len(dataS)):
+                aa.annotate(i, (dataS['Posisi Cog Momen (m)'].iloc[i], dataS['incline (tan θ)'].iloc[i]))
+
+                # Customization: draw a vertical line
+                threshold = dataS['Posisi Cog Momen (m)'].mean()
+                aa.axvline(x=threshold, color='red', linestyle='--', label="Threshold for Vertical Line")
+                aa.legend()
+
+                # Customization: draw a horizontal line
+                thresholds = dataS['incline (tan θ)'].mean()
+                aa.axhline(y=thresholds, color='red', linestyle='--', label="Threshold for Horizontal Line")
+                aa.legend()
+
+                # Display the plot using Streamlit
+                st.pyplot(fig)
