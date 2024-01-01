@@ -293,8 +293,8 @@ if st.session_state.button_pressed:
                 mape_datap = calculate_mape(y, predicted_Incline0)
                 mse_datap = mean_squared_error(y, predicted_Incline0)
             # print the MAPE and MSE
-                st.subheader(f"Mean squared error for predicting datasheet is {mse_datap}  " )
-                st.subheader(f"Mean Absolute Percentage Error for predicting datasheet is {mape_datap}")
+                st.subheader(f"Mean squared error for predicting datasheet is {mse_datap, 3}  " )
+                st.subheader(f"Mean Absolute Percentage Error for predicting datasheet is {mape_datap, 3}")
              # Preapare the .csv files
                 dg = pd.DataFrame(datap)
                 predictions_dg = pd.DataFrame({'Group' : groups, 'Actual':y, 'Predicted':predicted_Incline0})
@@ -631,7 +631,11 @@ if st.session_state.button_pressed:
                     KM7 = Mg7 + KG7
                     KM8 = Mg8 + KG8
                     KM9 = Mg9 + KG9
-
+                    #calculate average data
+                    AvKG = (KG1+KG2+KG3+KG4+KG5+KG6+KG7+KG8+KG9)
+                    AvMg = (Mg1+MG2+Mg3+Mg4+Mg5+MG6+Mg7+Mg8+Mg9)
+                    AvKm = (KM1+KM2+KM3+KM4+KM5
+                    
                 #KGav
                 #Build the table
                 dataK = pd.DataFrame({
@@ -651,13 +655,13 @@ if st.session_state.button_pressed:
                 fig, aa = plt.subplots()
 
                 # Create line plot for KG vs Mg
-                aa.plot(dataK['KG'],dataS['Posisi Cog Momen (m)'], label='KG ', marker='o')
+                aa.plot(dataK['KG'],dataS['Posisi Cog Momen (m)'], label='KG (m)', marker='o')
 
                 # Create line plot for KG vs KM
-                aa.plot(dataK['KM'], dataS['Posisi Cog Momen (m)'], label='KM', marker='o')
+                aa.plot(dataK['KM'], dataS['Posisi Cog Momen (m)'], label='KM (m)', marker='o')
 
                 # Create line plot for Mg vs KM
-                aa.plot(dataK['Mg'], dataS['Posisi Cog Momen (m)'], label='Mg', marker='o')
+                aa.plot(dataK['Mg'], dataS['Posisi Cog Momen (m)'], label='Mg (m)', marker='o')
 
                 # Set title, labels, and legend
                 aa.set_title("Hydrostatic per moment")
@@ -681,3 +685,6 @@ if st.session_state.button_pressed:
 
                 # Display the plot using Streamlit
                 st.pyplot(fig)
+                st.subheader(f"Average KG on this ship is {AvKG, 3}  " )
+                st.subheader(f"Average MG on this ship is {AvMg, 3}  " )
+                st.subheader(f"Average KM on this ship is {aVkM, 3}  " )
