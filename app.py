@@ -337,7 +337,7 @@ if st.session_state.button_pressed:
                 # Plotting Actual vs predicted value
                                 # make graphics
                 fig, aa = plt.subplots()
-                scatter = aa.scatter(datap['Actual'], datap['Predicted'] , color='blue', label='Incliing result')
+                scatter = aa.scatter(datap['Actual'], datap['Predicted'] , color='blue', label='Inclining result')
                 # Set title, labels, and legend
                 aa.set_title("Actual vs Predicted")
                 aa.set_xlabel('Actual data')
@@ -362,16 +362,22 @@ if st.session_state.button_pressed:
 
                 # Make the histogram datasheet
                 predicted_degrees = datap['Predicted']
+                  # Make the histogram datasheet
+                fig_hist, ax_hist = plt.subplots()
+                predicted_degrees = datap['Predicted']
                 # Create a histogram with 1-degree bins
-                freq, bins, _ = plt.hist(predicted_degrees, bins=np.arange(min(predicted_degrees), max(predicted_degrees) + 1, 1), edgecolor='black')
+                freq, bins, _ = ax_hist.hist(predicted_degrees, bins=np.arange(min(predicted_degrees), max(predicted_degrees) + 1, 1), edgecolor='black')
 
                 # Set title and labels
-                plt.title('Frequency Histogram of Predicted Inclining Angles')
-                plt.xlabel('Inclining Angle (degrees)')
-                plt.ylabel('Frequency')
+                ax_hist.set_title('Frequency Histogram of Predicted Inclining Angles')
+                ax_hist.set_xlabel('Inclining Angle (degrees)')
+                ax_hist.set_ylabel('Frequency')
 
                 # Show the plot
-                st.pyplot(plt.gcf())
+                st.pyplot(fig_hist)
+            
+                # Optionally, you can clear the current figure after displaying all plots
+                plt.clf()
                 
     
         else:
