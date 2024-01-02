@@ -666,7 +666,7 @@ if st.session_state.button_pressed:
 
                 # Set title, labels, and legend
                 aa.set_title("Hydrostatic per moment")
-                aa.set_xlabel('Portside            Starboardside')
+                aa.set_xlabel('Portside                            Starboardside')
                 aa.set_ylabel('KM, KG, MG')
                 aa.legend()
 
