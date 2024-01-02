@@ -518,7 +518,7 @@ if st.session_state.button_pressed:
                 tantheta9 = math.tan(radians9)
                 
                 st.subheader(f"Mean squared error is {mse_best_model:.3f}" )
-                st.subheader(f"Mean Absolute Percentage Error is {mape_model:.3f}")
+                st.subheader(f"Mean Absolute Percentage Error is {float(mape_model):.3f}")
             
                 dataS = pd.DataFrame({
                         'Posisi Cog Momen (m)': [Cogm1, Cogm2, Cogm3, Cogm4, Cogm5, Cogm6, Cogm7, Cogm8, Cogm9],
