@@ -73,7 +73,7 @@ beban = (
 hydros = (
         "No",
         "Predict Automatic (Not Quite Accurate)", 
-        "Yes I have My Mg from Hydrostatic",
+        "Yes I have My MG from Hydrostatic",
         )
 # input some wrrited answer
 
@@ -108,8 +108,8 @@ if jumlah_beban == "6" :
 
 
 Stab = st.selectbox("Do you need to calculate Stability Point? (Required GM from hydrostatic)", hydros)
-if Stab == "Yes I have My Mg from Hydrostatic" :
-        Mg = st.number_input("Write Mg From your Hydrostatic",min_value= 0.0000,  step =0.0001)
+if Stab == "Yes I have My MG from Hydrostatic" :
+        MG = st.number_input("Write MG From your Hydrostatic",min_value= 0.0000,  step =0.0001)
 
 ok = st.button("Calculate Incline")       
 
@@ -590,104 +590,102 @@ if st.session_state.button_pressed:
                 KG8 = (Cogm8 * totalB) / (totalB / halfBreadth)* tantheta8
                 KG9 = (Cogm9 * totalB) / (totalB / halfBreadth)* tantheta9
             
-                if Stab == "Yes I have My Mg from Hydrostatic" :
-                    Mg1 = Mg
-                    Mg2 = Mg
-                    Mg3 = Mg
-                    Mg4 = Mg
-                    Mg5 = Mg
-                    Mg6 = Mg
-                    Mg7 = Mg
-                    Mg8 = Mg
-                    Mg9 = Mg
+                if Stab == "Yes I have My MG from Hydrostatic" :
+                    MG1 = MG
+                    MG2 = MG
+                    MG3 = MG
+                    MG4 = MG
+                    MG5 = MG
+                    MG6 = MG
+                    MG7 = MG
+                    MG8 = MG
+                    MG9 = MG
                     
-                    KM1 = Mg1 + KG1
-                    KM2 = Mg2 + KG2
-                    KM3 = Mg3 + KG3
-                    KM4 = Mg4 + KG4
-                    KM5 = Mg5 + KG5
-                    KM6 = Mg6 + KG6
-                    KM7 = Mg7 + KG7
-                    KM8 = Mg8 + KG8
-                    KM9 = Mg9 + KG9
+                    KM1 = MG1 + KG1
+                    KM2 = MG2 + KG2
+                    KM3 = MG3 + KG3
+                    KM4 = MG4 + KG4
+                    KM5 = MG5 + KG5
+                    KM6 = MG6 + KG6
+                    KM7 = MG7 + KG7
+                    KM8 = MG8 + KG8
+                    KM9 = MG9 + KG9
                     
                 if Stab == "Predict Automatic (Not Quite Accurate)" :
-                    Mg1 = (Cogm1 * totalB) / (displacement * 9.81 * tantheta1)
-                    Mg2 = (Cogm2 * totalB) / (displacement * 9.81 * tantheta2)
-                    Mg3 = (Cogm3 * totalB) / (displacement * 9.81 * tantheta3)
-                    Mg4 = (Cogm4 * totalB) / (displacement * 9.81 * tantheta4)
-                    Mg5 = (Cogm5 * totalB) / (displacement * 9.81 * tantheta5)
-                    Mg6 = (Cogm6 * totalB) / (displacement * 9.81 * tantheta6)
-                    Mg7 = (Cogm7 * totalB) / (displacement * 9.81 * tantheta7)
-                    Mg8 = (Cogm8 * totalB) / (displacement * 9.81 * tantheta8)
-                    Mg9 = (Cogm9 * totalB) / (displacement * 9.81 * tantheta9)  
+                    MG1 = (Cogm1 * totalB) / (displacement * 9.81 * tantheta1)
+                    MG2 = (Cogm2 * totalB) / (displacement * 9.81 * tantheta2)
+                    MG3 = (Cogm3 * totalB) / (displacement * 9.81 * tantheta3)
+                    MG4 = (Cogm4 * totalB) / (displacement * 9.81 * tantheta4)
+                    MG5 = (Cogm5 * totalB) / (displacement * 9.81 * tantheta5)
+                    MG6 = (Cogm6 * totalB) / (displacement * 9.81 * tantheta6)
+                    MG7 = (Cogm7 * totalB) / (displacement * 9.81 * tantheta7)
+                    MG8 = (Cogm8 * totalB) / (displacement * 9.81 * tantheta8)
+                    MG9 = (Cogm9 * totalB) / (displacement * 9.81 * tantheta9)  
                     
-                    KM1 = Mg1 + KG1
-                    KM2 = Mg2 + KG2
-                    KM3 = Mg3 + KG3
-                    KM4 = Mg4 + KG4
-                    KM5 = Mg5 + KG5
-                    KM6 = Mg6 + KG6
-                    KM7 = Mg7 + KG7
-                    KM8 = Mg8 + KG8
-                    KM9 = Mg9 + KG9
+                    KM1 = MG1 + KG1
+                    KM2 = MG2 + KG2
+                    KM3 = MG3 + KG3
+                    KM4 = MG4 + KG4
+                    KM5 = MG5 + KG5
+                    KM6 = MG6 + KG6
+                    KM7 = MG7 + KG7
+                    KM8 = MG8 + KG8
+                    KM9 = MG9 + KG9
                     
                 #calculate average data
                 AvKG = (KG1 +KG2 +KG3 +KG4 +KG5 +KG6 +KG7 +KG8 +KG9)
-                AvMg = (Mg1 +Mg2 +Mg3 +Mg4 +Mg5 +Mg6 +Mg7 +Mg8 +Mg9)
+                AvMG = (MG1 +MG2 +MG3 +MG4 +MG5 +MG6 +MG7 +MG8 +MG9)
                 AvKm = (KM1 +KM2 +KM3 +KM4 +KM5 +KM6 +KM7 +KM8 +KM9)
                 rounded_AVKG = round(AvKG, 3)
-                rounded_AvMg = round(AvMg, 3)
+                rounded_AvMG = round(AvMG, 3)
                 rounded_AvKm = round(AvKm, 3)
 
                  # Build the table
                 dataK = pd.DataFrame({
                         'KG': [KG1, KG2, KG3, KG4, KG5, KG6, KG7, KG8, KG9],
-                        'Mg': [Mg1, Mg2, Mg3, Mg4, Mg5, Mg6, Mg7, Mg8, Mg9],
+                        'MG': [MG1, MG2, MG3, MG4, MG5, MG6, MG7, MG8, MG9],
                         'KM': [KM1, KM2, KM3, KM4, KM5, KM6, KM7, KM8, KM9],            
                         })
                 dataK_display = dataK.copy()  # Corrected variable name here
                 dataK_display['KG (m)'] = dataK['KG']
-                dataK_display['Mg (m)'] = dataK['Mg'].apply(lambda x: '{:.3f}'.format(x))
+                dataK_display['MG (m)'] = dataK['MG'].apply(lambda x: '{:.3f}'.format(x))
                 dataK_display['KM (m)'] = dataK['KM'].apply(lambda x: '{:.3f}'.format(x))
                 st.write("""##### Hydrostatic Point""")
                 st.table(dataK_display)
-                ### make a graphic for it
-                                # make graphics
-               # Plotting line diagram
+                  # Plotting line diagram with switched X-axis and Y-axis
                 fig, aa = plt.subplots()
 
-                # Create line plot for KG vs Mg
-                aa.plot(dataK['KG'],dataS['Posisi Cog Momen (m)'], label='KG (m)', marker='o')
+                # Create line plot for KG vs MG with switched axes
+                aa.plot(dataS['Posisi Cog Momen (m)'], dataK['KG'], label='KG (m)', marker='o')
 
-                # Create line plot for KG vs KM
-                aa.plot(dataK['KM'], dataS['Posisi Cog Momen (m)'], label='KM (m)', marker='o')
+                # Create line plot for KM vs MG with switched axes
+                aa.plot(dataS['Posisi Cog Momen (m)'], dataK['KM'], label='KM (m)', marker='o')
 
-                # Create line plot for Mg vs KM
-                aa.plot(dataK['Mg'], dataS['Posisi Cog Momen (m)'], label='Mg (m)', marker='o')
+                # Create line plot for MG vs MG with switched axes
+                aa.plot(dataS['Posisi Cog Momen (m)'], dataK['MG'], label='MG (m)', marker='o')
 
                 # Set title, labels, and legend
                 aa.set_title("Hydrostatic per moment")
-                aa.set_xlabel('hydrostatic data')
-                aa.set_ylabel('CoG test weight (m)')
+                aa.set_xlabel('CoG test weight (m)')
+                aa.set_ylabel('hydrostatic data')
                 aa.legend()
 
                 # Add annotations
                 for i in range(len(dataS)):
-                    aa.annotate(i, (dataS['Posisi Cog Momen (m)'].iloc[i], dataS['incline (tan θ)'].iloc[i]))
-
-                # Customization: draw a vertical line
-                threshold = dataS['Posisi Cog Momen (m)'].mean()
-                aa.axvline(x=threshold, color='red', linestyle='--', label="Threshold for Vertical Line")
-                aa.legend()
+                aa.annotate(i, (dataS['Posisi Cog Momen (m)'].iloc[i], dataS['incline (tan θ)'].iloc[i]))
 
                 # Customization: draw a horizontal line
+                threshold = dataS['Posisi Cog Momen (m)'].mean()
+                aa.axhline(y=threshold, color='red', linestyle='--')
+                aa.legend()
+
+                # Customization: draw a vertical line
                 thresholds = dataS['incline (tan θ)'].mean()
-                aa.axhline(y=thresholds, color='red', linestyle='--', label="Threshold for Horizontal Line")
+                aa.axvline(x=thresholds, color='red', linestyle='--')
                 aa.legend()
 
                 # Display the plot using Streamlit
                 st.pyplot(fig)
                 st.subheader(f"Average KG on this ship is {AvKG:.3f}  " )
-                st.subheader(f"Average MG on this ship is {AvMg:.3f}  " )
+                st.subheader(f"Average MG on this ship is {AvMG:.3f}  " )
                 st.subheader(f"Average KM on this ship is {AvKm:.3f}  " )
