@@ -667,8 +667,17 @@ if st.session_state.button_pressed:
                 # Set title, labels, and legend
                 aa.set_title("Hydrostatic per moment")
                 aa.set_xlabel('CoG test weight (m)')
-                aa.set_ylabel('hydrostatic data')
+                aa.set_ylabel('KM, KG, MG')
                 aa.legend()
+
+                # Add annotations for portside and starboardside
+                threshold = dataS['Posisi Cog Momen (m)'].mean()
+                aa.axhline(y=threshold, color='red', linestyle='--', label='Starboardside')
+                aa.text(threshold, -0.01, 'Starboardside', color='red', ha='left', va='top')
+
+                thresholds = dataS['incline (tan θ)'].mean()
+                aa.axvline(x=thresholds, color='blue', linestyle='--', label='Portside')
+                aa.text(thresholds, -0.01, 'Portside', color='blue', ha='right', va='top')
 
                 # Add annotations
                 for i in range(len(dataS)):
