@@ -646,12 +646,12 @@ if st.session_state.button_pressed:
                         'MG': [MG1, MG2, MG3, MG4, MG5, MG6, MG7, MG8, MG9],
                         'KM': [KM1, KM2, KM3, KM4, KM5, KM6, KM7, KM8, KM9],            
                         })
-                dataK_display = dataK.copy()  # Corrected variable name here
-                dataK_display['KG (m)'] = dataK['KG']
-                dataK_display['MG (m)'] = dataK['MG'].apply(lambda x: '{:.3f}'.format(x))
-                dataK_display['KM (m)'] = dataK['KM'].apply(lambda x: '{:.3f}'.format(x))
+                dataL = dataK.copy()  # Corrected variable name here
+                dataL['KG (m)'] = dataK['KG']
+                dataL['MG (m)'] = dataK['MG'].apply(lambda x: '{:.3f}'.format(x))
+                dataL['KM (m)'] = dataK['KM'].apply(lambda x: '{:.3f}'.format(x))
                 st.write("""##### Hydrostatic Point""")
-                st.table(dataK_display)
+                st.table(dataL)
                   # Plotting line diagram with switched X-axis and Y-axis
                 fig, aa = plt.subplots()
 
