@@ -672,7 +672,7 @@ if st.session_state.button_pressed:
 
                 # Add annotations
                 for i in range(len(dataS)):
-                aa.annotate(i, (dataS['Posisi Cog Momen (m)'].iloc[i], dataS['incline (tan θ)'].iloc[i]))
+                    aa.annotate(i, (dataS['Posisi Cog Momen (m)'].iloc[i], dataS['incline (tan θ)'].iloc[i]))
 
                 # Customization: draw a horizontal line
                 threshold = dataS['Posisi Cog Momen (m)'].mean()
