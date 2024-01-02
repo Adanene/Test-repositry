@@ -655,10 +655,10 @@ if st.session_state.button_pressed:
                 rounded_Cogm = [round(value, 3) for value in Cogm]
                 # Create the DataFrame
                 dataK = pd.DataFrame({
-                    'Cogm' : rounded_Cogm
-                    'KG' : rounded_KG
-                    'MG' : rounded_MG
-                    'KM' : rounded_KM
+                    'Cogm' : rounded_Cogm,
+                    'KG' : rounded_KG,
+                    'MG' : rounded_MG,
+                    'KM' : rounded_KM,
                 st.write("""##### Hydrostatic Point""")
                 st.table(dataK)
                   # Plotting line diagram with switched X-axis and Y-axis
