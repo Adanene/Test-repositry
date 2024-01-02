@@ -659,6 +659,7 @@ if st.session_state.button_pressed:
                     'KG' : rounded_KG,
                     'MG' : rounded_MG,
                     'KM' : rounded_KM,
+                })
                 st.write("""##### Hydrostatic Point""")
                 st.table(dataK)
                   # Plotting line diagram with switched X-axis and Y-axis
