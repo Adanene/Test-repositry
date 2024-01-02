@@ -641,17 +641,24 @@ if st.session_state.button_pressed:
                 rounded_AvKm = round(AvKm, 3)
 
                  # Build the table
+                
+                KG: [KG1, KG2, KG3, KG4, KG5, KG6, KG7, KG8, KG9],
+                MG: [MG1, MG2, MG3, MG4, MG5, MG6, MG7, MG8, MG9],
+                KM: [KM1, KM2, KM3, KM4, KM5, KM6, KM7, KM8, KM9],   
+                # Assuming KG, MG, and KM are your original data
+
+                # Round each value to 0.001 depth
+                rounded_KG = [round(value, 3) for value in KG]
+                rounded_MG = [round(value, 3) for value in MG]
+                rounded_KM = [round(value, 3) for value in KM]
+
+                # Create the DataFrame
                 dataK = pd.DataFrame({
-                        'KG': [KG1, KG2, KG3, KG4, KG5, KG6, KG7, KG8, KG9],
-                        'MG': [MG1, MG2, MG3, MG4, MG5, MG6, MG7, MG8, MG9],
-                        'KM': [KM1, KM2, KM3, KM4, KM5, KM6, KM7, KM8, KM9],            
-                        })
-                dataL = dataK.copy()  # Corrected variable name here
-                dataL['KG (m)'] = dataK['KG']
-                dataL['MG (m)'] = dataK['MG'].apply(lambda x: '{:.3f}'.format(x))
-                dataL['KM (m)'] = dataK['KM'].apply(lambda x: '{:.3f}'.format(x))
+                    'KG' = rounded_KG
+                    'MG' = rounded_MG
+                    'KM' = rounded_KM
                 st.write("""##### Hydrostatic Point""")
-                st.table(dataL)
+                st.table(dataK)
                   # Plotting line diagram with switched X-axis and Y-axis
                 fig, aa = plt.subplots()
 
