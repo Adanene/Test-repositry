@@ -293,8 +293,8 @@ if st.session_state.button_pressed:
                 mape_datap = calculate_mape(y, predicted_Incline0)
                 mse_datap = mean_squared_error(y, predicted_Incline0)
             # print the MAPE and MSE
-                st.subheader(f"Mean squared error for predicting datasheet is {mse_datap, 3}  " )
-                st.subheader(f"Mean Absolute Percentage Error for predicting datasheet is {mape_datap, 3}")
+                st.subheader(f"Mean squared error for predicting datasheet is {mse_datap:.3f}  " )
+                st.subheader(f"Mean Absolute Percentage Error for predicting datasheet is {mape_datap:.3f}")
              # Preapare the .csv files
                 dg = pd.DataFrame(datap)
                 predictions_dg = pd.DataFrame({'Group' : groups, 'Actual':y, 'Predicted':predicted_Incline0})
@@ -517,8 +517,8 @@ if st.session_state.button_pressed:
                 tantheta8 = math.tan(radians8)
                 tantheta9 = math.tan(radians9)
                 
-                st.subheader(f"Mean squared error is {mse_best_model}  " )
-                st.subheader(f"Mean Absolute Percentage Error is {mape_model}")
+                st.subheader(f"Mean squared error is {mse_best_model:.3f}" )
+                st.subheader(f"Mean Absolute Percentage Error is {mape_model:.3f}")
             
                 dataS = pd.DataFrame({
                         'Posisi Cog Momen (m)': [Cogm1, Cogm2, Cogm3, Cogm4, Cogm5, Cogm6, Cogm7, Cogm8, Cogm9],
@@ -648,8 +648,8 @@ if st.session_state.button_pressed:
                         })
                 dataK_display = dataK.copy()  # Corrected variable name here
                 dataK_display['KG (m)'] = dataK['KG']
-                dataK_display['Mg (m)'] = dataK['Mg'].apply(lambda x: '{:.4f}'.format(x))
-                dataK_display['KM (m)'] = dataK['KM'].apply(lambda x: '{:.4f}'.format(x))
+                dataK_display['Mg (m)'] = dataK['Mg'].apply(lambda x: '{:.3f}'.format(x))
+                dataK_display['KM (m)'] = dataK['KM'].apply(lambda x: '{:.3f}'.format(x))
                 st.write("""##### Hydrostatic Point""")
                 st.table(dataK_display)
                 ### make a graphic for it
@@ -688,6 +688,6 @@ if st.session_state.button_pressed:
 
                 # Display the plot using Streamlit
                 st.pyplot(fig)
-                st.subheader(f"Average KG on this ship is {AvKG}  " )
-                st.subheader(f"Average MG on this ship is {AvMg}  " )
-                st.subheader(f"Average KM on this ship is {AvKm}  " )
+                st.subheader(f"Average KG on this ship is {AvKG:.3f}  " )
+                st.subheader(f"Average MG on this ship is {AvMg:.3f}  " )
+                st.subheader(f"Average KM on this ship is {AvKm:.3f}  " )
