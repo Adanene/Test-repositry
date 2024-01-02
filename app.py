@@ -73,7 +73,7 @@ beban = (
 hydros = (
         "No",
         "Predict Automatic (Not Quite Accurate)", 
-        "Yes I have My MG from Hydrostatic",
+        "Yes I have My KM from Hydrostatic",
         )
 # input some wrrited answer
 
