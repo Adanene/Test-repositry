@@ -642,9 +642,9 @@ if st.session_state.button_pressed:
 
                  # Build the table
                 
-                KG: [KG1, KG2, KG3, KG4, KG5, KG6, KG7, KG8, KG9],
-                MG: [MG1, MG2, MG3, MG4, MG5, MG6, MG7, MG8, MG9],
-                KM: [KM1, KM2, KM3, KM4, KM5, KM6, KM7, KM8, KM9],   
+                KG: [KG1, KG2, KG3, KG4, KG5, KG6, KG7, KG8, KG9]
+                MG: [MG1, MG2, MG3, MG4, MG5, MG6, MG7, MG8, MG9]
+                KM: [KM1, KM2, KM3, KM4, KM5, KM6, KM7, KM8, KM9]   
                 # Assuming KG, MG, and KM are your original data
 
                 # Round each value to 0.001 depth
