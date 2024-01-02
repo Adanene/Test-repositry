@@ -644,9 +644,9 @@ if st.session_state.button_pressed:
                     KM9 = MG9 + KG9
                     
                 #calculate average data
-                AvKG = (KG1 +KG2 +KG3 +KG4 +KG5 +KG6 +KG7 +KG8 +KG9)
-                AvMG = (MG1 +MG2 +MG3 +MG4 +MG5 +MG6 +MG7 +MG8 +MG9)
-                AvKm = (KM1 +KM2 +KM3 +KM4 +KM5 +KM6 +KM7 +KM8 +KM9)
+                AvKG = (KG1 +KG2 +KG3 +KG4 +KG5 +KG6 +KG7 +KG8 +KG9)/9
+                AvMG = (MG1 +MG2 +MG3 +MG4 +MG5 +MG6 +MG7 +MG8 +MG9)/9
+                AvKm = (KM1 +KM2 +KM3 +KM4 +KM5 +KM6 +KM7 +KM8 +KM9)/9
                 rounded_AVKG = round(AvKG, 3)
                 rounded_AvMG = round(AvMG, 3)
                 rounded_AvKm = round(AvKm, 3)
