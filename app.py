@@ -107,9 +107,9 @@ if jumlah_beban == "6" :
         bebanF = st.number_input("Weight 6 (Kg)",min_value= 0.0000, step =0.0001)
 
 
-Stab = st.selectbox("Do you need to calculate Stability Point? (Required GM from hydrostatic)", hydros)
+Stab = st.selectbox("Do you need to calculate Stability Point? (Required KM from hydrostatic)", hydros)
 if Stab == "Yes I have My MG from Hydrostatic" :
-        MG = st.number_input("Write MG From your Hydrostatic",min_value= 0.0000,  step =0.0001)
+        KM = st.number_input("Write KM From your Hydrostatic",min_value= 0.0000,  step =0.0001)
 
 ok = st.button("Calculate Incline")       
 
@@ -580,38 +580,8 @@ if st.session_state.button_pressed:
 
                 #### Now for hydrostatic part
                 ###Calulate KG
-                KG1 = (Cogm1 * totalB) / (totalB / halfBreadth)* tantheta1
-                KG2 = (Cogm2 * totalB) / (totalB / halfBreadth)* tantheta2
-                KG3 = (Cogm3 * totalB) / (totalB / halfBreadth)* tantheta3
-                KG4 = (Cogm4 * totalB) / (totalB / halfBreadth)* tantheta4
-                KG5 = (Cogm5 * totalB) / (totalB / halfBreadth)* tantheta5
-                KG6 = (Cogm6 * totalB) / (totalB / halfBreadth)* tantheta6
-                KG7 = (Cogm7 * totalB) / (totalB / halfBreadth)* tantheta7
-                KG8 = (Cogm8 * totalB) / (totalB / halfBreadth)* tantheta8
-                KG9 = (Cogm9 * totalB) / (totalB / halfBreadth)* tantheta9
             
-                if Stab == "Yes I have My MG from Hydrostatic" :
-                    MG1 = MG
-                    MG2 = MG
-                    MG3 = MG
-                    MG4 = MG
-                    MG5 = MG
-                    MG6 = MG
-                    MG7 = MG
-                    MG8 = MG
-                    MG9 = MG
-                    
-                    KM1 = MG1 + KG1
-                    KM2 = MG2 + KG2
-                    KM3 = MG3 + KG3
-                    KM4 = MG4 + KG4
-                    KM5 = MG5 + KG5
-                    KM6 = MG6 + KG6
-                    KM7 = MG7 + KG7
-                    KM8 = MG8 + KG8
-                    KM9 = MG9 + KG9
-                    
-                if Stab == "Predict Automatic (Not Quite Accurate)" :
+                if Stab == "Yes I have My KM from Hydrostatic" :
                     MG1 = (Cogm1 * totalB) / (displacement * 9.81 * tantheta1)
                     MG2 = (Cogm2 * totalB) / (displacement * 9.81 * tantheta2)
                     MG3 = (Cogm3 * totalB) / (displacement * 9.81 * tantheta3)
@@ -622,15 +592,56 @@ if st.session_state.button_pressed:
                     MG8 = (Cogm8 * totalB) / (displacement * 9.81 * tantheta8)
                     MG9 = (Cogm9 * totalB) / (displacement * 9.81 * tantheta9)  
                     
-                    KM1 = MG1 + KG1
-                    KM2 = MG2 + KG2
-                    KM3 = MG3 + KG3
-                    KM4 = MG4 + KG4
-                    KM5 = MG5 + KG5
-                    KM6 = MG6 + KG6
-                    KM7 = MG7 + KG7
-                    KM8 = MG8 + KG8
-                    KM9 = MG9 + KG9
+                    KM1 = KM
+                    KM2 = KM
+                    KM3 = KM
+                    KM4 = KM
+                    KM5 = KM
+                    KM6 = KM
+                    KM7 = KM
+                    KM8 = KM
+                    KM9 = KM
+
+                    KG1 = MG1 + KM1
+                    KG2 = MG2 + KM2
+                    KG3 = MG3 + KM3
+                    KG4 = MG4 + KM4
+                    KG5 = MG5 + KM5
+                    KG6 = MG6 + KM6
+                    KG7 = MG7 + KM7
+                    KG8 = MG8 + KM8
+                    KG9 = MG9 + KM9
+                    
+                if Stab == "Predict Automatic (Not Quite Accurate)" :
+                    MG1 = (Cogm1 * totalB) / (displacement * 9.81 * tantheta1)
+                    MG2 = (Cogm2 * totalB) / (displacement * 9.81 * tantheta2)
+                    MG3 = (Cogm3 * totalB) / (displacement * 9.81 * tantheta3)
+                    MG4 = (Cogm4 * totalB) / (displacement * 9.81 * tantheta4)
+                    MG5 = (Cogm5 * totalB) / (displacement * 9.81 * tantheta5)
+                    MG6 = (Cogm6 * totalB) / (displacement * 9.81 * tantheta6)
+                    MG7 = (Cogm7 * totalB) / (displacement * 9.81 * tantheta7)
+                    MG8 = (Cogm8 * totalB) / (displacement * 9.81 * tantheta8)
+                    MG9 = (Cogm9 * totalB) / (displacement * 9.81 * tantheta9)
+                    
+                    KG1 = (Cogm1 * totalB) / (totalB / halfBreadth)* tantheta1
+                    KG2 = (Cogm2 * totalB) / (totalB / halfBreadth)* tantheta2
+                    KG3 = (Cogm3 * totalB) / (totalB / halfBreadth)* tantheta3
+                    KG4 = (Cogm4 * totalB) / (totalB / halfBreadth)* tantheta4
+                    KG5 = (Cogm5 * totalB) / (totalB / halfBreadth)* tantheta5
+                    KG6 = (Cogm6 * totalB) / (totalB / halfBreadth)* tantheta6
+                    KG7 = (Cogm7 * totalB) / (totalB / halfBreadth)* tantheta7
+                    KG8 = (Cogm8 * totalB) / (totalB / halfBreadth)* tantheta8
+                    KG9 = (Cogm9 * totalB) / (totalB / halfBreadth)* tantheta9
+                    
+                    KM1 = -MG1 + KG1
+                    KM2 = -MG2 + KG2
+                    KM3 = -MG3 + KG3
+                    KM4 = -MG4 + KG4
+                    KM5 = -MG5 + KG5
+                    KM6 = -MG6 + KG6
+                    KM7 = -MG7 + KG7
+                    KM8 = -MG8 + KG8
+                    KM9 = -MG9 + KG9
                     
                 #calculate average data
                 AvKG = (KG1 +KG2 +KG3 +KG4 +KG5 +KG6 +KG7 +KG8 +KG9)
@@ -655,10 +666,10 @@ if st.session_state.button_pressed:
                 rounded_Cogm = [round(value, 3) for value in Cogmdata]
                 # Create the DataFrame
                 dataK = pd.DataFrame({
-                    'Cogm' : rounded_Cogm,
-                    'KG' : rounded_KG,
-                    'MG' : rounded_MG,
-                    'KM' : rounded_KM,
+                    'Cogm (m)' : rounded_Cogm,
+                    'KG (m)' : rounded_KG,
+                    'MG (m)' : rounded_MG,
+                    'KM (m)' : rounded_KM,
                 })
                 st.write("""##### Hydrostatic Point""")
                 st.table(dataK)
@@ -677,7 +688,7 @@ if st.session_state.button_pressed:
                 # Set title, labels, and legend
                 aa.set_title("Hydrostatic per moment")
                 aa.set_xlabel('Portside                            Starboardside')
-                aa.set_ylabel('KM, KG, MG')
+                aa.set_ylabel('KM, KG, MG (m)')
                 aa.legend()
 
                 # Add annotations
