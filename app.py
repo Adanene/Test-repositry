@@ -602,15 +602,15 @@ if st.session_state.button_pressed:
                     KM8 = KM
                     KM9 = KM
 
-                    KG1 = MG1 + KM1
-                    KG2 = MG2 + KM2
-                    KG3 = MG3 + KM3
-                    KG4 = MG4 + KM4
-                    KG5 = MG5 + KM5
-                    KG6 = MG6 + KM6
-                    KG7 = MG7 + KM7
-                    KG8 = MG8 + KM8
-                    KG9 = MG9 + KM9
+                    KG1 = -MG1 + KM1
+                    KG2 = -MG2 + KM2
+                    KG3 = -MG3 + KM3
+                    KG4 = -MG4 + KM4
+                    KG5 = -MG5 + KM5
+                    KG6 = -MG6 + KM6
+                    KG7 = -MG7 + KM7
+                    KG8 = -MG8 + KM8
+                    KG9 = -MG9 + KM9
                     
                 if Stab == "Predict Automatic (Not Quite Accurate)" :
                     MG1 = (Cogm1 * totalB) / (displacement * 9.81 * tantheta1)
@@ -633,15 +633,15 @@ if st.session_state.button_pressed:
                     KG8 = (Cogm8 * totalB) / (totalB / halfBreadth)* tantheta8
                     KG9 = (Cogm9 * totalB) / (totalB / halfBreadth)* tantheta9
                     
-                    KM1 = -MG1 + KG1
-                    KM2 = -MG2 + KG2
-                    KM3 = -MG3 + KG3
-                    KM4 = -MG4 + KG4
-                    KM5 = -MG5 + KG5
-                    KM6 = -MG6 + KG6
-                    KM7 = -MG7 + KG7
-                    KM8 = -MG8 + KG8
-                    KM9 = -MG9 + KG9
+                    KM1 = MG1 + KG1
+                    KM2 = MG2 + KG2
+                    KM3 = MG3 + KG3
+                    KM4 = MG4 + KG4
+                    KM5 = MG5 + KG5
+                    KM6 = MG6 + KG6
+                    KM7 = MG7 + KG7
+                    KM8 = MG8 + KG8
+                    KM9 = MG9 + KG9
                     
                 #calculate average data
                 AvKG = (KG1 +KG2 +KG3 +KG4 +KG5 +KG6 +KG7 +KG8 +KG9)
