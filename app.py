@@ -108,7 +108,7 @@ if jumlah_beban == "6" :
 
 
 Stab = st.selectbox("Do you need to calculate Stability Point? (Required KM from hydrostatic)", hydros)
-if Stab == "Yes I have My MG from Hydrostatic" :
+if Stab == "Yes I have My KM from Hydrostatic" :
         KM = st.number_input("Write KM From your Hydrostatic",min_value= 0.0000,  step =0.0001)
 
 ok = st.button("Calculate Incline")       
