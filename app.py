@@ -677,13 +677,13 @@ if st.session_state.button_pressed:
                 fig, aa = plt.subplots()
 
                 # Create line plot for KG vs MG with switched axes
-                aa.plot(dataS['Posisi Cog Momen (m)'], dataK['KG'], label='KG (m)', marker='o')
+                aa.plot(dataS['Posisi Cog Momen (m)'], dataK['KG (m)'], label='KG (m)', marker='o')
 
                 # Create line plot for KM vs MG with switched axes
-                aa.plot(dataS['Posisi Cog Momen (m)'], dataK['KM'], label='KM (m)', marker='o')
+                aa.plot(dataS['Posisi Cog Momen (m)'], dataK['KM (m)'], label='KM (m)', marker='o')
 
                 # Create line plot for MG vs MG with switched axes
-                aa.plot(dataS['Posisi Cog Momen (m)'], dataK['MG'], label='MG (m)', marker='o')
+                aa.plot(dataS['Posisi Cog Momen (m)'], dataK['MG (m)'], label='MG (m)', marker='o')
 
                 # Set title, labels, and legend
                 aa.set_title("Hydrostatic per moment")
