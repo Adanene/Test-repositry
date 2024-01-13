@@ -84,7 +84,7 @@ Draft = st.number_input("Draft (m) ", min_value= 0.00, max_value= Depth, step =0
 Cb = st.number_input("Coefficient Block", min_value= 0.00, max_value= 1.00, step =0.01)
 jumlah_beban = st.selectbox("Number Weight", beban)
 ##convert to anohter
-
+st.image('https://github.com/Adanene/Test-repositry/blob/main/4%20weight%20inclinnig%20test.png')
 if jumlah_beban == "4" :
         st.image('https://github.com/Adanene/Test-repositry/blob/main/4%20weight%20inclinnig%20test.png')
         st.write("""##### please make sure if every weight at one side, at least it inclined 1 degree""")
