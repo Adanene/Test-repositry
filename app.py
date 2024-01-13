@@ -86,7 +86,7 @@ jumlah_beban = st.selectbox("Number Weight", beban)
 ##convert to anohter
 
 if jumlah_beban == "4" :
-        st.image('https://drive.google.com/uc?id=14WooQDOBkHLHqVkCy6wFwLfzb6Jxq8YS')
+        st.image('https://drive.google.com/file/d/14WooQDOBkHLHqVkCy6wFwLfzb6Jxq8YS')
         st.write("""##### please make sure if every weight at one side, at least it inclined 1 degree""")
         bebanA = st.number_input("Weight 1 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanB = st.number_input("Weight 2 (Kg)",min_value= 0.0000,  step =0.0001)
@@ -97,7 +97,7 @@ if jumlah_beban == "4" :
         
 
 if jumlah_beban == "6" :
-        st.image('https://drive.google.com/uc?id=1BqM-jtRUqNR5w9NNU2teF4R5qYJ2GI7D')
+        st.image('https://drive.google.com/file/d/1BqM-jtRUqNR5w9NNU2teF4R5qYJ2GI7D')
         st.write("""##### please make sure if every weight at one side, at least it inclined 1 degree""")
         bebanA = st.number_input("Weight 1 (Kg)",min_value= 0.0000,  step =0.0001)
         bebanB = st.number_input("Weight 2 (Kg)",min_value= 0.0000,  step =0.0001)
