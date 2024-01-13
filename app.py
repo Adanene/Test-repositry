@@ -195,7 +195,7 @@ if ok:
                 'reg_alpha': [1],
                 'reg_lambda': [1],
                 'gamma': [0],
-                'min_child_weight': [6],
+                'min_child_weight': [5],
                 'scale_pos_weight': [1]
             }
             grid_search = GridSearchCV(estimator=xgboost_model, param_grid=param_grid,
