@@ -51,7 +51,7 @@ file_path = 'your_model.pkl'
 
 # Predict stability for a new inclining test
 #make the interface
-st.title("Ship inclining prediction Ver 1.6 (XGB)")
+st.title("Ship inclining prediction Ver 1.8 (XGB)")
 st.write("""### How to use: """)
 st.write("""##### 1. this only applicable to monohull""")
 st.write("""##### 2. only 4 and 6 weight method used on this inclining test  """)
